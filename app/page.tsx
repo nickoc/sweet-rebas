@@ -74,7 +74,7 @@ export default function HomePage() {
             { emoji: "👩‍🍳", title: "Small-Batch", desc: "We bake in small batches to ensure every item meets our standards." },
             { emoji: "❤️", title: "Made with Love", desc: "The secret ingredient in everything we make. You can taste the difference." },
           ].map((value) => (
-            <div key={value.title} className="bg-reba-card border border-reba-border rounded-2xl p-6 text-center">
+            <div key={value.title} className="border border-reba-border rounded-2xl p-6 text-center" style={{ backgroundColor: "#fff5f5" }}>
               <div className="text-3xl mb-3">{value.emoji}</div>
               <h3 className="text-reba-cream font-semibold mb-2">{value.title}</h3>
               <p className="text-reba-muted text-sm leading-relaxed">{value.desc}</p>
@@ -86,7 +86,7 @@ export default function HomePage() {
       </section>
 
       {/* Signature Products */}
-      <section className="bg-reba-card">
+      <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-4">
             Our Signature Products
@@ -172,7 +172,7 @@ export default function HomePage() {
       </section>
 
       {/* Customer Reviews */}
-      <section className="bg-reba-card">
+      <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
             What Our Customers Say
@@ -181,7 +181,7 @@ export default function HomePage() {
             {topReviews.map((review) => (
               <div
                 key={review.id}
-                className="bg-reba-card border border-reba-border rounded-2xl p-6"
+                className="bg-white border border-reba-border rounded-2xl p-6"
               >
                 <StarRating rating={review.rating} />
                 <p className="text-reba-soft text-sm leading-relaxed mt-4 mb-4">
