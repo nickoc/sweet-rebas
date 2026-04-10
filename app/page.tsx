@@ -172,11 +172,8 @@ export default function HomePage() {
               Read Our Full Story &rarr;
             </Link>
           </div>
-          <div className="bg-reba-card border border-reba-border rounded-2xl aspect-[4/3] flex items-center justify-center">
-            <div className="text-center text-reba-muted">
-              <div className="text-6xl mb-3">🍰</div>
-              <p className="text-sm">Reba in her kitchen</p>
-            </div>
+          <div className="rounded-2xl overflow-hidden">
+            <img src="/mike-and-reba.png" alt="Reba and Michael at Sweet Reba's" className="w-full h-full object-cover rounded-2xl" />
           </div>
         </div>
       </section>
