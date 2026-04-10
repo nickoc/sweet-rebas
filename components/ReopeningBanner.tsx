@@ -17,7 +17,7 @@ export default function ReopeningBanner() {
   if (submitted) {
     return (
       <section className="max-w-4xl mx-auto px-4 -mt-12 relative z-20">
-        <div className="bg-reba-card border border-reba-pink/30 rounded-2xl p-6 text-center">
+        <div className="border border-reba-pink/30 rounded-2xl p-6 text-center" style={{ backgroundColor: "#fff5f5" }}>
           <p className="text-reba-pink font-semibold text-sm sm:text-base">
             You&apos;re on the list! We&apos;ll let you know as soon as Carmel reopens.
           </p>
@@ -28,7 +28,7 @@ export default function ReopeningBanner() {
 
   return (
     <section className="max-w-4xl mx-auto px-4 -mt-12 relative z-20">
-      <div className="bg-reba-card border border-reba-pink/30 rounded-2xl p-6 text-center">
+      <div className="border border-reba-pink/30 rounded-2xl p-6 text-center" style={{ backgroundColor: "#fff5f5" }}>
         {!expanded ? (
           <button
             onClick={() => setExpanded(true)}
