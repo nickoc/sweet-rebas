@@ -47,7 +47,7 @@ export default function Header() {
               href="/whats-baking"
               className="bg-reba-pink/20 hover:bg-reba-pink/30 text-reba-pink px-5 py-2 rounded-full text-sm font-medium transition-colors"
             >
-              What&apos;s Baking?
+              Find Out What&apos;s Baking?
             </Link>
             <Link
               href="/box-builder"
@@ -94,7 +94,7 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="bg-reba-pink/20 hover:bg-reba-pink/30 text-reba-pink px-5 py-2.5 rounded-full text-sm font-medium transition-colors text-center mt-2"
               >
-                What&apos;s Baking?
+                Find Out What&apos;s Baking?
               </Link>
               <Link
                 href="/box-builder"
