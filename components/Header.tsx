@@ -8,7 +8,7 @@ const navLinks = [
   { label: "Menu", href: "/menu" },
   { label: "Custom Cakes", href: "/cakes" },
   { label: "Catering", href: "/catering" },
-  { label: "About", href: "/about" },
+  { label: "Our Story", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
