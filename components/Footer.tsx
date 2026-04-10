@@ -7,7 +7,7 @@ export default function Footer() {
   const [email, setEmail] = useState("");
 
   return (
-    <footer className="bg-reba-card border-t border-reba-border">
+    <footer className="border-t border-reba-border" style={{ backgroundColor: "#fff5f5" }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Col 1: About */}

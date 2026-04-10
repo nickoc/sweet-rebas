@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Wedding Cakes", href: "/wedding-cakes" },
   { label: "Catering", href: "/catering" },
   { label: "Our Story", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export default function Header() {

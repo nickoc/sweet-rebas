@@ -14,7 +14,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-reba-card to-reba-dark py-16 sm:py-24">
+      <section className="py-16 sm:py-24" style={{ background: "linear-gradient(to bottom, #fff5f5, #ffffff)" }}>
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl text-reba-cream mb-4">
             Contact Us
@@ -30,7 +30,7 @@ export default function ContactPage() {
           {/* Location Cards */}
           <div className="space-y-6">
             {/* Carmel */}
-            <div className="bg-reba-card border border-reba-border rounded-2xl p-6">
+            <div className="border border-reba-border rounded-2xl p-6" style={{ backgroundColor: "#fff5f5" }}>
               <h2 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-3">
                 Carmel Crossroads
               </h2>
@@ -53,7 +53,7 @@ export default function ContactPage() {
             </div>
 
             {/* Salinas */}
-            <div className="bg-reba-card border border-reba-border rounded-2xl p-6">
+            <div className="border border-reba-border rounded-2xl p-6" style={{ backgroundColor: "#fff5f5" }}>
               <h2 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-3">
                 Old Town Salinas
               </h2>
@@ -109,7 +109,7 @@ export default function ContactPage() {
             </div>
 
             {/* Social */}
-            <div className="bg-reba-card border border-reba-border rounded-2xl p-6">
+            <div className="border border-reba-border rounded-2xl p-6" style={{ backgroundColor: "#fff5f5" }}>
               <h2 className="text-reba-cream font-semibold mb-3">Follow Us</h2>
               <a
                 href="https://instagram.com/sweetrebas"
@@ -131,7 +131,7 @@ export default function ContactPage() {
 
           {/* Contact Form */}
           <div>
-            <div className="bg-reba-card border border-reba-border rounded-2xl p-6 sm:p-8">
+            <div className="border border-reba-border rounded-2xl p-6 sm:p-8" style={{ backgroundColor: "#fff5f5" }}>
               <h2 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-6">
                 Send Us a Message
               </h2>
