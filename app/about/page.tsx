@@ -146,25 +146,49 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Michael Section */}
+      {/* Reba & Michael Section */}
       <section className="bg-reba-card">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
-              Michael &mdash; Partner in Everything
-            </h2>
-            <p className="text-reba-soft leading-relaxed mb-4">
-              Behind every great bakery is a great team, and Michael is
-              Reba&apos;s rock. As husband and business partner, Michael brings
-              his Italian heritage and culinary training to the kitchen. His
-              savory creations &mdash; the breakfast burritos, sandwiches, and
-              soups &mdash; perfectly complement Reba&apos;s sweet masterpieces.
-            </p>
-            <p className="text-reba-muted leading-relaxed">
-              Together, they&apos;ve built more than a bakery. They&apos;ve
-              built a gathering place where the community comes together over
-              incredible food.
-            </p>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
+            The Heart Behind the Bakery
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+            {/* Reba */}
+            <div className="bg-white border border-reba-border rounded-2xl p-8 text-center">
+              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
+                <img src="/reba.png" alt="Reba" className="w-full h-full object-cover" />
+              </div>
+              <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+                Reba
+              </h3>
+              <p className="text-reba-pink font-medium text-sm mb-4">
+                Baker, Cake Artist &amp; Dreamer
+              </p>
+              <p className="text-reba-soft text-sm leading-relaxed">
+                From her grandmother&apos;s kitchen to Food Network&apos;s Cake Wars,
+                Reba has turned a passion for baking into something extraordinary.
+                Every cake, cookie, and pie is made with the same love she put into
+                that very first birthday cake in 2004.
+              </p>
+            </div>
+            {/* Michael */}
+            <div className="bg-white border border-reba-border rounded-2xl p-8 text-center">
+              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
+                <img src="/michael.png" alt="Michael" className="w-full h-full object-cover" />
+              </div>
+              <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+                Michael
+              </h3>
+              <p className="text-reba-pink font-medium text-sm mb-4">
+                Partner, Chef &amp; Rock
+              </p>
+              <p className="text-reba-soft text-sm leading-relaxed">
+                Michael brings his Italian heritage and culinary training to the
+                kitchen. His savory creations &mdash; the breakfast burritos,
+                sandwiches, and soups &mdash; perfectly complement Reba&apos;s
+                sweet masterpieces. Together, they&apos;ve built more than a bakery.
+              </p>
+            </div>
           </div>
         </div>
       </section>
