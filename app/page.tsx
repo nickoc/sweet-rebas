@@ -24,7 +24,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function HomePage() {
   return (
-    <div>
+    <div style={{ backgroundColor: "#fff5f5" }}>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
