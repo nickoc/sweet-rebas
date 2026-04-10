@@ -178,7 +178,7 @@ export default function HomePage() {
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {topReviews.map((review) => (
+            {reviews.map((review) => (
               <div
                 key={review.id}
                 className="bg-white border border-reba-border rounded-2xl p-6"
@@ -197,14 +197,6 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/reviews"
-              className="text-reba-pink hover:text-reba-pink-hover transition-colors font-medium"
-            >
-              See All Reviews &rarr;
-            </Link>
           </div>
         </div>
       </section>
