@@ -40,6 +40,10 @@ export default function ReopeningBanner() {
               <span className="text-reba-pink font-semibold underline underline-offset-2">
                 Click here to be the first to know!
               </span>
+              <br />
+              <span className="text-reba-muted">
+                In the meantime, come visit us in Salinas &mdash; we&apos;d love to see you!
+              </span>
             </p>
           </button>
         ) : (
