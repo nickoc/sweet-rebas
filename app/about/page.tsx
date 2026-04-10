@@ -20,20 +20,27 @@ export default function AboutPage() {
         <div className="space-y-12">
           {/* Grandmother's Kitchen */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
-              Where It All Began
-            </h2>
-            <p className="text-reba-soft leading-relaxed mb-4">
-              Every great bakery has an origin story, and ours starts in a
-              grandmother&apos;s kitchen. Reba grew up watching her grandmother
-              transform simple ingredients into extraordinary creations &mdash;
-              cakes that made people smile, cookies that brought comfort, and
-              pies that turned ordinary days into celebrations.
-            </p>
-            <p className="text-reba-muted leading-relaxed">
-              Those recipes, passed down through generations, became the
-              foundation for everything Sweet Reba&apos;s would become.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="rounded-xl overflow-hidden">
+                <img src="/about-soup.jpg" alt="Homemade soup at Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              </div>
+              <div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                  Where It All Began
+                </h2>
+                <p className="text-reba-soft leading-relaxed mb-4">
+                  Every great bakery has an origin story, and ours starts in a
+                  grandmother&apos;s kitchen. Reba grew up watching her grandmother
+                  transform simple ingredients into extraordinary creations &mdash;
+                  cakes that made people smile, cookies that brought comfort, and
+                  pies that turned ordinary days into celebrations.
+                </p>
+                <p className="text-reba-muted leading-relaxed">
+                  Those recipes, passed down through generations, became the
+                  foundation for everything Sweet Reba&apos;s would become.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* The Birthday Cake */}
