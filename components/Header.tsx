@@ -44,6 +44,12 @@ export default function Header() {
               </Link>
             ))}
             <Link
+              href="/whats-baking"
+              className="bg-reba-pink/20 hover:bg-reba-pink/30 text-reba-pink px-5 py-2 rounded-full text-sm font-medium transition-colors"
+            >
+              What&apos;s Baking?
+            </Link>
+            <Link
               href="/box-builder"
               className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2 rounded-full text-sm font-medium transition-colors"
             >
@@ -84,9 +90,16 @@ export default function Header() {
                 </Link>
               ))}
               <Link
+                href="/whats-baking"
+                onClick={() => setMobileOpen(false)}
+                className="bg-reba-pink/20 hover:bg-reba-pink/30 text-reba-pink px-5 py-2.5 rounded-full text-sm font-medium transition-colors text-center mt-2"
+              >
+                What&apos;s Baking?
+              </Link>
+              <Link
                 href="/box-builder"
                 onClick={() => setMobileOpen(false)}
-                className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors text-center mt-2"
+                className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors text-center"
               >
                 Order Now
               </Link>
