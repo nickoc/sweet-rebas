@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { menuItems, reviews } from "@/data/sample-data";
+import CountUpStats from "@/components/CountUpStats";
 
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
 const topReviews = reviews.slice(0, 3);
@@ -88,38 +89,7 @@ export default function HomePage() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-reba-card border border-reba-border rounded-2xl p-8 text-center">
-            <div className="text-4xl mb-4">📺</div>
-            <h3 className="text-reba-cream font-semibold text-lg mb-2">
-              Food Network Featured
-            </h3>
-            <p className="text-reba-muted text-sm leading-relaxed">
-              Recognized on Cake Wars by legendary judge Ron Ben Israel for our
-              extraordinary cake artistry.
-            </p>
-          </div>
-          <div className="bg-reba-card border border-reba-border rounded-2xl p-8 text-center">
-            <div className="text-4xl mb-4">❤️</div>
-            <h3 className="text-reba-cream font-semibold text-lg mb-2">
-              22 Years of Love
-            </h3>
-            <p className="text-reba-muted text-sm leading-relaxed">
-              It all started with a birthday cake for Reba&apos;s son in 2004.
-              Two decades later, we&apos;re still baking with the same passion.
-            </p>
-          </div>
-          <div className="bg-reba-card border border-reba-border rounded-2xl p-8 text-center">
-            <div className="text-4xl mb-4">⭐</div>
-            <h3 className="text-reba-cream font-semibold text-lg mb-2">
-              4.8 Stars
-            </h3>
-            <p className="text-reba-muted text-sm leading-relaxed">
-              Top-rated on Google and beloved across 10 Nextdoor neighborhoods.
-              Our community is our greatest ingredient.
-            </p>
-          </div>
-        </div>
+        <CountUpStats />
       </section>
 
       {/* Fresh Today */}
