@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { menuItems, reviews } from "@/data/sample-data";
 import CountUpStats from "@/components/CountUpStats";
+import ReopeningBanner from "@/components/ReopeningBanner";
 
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
 const topReviews = reviews.slice(0, 3);
@@ -24,7 +25,7 @@ function StarRating({ rating }: { rating: number }) {
 
 export default function HomePage() {
   return (
-    <div style={{ backgroundColor: "#fff5f5" }}>
+    <div>
       {/* Hero Section */}
       <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
         <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
@@ -56,16 +57,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Alert Banner */}
-      <section className="max-w-4xl mx-auto px-4 -mt-12 relative z-20">
-        <div className="bg-reba-card border border-reba-pink/30 rounded-2xl p-6 text-center">
-          <p className="text-reba-cream text-sm sm:text-base leading-relaxed">
-            <span className="text-reba-pink font-semibold">Notice:</span> Our
-            Carmel location is temporarily closed for fire repairs (6-8 weeks).
-            Our Salinas location at 268 Main St is open and ready to serve you!
-          </p>
-        </div>
-      </section>
+      {/* Reopening Banner */}
+      <ReopeningBanner />
 
       {/* What Makes Us Special */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
