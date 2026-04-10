@@ -16,6 +16,20 @@ const categoryNotes: Record<string, string> = {
   Burritos: "Served daily until 1 PM or until sold out.",
 };
 
+const productImages: Record<string, string> = {
+  "choc-chip-cookie": "/product-chocolate-chip.jpg",
+  "snickerdoodles": "/product-snickerdoodles.jpg",
+  "oatmeal-cranberry": "/product-oatmeal-cranberry.jpg",
+  "sandwich-cookies": "/product-sandwich-cookies.jpg",
+  "triple-choc-brownies": "/product-brownie.jpg",
+  "butterscotch-blondies": "/product-blondie.jpg",
+  "lemon-brownies": "/product-lemon-brownie.jpg",
+  "coconut-joy": "/product-coconut-joy.jpg",
+  "coffee-cake-muffins": "/product-coffee-cake.jpg",
+  "morning-muffins": "/product-morning-muffins.jpg",
+  "classic-burrito": "/product-breakfast-burrito.jpg",
+};
+
 export default function MenuPage() {
   const grouped = categories.reduce(
     (acc, cat) => {
@@ -81,30 +95,42 @@ export default function MenuPage() {
               )}
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {items.map((item) => (
-                  <div
-                    key={item.id}
-                    className="bg-reba-card border border-reba-border rounded-xl p-5 hover:border-reba-pink/30 transition-colors"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <span className="text-xl">{item.emoji}</span>
-                          <h3 className="text-reba-cream font-semibold">
+                {items.map((item) => {
+                  const image = productImages[item.id];
+                  return (
+                    <div
+                      key={item.id}
+                      className="bg-white border border-reba-border rounded-xl overflow-hidden hover:border-reba-pink/30 transition-colors flex"
+                    >
+                      {image ? (
+                        <div className="w-28 sm:w-36 flex-shrink-0">
+                          <img
+                            src={image}
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ) : (
+                        <div className="w-28 sm:w-36 flex-shrink-0 bg-reba-card flex items-center justify-center">
+                          <span className="text-3xl">{item.emoji}</span>
+                        </div>
+                      )}
+                      <div className="flex-1 p-4">
+                        <div className="flex items-start justify-between gap-2 mb-1">
+                          <h3 className="text-reba-cream font-semibold text-sm">
                             {item.name}
                           </h3>
+                          <span className="text-reba-pink font-semibold text-sm whitespace-nowrap">
+                            ${item.price.toFixed(2)}
+                          </span>
                         </div>
-                        <p className="text-reba-muted text-sm leading-relaxed">
+                        <p className="text-reba-muted text-xs leading-relaxed">
                           {item.description}
                         </p>
-                        {/* Notes shown at category level */}
                       </div>
-                      <span className="text-reba-pink font-semibold whitespace-nowrap">
-                        ${item.price.toFixed(2)}
-                      </span>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           );
