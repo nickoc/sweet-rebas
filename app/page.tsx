@@ -71,6 +71,23 @@ export default function HomePage() {
         <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
           What Makes Us Special
         </h2>
+
+        {/* Our Values */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
+          {[
+            { emoji: "🌾", title: "Highest Quality", desc: "We source the finest ingredients available. No shortcuts, no compromises." },
+            { emoji: "🌿", title: "Freshest Ingredients", desc: "Everything is made fresh, from scratch, every single day." },
+            { emoji: "👩‍🍳", title: "Small-Batch", desc: "We bake in small batches to ensure every item meets our standards." },
+            { emoji: "❤️", title: "Made with Love", desc: "The secret ingredient in everything we make. You can taste the difference." },
+          ].map((value) => (
+            <div key={value.title} className="bg-reba-card border border-reba-border rounded-2xl p-6 text-center">
+              <div className="text-3xl mb-3">{value.emoji}</div>
+              <h3 className="text-reba-cream font-semibold mb-2">{value.title}</h3>
+              <p className="text-reba-muted text-sm leading-relaxed">{value.desc}</p>
+            </div>
+          ))}
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8 text-center">
             <div className="text-4xl mb-4">📺</div>
