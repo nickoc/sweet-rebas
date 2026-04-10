@@ -92,32 +92,44 @@ export default function HomePage() {
         <CountUpStats />
       </section>
 
-      {/* Fresh Today */}
+      {/* Signature Products */}
       <section className="bg-reba-card">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
           <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-4">
-            Fresh Today
+            Our Signature Products
           </h2>
           <p className="text-reba-muted text-center mb-14">
-            Some of our most popular items
+            Scratch-made favorites, baked fresh every day
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {popularItems.map((item) => (
-              <div
-                key={item.id}
-                className="bg-reba-card border border-reba-border rounded-2xl p-6 hover:border-reba-pink/30 transition-colors"
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+            {[
+              { name: "Chocolate Chip Cookie", price: "$3.50", image: "/product-chocolate-chip.jpg" },
+              { name: "Snickerdoodles", price: "$3.50", image: "/product-snickerdoodles.jpg" },
+              { name: "Triple Chocolate Brownie", price: "$3.50", image: "/product-brownie.jpg" },
+              { name: "Lemon Brownie", price: "$3.50", image: "/product-lemon-brownie.jpg" },
+              { name: "Breakfast Burrito", price: "$5.50", image: "/product-breakfast-burrito.jpg" },
+            ].map((product) => (
+              <Link
+                key={product.name}
+                href="/menu"
+                className="group bg-white border border-reba-border rounded-2xl overflow-hidden hover:border-reba-pink/30 hover:shadow-md transition-all"
               >
-                <div className="text-4xl mb-3">{item.emoji}</div>
-                <h3 className="text-reba-cream font-semibold mb-1">
-                  {item.name}
-                </h3>
-                <p className="text-reba-pink font-medium mb-2">
-                  ${item.price.toFixed(2)}
-                </p>
-                <p className="text-reba-muted text-sm leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
+                <div className="aspect-square overflow-hidden">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-4 text-center">
+                  <h3 className="text-reba-cream font-semibold text-sm mb-1">
+                    {product.name}
+                  </h3>
+                  <p className="text-reba-pink font-medium text-sm">
+                    {product.price}
+                  </p>
+                </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-10">
