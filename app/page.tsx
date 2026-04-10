@@ -103,18 +103,18 @@ export default function HomePage() {
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
             {[
-              { name: "Chocolate Chip Cookie", price: "$3.50", image: "/product-chocolate-chip.jpg" },
-              { name: "Snickerdoodles", price: "$3.50", image: "/product-snickerdoodles.jpg" },
-              { name: "Triple Chocolate Brownie", price: "$3.50", image: "/product-brownie.jpg" },
-              { name: "Lemon Brownie", price: "$3.50", image: "/product-lemon-brownie.jpg" },
-              { name: "Breakfast Burrito", price: "$5.50", image: "/product-breakfast-burrito.jpg" },
+              { name: "Chocolate Chip Cookie", price: "$3.50", image: "/product-chocolate-chip.jpg", desc: "Classic homemade chocolate chip \u2014 crispy edges, chewy center, loaded with chips." },
+              { name: "Snickerdoodles", price: "$3.50", image: "/product-snickerdoodles.jpg", desc: "Soft cinnamon-sugar cookies with a crackled top. Warm spice, buttery dough, pure comfort." },
+              { name: "Triple Chocolate Brownie", price: "$3.50", image: "/product-brownie.jpg", desc: "Dense, fudgy, three kinds of chocolate. The brownie that ruins all other brownies for you." },
+              { name: "Lemon Brownie", price: "$3.50", image: "/product-lemon-brownie.jpg", desc: "Bright, tangy, and buttery \u2014 like a lemon bar and a brownie had a perfect child." },
+              { name: "Breakfast Burrito", price: "$5.50", image: "/product-breakfast-burrito.jpg", desc: "Hearty, handmade, and stuffed with fresh ingredients. Served daily until 1 PM." },
             ].map((product) => (
               <Link
                 key={product.name}
                 href="/menu"
                 className="group bg-white border border-reba-border rounded-2xl overflow-hidden hover:border-reba-pink/30 hover:shadow-md transition-all"
               >
-                <div className="aspect-square overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -125,8 +125,11 @@ export default function HomePage() {
                   <h3 className="text-reba-cream font-semibold text-sm mb-1">
                     {product.name}
                   </h3>
-                  <p className="text-reba-pink font-medium text-sm">
+                  <p className="text-reba-pink font-medium text-sm mb-2">
                     {product.price}
+                  </p>
+                  <p className="text-reba-muted text-xs leading-relaxed">
+                    {product.desc}
                   </p>
                 </div>
               </Link>
