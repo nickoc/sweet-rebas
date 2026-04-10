@@ -45,20 +45,26 @@ export default function AboutPage() {
 
           {/* The Birthday Cake */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
-            <div className="text-4xl mb-4">🎂</div>
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
-              The Birthday Cake That Changed Everything
-            </h2>
-            <p className="text-reba-soft leading-relaxed mb-4">
-              In 2004, Reba made a birthday cake for her son&apos;s 7th
-              birthday. It was more than a cake &mdash; it was a work of art.
-              The other parents at the party couldn&apos;t stop talking about it.
-              Orders started coming in. Word spread through the neighborhood.
-            </p>
-            <p className="text-reba-muted leading-relaxed">
-              What began as a mother&apos;s gift to her child became a calling.
-              Sweet Reba&apos;s was born.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                  The Birthday Cake That Changed Everything
+                </h2>
+                <p className="text-reba-soft leading-relaxed mb-4">
+                  In 2004, Reba made a birthday cake for her son&apos;s 7th
+                  birthday. It was more than a cake &mdash; it was a work of art.
+                  The other parents at the party couldn&apos;t stop talking about it.
+                  Orders started coming in. Word spread through the neighborhood.
+                </p>
+                <p className="text-reba-muted leading-relaxed">
+                  What began as a mother&apos;s gift to her child became a calling.
+                  Sweet Reba&apos;s was born.
+                </p>
+              </div>
+              <div className="rounded-xl overflow-hidden">
+                <img src="/about-birthday-cake.jpg" alt="Beach-themed birthday cake by Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              </div>
+            </div>
           </div>
 
           {/* Local Legend */}
