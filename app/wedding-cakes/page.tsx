@@ -79,29 +79,6 @@ export default function WeddingCakesPage() {
         </div>
       </section>
 
-      {/* Gallery */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream text-center mb-10">
-          Wedding Cake Gallery
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            { src: "/cake-dreamy-1.jpg", alt: "Rustic tiered cake with anemones" },
-            { src: "/cake-dreamy-2.jpg", alt: "Pink cake with gold leaf" },
-            { src: "/cake-dreamy-3.jpg", alt: "White tiered cake with ranunculus" },
-            { src: "/cake-dreamy-4.jpg", alt: "Wedding cake with red roses" },
-            { src: "/cake-special-1.jpg", alt: "Guadalupe cake with roses" },
-            { src: "/cake-special-2.jpg", alt: "Bixby Bridge chocolate cake" },
-            { src: "/cake-special-3.jpg", alt: "Pink peony semi-naked cake" },
-            { src: "/cake-special-4.jpg", alt: "Beach theme cake" },
-          ].map((img) => (
-            <div key={img.src} className="aspect-[3/4] rounded-xl overflow-hidden shadow-md">
-              <img src={img.src} alt={img.alt} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Pricing Info */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
