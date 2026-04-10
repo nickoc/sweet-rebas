@@ -21,11 +21,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-reba-pink flex items-center justify-center">
-              <span className="font-[family-name:var(--font-heading)] text-xl text-white font-bold">
-                SR
-              </span>
-            </div>
+            <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-12 h-12 sm:w-14 sm:h-14" />
             <div>
               <div className="font-[family-name:var(--font-heading)] text-xl text-reba-cream leading-tight">
                 Sweet Reba&apos;s
