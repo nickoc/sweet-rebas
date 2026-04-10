@@ -209,6 +209,47 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* What's Baking This Week */}
+      <section style={{ backgroundColor: "#fff5f5" }}>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+          <div className="bg-white rounded-2xl overflow-hidden shadow-lg border-t-4 border-reba-pink">
+            <div className="bg-reba-pink px-8 py-6 text-center">
+              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-white mb-1">
+                What&apos;s Baking This Week?
+              </h2>
+              <p className="text-white/70 text-sm">Sweet Reba&apos;s Weekly</p>
+            </div>
+            <div className="px-8 py-6">
+              <p className="text-xs text-reba-muted uppercase tracking-wider mb-5">
+                This Week at Sweet Reba&apos;s &middot; April 9, 2026
+              </p>
+              <div className="space-y-4">
+                <div>
+                  <h4 className="text-reba-pink font-semibold text-sm mb-1">{"\u{1F36A}"} Cookie of the Week: Lemon Sugar</h4>
+                  <p className="text-reba-muted text-xs leading-relaxed">Spring is here and so is our Lemon Sugar cookie! Buttery, bright, and dusted with just the right amount of sweetness.</p>
+                </div>
+                <div>
+                  <h4 className="text-reba-pink font-semibold text-sm mb-1">{"\u{1F382}"} Custom Cake Spotlight</h4>
+                  <p className="text-reba-muted text-xs leading-relaxed">Check out this gorgeous three-tier floral cake we made for the Martinez wedding. Want something custom? We still have slots open for May!</p>
+                </div>
+                <div>
+                  <h4 className="text-reba-pink font-semibold text-sm mb-1">{"\u{1F389}"} Carmel Reopening Update</h4>
+                  <p className="text-reba-muted text-xs leading-relaxed">May 30th is getting closer! The ovens are installed, the display cases are in, and we&apos;re doing test bakes.</p>
+                </div>
+              </div>
+              <div className="text-center mt-6 pt-5 border-t border-reba-border">
+                <Link
+                  href="/whats-baking"
+                  className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full font-medium transition-colors"
+                >
+                  Sign Up to Always Know What We&apos;re Up To!
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Visit Us CTA */}
       <section className="bg-reba-pink">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
