@@ -69,41 +69,59 @@ export default function AboutPage() {
 
           {/* Local Legend */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
-            <div className="text-4xl mb-4">🌊</div>
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
-              Becoming a Local Legend
-            </h2>
-            <p className="text-reba-soft leading-relaxed mb-4">
-              Reba&apos;s cakes became legendary at Nepenthe&apos;s famous Sign
-              Parties along the Big Sur coast. Her creations were the talk of
-              every gathering &mdash; intricate designs, incredible flavors, and
-              that unmistakable warmth that only comes from baking with genuine
-              love.
-            </p>
-            <p className="text-reba-muted leading-relaxed">
-              The reputation grew from Carmel to Monterey to the entire
-              peninsula. Sweet Reba&apos;s wasn&apos;t just a bakery anymore
-              &mdash; it was an institution.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                  Becoming a Local Legend
+                </h2>
+                <p className="text-reba-soft leading-relaxed mb-4">
+                  Reba&apos;s cakes became legendary at Nepenthe&apos;s famous Sign
+                  Parties along the Big Sur coast. Her creations were the talk of
+                  every gathering &mdash; intricate designs, incredible flavors, and
+                  that unmistakable warmth that only comes from baking with genuine
+                  love.
+                </p>
+                <p className="text-reba-muted leading-relaxed">
+                  The reputation grew from Carmel to Monterey to the entire
+                  peninsula. Sweet Reba&apos;s wasn&apos;t just a bakery anymore
+                  &mdash; it was an institution.
+                </p>
+              </div>
+              <div className="bg-reba-warm border-2 border-dashed border-reba-border rounded-xl h-64 md:h-80 flex items-center justify-center">
+                <div className="text-center text-reba-muted">
+                  <div className="text-5xl mb-3">{"\u{1F30A}"}</div>
+                  <p className="text-sm">Photo coming soon</p>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Food Network */}
           <div className="bg-reba-card border border-reba-pink/30 rounded-2xl p-8">
-            <div className="text-4xl mb-4">📺</div>
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
-              Food Network Cake Wars
-            </h2>
-            <p className="text-reba-soft leading-relaxed mb-4">
-              Then came the call from Food Network. Reba competed on Cake Wars,
-              where her artistry earned recognition from the legendary Ron Ben
-              Israel himself. It was validation of what her community already
-              knew &mdash; Reba&apos;s cakes are extraordinary.
-            </p>
-            <p className="text-reba-muted leading-relaxed">
-              But for Reba, the greatest recognition still comes from the smile
-              on a child&apos;s face when they see their birthday cake for the
-              first time.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="bg-reba-warm border-2 border-dashed border-reba-border rounded-xl h-64 md:h-80 flex items-center justify-center">
+                <div className="text-center text-reba-muted">
+                  <div className="text-5xl mb-3">{"\u{1F4FA}"}</div>
+                  <p className="text-sm">Photo coming soon</p>
+                </div>
+              </div>
+              <div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                  Food Network Cake Wars
+                </h2>
+                <p className="text-reba-soft leading-relaxed mb-4">
+                  Then came the call from Food Network. Reba competed on Cake Wars,
+                  where her artistry earned recognition from the legendary Ron Ben
+                  Israel himself. It was validation of what her community already
+                  knew &mdash; Reba&apos;s cakes are extraordinary.
+                </p>
+                <p className="text-reba-muted leading-relaxed">
+                  But for Reba, the greatest recognition still comes from the smile
+                  on a child&apos;s face when they see their birthday cake for the
+                  first time.
+                </p>
+              </div>
+            </div>
           </div>
 
           {/* Expansion */}
