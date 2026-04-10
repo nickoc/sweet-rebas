@@ -42,7 +42,7 @@ export default function MenuPage() {
       </section>
 
       {/* Flavor Quiz CTA */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex justify-center">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 flex justify-center">
         <Link
           href="/quiz"
           className="inline-flex items-center gap-3 bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
