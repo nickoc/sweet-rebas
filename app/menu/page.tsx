@@ -141,6 +141,94 @@ export default function MenuPage() {
           );
         })}
       </section>
+
+      {/* Cakes */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex items-center gap-4 mb-2">
+          <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream">
+            Cakes
+          </h2>
+          <div className="flex-1 h-px bg-reba-border" />
+        </div>
+        <p className="text-reba-muted text-sm mb-8">
+          7-day advance notice for custom cakes &amp; pies. 72-hour notice for larger orders. Standard flavors may be available sooner &mdash; call to ask!
+        </p>
+
+        {/* Cake Products */}
+        <div className="flex justify-center gap-4 flex-wrap mb-10">
+          {[
+            { name: "Life by Chocolate", desc: "Cake slice", price: "$5.50", image: "/product-life-by-chocolate.jpg" },
+            { name: "Carrot Cake", desc: "Cake slice", price: "$5.50", image: "/product-carrot-cake.jpg" },
+            { name: 'Chocolate 6" Cake', desc: "Whole cake", price: "$45.00", image: "/product-chocolate-whole-cake.jpg" },
+          ].map((cake) => (
+            <div key={cake.name} className="bg-white border border-reba-border rounded-xl overflow-hidden w-[200px]">
+              <img src={cake.image} alt={cake.name} className="w-full h-[130px] object-cover" />
+              <div className="p-3 text-center">
+                <h3 className="text-reba-cream font-semibold text-sm mb-0.5">{cake.name}</h3>
+                {cake.desc && <p className="text-reba-muted text-xs mb-1">{cake.desc}</p>}
+                <p className="text-reba-pink font-semibold text-sm">{cake.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Sizes & Pricing */}
+        <h3 className="font-semibold text-reba-cream mb-4">Sizes &amp; Pricing</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
+          {[
+            { name: '6" Round', serves: "Serves 6-8", price: "$40" },
+            { name: '8" Round', serves: "Serves 10-14", price: "$55" },
+            { name: '9" Round', serves: "Serves 14-18", price: "$65" },
+            { name: "1/4 Sheet", serves: "Serves 20-24", price: "$45" },
+            { name: "Cupcakes", serves: "One dozen", price: "$36/dz" },
+          ].map((size) => (
+            <div key={size.name} className="bg-white border border-reba-pink/30 rounded-xl p-3 text-center">
+              <h4 className="text-reba-cream font-semibold text-sm">{size.name}</h4>
+              <p className="text-reba-muted text-xs mb-1">{size.serves}</p>
+              <p className="text-reba-pink font-bold">{size.price}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Flavor Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+          <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
+            <h4 className="text-reba-pink font-semibold mb-1">
+              Standard Flavors <span className="font-normal text-xs text-reba-muted">(always available)</span>
+            </h4>
+            <p className="text-reba-soft text-sm leading-relaxed">
+              Classic Vanilla<br />Carrot<br />Life by Chocolate
+            </p>
+          </div>
+          <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
+            <h4 className="text-reba-pink font-semibold mb-1">
+              Specialty Flavors <span className="font-normal text-xs text-reba-muted">(7-day notice)</span>
+            </h4>
+            <p className="text-reba-soft text-sm leading-relaxed">
+              Raspberry Lemonade<br />Blackberry Lavender Lemon<br />Razzelberry<br />Lemon<br />Red Velvet<br />Cookies &amp; Cream<br />Chocolate Peanut Butter
+            </p>
+          </div>
+          <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
+            <h4 className="text-reba-pink font-semibold mb-1">Wedding Cakes</h4>
+            <p className="text-reba-soft text-sm leading-relaxed mb-3">
+              Custom consultation required.<br />Multi-tier designs.<br />Tasting sessions available.
+            </p>
+            <a href="tel:8316014818" className="text-reba-pink font-semibold text-sm hover:text-reba-pink-hover transition-colors">
+              Schedule a tasting &rarr;
+            </a>
+          </div>
+        </div>
+
+        {/* Order CTA */}
+        <div className="text-center">
+          <Link
+            href="/cakes"
+            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
+          >
+            Order Your Custom Cake
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
