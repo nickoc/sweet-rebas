@@ -1,5 +1,5 @@
+import Link from "next/link";
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
-import DreamCakeForm from "@/components/DreamCakeForm";
 
 const detailImages = [
   { src: "/cake-detail-1.png", alt: "White ranunculus detail" },
@@ -62,7 +62,14 @@ export default function CakesPage() {
           <p className="text-reba-soft leading-relaxed text-lg">
             Every custom cake is designed and baked from scratch &mdash; just for you.
           </p>
-          <DreamCakeForm />
+          <div className="mt-6">
+            <Link
+              href="/dream-cake"
+              className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
+            >
+              Tell Us About Your Dream Cake {"\u2728"}
+            </Link>
+          </div>
         </div>
       </section>
 
