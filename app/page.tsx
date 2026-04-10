@@ -48,10 +48,10 @@ export default function HomePage() {
               View Menu
             </Link>
             <Link
-              href="/menu"
-              className="border border-reba-pink text-reba-pink hover:bg-reba-pink/10 px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
+              href="/chalkboard"
+              className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
             >
-              Order for Pickup
+              Today&apos;s Chalkboard at Sweet Reba&apos;s
             </Link>
           </div>
         </div>

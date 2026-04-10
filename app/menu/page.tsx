@@ -41,14 +41,21 @@ export default function MenuPage() {
         </div>
       </section>
 
-      {/* Flavor Quiz CTA */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 flex justify-center">
+      {/* Flavor Quiz & Chalkboard CTAs */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
         <Link
           href="/quiz"
           className="inline-flex items-center gap-3 bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
         >
           <span className="text-2xl">{"\u{1F36A}"}</span>
           <span>Flavor Quiz &mdash; What should I try?</span>
+        </Link>
+        <Link
+          href="/chalkboard"
+          className="inline-flex items-center gap-3 bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
+        >
+          <span className="text-2xl">{"\u{1F4CB}"}</span>
+          <span>Today&apos;s Chalkboard at Sweet Reba&apos;s</span>
         </Link>
       </section>
 
