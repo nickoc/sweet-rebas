@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { menuItems } from "@/data/sample-data";
 
 const categories = [
@@ -38,6 +39,17 @@ export default function MenuPage() {
             Good Food, Great Prices, Made from Scratch
           </p>
         </div>
+      </section>
+
+      {/* Flavor Quiz CTA */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-2 text-center">
+        <Link
+          href="/quiz"
+          className="inline-flex items-center gap-2 bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-sm font-medium transition-colors"
+        >
+          <span>{"\u{1F36A}"}</span>
+          <span>Flavor Quiz &mdash; What should I try?</span>
+        </Link>
       </section>
 
       {/* Menu Categories */}

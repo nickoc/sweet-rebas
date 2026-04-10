@@ -25,6 +25,13 @@ body {
   font-family: var(--font-body), Georgia, serif;
 }
 
+/* ─── SHIMMER ANIMATION ─────────────────────────────────── */
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
 /* ─── SCROLLBAR ──────────────────────────────────────────── */
 
 ::-webkit-scrollbar {
