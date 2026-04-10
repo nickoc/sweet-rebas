@@ -73,7 +73,7 @@ export default function BoxBuilderPage() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <section className="bg-reba-card border-b border-reba-border">
+      <section className="border-b border-reba-border" style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 text-center">
           <div
             ref={headerRef}
@@ -93,27 +93,31 @@ export default function BoxBuilderPage() {
         </div>
       </section>
 
+      {/* Category Tabs — full width */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+        <div className="grid grid-cols-4 sm:grid-cols-7 gap-3">
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat.key}
+              onClick={() => setActiveTab(cat.key)}
+              className={`py-3 rounded-xl text-base font-bold transition-all ${
+                activeTab === cat.key
+                  ? "bg-reba-pink text-white shadow-md"
+                  : "border-2 border-reba-pink/30 text-reba-pink hover:bg-reba-pink/10"
+              }`}
+              style={activeTab !== cat.key ? { backgroundColor: "#fff5f5" } : undefined}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+      </section>
+
       {/* Content */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left: Category Tabs + Items */}
+          {/* Left: Items */}
           <div className="lg:col-span-2">
-            {/* Category Tabs */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {CATEGORIES.map((cat) => (
-                <button
-                  key={cat.key}
-                  onClick={() => setActiveTab(cat.key)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                    activeTab === cat.key
-                      ? "bg-reba-pink text-white"
-                      : "bg-white border border-reba-border text-reba-muted hover:border-reba-pink/30"
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
 
             {/* Product Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -130,7 +134,7 @@ export default function BoxBuilderPage() {
                         <img src={image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
                     ) : (
-                      <div className="w-24 sm:w-28 flex-shrink-0 bg-reba-card flex items-center justify-center">
+                      <div className="w-24 sm:w-28 flex-shrink-0 bg-[#fff5f5] flex items-center justify-center">
                         <span className="text-2xl">{item.emoji}</span>
                       </div>
                     )}
@@ -158,7 +162,7 @@ export default function BoxBuilderPage() {
                   </span>
                 </h3>
 
-                <div className="bg-reba-card border-2 border-dashed border-reba-border rounded-xl p-4 mb-4 min-h-[180px] max-h-[320px] overflow-y-auto">
+                <div className="bg-[#fff5f5] border-2 border-dashed border-reba-border rounded-xl p-4 mb-4 min-h-[180px] max-h-[320px] overflow-y-auto">
                   {box.length === 0 ? (
                     <div className="flex items-center justify-center h-[160px] text-reba-muted text-sm">
                       Click items to add to your order
