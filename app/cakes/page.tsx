@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
+import WeddingConsultation from "@/components/WeddingConsultation";
 
 const detailImages = [
   { src: "/cake-detail-1.png", alt: "White ranunculus detail" },
@@ -62,13 +63,14 @@ export default function CakesPage() {
           <p className="text-reba-soft leading-relaxed text-lg">
             Every custom cake is designed and baked from scratch &mdash; just for you.
           </p>
-          <div className="mt-6">
+          <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href="/dream-cake"
               className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
             >
               Tell Us About Your Dream Cake {"\u2728"}
             </Link>
+            <WeddingConsultation />
           </div>
         </div>
       </section>
