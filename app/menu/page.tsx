@@ -21,12 +21,17 @@ const productImages: Record<string, string> = {
   "snickerdoodles": "/product-snickerdoodles.jpg",
   "oatmeal-cranberry": "/product-oatmeal-cranberry.jpg",
   "sandwich-cookies": "/product-sandwich-cookies.jpg",
+  "peanut-butter": "/product-peanut-butter.jpg",
+  "ginger-cookie": "/product-ginger.jpg",
   "triple-choc-brownies": "/product-brownie.jpg",
   "butterscotch-blondies": "/product-blondie.jpg",
   "lemon-brownies": "/product-lemon-brownie.jpg",
   "coconut-joy": "/product-coconut-joy.jpg",
+  "cinnamon-donut-muffins": "/product-cinnamon-donut-muffins.jpg",
   "coffee-cake-muffins": "/product-coffee-cake.jpg",
   "morning-muffins": "/product-morning-muffins.jpg",
+  "loaf-slices": "/product-loaf-slices.jpg",
+  "lemon-loaf": "/product-lemon-loaf.jpg",
   "classic-burrito": "/product-breakfast-burrito.jpg",
 };
 
