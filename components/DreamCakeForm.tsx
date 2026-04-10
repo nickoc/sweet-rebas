@@ -71,13 +71,13 @@ export default function DreamCakeForm() {
               />
             </div>
             <div>
-              <label className="block text-reba-cream text-sm font-medium mb-1">Phone or Email</label>
+              <label className="block text-reba-cream text-sm font-medium mb-1">Email</label>
               <input
-                type="text"
+                type="email"
                 required
                 value={form.contact}
                 onChange={(e) => setForm({ ...form, contact: e.target.value })}
-                placeholder="How can we reach you?"
+                placeholder="Your email address"
                 className="w-full bg-reba-card border border-reba-border rounded-lg px-4 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
               />
             </div>
