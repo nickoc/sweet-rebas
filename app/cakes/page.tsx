@@ -1,4 +1,5 @@
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
+import DreamCakeForm from "@/components/DreamCakeForm";
 
 const detailImages = [
   { src: "/cake-detail-1.png", alt: "White ranunculus detail" },
@@ -55,15 +56,13 @@ export default function CakesPage() {
         </div>
       </section>
 
-      {/* Intro */}
+      {/* Intro + Dream Cake CTA */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-3xl mx-auto px-4 py-10 text-center">
-          <p className="text-reba-soft leading-relaxed mb-3">
-            From birthday cakes made for friends to competing on Food Network&apos;s <em>Cake Wars</em>, Reba has spent two decades turning celebrations into edible art.
-          </p>
-          <p className="text-reba-muted leading-relaxed">
+          <p className="text-reba-soft leading-relaxed text-lg">
             Every custom cake is designed and baked from scratch &mdash; just for you.
           </p>
+          <DreamCakeForm />
         </div>
       </section>
 
