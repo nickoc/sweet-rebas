@@ -211,7 +211,7 @@ export default function HomePage() {
 
       {/* What's Baking This Week */}
       <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
           <div className="bg-white rounded-2xl overflow-hidden shadow-lg border-t-4 border-reba-pink">
             <div className="bg-reba-pink px-8 py-6 text-center">
               <h2 className="font-[family-name:var(--font-heading)] text-3xl text-white mb-1">
