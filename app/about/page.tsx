@@ -249,10 +249,12 @@ export default function AboutPage() {
             Salinas, Marina to Pacific Grove, our community is our greatest
             ingredient.
           </p>
-          <p className="text-reba-muted leading-relaxed max-w-2xl mx-auto">
+          <p className="text-reba-muted leading-relaxed max-w-2xl mx-auto mb-6">
             Every cookie, every cake, every breakfast burrito is made for the
-            people who walk through our doors. You&apos;re not customers &mdash;
-            you&apos;re family.
+            people who walk through our doors.
+          </p>
+          <p className="text-reba-pink font-bold text-lg max-w-2xl mx-auto">
+            You&apos;re not customers &mdash; you&apos;re family.
           </p>
         </div>
       </section>
