@@ -108,16 +108,22 @@ export default function AboutPage() {
 
           {/* Expansion */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
-            <div className="text-4xl mb-4">🏪</div>
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
-              Two Locations, One Heart
-            </h2>
-            <p className="text-reba-soft leading-relaxed">
-              The bakery found its first permanent home at Carmel Crossroads,
-              becoming a beloved stop for locals and visitors alike. Then came
-              Old Town Salinas, bringing Sweet Reba&apos;s magic to a whole new
-              community. Two locations, same recipes, same love.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="rounded-xl overflow-hidden">
+                <img src="/about-team.png" alt="The Sweet Reba's team" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              </div>
+              <div>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                  Two Locations, One Team
+                </h2>
+                <p className="text-reba-soft leading-relaxed">
+                  The bakery found its first permanent home at Carmel Crossroads,
+                  becoming a beloved stop for locals and visitors alike. Then came
+                  Old Town Salinas, bringing Sweet Reba&apos;s magic to a whole new
+                  community. Two locations, same recipes, same love.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
