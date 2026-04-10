@@ -27,22 +27,16 @@ export default function MenuPage() {
   return (
     <div>
       {/* Hero Photo Banner */}
-      <section className="relative h-[48vh] min-h-[320px] max-h-[500px] overflow-hidden">
-        <div className="grid grid-cols-4 h-full">
-          <div className="bg-cover bg-center brightness-115 saturate-[1.2]" style={{ backgroundImage: "url('/slideshow-baked-goods.jpg')" }} />
-          <div className="bg-cover bg-center brightness-115 saturate-[1.2]" style={{ backgroundImage: "url('/slideshow-snickerdoodles.jpg')" }} />
-          <div className="bg-cover bg-center brightness-115 saturate-[1.2]" style={{ backgroundImage: "url('/slideshow-lemons.jpg')" }} />
-          <div className="bg-cover bg-center brightness-115 saturate-[1.2]" style={{ backgroundImage: "url('/slideshow-soup.jpg')" }} />
-        </div>
-        <div className="absolute inset-0 bg-black/20 flex items-center justify-center text-center">
-          <div>
-            <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl text-white font-bold drop-shadow-[0_0_20px_rgba(255,255,255,0.6)]">
-              Our Menu
-            </h1>
-            <p className="font-[family-name:var(--font-heading)] text-xl sm:text-2xl text-white mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
-              Good Food, Great Prices, Made from Scratch
-            </p>
-          </div>
+      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+        <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="absolute inset-0 w-full h-full object-cover object-center" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.6)] via-[rgba(255,248,240,0.15)_30%] to-transparent" />
+        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
+            Our Menu
+          </h1>
+          <p className="text-xl sm:text-2xl text-white mb-2 tracking-wide drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+            Good Food, Great Prices, Made from Scratch
+          </p>
         </div>
       </section>
 
