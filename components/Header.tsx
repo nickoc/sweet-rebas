@@ -21,7 +21,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 mr-6">
             <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-12 h-12 sm:w-14 sm:h-14" />
             <div>
               <div className="font-[family-name:var(--font-heading)] text-xl text-reba-cream leading-tight">
@@ -34,7 +34,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
