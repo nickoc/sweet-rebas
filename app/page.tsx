@@ -242,49 +242,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Visit Us CTA */}
-      <section className="bg-reba-pink">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-white mb-10">
-            Visit Us Today
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-2xl mx-auto mb-10">
-            <div className="text-white/90">
-              <h3 className="font-semibold text-white mb-2">
-                Carmel Crossroads
-              </h3>
-              <p className="text-sm">206 Crossroads Blvd</p>
-              <p className="text-sm">(831) 601-4818</p>
-              <p className="text-white/70 text-xs mt-1 italic">
-                Temporarily closed for repairs
-              </p>
-            </div>
-            <div className="text-white/90">
-              <h3 className="font-semibold text-white mb-2">
-                Old Town Salinas
-              </h3>
-              <p className="text-sm">268 Main St</p>
-              <p className="text-sm">(831) 676-0628</p>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/menu"
-              className="bg-white text-reba-pink hover:bg-reba-cream px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
-            >
-              View Menu
-            </Link>
-            <a
-              href="https://maps.google.com/?q=268+Main+St+Salinas+CA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="border border-white text-white hover:bg-white/10 px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
-            >
-              Get Directions
-            </a>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
