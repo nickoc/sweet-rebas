@@ -64,14 +64,14 @@ export default function CountUpStats() {
   }, []);
 
   return (
-    <div ref={ref} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+    <div ref={ref} className="grid grid-cols-3 sm:grid-cols-5 gap-4">
       {STATS.map((stat) => (
         <div
           key={stat.label}
           className="text-center"
         >
-          <div className="text-3xl mb-2">{stat.emoji}</div>
-          <div className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink mb-1">
+          <div className="text-xl mb-1">{stat.emoji}</div>
+          <div className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-pink mb-0.5">
             <AnimatedNumber
               target={stat.value}
               decimals={stat.decimals || 0}
@@ -79,7 +79,7 @@ export default function CountUpStats() {
             />
             {stat.suffix}
           </div>
-          <p className="text-reba-muted text-sm">{stat.label}</p>
+          <p className="text-reba-muted text-xs">{stat.label}</p>
         </div>
       ))}
     </div>
