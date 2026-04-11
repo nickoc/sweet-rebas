@@ -58,7 +58,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-reba-dark text-reba-cream font-body">
         <Header />
-        <main className="flex-1 pt-16 sm:pt-20">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <ChatWidget />
       </body>
