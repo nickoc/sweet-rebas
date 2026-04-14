@@ -20,7 +20,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="border-t border-reba-border" style={{ backgroundColor: "#fff5f5" }}>
+    <footer className="border-t border-reba-border" style={{ backgroundColor: "#ffffff" }}>
       {/* Maps Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8">
         <h3 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
@@ -223,9 +223,20 @@ export default function Footer() {
           <p className="text-reba-muted text-sm">
             &copy; 2026 Sweet Reba&apos;s Bakery. All rights reserved.
           </p>
-          <Link href="/privacy" className="text-reba-muted text-sm hover:text-reba-pink transition-colors">
-            Privacy Policy
-          </Link>
+          <div className="flex items-center gap-4 text-reba-muted text-sm">
+            <Link href="/privacy" className="hover:text-reba-pink transition-colors">
+              Privacy Policy
+            </Link>
+            <span>&middot;</span>
+            <span>
+              Crafted by{" "}
+              <a href="https://getbearing.co" target="_blank" rel="noopener noreferrer" className="text-reba-pink hover:text-reba-pink-hover transition-colors">
+                Bearing Intelligence
+              </a>
+              {" "}&amp;{" "}
+              <span className="text-reba-pink">N&oslash;emso Designs</span>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

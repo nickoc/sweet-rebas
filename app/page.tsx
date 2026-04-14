@@ -3,6 +3,7 @@ import { menuItems, reviews } from "@/data/sample-data";
 import CountUpStats from "@/components/CountUpStats";
 import ReopeningBanner from "@/components/ReopeningBanner";
 import SignatureProducts from "@/components/SignatureProducts";
+import HomeDailyPicks from "@/components/HomeDailyPicks";
 
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
 const topReviews = reviews.filter((review) => review.rating === 5).slice(0, 3);
@@ -121,78 +122,14 @@ export default function HomePage() {
 
       {/* Sweet Reba's Today's Pick */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
-          Order Breakfast and Lunch Today
+        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-4">
+          Breakfast and Lunch Today in Salinas
         </h2>
+        <p className="text-reba-muted text-lg sm:text-xl text-center mb-14">
+          Order for pick-up
+        </p>
 
-        {/* Framed "chalkboard" box */}
-        <div className="bg-white rounded-3xl shadow-xl border-2 border-reba-pink/30 p-6 sm:p-10">
-          <div className="grid sm:grid-cols-2 gap-4 mb-6">
-            {/* Soup of the Day */}
-            <Link
-              href="/chalkboard"
-              className="bg-white rounded-2xl shadow-md border border-reba-border hover:border-reba-pink/40 hover:shadow-lg overflow-hidden transition-all"
-            >
-              <div className="bg-reba-pink/10 px-6 py-4 border-b border-reba-border flex items-center justify-between">
-                <span className="text-base uppercase tracking-wider text-reba-pink font-semibold">
-                  Soup of the Day
-                </span>
-                <span className="text-3xl">{"\u{1F963}"}</span>
-              </div>
-              <div className="px-6 py-5">
-                <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
-                  Creamy Tomato Basil
-                </h3>
-                <p className="text-reba-muted text-base sm:text-lg leading-relaxed">
-                  Roasted San Marzano tomatoes, fresh basil, a swirl of cream. Served with a warm house roll.
-                </p>
-              </div>
-            </Link>
-
-            {/* Sandwich of the Day */}
-            <Link
-              href="/chalkboard"
-              className="bg-white rounded-2xl shadow-md border border-reba-border hover:border-reba-pink/40 hover:shadow-lg overflow-hidden transition-all"
-            >
-              <div className="bg-reba-pink/10 px-6 py-4 border-b border-reba-border flex items-center justify-between">
-                <span className="text-base uppercase tracking-wider text-reba-pink font-semibold">
-                  Sandwich of the Day
-                </span>
-                <span className="text-3xl">{"\u{1F96A}"}</span>
-              </div>
-              <div className="px-6 py-5">
-                <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
-                  Turkey &amp; Swiss
-                </h3>
-                <p className="text-reba-muted text-base sm:text-lg leading-relaxed">
-                  Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.
-                </p>
-              </div>
-            </Link>
-          </div>
-
-          {/* Carmel Reopening Callout */}
-          <div className="bg-reba-pink rounded-2xl px-6 py-5 text-center shadow-lg">
-            <p className="text-base uppercase tracking-[0.2em] text-white/80 mb-1">
-              {"\u{1F389}"} Carmel Reopening
-            </p>
-            <p className="text-white font-[family-name:var(--font-heading)] text-2xl mb-1">
-              End of May 2026
-            </p>
-            <p className="text-white/80 text-base leading-relaxed max-w-md mx-auto">
-              We can&apos;t wait to see you back at Crossroads.
-            </p>
-          </div>
-
-          <div className="text-center mt-6">
-            <Link
-              href="/whats-baking"
-              className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full font-medium transition-colors"
-            >
-              Sign Up for Weekly Updates
-            </Link>
-          </div>
-        </div>
+        <HomeDailyPicks />
       </section>
 
       {/* Our Story Preview */}
@@ -240,14 +177,14 @@ export default function HomePage() {
                 className="bg-white border border-reba-border rounded-2xl p-6"
               >
                 <StarRating rating={review.rating} />
-                <p className="text-reba-soft text-base leading-relaxed mt-4 mb-4">
+                <p className="text-reba-soft text-lg leading-relaxed mt-4 mb-4">
                   &ldquo;{review.text}&rdquo;
                 </p>
                 <div className="flex items-center justify-between">
-                  <p className="text-reba-cream text-base font-medium">
+                  <p className="text-reba-cream text-lg font-medium">
                     {review.author}
                   </p>
-                  <span className="text-sm text-reba-muted bg-reba-dark px-2 py-1 rounded-full">
+                  <span className="text-base text-reba-muted bg-reba-dark px-3 py-1 rounded-full">
                     {review.platform}
                   </span>
                 </div>

@@ -49,27 +49,24 @@ export default function CakesPage() {
           <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Custom Cakes
           </h1>
+          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-1 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+            As seen on Food Network&apos;s Cake Wars.
+          </p>
           <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-            As seen on Food Network&apos;s Cake Wars. Every cake is a custom
-            work of art, designed and baked with love.
+            Every cake is a custom work of art, designed and baked with love.
           </p>
         </div>
       </section>
 
-      {/* Intro + Dream Cake CTA */}
+      {/* Dream Cake CTA */}
       <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-3xl mx-auto px-4 py-10 text-center">
-          <p className="text-reba-soft leading-relaxed text-lg">
-            Every custom cake is designed and baked from scratch &mdash; just for you.
-          </p>
-          <div className="mt-6">
-            <Link
-              href="/dream-cake"
-              className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
-            >
-              Tell Us About Your Dream Cake {"\u2728"}
-            </Link>
-          </div>
+        <div className="max-w-3xl mx-auto px-4 py-14 text-center">
+          <Link
+            href="/dream-cake"
+            className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-14 py-5 rounded-full text-xl sm:text-2xl font-semibold transition-colors shadow-lg hover:shadow-xl"
+          >
+            Tell Us About Your Dream Cake {"\u2728"}
+          </Link>
         </div>
       </section>
 
@@ -160,14 +157,14 @@ export default function CakesPage() {
         </div>
       </section>
 
-      {/* How to Order */}
+      {/* Good to Know */}
       <section className="bg-reba-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <div className="bg-reba-card border border-reba-pink/30 rounded-2xl p-8 text-center">
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
-              How to Order
+          <div className="bg-reba-card border-2 border-reba-pink/30 rounded-2xl p-10 text-center">
+            <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-6">
+              Good to Know
             </h2>
-            <div className="space-y-4 text-reba-soft text-base leading-relaxed max-w-2xl mx-auto">
+            <div className="space-y-5 text-reba-soft text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
               <p>
                 All custom cakes require a minimum of{" "}
                 <span className="text-reba-pink font-semibold">72 hours advance notice</span>.
@@ -182,26 +179,42 @@ export default function CakesPage() {
         </div>
       </section>
 
-      {/* Dream Cake CTA */}
+      {/* Visit Us */}
       <section className="bg-reba-pink">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-white mb-4">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-6xl text-white mb-5">
             Visit Us to Discuss Your Dream Cake
           </h2>
-          <p className="text-white/80 mb-8 max-w-lg mx-auto">
+          <p className="text-white/80 text-lg sm:text-xl mb-10 max-w-lg mx-auto">
             Every great cake starts with a conversation. Tell us about your occasion
             and let&apos;s create something extraordinary together.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
             <div className="text-white">
-              <p className="text-white/70 text-sm">Carmel Crossroads</p>
-              <a href="tel:8316014818" className="text-xl font-semibold hover:text-white/80 transition-colors">
+              <a
+                href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 text-base hover:text-white transition-colors underline underline-offset-2"
+              >
+                Carmel Crossroads
+              </a>
+              <br />
+              <a href="tel:8316014818" className="text-2xl font-semibold hover:text-white/80 transition-colors">
                 (831) 601-4818
               </a>
             </div>
             <div className="text-white">
-              <p className="text-white/70 text-sm">Old Town Salinas</p>
-              <a href="tel:8316760628" className="text-xl font-semibold hover:text-white/80 transition-colors">
+              <a
+                href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/70 text-base hover:text-white transition-colors underline underline-offset-2"
+              >
+                Old Town Salinas
+              </a>
+              <br />
+              <a href="tel:8316760628" className="text-2xl font-semibold hover:text-white/80 transition-colors">
                 (831) 676-0628
               </a>
             </div>
