@@ -83,10 +83,10 @@ export default function BoxBuilderPage() {
               transition: "opacity 0.6s ease, transform 0.6s ease",
             }}
           >
-            <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-3">
+            <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4">
               Build Your Order
             </h1>
-            <p className="text-reba-muted max-w-lg mx-auto">
+            <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide">
               Pick your favorites from our full menu and we&apos;ll have it ready for pickup.
             </p>
           </div>
@@ -130,20 +130,20 @@ export default function BoxBuilderPage() {
                     className="w-full text-left rounded-xl border border-reba-border bg-white hover:border-reba-pink/30 hover:shadow-sm transition-all overflow-hidden flex"
                   >
                     {image ? (
-                      <div className="w-24 sm:w-28 flex-shrink-0">
+                      <div className="w-28 sm:w-36 flex-shrink-0">
                         <img src={image} alt={item.name} className="w-full h-full object-cover" />
                       </div>
                     ) : (
-                      <div className="w-24 sm:w-28 flex-shrink-0 bg-[#fff5f5] flex items-center justify-center">
-                        <span className="text-2xl">{item.emoji}</span>
+                      <div className="w-28 sm:w-36 flex-shrink-0 bg-[#fff5f5] flex items-center justify-center">
+                        <span className="text-3xl">{item.emoji}</span>
                       </div>
                     )}
-                    <div className="flex-1 p-3">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-reba-cream font-semibold text-sm">{item.name}</h3>
-                        <span className="text-reba-pink font-medium text-sm">${item.price.toFixed(2)}</span>
+                    <div className="flex-1 p-5">
+                      <div className="flex items-center justify-between mb-1">
+                        <h3 className="text-reba-cream font-semibold text-lg">{item.name}</h3>
+                        <span className="text-reba-pink font-semibold text-lg">${item.price.toFixed(2)}</span>
                       </div>
-                      <p className="text-reba-muted text-xs mt-0.5 line-clamp-2">{item.description}</p>
+                      <p className="text-reba-muted text-base mt-1 line-clamp-2">{item.description}</p>
                     </div>
                   </button>
                 );
@@ -154,31 +154,31 @@ export default function BoxBuilderPage() {
           {/* Right: Order Sidebar */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
-              <div className="bg-white border border-reba-border rounded-2xl p-6 shadow-lg">
-                <h3 className="font-semibold text-reba-cream mb-4 flex items-center justify-between">
+              <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-6 shadow-lg">
+                <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-4 flex items-center justify-between">
                   <span>Your Order</span>
-                  <span className="text-sm text-reba-muted font-normal">
+                  <span className="text-base text-reba-muted font-normal">
                     {box.length} {box.length === 1 ? "item" : "items"}
                   </span>
                 </h3>
 
-                <div className="bg-[#fff5f5] border-2 border-dashed border-reba-border rounded-xl p-4 mb-4 min-h-[180px] max-h-[320px] overflow-y-auto">
+                <div className="bg-[#fff5f5] border-2 border-dashed border-reba-pink/20 rounded-xl p-4 mb-4 min-h-[180px] max-h-[320px] overflow-y-auto">
                   {box.length === 0 ? (
-                    <div className="flex items-center justify-center h-[160px] text-reba-muted text-sm">
+                    <div className="flex items-center justify-center h-[160px] text-reba-muted text-base">
                       Click items to add to your order
                     </div>
                   ) : (
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       {box.map((item, i) => (
-                        <div key={`${item.id}-${i}`} className="flex items-center justify-between gap-2 text-sm">
+                        <div key={`${item.id}-${i}`} className="flex items-center justify-between gap-2 text-base">
                           <div className="flex items-center gap-2 flex-1 min-w-0">
-                            <span>{item.emoji}</span>
+                            <span className="text-lg">{item.emoji}</span>
                             <span className="text-reba-cream truncate">{item.name}</span>
                           </div>
-                          <span className="text-reba-pink text-xs">${item.price.toFixed(2)}</span>
+                          <span className="text-reba-pink text-sm font-semibold">${item.price.toFixed(2)}</span>
                           <button
                             onClick={() => removeFromBox(i)}
-                            className="text-reba-muted hover:text-red-500 text-xs"
+                            className="text-reba-muted hover:text-red-500 text-base"
                             title="Remove"
                           >
                             &times;
@@ -192,8 +192,8 @@ export default function BoxBuilderPage() {
                 {/* Total */}
                 {box.length > 0 && (
                   <div className="flex justify-between items-center mb-4 pt-2 border-t border-reba-border">
-                    <span className="text-reba-cream font-semibold">Total</span>
-                    <span className="text-reba-pink font-bold text-lg">${total.toFixed(2)}</span>
+                    <span className="text-reba-cream font-semibold text-lg">Total</span>
+                    <span className="text-reba-pink font-bold text-2xl">${total.toFixed(2)}</span>
                   </div>
                 )}
 
@@ -201,12 +201,12 @@ export default function BoxBuilderPage() {
                   {box.length === 0 ? (
                     <button
                       disabled
-                      className="w-full bg-reba-border text-reba-muted py-3 rounded-full font-medium cursor-not-allowed"
+                      className="w-full bg-reba-border text-reba-muted py-3.5 rounded-full text-base font-medium cursor-not-allowed"
                     >
                       Add items to get started
                     </button>
                   ) : (
-                    <button className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full font-medium transition-colors">
+                    <button className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3.5 rounded-full text-base font-semibold transition-colors">
                       Complete Order ({box.length} items)
                     </button>
                   )}
