@@ -62,13 +62,13 @@ export default function DreamCakePage() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <section className="bg-reba-card border-b border-reba-border">
-        <div className="max-w-3xl mx-auto px-4 py-12 text-center">
-          <div className="text-5xl mb-4">{"\u{1F382}"}</div>
-          <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-4">
+      <section style={{ backgroundColor: "#fff5f5" }} className="border-b border-reba-pink/30">
+        <div className="max-w-3xl mx-auto px-4 py-14 text-center">
+          <div className="text-6xl mb-5">{"\u{1F382}"}</div>
+          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink mb-4">
             Dream Cake
           </h1>
-          <p className="text-reba-muted max-w-lg mx-auto">
+          <p className="text-reba-muted text-lg max-w-lg mx-auto">
             Describe your dream cake and our AI concierge &mdash; trained on Reba&apos;s
             Food Network artistry &mdash; will design a concept just for you.
           </p>
@@ -79,21 +79,21 @@ export default function DreamCakePage() {
       <section className="flex-1 max-w-3xl w-full mx-auto px-4 py-8">
         <div
           ref={scrollRef}
-          className="bg-white border border-reba-border rounded-2xl overflow-hidden flex flex-col"
+          className="bg-white border-2 border-reba-pink/30 rounded-2xl overflow-hidden flex flex-col shadow-lg"
           style={{ minHeight: "500px" }}
         >
           {/* Messages */}
           <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
             {/* Intro message */}
             <div className="flex justify-start">
-              <div className="max-w-[85%] bg-reba-card rounded-2xl rounded-bl-md px-4 py-3 text-sm text-reba-cream leading-relaxed whitespace-pre-line">
+              <div className="max-w-[85%] bg-reba-card rounded-2xl rounded-bl-md px-5 py-4 text-base text-reba-cream leading-relaxed whitespace-pre-line">
                 {SYSTEM_INTRO}
               </div>
             </div>
 
             {messages.length === 0 && !loading && (
               <div className="mt-4">
-                <p className="text-xs text-reba-muted uppercase tracking-wider mb-3">
+                <p className="text-sm text-reba-muted uppercase tracking-wider mb-3">
                   Or try one of these:
                 </p>
                 <div className="space-y-2">
@@ -101,7 +101,7 @@ export default function DreamCakePage() {
                     <button
                       key={s}
                       onClick={() => send(s)}
-                      className="w-full text-left border border-reba-border rounded-xl px-4 py-3 text-sm text-reba-cream hover:border-reba-pink/30 transition-colors"
+                      className="w-full text-left border border-reba-pink/20 rounded-xl px-5 py-4 text-base text-reba-cream hover:border-reba-pink/40 hover:bg-reba-pink/5 transition-colors"
                     >
                       {s}
                     </button>
@@ -116,7 +116,7 @@ export default function DreamCakePage() {
                 className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}
               >
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-line ${
+                  className={`max-w-[85%] rounded-2xl px-5 py-4 text-base leading-relaxed whitespace-pre-line ${
                     m.role === "user"
                       ? "bg-reba-pink text-white rounded-br-md"
                       : "bg-reba-card text-reba-cream rounded-bl-md"
@@ -152,7 +152,7 @@ export default function DreamCakePage() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Describe your dream cake..."
                 disabled={loading}
-                className="flex-1 bg-reba-card border border-reba-border rounded-full px-5 py-3 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                className="flex-1 bg-white border border-reba-pink/20 rounded-full px-6 py-3 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
               />
               <button
                 type="submit"

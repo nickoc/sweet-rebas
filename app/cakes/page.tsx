@@ -75,20 +75,20 @@ export default function CakesPage() {
 
       {/* Detail Slideshow */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
+        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
           Reba&apos;s Attention to Detail
         </h2>
-        <p className="text-reba-muted text-center text-lg mb-10">A few of our favorite creations</p>
+        <p className="text-reba-muted text-center text-xl mb-10">A few of our favorite creations</p>
         <CakeSlideshow images={detailImages} />
       </section>
 
       {/* Dreamy Gallery */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
             Dreamy
           </h2>
-          <p className="text-reba-muted text-center text-lg mb-8">Soft, whimsical, and utterly romantic</p>
+          <p className="text-reba-muted text-center text-xl mb-8">Soft, whimsical, and utterly romantic</p>
           <CakeCarousel images={dreamyImages} />
         </div>
       </section>
@@ -96,10 +96,10 @@ export default function CakesPage() {
       {/* Favorite Thing Gallery */}
       <section>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
             Favorite Thing
           </h2>
-          <p className="text-reba-muted text-center text-lg mb-8">The ones everyone asks about</p>
+          <p className="text-reba-muted text-center text-xl mb-8">The ones everyone asks about</p>
           <CakeCarousel images={favoriteImages} />
         </div>
       </section>
@@ -107,10 +107,10 @@ export default function CakesPage() {
       {/* Special Occasion Gallery */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
             Special Occasion
           </h2>
-          <p className="text-reba-muted text-center text-lg mb-8">Weddings, milestones, and celebrations worth remembering</p>
+          <p className="text-reba-muted text-center text-xl mb-8">Weddings, milestones, and celebrations worth remembering</p>
           <CakeCarousel images={specialImages} />
         </div>
       </section>
