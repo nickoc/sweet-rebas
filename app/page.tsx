@@ -34,31 +34,35 @@ export default function HomePage() {
           <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-6 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Sweet Reba&apos;s
           </h1>
-          <p className="text-xl sm:text-2xl text-white mb-2 tracking-wide drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             Artisan Bakery. Made with Love Since 2004.
           </p>
-          <p className="text-white/80 mb-10 drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+          <p className="text-reba-pink/90 font-bold drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             Carmel Crossroads &amp; Old Town Salinas
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/menu"
-              className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
-            >
-              View Menu
-            </Link>
-            <Link
-              href="/chalkboard"
-              className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
-            >
-              Today&apos;s Chalkboard at Sweet Reba&apos;s
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* Reopening Banner */}
       <ReopeningBanner />
+
+      {/* Primary CTAs (moved below reopening banner) */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Link
+            href="/menu"
+            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3.5 rounded-full text-lg font-medium transition-colors text-center"
+          >
+            View Menu
+          </Link>
+          <Link
+            href="/chalkboard"
+            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3.5 rounded-full text-lg font-medium transition-colors text-center"
+          >
+            Today&apos;s Chalkboard at Sweet Reba&apos;s
+          </Link>
+        </div>
+      </section>
 
       {/* What Makes Us Special */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">

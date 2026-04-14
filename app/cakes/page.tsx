@@ -44,12 +44,12 @@ export default function CakesPage() {
       {/* Hero */}
       <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-16">
         <img src="/banner-unicorn-cakes.jpg" alt="Beautiful unicorn cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.6)] via-[rgba(255,248,240,0.15)_30%] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.85)] via-[rgba(255,248,240,0.3)_40%] to-transparent" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Custom Cakes for Everyone
           </h1>
-          <p className="text-reba-soft text-lg max-w-2xl mx-auto drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+          <p className="text-reba-soft text-lg font-bold max-w-2xl mx-auto drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
             As seen on Food Network&apos;s Cake Wars. Every cake is a custom
             work of art, designed and baked with love.
           </p>
