@@ -1,6 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import AddToCartButton from "@/components/AddToCartButton";
+import CartSummary from "@/components/CartSummary";
+import { slug } from "@/lib/cart-context";
 
 /* ── Board Data ─────────────────────────────────────────── */
 
@@ -211,10 +214,19 @@ export default function ChalkboardPage() {
                           style={{ width: `${(item.remaining / item.total) * 100}%` }}
                         />
                       </div>
-                      <div className="flex justify-between text-xs text-reba-muted">
+                      <div className="flex justify-between text-xs text-reba-muted mb-3">
                         <span>{item.remaining} remaining</span>
                         <span>Baked at {item.bakedAt}</span>
                       </div>
+                      <AddToCartButton
+                        size="sm"
+                        product={{
+                          id: slug(item.name),
+                          name: item.name,
+                          price: item.price,
+                          emoji: item.emoji,
+                        }}
+                      />
                     </>
                   )}
                 </div>
@@ -222,6 +234,7 @@ export default function ChalkboardPage() {
             </div>
           </div>
         ))}
+        <CartSummary />
       </section>
 
       {/* Coming Tomorrow */}

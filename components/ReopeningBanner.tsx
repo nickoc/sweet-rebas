@@ -36,13 +36,9 @@ export default function ReopeningBanner() {
           >
             <p className="text-reba-cream text-sm sm:text-base leading-relaxed">
               <span className="text-reba-pink font-semibold">Exciting news!</span>{" "}
-              Our Carmel location is re-opening end of May!{" "}
+              Our Salinas location is open. Our Carmel location is reopening at the end of May.{" "}
               <span className="text-reba-pink font-semibold underline underline-offset-2">
-                Click here to be the first to know!
-              </span>
-              <br />
-              <span className="text-reba-muted">
-                In the meantime, come visit us in Salinas &mdash; we&apos;d love to see you!
+                Click here to be the first to know.
               </span>
             </p>
           </button>
@@ -50,7 +46,7 @@ export default function ReopeningBanner() {
           <div>
             <p className="text-reba-cream text-sm sm:text-base leading-relaxed mb-4">
               <span className="text-reba-pink font-semibold">Exciting news!</span>{" "}
-              Our Carmel location is re-opening end of May! Enter your email to be notified.
+              Our Salinas location is open. Our Carmel location is reopening at the end of May. Enter your email to be notified.
             </p>
             <form onSubmit={handleSubmit} className="flex gap-3 max-w-md mx-auto">
               <input

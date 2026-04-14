@@ -1,5 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { menuItems } from "@/data/sample-data";
+import AddToCartButton from "@/components/AddToCartButton";
+import CartSummary from "@/components/CartSummary";
+import { slug } from "@/lib/cart-context";
 
 const categories = [
   "Cookies",
@@ -120,18 +125,28 @@ export default function MenuPage() {
                           <span className="text-3xl">{item.emoji}</span>
                         </div>
                       )}
-                      <div className="flex-1 p-4">
+                      <div className="flex-1 p-4 flex flex-col">
                         <div className="flex items-start justify-between gap-2 mb-1">
-                          <h3 className="text-reba-cream font-semibold text-sm">
+                          <h3 className="text-reba-cream font-semibold text-base">
                             {item.name}
                           </h3>
-                          <span className="text-reba-pink font-semibold text-sm whitespace-nowrap">
+                          <span className="text-reba-pink font-semibold text-base whitespace-nowrap">
                             ${item.price.toFixed(2)}
                           </span>
                         </div>
-                        <p className="text-reba-muted text-xs leading-relaxed">
+                        <p className="text-reba-muted text-sm leading-relaxed mb-3 flex-1">
                           {item.description}
                         </p>
+                        <AddToCartButton
+                          size="sm"
+                          product={{
+                            id: slug(item.name),
+                            name: item.name,
+                            price: item.price,
+                            image: image,
+                            emoji: item.emoji,
+                          }}
+                        />
                       </div>
                     </div>
                   );
@@ -140,6 +155,7 @@ export default function MenuPage() {
             </div>
           );
         })}
+        <CartSummary />
       </section>
 
       {/* Cakes */}

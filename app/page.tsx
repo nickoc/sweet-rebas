@@ -122,14 +122,17 @@ export default function HomePage() {
       {/* Sweet Reba's Today's Pick */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
         <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
-          Sweet Reba&apos;s Today&apos;s Pick
+          Order Breakfast and Lunch Today
         </h2>
 
         {/* Framed "chalkboard" box */}
         <div className="bg-white rounded-3xl shadow-xl border-2 border-reba-pink/30 p-6 sm:p-10">
           <div className="grid sm:grid-cols-2 gap-4 mb-6">
             {/* Soup of the Day */}
-            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
+            <Link
+              href="/chalkboard"
+              className="bg-white rounded-2xl shadow-md border border-reba-border hover:border-reba-pink/40 hover:shadow-lg overflow-hidden transition-all"
+            >
               <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
                 <span className="text-sm uppercase tracking-wider text-reba-pink font-semibold">
                   Soup of the Day
@@ -144,10 +147,13 @@ export default function HomePage() {
                   Roasted San Marzano tomatoes, fresh basil, a swirl of cream. Served with a warm house roll.
                 </p>
               </div>
-            </div>
+            </Link>
 
             {/* Sandwich of the Day */}
-            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
+            <Link
+              href="/chalkboard"
+              className="bg-white rounded-2xl shadow-md border border-reba-border hover:border-reba-pink/40 hover:shadow-lg overflow-hidden transition-all"
+            >
               <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
                 <span className="text-sm uppercase tracking-wider text-reba-pink font-semibold">
                   Sandwich of the Day
@@ -162,7 +168,7 @@ export default function HomePage() {
                   Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.
                 </p>
               </div>
-            </div>
+            </Link>
           </div>
 
           {/* Carmel Reopening Callout */}
