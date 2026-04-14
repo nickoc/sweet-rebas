@@ -41,17 +41,17 @@ export default function Footer() {
                 title="Sweet Reba's Carmel Crossroads"
               />
             </div>
-            <div className="mt-3 text-center">
+            <div className="mt-4 text-center">
               <a
                 href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-reba-cream text-sm font-medium hover:text-reba-pink transition-colors"
+                className="text-reba-cream text-lg font-medium hover:text-reba-pink transition-colors"
               >
                 Carmel Crossroads
               </a>
-              <p className="text-reba-muted text-sm">206 Crossroads Blvd &middot; (831) 601-4818</p>
-              <p className="text-reba-pink text-xs mt-1 italic">
+              <p className="text-reba-muted text-base">206 Crossroads Blvd &middot; (831) 601-4818</p>
+              <p className="text-reba-pink text-sm mt-1 italic">
                 Reopening end of May 2026
               </p>
             </div>
@@ -71,16 +71,16 @@ export default function Footer() {
                 title="Sweet Reba's Old Town Salinas"
               />
             </div>
-            <div className="mt-3 text-center">
+            <div className="mt-4 text-center">
               <a
                 href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-reba-cream text-sm font-medium hover:text-reba-pink transition-colors"
+                className="text-reba-cream text-lg font-medium hover:text-reba-pink transition-colors"
               >
                 Old Town Salinas
               </a>
-              <p className="text-reba-muted text-sm">268 Main St &middot; (831) 676-0628</p>
+              <p className="text-reba-muted text-base">268 Main St &middot; (831) 676-0628</p>
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default function Footer() {
             <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-3">
               Sweet Reba&apos;s
             </h3>
-            <p className="text-reba-muted text-sm leading-relaxed">
+            <p className="text-reba-muted text-base leading-relaxed">
               Artisan bakery serving Carmel &amp; Salinas since 2004. Every item
               is made from scratch with the freshest ingredients and a whole lot
               of love.
@@ -103,10 +103,10 @@ export default function Footer() {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h4 className="text-reba-cream font-semibold mb-4 text-sm uppercase tracking-wider">
+            <h4 className="text-reba-cream font-semibold mb-4 text-base uppercase tracking-wider">
               Quick Links
             </h4>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 { label: "Menu", href: "/menu" },
                 { label: "Custom Cakes", href: "/cakes" },
@@ -116,7 +116,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-reba-muted hover:text-reba-pink transition-colors text-sm"
+                    className="text-reba-muted hover:text-reba-pink transition-colors text-base"
                   >
                     {link.label}
                   </Link>
@@ -127,10 +127,10 @@ export default function Footer() {
 
           {/* Col 3: Newsletter & Social */}
           <div>
-            <h4 className="text-reba-cream font-semibold mb-4 text-sm uppercase tracking-wider">
+            <h4 className="text-reba-cream font-semibold mb-4 text-base uppercase tracking-wider">
               Stay Connected
             </h4>
-            <p className="text-reba-muted text-sm mb-3">
+            <p className="text-reba-muted text-base mb-3">
               Get updates on seasonal specials and new treats.
             </p>
             <form
@@ -158,7 +158,7 @@ export default function Footer() {
               href="https://instagram.com/sweetrebas"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-reba-muted hover:text-reba-pink transition-colors text-sm mt-4"
+              className="inline-flex items-center gap-2 text-reba-muted hover:text-reba-pink transition-colors text-base mt-4"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -220,10 +220,10 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-reba-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-reba-muted text-xs">
+          <p className="text-reba-muted text-sm">
             &copy; 2026 Sweet Reba&apos;s Bakery. All rights reserved.
           </p>
-          <p className="text-reba-muted text-xs">
+          <p className="text-reba-muted text-sm">
             Crafted by{" "}
             <a
               href="https://getbearing.co"

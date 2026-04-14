@@ -133,17 +133,17 @@ export default function HomePage() {
               href="/chalkboard"
               className="bg-white rounded-2xl shadow-md border border-reba-border hover:border-reba-pink/40 hover:shadow-lg overflow-hidden transition-all"
             >
-              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
-                <span className="text-sm uppercase tracking-wider text-reba-pink font-semibold">
+              <div className="bg-reba-pink/10 px-6 py-4 border-b border-reba-border flex items-center justify-between">
+                <span className="text-base uppercase tracking-wider text-reba-pink font-semibold">
                   Soup of the Day
                 </span>
-                <span className="text-2xl">{"\u{1F963}"}</span>
+                <span className="text-3xl">{"\u{1F963}"}</span>
               </div>
-              <div className="px-5 py-4">
-                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-cream mb-1">
+              <div className="px-6 py-5">
+                <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
                   Creamy Tomato Basil
                 </h3>
-                <p className="text-reba-muted text-sm leading-relaxed">
+                <p className="text-reba-muted text-base sm:text-lg leading-relaxed">
                   Roasted San Marzano tomatoes, fresh basil, a swirl of cream. Served with a warm house roll.
                 </p>
               </div>
@@ -154,17 +154,17 @@ export default function HomePage() {
               href="/chalkboard"
               className="bg-white rounded-2xl shadow-md border border-reba-border hover:border-reba-pink/40 hover:shadow-lg overflow-hidden transition-all"
             >
-              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
-                <span className="text-sm uppercase tracking-wider text-reba-pink font-semibold">
+              <div className="bg-reba-pink/10 px-6 py-4 border-b border-reba-border flex items-center justify-between">
+                <span className="text-base uppercase tracking-wider text-reba-pink font-semibold">
                   Sandwich of the Day
                 </span>
-                <span className="text-2xl">{"\u{1F96A}"}</span>
+                <span className="text-3xl">{"\u{1F96A}"}</span>
               </div>
-              <div className="px-5 py-4">
-                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-cream mb-1">
+              <div className="px-6 py-5">
+                <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
                   Turkey &amp; Swiss
                 </h3>
-                <p className="text-reba-muted text-sm leading-relaxed">
+                <p className="text-reba-muted text-base sm:text-lg leading-relaxed">
                   Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.
                 </p>
               </div>
@@ -173,13 +173,13 @@ export default function HomePage() {
 
           {/* Carmel Reopening Callout */}
           <div className="bg-reba-pink rounded-2xl px-6 py-5 text-center shadow-lg">
-            <p className="text-sm uppercase tracking-[0.2em] text-white/80 mb-1">
+            <p className="text-base uppercase tracking-[0.2em] text-white/80 mb-1">
               {"\u{1F389}"} Carmel Reopening
             </p>
             <p className="text-white font-[family-name:var(--font-heading)] text-2xl mb-1">
               End of May 2026
             </p>
-            <p className="text-white/80 text-sm leading-relaxed max-w-md mx-auto">
+            <p className="text-white/80 text-base leading-relaxed max-w-md mx-auto">
               We can&apos;t wait to see you back at Crossroads.
             </p>
           </div>

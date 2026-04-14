@@ -34,9 +34,12 @@ export default function ReopeningBanner() {
             onClick={() => setExpanded(true)}
             className="w-full text-center cursor-pointer"
           >
-            <p className="text-reba-cream text-sm sm:text-base leading-relaxed">
+            <p className="text-reba-cream text-base sm:text-lg leading-relaxed mb-1">
               <span className="text-reba-pink font-semibold">Exciting news!</span>{" "}
-              Our Salinas location is open. Our Carmel location is reopening at the end of May.{" "}
+              Our Salinas location is open!
+            </p>
+            <p className="text-reba-cream text-base sm:text-lg leading-relaxed">
+              Our Carmel location is reopening at the end of May.{" "}
               <span className="text-reba-pink font-semibold underline underline-offset-2">
                 Click here to be the first to know.
               </span>
@@ -44,9 +47,12 @@ export default function ReopeningBanner() {
           </button>
         ) : (
           <div>
-            <p className="text-reba-cream text-sm sm:text-base leading-relaxed mb-4">
+            <p className="text-reba-cream text-base sm:text-lg leading-relaxed mb-1">
               <span className="text-reba-pink font-semibold">Exciting news!</span>{" "}
-              Our Salinas location is open. Our Carmel location is reopening at the end of May. Enter your email to be notified.
+              Our Salinas location is open!
+            </p>
+            <p className="text-reba-cream text-base sm:text-lg leading-relaxed mb-4">
+              Our Carmel location is reopening at the end of May. Enter your email to be notified.
             </p>
             <form onSubmit={handleSubmit} className="flex gap-3 max-w-md mx-auto">
               <input

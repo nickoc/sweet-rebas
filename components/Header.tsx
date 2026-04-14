@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const navLinks = [
@@ -18,6 +18,20 @@ const navLinks = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setMenuOpen(false);
+      }
+    }
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
 
   return (
     <header className="relative z-50 bg-reba-dark/95 backdrop-blur border-b border-reba-border">
@@ -58,16 +72,35 @@ export default function Header() {
 
           {/* Desktop nav: three matching buttons, half-overlapping the hero */}
           <nav className="hidden md:flex items-stretch justify-center gap-4 absolute left-[calc(50%+1.5rem)] bottom-0 -translate-x-1/2 translate-y-1/2 z-10 w-full max-w-4xl px-4">
-            {/* Explore Our Offers — links straight to home */}
-            <Link
-              href="/"
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center gap-2.5 bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-              <span>Explore Our Offers</span>
-            </Link>
+            {/* Explore Our Offers — dropdown menu */}
+            <div ref={menuRef} className="relative flex-1 basis-0 min-w-0">
+              <button
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="w-full flex items-center justify-center gap-2.5 bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                <span>Explore Our Offers</span>
+                <svg className={`w-4 h-4 transition-transform ${menuOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {menuOpen && (
+                <div className="absolute top-full left-0 mt-2 w-72 rounded-xl shadow-xl border border-reba-border overflow-hidden z-50" style={{ backgroundColor: "#fff5f5" }}>
+                  {navLinks.map((link) => (
+                    <Link
+                      key={link.href + link.label}
+                      href={link.href}
+                      onClick={() => setMenuOpen(false)}
+                      className="block px-6 py-4 text-base font-medium text-reba-cream hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Kept-visible CTAs */}
             <Link

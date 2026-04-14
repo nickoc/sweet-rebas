@@ -56,7 +56,7 @@ export default function SignatureProducts() {
               <p className="text-reba-pink font-semibold text-base mb-3">
                 {formatPrice(product.price)}
               </p>
-              <p className="text-reba-muted text-sm leading-relaxed mb-4 flex-1">
+              <p className="text-reba-muted text-base leading-relaxed mb-4 flex-1">
                 {product.desc}
               </p>
               <AddToCartButton product={product} />
