@@ -38,7 +38,23 @@ export default function HomePage() {
             Artisan Bakery. Made with Love Since 2004.
           </p>
           <p className="text-reba-pink/90 font-bold drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-            Carmel Crossroads &amp; Old Town Salinas
+            <a
+              href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
+            >
+              Carmel Crossroads
+            </a>
+            {" & "}
+            <a
+              href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
+            >
+              Old Town Salinas
+            </a>
           </p>
         </div>
       </section>

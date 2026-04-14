@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Link from "next/link";
 
 const navLinks = [
@@ -18,33 +18,11 @@ const navLinks = [
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-
-  // Close dropdown on outside click or ESC
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
-      }
-    }
-    function handleKey(e: KeyboardEvent) {
-      if (e.key === "Escape") setDropdownOpen(false);
-    }
-    if (dropdownOpen) {
-      document.addEventListener("mousedown", handleClick);
-      document.addEventListener("keydown", handleKey);
-    }
-    return () => {
-      document.removeEventListener("mousedown", handleClick);
-      document.removeEventListener("keydown", handleKey);
-    };
-  }, [dropdownOpen]);
 
   return (
-    <header className="sticky top-0 z-50 bg-reba-dark/95 backdrop-blur border-b border-reba-border">
+    <header className="relative z-50 bg-reba-dark/95 backdrop-blur border-b border-reba-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-[auto_1fr_auto] md:grid-cols-3 items-center h-20 sm:h-24 gap-4">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center h-20 sm:h-24 gap-6">
           {/* Logo + Locations (stacked under wordmark) */}
           <div className="flex items-center gap-4">
             <Link href="/" aria-label="Sweet Reba's home">
@@ -78,68 +56,29 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Desktop nav: dropdown + 2 highlight buttons (centered) */}
-          <nav className="hidden md:flex items-center justify-center gap-4">
-            {/* Navigation dropdown */}
-            <div className="relative" ref={dropdownRef}>
-              <button
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                aria-expanded={dropdownOpen}
-                aria-haspopup="true"
-                className="flex items-center gap-2.5 bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors"
-              >
-                {/* Hamburger icon */}
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <span>Explore What We&apos;ve Got to Offer</span>
-                {/* Chevron */}
-                <svg
-                  className={`w-5 h-5 transition-transform ${dropdownOpen ? "rotate-180" : ""}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {/* Dropdown panel */}
-              {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-80 bg-reba-dark border border-reba-border rounded-2xl shadow-2xl overflow-hidden">
-                  <div className="px-5 pt-4 pb-3 border-b border-reba-border">
-                    <p className="text-xs uppercase tracking-[0.15em] text-reba-pink font-semibold">
-                      Explore What We&apos;ve Got to Offer
-                    </p>
-                  </div>
-                  <ul className="py-2">
-                    {navLinks.map((link) => (
-                      <li key={link.label}>
-                        <Link
-                          href={link.href}
-                          onClick={() => setDropdownOpen(false)}
-                          className="block px-5 py-3 text-base text-reba-soft hover:text-reba-cream hover:bg-reba-pink/10 transition-colors"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+          {/* Desktop nav: three matching buttons, half-overlapping the hero */}
+          <nav className="hidden md:flex items-stretch justify-center gap-4 self-end translate-y-1/2 relative z-10 w-full max-w-4xl mx-auto">
+            {/* Explore Our Offers — links straight to home */}
+            <Link
+              href="/"
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center gap-2.5 bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
+            >
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <span>Explore Our Offers</span>
+            </Link>
 
             {/* Kept-visible CTAs */}
             <Link
               href="/whats-baking"
-              className="bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors"
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
             >
               What&apos;s Baking This Week?
             </Link>
             <Link
               href="/box-builder"
-              className="bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors"
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
             >
               Order Now
             </Link>
