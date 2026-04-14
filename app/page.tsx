@@ -2,6 +2,7 @@ import Link from "next/link";
 import { menuItems, reviews } from "@/data/sample-data";
 import CountUpStats from "@/components/CountUpStats";
 import ReopeningBanner from "@/components/ReopeningBanner";
+import SignatureProducts from "@/components/SignatureProducts";
 
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
 const topReviews = reviews.filter((review) => review.rating === 5).slice(0, 3);
@@ -114,48 +115,7 @@ export default function HomePage() {
           <p className="text-reba-muted text-center mb-14">
             Scratch-made favorites, baked fresh every day
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-            {[
-              { name: "Chocolate Chip Cookie", price: "$3.50", image: "/product-chocolate-chip.jpg", desc: "Classic homemade chocolate chip \u2014 crispy edges, chewy center, loaded with chips." },
-              { name: "Snickerdoodles", price: "$3.50", image: "/product-snickerdoodles.jpg", desc: "Soft cinnamon-sugar cookies with a crackled top. Warm spice, buttery dough, pure comfort." },
-              { name: "Triple Chocolate Brownie", price: "$3.50", image: "/product-brownie.jpg", desc: "Dense, fudgy, three kinds of chocolate. The brownie that ruins all other brownies for you." },
-              { name: "Lemon Brownie", price: "$3.50", image: "/product-lemon-brownie.jpg", desc: "Bright, tangy, and buttery \u2014 like a lemon bar and a brownie had a perfect child." },
-              { name: "Breakfast Burrito", price: "$5.50", image: "/product-breakfast-burrito.jpg", desc: "Hearty, handmade, and stuffed with fresh ingredients. Served daily until 1 PM." },
-            ].map((product) => (
-              <Link
-                key={product.name}
-                href="/menu"
-                className="group bg-white border border-reba-border rounded-2xl overflow-hidden hover:border-reba-pink/30 hover:shadow-md transition-all"
-              >
-                <div className="aspect-[4/3] overflow-hidden">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-4 text-center">
-                  <h3 className="text-reba-cream font-semibold text-sm mb-1">
-                    {product.name}
-                  </h3>
-                  <p className="text-reba-pink font-medium text-sm mb-2">
-                    {product.price}
-                  </p>
-                  <p className="text-reba-muted text-xs leading-relaxed">
-                    {product.desc}
-                  </p>
-                </div>
-              </Link>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Link
-              href="/menu"
-              className="text-reba-pink hover:text-reba-pink-hover transition-colors font-medium"
-            >
-              View Full Menu &rarr;
-            </Link>
-          </div>
+<SignatureProducts />
         </div>
       </section>
 

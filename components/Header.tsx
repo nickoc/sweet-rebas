@@ -22,7 +22,7 @@ export default function Header() {
   return (
     <header className="relative z-50 bg-reba-dark/95 backdrop-blur border-b border-reba-border">
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-[auto_1fr_auto] items-center h-20 sm:h-24 gap-6">
+        <div className="relative flex items-center h-20 sm:h-24 gap-6">
           {/* Logo + Locations (stacked under wordmark) */}
           <div className="flex items-center gap-4">
             <Link href="/" aria-label="Sweet Reba's home">
@@ -57,7 +57,7 @@ export default function Header() {
           </div>
 
           {/* Desktop nav: three matching buttons, half-overlapping the hero */}
-          <nav className="hidden md:flex items-stretch justify-center gap-4 self-end translate-y-1/2 relative z-10 w-full max-w-4xl mx-auto">
+          <nav className="hidden md:flex items-stretch justify-center gap-4 absolute left-1/2 bottom-0 -translate-x-1/2 translate-y-1/2 z-10 w-full max-w-4xl px-4">
             {/* Explore Our Offers — links straight to home */}
             <Link
               href="/"
@@ -86,7 +86,7 @@ export default function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-reba-soft hover:text-reba-cream"
+            className="md:hidden ml-auto p-2 text-reba-soft hover:text-reba-cream"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation"
           >

@@ -23,7 +23,7 @@ export default function Footer() {
     <footer className="border-t border-reba-border" style={{ backgroundColor: "#fff5f5" }}>
       {/* Maps Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8">
-        <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream text-center mb-8">
+        <h3 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
           Find Us
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
