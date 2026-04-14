@@ -28,33 +28,25 @@ const SOUP_OF_THE_DAY = {
 
 const CATEGORIES: Category[] = [
   {
-    name: "Cookies",
+    name: "Soups",
     items: [
-      { emoji: "\u{1F36A}", name: "Chocolate Chip Cookie", price: 3.50, description: "Classic homemade chocolate chip \u2014 crispy edges, chewy center, loaded with chips. Reba\u2019s signature.", remaining: 15, total: 24, bakedAt: "12:11 PM" },
-      { emoji: "\u{1F36A}", name: "Snickerdoodles", price: 3.50, description: "Soft cinnamon-sugar cookies with a crackled top. Warm spice, buttery dough, pure comfort.", remaining: 11, total: 24, bakedAt: "11:31 AM" },
-      { emoji: "\u{1F36A}", name: "Oatmeal Cranberry", price: 3.50, description: "Hearty oats with tart dried cranberries. A wholesome cookie that doesn\u2019t compromise on flavor.", remaining: 0, total: 12, bakedAt: "", soldOut: true },
-      { emoji: "\u{1F36A}", name: "Sandwich Cookies", price: 4.00, description: "Two buttery cookies with a generous swirl of cream filling. Rotating flavors weekly.", remaining: 22, total: 24, bakedAt: "12:22 PM" },
+      { emoji: "\u{1F372}", name: "Tomato Basil Bisque", price: 7.00, description: "Michael\u2019s recipe \u2014 creamy, herby, perfect with a warm house roll. Today\u2019s featured soup.", remaining: 12, total: 18, bakedAt: "10:45 AM" },
+      { emoji: "\u{1F372}", name: "Chicken Noodle", price: 7.00, description: "House-pulled chicken, carrots, celery, and tender egg noodles in a rich golden broth.", remaining: 9, total: 18, bakedAt: "10:30 AM" },
+      { emoji: "\u{1F372}", name: "Broccoli Cheddar", price: 7.00, description: "Sharp cheddar, tender broccoli florets, a splash of cream. Comfort in a bowl.", remaining: 0, total: 12, bakedAt: "", soldOut: true },
+      { emoji: "\u{1F372}", name: "Minestrone", price: 7.00, description: "Hearty Italian vegetable soup with white beans, pasta, and tomato. Naturally vegetarian.", remaining: 14, total: 18, bakedAt: "11:05 AM" },
     ],
   },
   {
-    name: "Bars",
+    name: "Sandwiches",
     items: [
-      { emoji: "\u{1F7EB}", name: "Triple Chocolate Brownies", price: 3.50, description: "Dense, fudgy, three kinds of chocolate. The brownie that ruins all other brownies for you.", remaining: 0, total: 18, bakedAt: "", soldOut: true },
-      { emoji: "\u{1F7E8}", name: "White Choc Butterscotch Blondies", price: 3.50, description: "Rich blondies studded with white chocolate chips and swirled with butterscotch. Dangerously good.", remaining: 16, total: 18, bakedAt: "10:03 AM" },
-      { emoji: "\u{1F34B}", name: "Lemon Brownies", price: 3.50, description: "Bright, tangy, and buttery \u2014 like a lemon bar and a brownie had a perfect child.", remaining: 16, total: 18, bakedAt: "10:48 AM" },
-      { emoji: "\u{1F965}", name: "Coconut Joy", price: 4.00, description: "Toasted coconut, dark chocolate, and almond in a chewy bar. Inspired by the candy bar, elevated by Reba.", remaining: 19, total: 24, bakedAt: "0:20 AM" },
+      { emoji: "\u{1F96A}", name: "Turkey & Swiss", price: 6.00, description: "Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.", remaining: 8, total: 10, bakedAt: "11:15 AM" },
+      { emoji: "\u{1F96A}", name: "Ham & Swiss", price: 6.00, description: "Honey ham and Swiss cheese on fresh-baked buttermilk bread. Simple, classic, satisfying.", remaining: 6, total: 10, bakedAt: "11:20 AM" },
+      { emoji: "\u{1F96A}", name: "Tuna Salad", price: 6.00, description: "House-made tuna salad with celery, red onion, and dill on fresh bread. Light and satisfying.", remaining: 4, total: 10, bakedAt: "11:30 AM" },
+      { emoji: "\u{1F96A}", name: "Egg Salad", price: 6.00, description: "Creamy homemade egg salad on your choice of bread. A timeless favorite.", remaining: 7, total: 10, bakedAt: "11:10 AM" },
     ],
   },
   {
-    name: "Breakfast",
-    items: [
-      { emoji: "\u{1F9C1}", name: "Scones", price: 3.50, description: "Flaky, buttery, and golden. Rotating flavors \u2014 today\u2019s batch: blueberry lemon.", remaining: 15, total: 18, bakedAt: "10:33 AM" },
-      { emoji: "\u{1F9C1}", name: "Coffee Cake Muffins", price: 4.00, description: "Cinnamon streusel top, tender cake center. The muffin that pairs perfectly with your morning coffee.", remaining: 19, total: 24, bakedAt: "11:12 AM" },
-      { emoji: "\u{1F9C1}", name: "Morning Muffins", price: 4.00, description: "Packed with carrots, apples, raisins, and walnuts. A hearty start to any morning.", remaining: 7, total: 18, bakedAt: "1:20 PM" },
-    ],
-  },
-  {
-    name: "Burritos",
+    name: "Breakfast Burritos",
     items: [
       { emoji: "\u{1F32F}", name: "Classic Burrito", price: 5.50, description: "Eggs, cheese, potatoes, and Reba\u2019s house salsa in a warm flour tortilla. Simple and satisfying.", remaining: 14, total: 18, bakedAt: "12:02 PM" },
       { emoji: "\u{1F32F}", name: "Bacon Burrito", price: 6.00, description: "Crispy bacon, scrambled eggs, cheddar, and potatoes. The weekend warrior\u2019s breakfast.", remaining: 6, total: 12, bakedAt: "10:58 AM" },
@@ -64,7 +56,7 @@ const CATEGORIES: Category[] = [
   },
 ];
 
-const COMING_TOMORROW = ["Lemon Bars are coming back"];
+const COMING_TOMORROW = ["Butternut Squash Soup is back tomorrow"];
 
 /* ── Helpers ────────────────────────────────────────────── */
 
