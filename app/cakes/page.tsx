@@ -42,14 +42,14 @@ export default function CakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-16">
+      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-8">
         <img src="/banner-unicorn-cakes.jpg" alt="Beautiful unicorn cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.85)] via-[rgba(255,248,240,0.3)_40%] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
-            Custom Cakes for Everyone
+          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
+            Custom Cakes
           </h1>
-          <p className="text-reba-soft text-lg font-bold max-w-2xl mx-auto drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
+          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             As seen on Food Network&apos;s Cake Wars. Every cake is a custom
             work of art, designed and baked with love.
           </p>
@@ -75,20 +75,20 @@ export default function CakesPage() {
 
       {/* Detail Slideshow */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-pink text-center mb-2">
+        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
           Reba&apos;s Attention to Detail
         </h2>
-        <p className="text-reba-muted text-center mb-10">A few of our favorite creations</p>
+        <p className="text-reba-muted text-center text-lg mb-10">A few of our favorite creations</p>
         <CakeSlideshow images={detailImages} />
       </section>
 
       {/* Dreamy Gallery */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-pink text-center mb-2">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
             Dreamy
           </h2>
-          <p className="text-reba-muted text-center text-sm mb-8">Soft, whimsical, and utterly romantic</p>
+          <p className="text-reba-muted text-center text-lg mb-8">Soft, whimsical, and utterly romantic</p>
           <CakeCarousel images={dreamyImages} />
         </div>
       </section>
@@ -96,10 +96,10 @@ export default function CakesPage() {
       {/* Favorite Thing Gallery */}
       <section>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-pink text-center mb-2">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
             Favorite Thing
           </h2>
-          <p className="text-reba-muted text-center text-sm mb-8">The ones everyone asks about</p>
+          <p className="text-reba-muted text-center text-lg mb-8">The ones everyone asks about</p>
           <CakeCarousel images={favoriteImages} />
         </div>
       </section>
@@ -107,10 +107,10 @@ export default function CakesPage() {
       {/* Special Occasion Gallery */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-pink text-center mb-2">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink text-center mb-3">
             Special Occasion
           </h2>
-          <p className="text-reba-muted text-center text-sm mb-8">Weddings, milestones, and celebrations worth remembering</p>
+          <p className="text-reba-muted text-center text-lg mb-8">Weddings, milestones, and celebrations worth remembering</p>
           <CakeCarousel images={specialImages} />
         </div>
       </section>
@@ -118,43 +118,41 @@ export default function CakesPage() {
       {/* Cake Sizes & Pricing */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream text-center mb-10">
-            Cake Sizes &amp; Pricing
-          </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
+          <h3 className="font-semibold text-reba-cream text-2xl mb-6">Sizes &amp; Pricing</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
             {cakeSizes.map((size) => (
               <div key={size.name} className="bg-white border border-reba-pink/30 rounded-xl p-4 text-center">
-                <h3 className="text-reba-cream font-semibold text-sm mb-1">{size.name}</h3>
-                <p className="text-reba-muted text-xs mb-2">{size.serves}</p>
-                <p className="text-reba-pink font-bold text-lg">{size.price}</p>
+                <h4 className="text-reba-cream font-semibold text-lg">{size.name}</h4>
+                <p className="text-reba-muted text-base mb-1">{size.serves}</p>
+                <p className="text-reba-pink font-bold text-xl">{size.price}</p>
               </div>
             ))}
           </div>
 
           {/* Flavor Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
             <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
-              <h4 className="text-reba-pink font-semibold mb-1">
-                Standard Flavors <span className="font-normal text-xs text-reba-muted">(always available)</span>
+              <h4 className="text-reba-pink font-semibold text-lg mb-2">
+                Standard Flavors <span className="font-normal text-base text-reba-muted">(always available)</span>
               </h4>
-              <p className="text-reba-soft text-sm leading-relaxed">
+              <p className="text-reba-soft text-[1.1rem] leading-relaxed">
                 Classic Vanilla<br />Carrot<br />Life by Chocolate
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
-              <h4 className="text-reba-pink font-semibold mb-1">
-                Specialty Flavors <span className="font-normal text-xs text-reba-muted">(7-day notice)</span>
+              <h4 className="text-reba-pink font-semibold text-lg mb-2">
+                Specialty Flavors <span className="font-normal text-base text-reba-muted">(7-day notice)</span>
               </h4>
-              <p className="text-reba-soft text-sm leading-relaxed">
+              <p className="text-reba-soft text-[1.1rem] leading-relaxed">
                 Raspberry Lemonade<br />Blackberry Lavender Lemon<br />Razzelberry<br />Lemon<br />Red Velvet<br />Cookies &amp; Cream<br />Chocolate Peanut Butter
               </p>
             </div>
             <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
-              <h4 className="text-reba-pink font-semibold mb-1">Wedding Cakes</h4>
-              <p className="text-reba-soft text-sm leading-relaxed mb-3">
+              <h4 className="text-reba-pink font-semibold text-lg mb-2">Wedding Cakes</h4>
+              <p className="text-reba-soft text-[1.1rem] leading-relaxed mb-4">
                 Custom consultation required.<br />Multi-tier designs.<br />Tasting sessions available.
               </p>
-              <a href="tel:8316014818" className="text-reba-pink font-semibold text-sm hover:text-reba-pink-hover transition-colors">
+              <a href="tel:8316014818" className="text-reba-pink font-semibold text-base hover:text-reba-pink-hover transition-colors">
                 Schedule a tasting &rarr;
               </a>
             </div>
@@ -169,7 +167,7 @@ export default function CakesPage() {
             <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
               How to Order
             </h2>
-            <div className="space-y-4 text-reba-soft text-sm leading-relaxed max-w-2xl mx-auto">
+            <div className="space-y-4 text-reba-soft text-base leading-relaxed max-w-2xl mx-auto">
               <p>
                 All custom cakes require a minimum of{" "}
                 <span className="text-reba-pink font-semibold">72 hours advance notice</span>.
