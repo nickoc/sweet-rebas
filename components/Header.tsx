@@ -21,12 +21,12 @@ export default function Header() {
 
   return (
     <header className="relative z-50 bg-reba-dark/95 backdrop-blur border-b border-reba-border">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-[auto_1fr_auto] items-center h-20 sm:h-24 gap-6">
           {/* Logo + Locations (stacked under wordmark) */}
           <div className="flex items-center gap-4">
             <Link href="/" aria-label="Sweet Reba's home">
-              <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-16 h-16 sm:w-20 sm:h-20" />
+              <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-20 h-20 sm:w-24 sm:h-24" />
             </Link>
             <div className="leading-tight">
               <Link href="/" className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream block">

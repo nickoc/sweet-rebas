@@ -3,8 +3,21 @@
 import { useState } from "react";
 import Link from "next/link";
 
+const DOORDASH_URL = "https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOopv3nAXQdH-_n6RfHiBu3WfDdYdxUyIU3WBPPv_7o5U_C8PecyU";
+
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [doorDashOpen, setDoorDashOpen] = useState(false);
+  const [doorDashEmail, setDoorDashEmail] = useState("");
+
+  function handleDoorDashSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!doorDashEmail.trim()) return;
+    // TODO: wire to actual email list (same service as newsletter)
+    window.open(DOORDASH_URL, "_blank", "noopener,noreferrer");
+    setDoorDashEmail("");
+    setDoorDashOpen(false);
+  }
 
   return (
     <footer className="border-t border-reba-border" style={{ backgroundColor: "#fff5f5" }}>
@@ -152,6 +165,54 @@ export default function Footer() {
               </svg>
               @sweetrebas
             </a>
+
+            {/* DoorDash button — gated on email capture */}
+            <div className="mt-4">
+              {!doorDashOpen ? (
+                <button
+                  onClick={() => setDoorDashOpen(true)}
+                  className="inline-flex items-center gap-2 bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 7h18l-2 13H5L3 7zm3-3h12l1 2H5l1-2z" />
+                  </svg>
+                  Order on DoorDash
+                </button>
+              ) : (
+                <form
+                  onSubmit={handleDoorDashSubmit}
+                  className="border border-reba-border rounded-lg p-3 bg-white"
+                >
+                  <p className="text-reba-cream text-xs mb-2 font-medium">
+                    Enter your email to continue to DoorDash
+                  </p>
+                  <div className="flex gap-2">
+                    <input
+                      type="email"
+                      value={doorDashEmail}
+                      onChange={(e) => setDoorDashEmail(e.target.value)}
+                      placeholder="Your email"
+                      required
+                      autoFocus
+                      className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap"
+                    >
+                      Go &rarr;
+                    </button>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setDoorDashOpen(false)}
+                    className="text-reba-muted text-xs mt-2 hover:text-reba-pink transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </div>
