@@ -223,17 +223,9 @@ export default function Footer() {
           <p className="text-reba-muted text-sm">
             &copy; 2026 Sweet Reba&apos;s Bakery. All rights reserved.
           </p>
-          <p className="text-reba-muted text-sm">
-            Crafted by{" "}
-            <a
-              href="https://getbearing.co"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-reba-pink hover:text-reba-pink-hover transition-colors"
-            >
-              Bearing Intelligence
-            </a>
-          </p>
+          <Link href="/privacy" className="text-reba-muted text-sm hover:text-reba-pink transition-colors">
+            Privacy Policy
+          </Link>
         </div>
       </div>
     </footer>
