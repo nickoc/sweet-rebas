@@ -71,7 +71,7 @@ export default function Header() {
           </div>
 
           {/* Desktop nav: three matching buttons, half-overlapping the hero */}
-          <nav className="hidden md:flex items-stretch justify-center gap-4 absolute left-[calc(50%+1.5rem)] bottom-0 -translate-x-1/2 translate-y-1/2 z-10 w-full max-w-4xl px-4">
+          <nav className="hidden md:flex items-stretch justify-center gap-4 absolute left-[calc(50%+4rem)] bottom-0 -translate-x-1/2 translate-y-1/2 z-10 w-full max-w-4xl px-4">
             {/* Explore Our Offers — dropdown menu */}
             <div ref={menuRef} className="relative flex-1 basis-0 min-w-0">
               <button
