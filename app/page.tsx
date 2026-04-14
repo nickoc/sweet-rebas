@@ -4,7 +4,7 @@ import CountUpStats from "@/components/CountUpStats";
 import ReopeningBanner from "@/components/ReopeningBanner";
 
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
-const topReviews = reviews.slice(0, 3);
+const topReviews = reviews.filter((review) => review.rating === 5).slice(0, 3);
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -178,7 +178,7 @@ export default function HomePage() {
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {reviews.map((review) => (
+            {topReviews.map((review) => (
               <div
                 key={review.id}
                 className="bg-white border border-reba-border rounded-2xl p-6"
@@ -201,43 +201,77 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* What's Baking This Week */}
+      {/* On the Menu Today */}
       <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
-          <div className="bg-white rounded-2xl overflow-hidden shadow-lg border-t-4 border-reba-pink">
-            <div className="bg-reba-pink px-8 py-6 text-center">
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-white mb-1">
-                What&apos;s Baking This Week?
-              </h2>
-              <p className="text-white/70 text-sm">Sweet Reba&apos;s Weekly</p>
-            </div>
-            <div className="px-8 py-6">
-              <p className="text-xs text-reba-muted uppercase tracking-wider mb-5">
-                This Week at Sweet Reba&apos;s &middot; April 9, 2026
-              </p>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-reba-pink font-semibold text-sm mb-1">{"\u{1F36A}"} Cookie of the Week: Lemon Sugar</h4>
-                  <p className="text-reba-muted text-xs leading-relaxed">Spring is here and so is our Lemon Sugar cookie! Buttery, bright, and dusted with just the right amount of sweetness.</p>
-                </div>
-                <div>
-                  <h4 className="text-reba-pink font-semibold text-sm mb-1">{"\u{1F382}"} Custom Cake Spotlight</h4>
-                  <p className="text-reba-muted text-xs leading-relaxed">Check out this gorgeous three-tier floral cake we made for the Martinez wedding. Want something custom? We still have slots open for May!</p>
-                </div>
-                <div>
-                  <h4 className="text-reba-pink font-semibold text-sm mb-1">{"\u{1F389}"} Carmel Reopening Update</h4>
-                  <p className="text-reba-muted text-xs leading-relaxed">May 30th is getting closer! The ovens are installed, the display cases are in, and we&apos;re doing test bakes.</p>
-                </div>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+          <div className="text-center mb-6">
+            <p className="text-xs text-reba-muted uppercase tracking-[0.2em] mb-2">
+              Sweet Reba&apos;s &middot; Today&apos;s Pick
+            </p>
+            <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-dark">
+              On the Menu Today
+            </h2>
+            <div className="w-16 h-0.5 bg-reba-pink mx-auto mt-3" />
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            {/* Soup of the Day */}
+            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
+              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
+                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
+                  Soup of the Day
+                </span>
+                <span className="text-2xl">{"\u{1F963}"}</span>
               </div>
-              <div className="text-center mt-6 pt-5 border-t border-reba-border">
-                <Link
-                  href="/whats-baking"
-                  className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full font-medium transition-colors"
-                >
-                  Sign Up to Always Know What We&apos;re Up To!
-                </Link>
+              <div className="px-5 py-4">
+                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-dark mb-1">
+                  Creamy Tomato Basil
+                </h3>
+                <p className="text-reba-muted text-xs leading-relaxed">
+                  Roasted San Marzano tomatoes, fresh basil, a swirl of cream. Served with a warm house roll.
+                </p>
               </div>
             </div>
+
+            {/* Sandwich of the Day */}
+            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
+              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
+                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
+                  Sandwich of the Day
+                </span>
+                <span className="text-2xl">{"\u{1F96A}"}</span>
+              </div>
+              <div className="px-5 py-4">
+                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-dark mb-1">
+                  Turkey &amp; Swiss
+                </h3>
+                <p className="text-reba-muted text-xs leading-relaxed">
+                  Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Carmel Reopening Callout */}
+          <div className="bg-reba-pink rounded-2xl px-6 py-5 text-center shadow-lg">
+            <p className="text-xs uppercase tracking-[0.2em] text-white/80 mb-1">
+              {"\u{1F389}"} Carmel Reopening
+            </p>
+            <p className="text-white font-[family-name:var(--font-heading)] text-2xl mb-1">
+              End of May 2026
+            </p>
+            <p className="text-white/80 text-xs leading-relaxed max-w-md mx-auto">
+              Ovens installed, display cases in, test bakes underway. We can&apos;t wait to see you at Crossroads.
+            </p>
+          </div>
+
+          <div className="text-center mt-6">
+            <Link
+              href="/whats-baking"
+              className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full font-medium transition-colors"
+            >
+              Sign Up for Weekly Updates
+            </Link>
           </div>
         </div>
       </section>

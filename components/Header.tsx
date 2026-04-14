@@ -21,17 +21,35 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 mr-6">
-            <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-12 h-12 sm:w-14 sm:h-14" />
-            <div>
+          <div className="flex items-center gap-3 mr-6">
+            <Link href="/" className="flex items-center gap-3">
+              <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-12 h-12 sm:w-14 sm:h-14" />
               <div className="font-[family-name:var(--font-heading)] text-xl text-reba-cream leading-tight">
                 Sweet Reba&apos;s
               </div>
-              <div className="text-xs text-reba-muted">
-                Carmel &amp; Salinas
-              </div>
+            </Link>
+            <div className="text-xs text-reba-muted flex items-center gap-1">
+              <a
+                href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
+                title="Get directions to Carmel location"
+              >
+                Carmel
+              </a>
+              <span>&amp;</span>
+              <a
+                href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
+                title="Get directions to Salinas location"
+              >
+                Salinas
+              </a>
             </div>
-          </Link>
+          </div>
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-5">

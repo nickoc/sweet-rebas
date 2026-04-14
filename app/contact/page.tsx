@@ -46,8 +46,8 @@ export default function ContactPage() {
               </div>
               <div className="mt-4 bg-reba-dark/50 border border-reba-pink/20 rounded-lg p-3">
                 <p className="text-reba-pink text-sm italic">
-                  Temporarily closed for fire repairs. We expect to reopen in
-                  6-8 weeks. Thank you for your patience!
+                  Temporarily closed for fire repairs. We expect to reopen
+                  end of May 2026. Thank you for your patience!
                 </p>
               </div>
             </div>

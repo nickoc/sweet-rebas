@@ -59,7 +59,7 @@ export default function WhatsBakingPage() {
                   {"\u{1F389}"} Carmel Reopening Update
                 </h3>
                 <p className="text-reba-soft text-sm leading-relaxed">
-                  May 30th is getting closer! The ovens are installed, the display cases are in, and we&apos;re doing test bakes. Follow us on Instagram for sneak peeks of the new space.
+                  End of May is getting closer! The ovens are installed, the display cases are in, and we&apos;re doing test bakes. Follow us on Instagram for sneak peeks of the new space.
                 </p>
               </div>
             </div>
