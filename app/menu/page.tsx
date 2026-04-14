@@ -99,7 +99,7 @@ export default function MenuPage() {
               </div>
 
               {categoryNotes[category] && (
-                <p className="text-reba-pink text-sm mb-6 italic">
+                <p className="text-reba-pink text-base mb-6 italic">
                   {categoryNotes[category]}
                 </p>
               )}
@@ -125,28 +125,30 @@ export default function MenuPage() {
                           <span className="text-3xl">{item.emoji}</span>
                         </div>
                       )}
-                      <div className="flex-1 p-4 flex flex-col">
-                        <div className="flex items-start justify-between gap-2 mb-1">
-                          <h3 className="text-reba-cream font-semibold text-base">
+                      <div className="flex-1 p-5 flex flex-col">
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <h3 className="text-reba-cream font-semibold text-xl">
                             {item.name}
                           </h3>
-                          <span className="text-reba-pink font-semibold text-base whitespace-nowrap">
+                          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">
                             ${item.price.toFixed(2)}
                           </span>
                         </div>
-                        <p className="text-reba-muted text-sm leading-relaxed mb-3 flex-1">
+                        <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">
                           {item.description}
                         </p>
-                        <AddToCartButton
-                          size="sm"
-                          product={{
-                            id: slug(item.name),
-                            name: item.name,
-                            price: item.price,
-                            image: image,
-                            emoji: item.emoji,
-                          }}
-                        />
+                        <div className="mt-auto">
+                          <AddToCartButton
+                            size="sm"
+                            product={{
+                              id: slug(item.name),
+                              name: item.name,
+                              price: item.price,
+                              image: image,
+                              emoji: item.emoji,
+                            }}
+                          />
+                        </div>
                       </div>
                     </div>
                   );
@@ -166,7 +168,7 @@ export default function MenuPage() {
           </h2>
           <div className="flex-1 h-px bg-reba-border" />
         </div>
-        <p className="text-reba-muted text-sm mb-8">
+        <p className="text-reba-muted text-base mb-8">
           7-day advance notice for custom cakes &amp; pies. 72-hour notice for larger orders. Standard flavors may be available sooner &mdash; call to ask!
         </p>
 
@@ -177,12 +179,12 @@ export default function MenuPage() {
             { name: "Carrot Cake", desc: "Cake slice", price: "$5.50", image: "/product-carrot-cake.jpg" },
             { name: 'Chocolate 6" Cake', desc: "Whole cake", price: "$45.00", image: "/product-chocolate-whole-cake.jpg" },
           ].map((cake) => (
-            <div key={cake.name} className="bg-white border border-reba-border rounded-xl overflow-hidden w-[200px]">
-              <img src={cake.image} alt={cake.name} className="w-full h-[130px] object-cover" />
-              <div className="p-3 text-center">
-                <h3 className="text-reba-cream font-semibold text-sm mb-0.5">{cake.name}</h3>
-                {cake.desc && <p className="text-reba-muted text-xs mb-1">{cake.desc}</p>}
-                <p className="text-reba-pink font-semibold text-sm">{cake.price}</p>
+            <div key={cake.name} className="bg-white border border-reba-border rounded-xl overflow-hidden w-[240px]">
+              <img src={cake.image} alt={cake.name} className="w-full h-[150px] object-cover" />
+              <div className="p-4 text-center">
+                <h3 className="text-reba-cream font-semibold text-lg mb-1">{cake.name}</h3>
+                {cake.desc && <p className="text-reba-muted text-base mb-1">{cake.desc}</p>}
+                <p className="text-reba-pink font-semibold text-lg">{cake.price}</p>
               </div>
             </div>
           ))}
@@ -198,10 +200,10 @@ export default function MenuPage() {
             { name: "1/4 Sheet", serves: "Serves 20-24", price: "$45" },
             { name: "Cupcakes", serves: "One dozen", price: "$36/dz" },
           ].map((size) => (
-            <div key={size.name} className="bg-white border border-reba-pink/30 rounded-xl p-3 text-center">
-              <h4 className="text-reba-cream font-semibold text-sm">{size.name}</h4>
-              <p className="text-reba-muted text-xs mb-1">{size.serves}</p>
-              <p className="text-reba-pink font-bold">{size.price}</p>
+            <div key={size.name} className="bg-white border border-reba-pink/30 rounded-xl p-4 text-center">
+              <h4 className="text-reba-cream font-semibold text-lg">{size.name}</h4>
+              <p className="text-reba-muted text-base mb-1">{size.serves}</p>
+              <p className="text-reba-pink font-bold text-xl">{size.price}</p>
             </div>
           ))}
         </div>
@@ -210,28 +212,29 @@ export default function MenuPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
           <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
             <h4 className="text-reba-pink font-semibold mb-1">
-              Standard Flavors <span className="font-normal text-xs text-reba-muted">(always available)</span>
+              Standard Flavors <span className="font-normal text-sm text-reba-muted">(always available)</span>
             </h4>
-            <p className="text-reba-soft text-sm leading-relaxed">
+            <p className="text-reba-soft text-[1.05rem] leading-relaxed">
               Classic Vanilla<br />Carrot<br />Life by Chocolate
             </p>
           </div>
           <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
             <h4 className="text-reba-pink font-semibold mb-1">
-              Specialty Flavors <span className="font-normal text-xs text-reba-muted">(7-day notice)</span>
+              Specialty Flavors <span className="font-normal text-sm text-reba-muted">(7-day notice)</span>
             </h4>
-            <p className="text-reba-soft text-sm leading-relaxed">
+            <p className="text-reba-soft text-[1.05rem] leading-relaxed">
               Raspberry Lemonade<br />Blackberry Lavender Lemon<br />Razzelberry<br />Lemon<br />Red Velvet<br />Cookies &amp; Cream<br />Chocolate Peanut Butter
             </p>
           </div>
           <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
             <h4 className="text-reba-pink font-semibold mb-1">Wedding Cakes</h4>
-            <p className="text-reba-soft text-sm leading-relaxed mb-3">
+            <p className="text-reba-soft text-[1.05rem] leading-relaxed mb-3">
               Custom consultation required.<br />Multi-tier designs.<br />Tasting sessions available.
             </p>
             <a href="tel:8316014818" className="text-reba-pink font-semibold text-sm hover:text-reba-pink-hover transition-colors">
               Schedule a tasting &rarr;
             </a>
+
           </div>
         </div>
 

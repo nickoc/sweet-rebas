@@ -27,8 +27,8 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
 
   const buttonClass =
     size === "sm"
-      ? "px-3 py-1.5 text-xs"
-      : "px-4 py-2 text-sm";
+      ? "px-6 py-2 text-sm"
+      : "px-8 py-2.5 text-base";
   const inputClass =
     size === "sm" ? "w-12 py-1 text-sm" : "w-14 py-1.5 text-base";
   const stepBtn =
@@ -36,12 +36,14 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
 
   if (!open) {
     return (
-      <button
-        onClick={() => setOpen(true)}
-        className={`bg-reba-pink hover:bg-reba-pink-hover text-white rounded-full font-semibold transition-colors w-full ${buttonClass}`}
-      >
-        Add to Cart
-      </button>
+      <div>
+        <button
+          onClick={() => setOpen(true)}
+          className={`bg-reba-pink hover:bg-reba-pink-hover text-white rounded-full font-semibold transition-colors ${buttonClass}`}
+        >
+          + Add to Cart
+        </button>
+      </div>
     );
   }
 
