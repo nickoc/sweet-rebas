@@ -10,10 +10,9 @@ const navLinks = [
   { label: "Wedding Cakes", href: "/wedding-cakes" },
   { label: "Catering", href: "/catering" },
   { label: "Our Story", href: "/about" },
-  { label: "Contact Us", href: "/contact" },
-  { label: "Find What's Baking", href: "/whats-baking" },
+  { label: "Contact Us & Locations", href: "/contact" },
+  { label: "What's Baking This Week Newsletter", href: "/whats-baking" },
   { label: "Order Now", href: "/box-builder" },
-  { label: "Locations", href: "/contact" },
 ];
 
 export default function Header() {
