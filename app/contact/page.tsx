@@ -46,8 +46,8 @@ export default function ContactPage() {
               </div>
               <div className="mt-4 bg-reba-dark/50 border border-reba-pink/20 rounded-lg p-3">
                 <p className="text-reba-pink text-sm italic">
-                  Temporarily closed for fire repairs. We expect to reopen
-                  end of May 2026. Thank you for your patience!
+                  Reopening at the end of May 2026. We can&apos;t wait to
+                  see you back at Crossroads!
                 </p>
               </div>
             </div>

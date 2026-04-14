@@ -159,6 +159,76 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Sweet Reba's Today's Pick */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
+          Sweet Reba&apos;s Today&apos;s Pick
+        </h2>
+
+        {/* Framed "chalkboard" box */}
+        <div className="bg-white rounded-3xl shadow-xl border-2 border-reba-pink/30 p-6 sm:p-10">
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            {/* Soup of the Day */}
+            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
+              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
+                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
+                  Soup of the Day
+                </span>
+                <span className="text-2xl">{"\u{1F963}"}</span>
+              </div>
+              <div className="px-5 py-4">
+                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-cream mb-1">
+                  Creamy Tomato Basil
+                </h3>
+                <p className="text-reba-muted text-xs leading-relaxed">
+                  Roasted San Marzano tomatoes, fresh basil, a swirl of cream. Served with a warm house roll.
+                </p>
+              </div>
+            </div>
+
+            {/* Sandwich of the Day */}
+            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
+              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
+                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
+                  Sandwich of the Day
+                </span>
+                <span className="text-2xl">{"\u{1F96A}"}</span>
+              </div>
+              <div className="px-5 py-4">
+                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-cream mb-1">
+                  Turkey &amp; Swiss
+                </h3>
+                <p className="text-reba-muted text-xs leading-relaxed">
+                  Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Carmel Reopening Callout */}
+          <div className="bg-reba-pink rounded-2xl px-6 py-5 text-center shadow-lg">
+            <p className="text-xs uppercase tracking-[0.2em] text-white/80 mb-1">
+              {"\u{1F389}"} Carmel Reopening
+            </p>
+            <p className="text-white font-[family-name:var(--font-heading)] text-2xl mb-1">
+              End of May 2026
+            </p>
+            <p className="text-white/80 text-xs leading-relaxed max-w-md mx-auto">
+              We can&apos;t wait to see you back at Crossroads.
+            </p>
+          </div>
+
+          <div className="text-center mt-6">
+            <Link
+              href="/whats-baking"
+              className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full font-medium transition-colors"
+            >
+              Sign Up for Weekly Updates
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Our Story Preview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -217,81 +287,6 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* On the Menu Today */}
-      <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
-          <div className="text-center mb-6">
-            <p className="text-xs text-reba-muted uppercase tracking-[0.2em] mb-2">
-              Sweet Reba&apos;s &middot; Today&apos;s Pick
-            </p>
-            <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-dark">
-              On the Menu Today
-            </h2>
-            <div className="w-16 h-0.5 bg-reba-pink mx-auto mt-3" />
-          </div>
-
-          <div className="grid sm:grid-cols-2 gap-4 mb-6">
-            {/* Soup of the Day */}
-            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
-              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
-                  Soup of the Day
-                </span>
-                <span className="text-2xl">{"\u{1F963}"}</span>
-              </div>
-              <div className="px-5 py-4">
-                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-dark mb-1">
-                  Creamy Tomato Basil
-                </h3>
-                <p className="text-reba-muted text-xs leading-relaxed">
-                  Roasted San Marzano tomatoes, fresh basil, a swirl of cream. Served with a warm house roll.
-                </p>
-              </div>
-            </div>
-
-            {/* Sandwich of the Day */}
-            <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
-              <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
-                  Sandwich of the Day
-                </span>
-                <span className="text-2xl">{"\u{1F96A}"}</span>
-              </div>
-              <div className="px-5 py-4">
-                <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-dark mb-1">
-                  Turkey &amp; Swiss
-                </h3>
-                <p className="text-reba-muted text-xs leading-relaxed">
-                  Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Carmel Reopening Callout */}
-          <div className="bg-reba-pink rounded-2xl px-6 py-5 text-center shadow-lg">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/80 mb-1">
-              {"\u{1F389}"} Carmel Reopening
-            </p>
-            <p className="text-white font-[family-name:var(--font-heading)] text-2xl mb-1">
-              End of May 2026
-            </p>
-            <p className="text-white/80 text-xs leading-relaxed max-w-md mx-auto">
-              Ovens installed, display cases in, test bakes underway. We can&apos;t wait to see you at Crossroads.
-            </p>
-          </div>
-
-          <div className="text-center mt-6">
-            <Link
-              href="/whats-baking"
-              className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full font-medium transition-colors"
-            >
-              Sign Up for Weekly Updates
-            </Link>
           </div>
         </div>
       </section>

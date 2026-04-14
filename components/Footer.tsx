@@ -39,7 +39,7 @@ export default function Footer() {
               </a>
               <p className="text-reba-muted text-sm">206 Crossroads Blvd &middot; (831) 601-4818</p>
               <p className="text-reba-pink text-xs mt-1 italic">
-                Temporarily closed for fire repairs
+                Reopening end of May 2026
               </p>
             </div>
           </div>
