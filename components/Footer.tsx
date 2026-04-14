@@ -8,8 +8,74 @@ export default function Footer() {
 
   return (
     <footer className="border-t border-reba-border" style={{ backgroundColor: "#fff5f5" }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      {/* Maps Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8">
+        <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream text-center mb-8">
+          Find Us
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {/* Carmel Map */}
+          <div>
+            <div className="rounded-xl overflow-hidden shadow-md border border-reba-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-121.9178!3d36.5465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808de45270b5fb23%3A0x386b7aaf900e1e08!2sSweet%20Reba&#39;s!5e0!3m2!1sen!2sus!4v1"
+                width="100%"
+                height="440"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Sweet Reba's Carmel Crossroads"
+              />
+            </div>
+            <div className="mt-3 text-center">
+              <a
+                href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-reba-cream text-sm font-medium hover:text-reba-pink transition-colors"
+              >
+                Carmel Crossroads
+              </a>
+              <p className="text-reba-muted text-sm">206 Crossroads Blvd &middot; (831) 601-4818</p>
+              <p className="text-reba-pink text-xs mt-1 italic">
+                Temporarily closed for fire repairs
+              </p>
+            </div>
+          </div>
+
+          {/* Salinas Map */}
+          <div>
+            <div className="rounded-xl overflow-hidden shadow-md border border-reba-border">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-121.6558!3d36.6744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808dfb5d7b0d2e6f%3A0x1c6b3e1f8a5e6d2a!2s268%20Main%20St%2C%20Salinas%2C%20CA!5e0!3m2!1sen!2sus!4v1"
+                width="100%"
+                height="440"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Sweet Reba's Old Town Salinas"
+              />
+            </div>
+            <div className="mt-3 text-center">
+              <a
+                href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-reba-cream text-sm font-medium hover:text-reba-pink transition-colors"
+              >
+                Old Town Salinas
+              </a>
+              <p className="text-reba-muted text-sm">268 Main St &middot; (831) 676-0628</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Info Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
           {/* Col 1: About */}
           <div>
             <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-3">
@@ -46,33 +112,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Col 3: Locations */}
-          <div>
-            <h4 className="text-reba-cream font-semibold mb-4 text-sm uppercase tracking-wider">
-              Locations
-            </h4>
-            <div className="space-y-4">
-              <div>
-                <p className="text-reba-cream text-sm font-medium">
-                  Carmel Crossroads
-                </p>
-                <p className="text-reba-muted text-sm">206 Crossroads Blvd</p>
-                <p className="text-reba-muted text-sm">(831) 601-4818</p>
-                <p className="text-reba-pink text-xs mt-1 italic">
-                  Temporarily closed for fire repairs
-                </p>
-              </div>
-              <div>
-                <p className="text-reba-cream text-sm font-medium">
-                  Old Town Salinas
-                </p>
-                <p className="text-reba-muted text-sm">268 Main St</p>
-                <p className="text-reba-muted text-sm">(831) 676-0628</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 4: Newsletter & Social */}
+          {/* Col 3: Newsletter & Social */}
           <div>
             <h4 className="text-reba-cream font-semibold mb-4 text-sm uppercase tracking-wider">
               Stay Connected
@@ -92,7 +132,7 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Your email"
-                className="flex-1 bg-reba-dark border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
+                className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
               />
               <button
                 type="submit"
