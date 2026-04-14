@@ -16,7 +16,7 @@ export default function WeddingCakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-16">
         <img src="/cake-dreamy-3.jpg" alt="Beautiful wedding cake with white ranunculus" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.6)] via-[rgba(255,248,240,0.15)_30%] to-transparent" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
