@@ -31,11 +31,11 @@ const specialImages = [
 ];
 
 const cakeSizes = [
-  { name: '6" Round', serves: "Serves 8-10", price: "$40" },
-  { name: '8" Round', serves: "Serves 14-18", price: "$55" },
-  { name: '9" Round', serves: "Serves 20-24", price: "$65" },
-  { name: "1/4 Sheet", serves: "Serves 12-16", price: "$45" },
-  { name: "Cupcakes", serves: "Minimum one dozen", price: "$36/dz" },
+  { name: '6" Round', serves: "~10-12 servings", price: "$40" },
+  { name: '8" Round', serves: "~15-20 servings", price: "$55" },
+  { name: '9" Round', serves: "~20-25 servings", price: "$65" },
+  { name: "1/4 Sheet", serves: "~30-35 servings", price: "$45" },
+  { name: "Cupcakes", serves: "Per dozen", price: "$36/dz" },
 ];
 
 export default function CakesPage() {

@@ -203,11 +203,11 @@ export default function MenuPage() {
         <h3 className="font-semibold text-reba-cream text-2xl mb-6">Sizes &amp; Pricing</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {[
-            { name: '6" Round', serves: "Serves 6-8", price: "$40" },
-            { name: '8" Round', serves: "Serves 10-14", price: "$55" },
-            { name: '9" Round', serves: "Serves 14-18", price: "$65" },
-            { name: "1/4 Sheet", serves: "Serves 20-24", price: "$45" },
-            { name: "Cupcakes", serves: "One dozen", price: "$36/dz" },
+            { name: '6" Round', serves: "~10-12 servings", price: "$40" },
+            { name: '8" Round', serves: "~15-20 servings", price: "$55" },
+            { name: '9" Round', serves: "~20-25 servings", price: "$65" },
+            { name: "1/4 Sheet", serves: "~30-35 servings", price: "$45" },
+            { name: "Cupcakes", serves: "Per dozen", price: "$36/dz" },
           ].map((size) => (
             <div key={size.name} className="bg-white border border-reba-pink/30 rounded-xl p-4 text-center">
               <h4 className="text-reba-cream font-semibold text-lg">{size.name}</h4>

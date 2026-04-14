@@ -16,9 +16,9 @@ export default function WeddingCakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-16">
+      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-8">
         <img src="/cake-dreamy-3.jpg" alt="Beautiful wedding cake with white ranunculus" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.85)] via-[rgba(255,248,240,0.3)_40%] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Wedding Cakes
@@ -31,31 +31,31 @@ export default function WeddingCakesPage() {
 
       {/* Intro + Email Capture */}
       <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-3xl mx-auto px-4 py-12 text-center">
-          <p className="text-reba-soft leading-relaxed text-lg mb-2">
+        <div className="max-w-3xl mx-auto px-4 py-14 text-center">
+          <p className="text-reba-soft leading-relaxed text-lg sm:text-xl mb-3">
             Your wedding cake should be as extraordinary as your love story.
           </p>
-          <p className="text-reba-muted leading-relaxed mb-8">
+          <p className="text-reba-muted leading-relaxed text-base sm:text-lg mb-10">
             Reba works personally with every couple to design a centerpiece that&apos;s as beautiful as it is delicious. Multi-tier designs, custom flavors, tasting sessions &mdash; every detail is crafted just for you.
           </p>
 
           {submitted ? (
-            <div className="bg-white border border-reba-pink/30 rounded-2xl p-8 max-w-md mx-auto">
-              <div className="text-4xl mb-3">{"\u2728"}</div>
-              <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+            <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
+              <div className="text-5xl mb-4">{"\u2728"}</div>
+              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-3">
                 We&apos;ll be in touch!
               </h3>
-              <p className="text-reba-muted text-sm">
+              <p className="text-reba-muted text-base">
                 Reba will reach out to schedule your wedding cake consultation. We can&apos;t wait to create something beautiful for your big day!
               </p>
             </div>
           ) : (
-            <div className="bg-white border border-reba-pink/30 rounded-2xl p-8 max-w-md mx-auto">
-              <div className="text-4xl mb-3">{"\u{1F492}"}</div>
-              <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+            <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
+              <div className="text-5xl mb-4">{"\u{1F382}"}</div>
+              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-3">
                 Schedule Your Consultation with Reba
               </h3>
-              <p className="text-reba-muted text-sm mb-6">
+              <p className="text-reba-muted text-base mb-6">
                 Leave your email and Reba will personally reach out to schedule a tasting and design consultation.
               </p>
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -65,11 +65,11 @@ export default function WeddingCakesPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email address"
-                  className="w-full bg-reba-card border border-reba-border rounded-lg px-4 py-3 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                  className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                 />
                 <button
                   type="submit"
-                  className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full font-medium transition-colors"
+                  className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3.5 rounded-full text-base font-semibold transition-colors"
                 >
                   Request Consultation
                 </button>
@@ -82,13 +82,13 @@ export default function WeddingCakesPage() {
       {/* Pricing Info */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-6">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-8">
             Wedding Cake Pricing
           </h2>
-          <p className="text-reba-soft text-sm leading-relaxed mb-4">
+          <p className="text-reba-soft text-base sm:text-lg leading-relaxed mb-4">
             Custom consultation required for all wedding cakes. Multi-tier designs start at <span className="text-reba-pink font-semibold">$150</span>. Tasting sessions available.
           </p>
-          <p className="text-reba-muted text-sm">
+          <p className="text-reba-muted text-base sm:text-lg">
             Call <a href="tel:8316014818" className="text-reba-pink font-semibold hover:text-reba-pink-hover">(831) 601-4818</a> or <a href="tel:8316760628" className="text-reba-pink font-semibold hover:text-reba-pink-hover">(831) 676-0628</a> to get started.
           </p>
         </div>
