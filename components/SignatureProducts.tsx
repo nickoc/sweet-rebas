@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 interface Product {
@@ -32,6 +32,7 @@ export default function SignatureProducts() {
   const [pickerQty, setPickerQty] = useState(1);
   const [modalQty, setModalQty] = useState(1);
   const [cart, setCart] = useState<CartLine[]>([]);
+  const cartRef = useRef<HTMLDivElement>(null);
 
   function openPicker(name: string) {
     setPickerFor(name);
@@ -74,10 +75,18 @@ export default function SignatureProducts() {
     });
     setPickerFor(null);
     setSelected(null);
+    // Scroll the cart panel into view so the customer sees their order
+    setTimeout(() => {
+      cartRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 50);
   }
 
   function removeFromCart(productName: string) {
     setCart((prev) => prev.filter((line) => line.product.name !== productName));
+  }
+
+  function clearCart() {
+    setCart([]);
   }
 
   const cartTotal = cart.reduce(
@@ -190,8 +199,23 @@ export default function SignatureProducts() {
 
       {/* Your Order — running summary */}
       {cart.length > 0 && (
-        <div className="mt-12 max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border-2 border-reba-pink/30 p-6 sm:p-8">
-          <div className="flex items-baseline justify-between mb-4">
+        <div
+          ref={cartRef}
+          className="mt-12 max-w-2xl mx-auto bg-white rounded-3xl shadow-xl border-2 border-reba-pink/30 p-6 sm:p-8 relative"
+        >
+          {/* Clear/close-all button */}
+          <button
+            onClick={clearCart}
+            className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white border border-reba-border hover:border-reba-pink hover:bg-reba-pink/10 text-reba-cream hover:text-reba-pink transition-colors flex items-center justify-center shadow-sm"
+            aria-label="Clear cart and start over"
+            title="Clear cart and start over"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <div className="flex items-baseline justify-between mb-4 pr-12">
             <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream">
               Your Order
             </h3>

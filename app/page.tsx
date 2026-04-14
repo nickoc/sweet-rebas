@@ -97,8 +97,8 @@ export default function HomePage() {
           ].map((value) => (
             <div key={value.title} className="border border-reba-border rounded-2xl p-6 text-center" style={{ backgroundColor: "#fff5f5" }}>
               <div className="text-3xl mb-3">{value.emoji}</div>
-              <h3 className="text-reba-cream font-semibold mb-2">{value.title}</h3>
-              <p className="text-reba-muted text-sm leading-relaxed">{value.desc}</p>
+              <h3 className="text-reba-cream font-semibold text-lg mb-2">{value.title}</h3>
+              <p className="text-reba-muted text-base leading-relaxed">{value.desc}</p>
             </div>
           ))}
         </div>
@@ -112,7 +112,7 @@ export default function HomePage() {
           <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-4">
             Our Signature Products
           </h2>
-          <p className="text-reba-muted text-center mb-14">
+          <p className="text-reba-muted text-lg text-center mb-14">
             Scratch-made favorites, baked fresh every day
           </p>
 <SignatureProducts />
@@ -131,7 +131,7 @@ export default function HomePage() {
             {/* Soup of the Day */}
             <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
               <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
+                <span className="text-sm uppercase tracking-wider text-reba-pink font-semibold">
                   Soup of the Day
                 </span>
                 <span className="text-2xl">{"\u{1F963}"}</span>
@@ -140,7 +140,7 @@ export default function HomePage() {
                 <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-cream mb-1">
                   Creamy Tomato Basil
                 </h3>
-                <p className="text-reba-muted text-xs leading-relaxed">
+                <p className="text-reba-muted text-sm leading-relaxed">
                   Roasted San Marzano tomatoes, fresh basil, a swirl of cream. Served with a warm house roll.
                 </p>
               </div>
@@ -149,7 +149,7 @@ export default function HomePage() {
             {/* Sandwich of the Day */}
             <div className="bg-white rounded-2xl shadow-md border border-reba-border overflow-hidden">
               <div className="bg-reba-pink/10 px-5 py-3 border-b border-reba-border flex items-center justify-between">
-                <span className="text-xs uppercase tracking-wider text-reba-pink font-semibold">
+                <span className="text-sm uppercase tracking-wider text-reba-pink font-semibold">
                   Sandwich of the Day
                 </span>
                 <span className="text-2xl">{"\u{1F96A}"}</span>
@@ -158,7 +158,7 @@ export default function HomePage() {
                 <h3 className="font-[family-name:var(--font-heading)] text-xl text-reba-cream mb-1">
                   Turkey &amp; Swiss
                 </h3>
-                <p className="text-reba-muted text-xs leading-relaxed">
+                <p className="text-reba-muted text-sm leading-relaxed">
                   Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on fresh sourdough.
                 </p>
               </div>
@@ -167,13 +167,13 @@ export default function HomePage() {
 
           {/* Carmel Reopening Callout */}
           <div className="bg-reba-pink rounded-2xl px-6 py-5 text-center shadow-lg">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/80 mb-1">
+            <p className="text-sm uppercase tracking-[0.2em] text-white/80 mb-1">
               {"\u{1F389}"} Carmel Reopening
             </p>
             <p className="text-white font-[family-name:var(--font-heading)] text-2xl mb-1">
               End of May 2026
             </p>
-            <p className="text-white/80 text-xs leading-relaxed max-w-md mx-auto">
+            <p className="text-white/80 text-sm leading-relaxed max-w-md mx-auto">
               We can&apos;t wait to see you back at Crossroads.
             </p>
           </div>
@@ -196,12 +196,12 @@ export default function HomePage() {
             <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-6">
               Our Story
             </h2>
-            <p className="text-reba-soft leading-relaxed mb-4">
+            <p className="text-reba-soft text-lg leading-relaxed mb-4">
               From grandmother&apos;s kitchen to Food Network, Sweet Reba&apos;s
               is a story of passion, family, and the transformative power of a
               really good cake.
             </p>
-            <p className="text-reba-muted leading-relaxed mb-6">
+            <p className="text-reba-muted text-lg leading-relaxed mb-6">
               What started as a birthday cake for her son in 2004 grew into one
               of the most beloved bakeries on the Monterey Peninsula. Reba
               brought her grandmother&apos;s recipes to life, earning
@@ -234,14 +234,14 @@ export default function HomePage() {
                 className="bg-white border border-reba-border rounded-2xl p-6"
               >
                 <StarRating rating={review.rating} />
-                <p className="text-reba-soft text-sm leading-relaxed mt-4 mb-4">
+                <p className="text-reba-soft text-base leading-relaxed mt-4 mb-4">
                   &ldquo;{review.text}&rdquo;
                 </p>
                 <div className="flex items-center justify-between">
-                  <p className="text-reba-cream text-sm font-medium">
+                  <p className="text-reba-cream text-base font-medium">
                     {review.author}
                   </p>
-                  <span className="text-xs text-reba-muted bg-reba-dark px-2 py-1 rounded-full">
+                  <span className="text-sm text-reba-muted bg-reba-dark px-2 py-1 rounded-full">
                     {review.platform}
                   </span>
                 </div>
