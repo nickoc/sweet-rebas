@@ -6,16 +6,50 @@ import { useCart, formatPrice } from "@/lib/cart-context";
 export default function CartSummary() {
   const { cart, removeFromCart, clearCart, totalItems, totalPrice } = useCart();
   const [expanded, setExpanded] = useState(false);
+  const [confirmed, setConfirmed] = useState<{ items: typeof cart; total: number } | null>(null);
 
   function handleSubmit() {
-    const summary = cart
-      .map((line) => `  • ${line.quantity} × ${line.product.name}`)
-      .join("\n");
-    alert(
-      `Thank you! Your order has been received:\n\n${summary}\n\nTotal: ${formatPrice(totalPrice)}\n\nWe'll have it ready soon.`,
-    );
+    setConfirmed({ items: [...cart], total: totalPrice });
     clearCart();
     setExpanded(false);
+  }
+
+  if (confirmed) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+        <div className="bg-white rounded-3xl shadow-2xl border-2 border-reba-pink/30 p-8 sm:p-10 max-w-lg mx-4 text-center">
+          <div className="text-5xl mb-4">{"\u{1F389}"}</div>
+          <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2">
+            Thank You!
+          </h3>
+          <p className="text-reba-muted text-lg mb-6">
+            Your order has been received. We&apos;ll have it ready soon.
+          </p>
+          <ul className="text-left mb-6 divide-y divide-reba-border">
+            {confirmed.items.map((line) => (
+              <li key={line.product.id} className="flex justify-between py-3">
+                <span className="text-reba-cream text-base">
+                  {line.quantity} &times; {line.product.name}
+                </span>
+                <span className="text-reba-pink font-semibold text-base">
+                  {formatPrice(line.product.price * line.quantity)}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <div className="flex justify-between items-center border-t border-reba-border pt-4 mb-6">
+            <span className="text-reba-cream font-semibold text-xl">Total</span>
+            <span className="text-reba-pink font-semibold text-2xl">{formatPrice(confirmed.total)}</span>
+          </div>
+          <button
+            onClick={() => setConfirmed(null)}
+            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-3 rounded-full text-lg font-semibold transition-colors"
+          >
+            Done
+          </button>
+        </div>
+      </div>
+    );
   }
 
   if (cart.length === 0) return null;

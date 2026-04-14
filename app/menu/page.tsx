@@ -182,26 +182,26 @@ export default function MenuPage() {
         </p>
 
         {/* Cake Products */}
-        <div className="flex justify-center gap-4 flex-wrap mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
           {[
             { name: "Life by Chocolate", desc: "Cake slice", price: "$5.50", image: "/product-life-by-chocolate.jpg" },
             { name: "Carrot Cake", desc: "Cake slice", price: "$5.50", image: "/product-carrot-cake.jpg" },
             { name: 'Chocolate 6" Cake', desc: "Whole cake", price: "$45.00", image: "/product-chocolate-whole-cake.jpg" },
           ].map((cake) => (
-            <div key={cake.name} className="bg-white border border-reba-border rounded-xl overflow-hidden w-[240px]">
-              <img src={cake.image} alt={cake.name} className="w-full h-[150px] object-cover" />
-              <div className="p-4 text-center">
-                <h3 className="text-reba-cream font-semibold text-lg mb-1">{cake.name}</h3>
-                {cake.desc && <p className="text-reba-muted text-base mb-1">{cake.desc}</p>}
-                <p className="text-reba-pink font-semibold text-lg">{cake.price}</p>
+            <div key={cake.name} className="bg-white border border-reba-border rounded-xl overflow-hidden">
+              <img src={cake.image} alt={cake.name} className="w-full h-[200px] object-cover" />
+              <div className="p-5 text-center">
+                <h3 className="text-reba-cream font-semibold text-xl mb-1">{cake.name}</h3>
+                {cake.desc && <p className="text-reba-muted text-base mb-2">{cake.desc}</p>}
+                <p className="text-reba-pink font-semibold text-xl">{cake.price}</p>
               </div>
             </div>
           ))}
         </div>
 
         {/* Sizes & Pricing */}
-        <h3 className="font-semibold text-reba-cream mb-4">Sizes &amp; Pricing</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
+        <h3 className="font-semibold text-reba-cream text-2xl mb-6">Sizes &amp; Pricing</h3>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {[
             { name: '6" Round', serves: "Serves 6-8", price: "$40" },
             { name: '8" Round', serves: "Serves 10-14", price: "$55" },
@@ -219,31 +219,30 @@ export default function MenuPage() {
 
         {/* Flavor Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-          <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
-            <h4 className="text-reba-pink font-semibold mb-1">
-              Standard Flavors <span className="font-normal text-sm text-reba-muted">(always available)</span>
+          <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
+            <h4 className="text-reba-pink font-semibold text-lg mb-2">
+              Standard Flavors <span className="font-normal text-base text-reba-muted">(always available)</span>
             </h4>
-            <p className="text-reba-soft text-[1.05rem] leading-relaxed">
+            <p className="text-reba-soft text-[1.1rem] leading-relaxed">
               Classic Vanilla<br />Carrot<br />Life by Chocolate
             </p>
           </div>
-          <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
-            <h4 className="text-reba-pink font-semibold mb-1">
-              Specialty Flavors <span className="font-normal text-sm text-reba-muted">(7-day notice)</span>
+          <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
+            <h4 className="text-reba-pink font-semibold text-lg mb-2">
+              Specialty Flavors <span className="font-normal text-base text-reba-muted">(7-day notice)</span>
             </h4>
-            <p className="text-reba-soft text-[1.05rem] leading-relaxed">
+            <p className="text-reba-soft text-[1.1rem] leading-relaxed">
               Raspberry Lemonade<br />Blackberry Lavender Lemon<br />Razzelberry<br />Lemon<br />Red Velvet<br />Cookies &amp; Cream<br />Chocolate Peanut Butter
             </p>
           </div>
-          <div className="bg-white rounded-xl p-5 border-l-4 border-reba-pink shadow-sm">
-            <h4 className="text-reba-pink font-semibold mb-1">Wedding Cakes</h4>
-            <p className="text-reba-soft text-[1.05rem] leading-relaxed mb-3">
+          <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
+            <h4 className="text-reba-pink font-semibold text-lg mb-2">Wedding Cakes</h4>
+            <p className="text-reba-soft text-[1.1rem] leading-relaxed mb-4">
               Custom consultation required.<br />Multi-tier designs.<br />Tasting sessions available.
             </p>
-            <a href="tel:8316014818" className="text-reba-pink font-semibold text-sm hover:text-reba-pink-hover transition-colors">
+            <a href="tel:8316014818" className="text-reba-pink font-semibold text-base hover:text-reba-pink-hover transition-colors">
               Schedule a tasting &rarr;
             </a>
-
           </div>
         </div>
 
