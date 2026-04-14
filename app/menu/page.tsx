@@ -53,6 +53,88 @@ function QuickAddCard({ item, image }: { item: typeof menuItems[number]; image?:
   );
 }
 
+const cakeProducts = [
+  { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg" },
+  { name: "Carrot Cake", image: "/product-carrot-cake.jpg" },
+  { name: 'Chocolate 6" Cake', image: "/product-chocolate-whole-cake.jpg" },
+];
+
+const cakeSizes = [
+  { label: '6" Round', serves: "~10-12 servings", price: 40 },
+  { label: '8" Round', serves: "~15-20 servings", price: 55 },
+  { label: '9" Round', serves: "~20-25 servings", price: 65 },
+  { label: "1/4 Sheet", serves: "~30-35 servings", price: 45 },
+  { label: "Cupcakes (dozen)", serves: "Per dozen", price: 36 },
+];
+
+function CakeOrderCards() {
+  const { addToCart } = useCart();
+  const [selectedCake, setSelectedCake] = useState<string | null>(null);
+  const [flashId, setFlashId] = useState<string | null>(null);
+
+  function handleSizeClick(cakeName: string, size: typeof cakeSizes[number]) {
+    const id = slug(`${cakeName} ${size.label}`);
+    addToCart({
+      id,
+      name: `${cakeName} — ${size.label}`,
+      price: size.price,
+      emoji: "\u{1F382}",
+    }, 1);
+    setFlashId(id);
+    setTimeout(() => {
+      setFlashId(null);
+      setSelectedCake(null);
+    }, 500);
+  }
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+      {cakeProducts.map((cake) => (
+        <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden">
+          <img
+            src={cake.image}
+            alt={cake.name}
+            className="w-full h-[200px] object-cover cursor-pointer"
+            onClick={() => setSelectedCake(selectedCake === cake.name ? null : cake.name)}
+          />
+          <div className="p-5 text-center">
+            <h3 className="text-reba-cream font-semibold text-xl mb-2">{cake.name}</h3>
+            <button
+              onClick={() => setSelectedCake(selectedCake === cake.name ? null : cake.name)}
+              className="inline-block px-6 py-2 rounded-full font-semibold text-sm bg-reba-pink text-white hover:bg-reba-pink-hover transition-colors"
+            >
+              {selectedCake === cake.name ? "Close" : "Choose Size & Order"}
+            </button>
+          </div>
+
+          {selectedCake === cake.name && (
+            <div className="border-t border-reba-border px-5 py-4 space-y-2">
+              {cakeSizes.map((size) => {
+                const id = slug(`${cake.name} ${size.label}`);
+                return (
+                  <button
+                    key={size.label}
+                    onClick={() => handleSizeClick(cake.name, size)}
+                    className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all text-left ${flashId === id ? "border-reba-pink bg-green-50" : "border-reba-border hover:border-reba-pink/30"}`}
+                  >
+                    <div>
+                      <span className="text-reba-cream font-semibold text-base">{size.label}</span>
+                      <span className="text-reba-muted text-sm ml-2">{size.serves}</span>
+                    </div>
+                    <span className={`font-semibold text-base ${flashId === id ? "text-green-500" : "text-reba-pink"}`}>
+                      {flashId === id ? "Added!" : `$${size.price}`}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 const categories = [
   "Cookies",
   "Bars",
@@ -181,25 +263,10 @@ export default function MenuPage() {
           7-day advance notice for custom cakes &amp; pies. 72-hour notice for larger orders. Standard flavors may be available sooner &mdash; call to ask!
         </p>
 
-        {/* Cake Products */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-          {[
-            { name: "Life by Chocolate", desc: "Cake slice", price: "$5.50", image: "/product-life-by-chocolate.jpg" },
-            { name: "Carrot Cake", desc: "Cake slice", price: "$5.50", image: "/product-carrot-cake.jpg" },
-            { name: 'Chocolate 6" Cake', desc: "Whole cake", price: "$45.00", image: "/product-chocolate-whole-cake.jpg" },
-          ].map((cake) => (
-            <div key={cake.name} className="bg-white border border-reba-border rounded-xl overflow-hidden">
-              <img src={cake.image} alt={cake.name} className="w-full h-[200px] object-cover" />
-              <div className="p-5 text-center">
-                <h3 className="text-reba-cream font-semibold text-xl mb-1">{cake.name}</h3>
-                {cake.desc && <p className="text-reba-muted text-base mb-2">{cake.desc}</p>}
-                <p className="text-reba-pink font-semibold text-xl">{cake.price}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* Cake Products — click to choose size */}
+        <CakeOrderCards />
 
-        {/* Sizes & Pricing */}
+        {/* Sizes & Pricing Reference */}
         <h3 className="font-semibold text-reba-cream text-2xl mb-6">Sizes &amp; Pricing</h3>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
           {[

@@ -88,7 +88,7 @@ export default function Footer() {
 
       {/* Info Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-20">
           {/* Col 1: About */}
           <div>
             <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-3">
@@ -110,6 +110,8 @@ export default function Footer() {
               {[
                 { label: "Menu", href: "/menu" },
                 { label: "Custom Cakes", href: "/cakes" },
+                { label: "Wedding Cakes", href: "/wedding-cakes" },
+                { label: "Catering", href: "/catering" },
                 { label: "About Us", href: "/about" },
                 { label: "Contact", href: "/contact" },
               ].map((link) => (

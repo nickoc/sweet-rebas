@@ -93,7 +93,7 @@ export default function Header() {
                       key={link.href + link.label}
                       href={link.href}
                       onClick={() => setMenuOpen(false)}
-                      className="block px-6 py-4 text-base font-medium text-reba-cream hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
+                      className="block px-6 py-4 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
                     >
                       {link.label}
                     </Link>
