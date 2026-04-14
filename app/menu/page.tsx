@@ -1,10 +1,57 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { menuItems } from "@/data/sample-data";
 import AddToCartButton from "@/components/AddToCartButton";
 import CartSummary from "@/components/CartSummary";
-import { slug } from "@/lib/cart-context";
+import { slug, useCart } from "@/lib/cart-context";
+
+function QuickAddCard({ item, image }: { item: typeof menuItems[number]; image?: string }) {
+  const { addToCart } = useCart();
+  const [flash, setFlash] = useState(false);
+
+  function handleClick() {
+    addToCart({
+      id: slug(item.name),
+      name: item.name,
+      price: item.price,
+      image: image,
+      emoji: item.emoji,
+    }, 1);
+    setFlash(true);
+    setTimeout(() => setFlash(false), 400);
+  }
+
+  return (
+    <div
+      onClick={handleClick}
+      className={`bg-white border rounded-xl overflow-hidden cursor-pointer transition-all flex ${flash ? "border-reba-pink shadow-lg scale-[1.02]" : "border-reba-border hover:border-reba-pink/30"}`}
+    >
+      {image ? (
+        <div className="w-28 sm:w-36 flex-shrink-0">
+          <img src={image} alt={item.name} className="w-full h-full object-cover" />
+        </div>
+      ) : (
+        <div className="w-28 sm:w-36 flex-shrink-0 bg-reba-card flex items-center justify-center">
+          <span className="text-3xl">{item.emoji}</span>
+        </div>
+      )}
+      <div className="flex-1 p-5 flex flex-col">
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <h3 className="text-reba-cream font-semibold text-xl">{item.name}</h3>
+          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">${item.price.toFixed(2)}</span>
+        </div>
+        <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">{item.description}</p>
+        <div className="mt-auto">
+          <span className={`inline-block px-6 py-2 rounded-full font-semibold text-sm transition-colors ${flash ? "bg-green-500 text-white" : "bg-reba-pink text-white"}`}>
+            {flash ? "Added!" : "Tap to Add"}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 const categories = [
   "Cookies",
@@ -108,49 +155,11 @@ export default function MenuPage() {
                 {items.map((item) => {
                   const image = productImages[item.id];
                   return (
-                    <div
+                    <QuickAddCard
                       key={item.id}
-                      className="bg-white border border-reba-border rounded-xl overflow-hidden hover:border-reba-pink/30 transition-colors flex"
-                    >
-                      {image ? (
-                        <div className="w-28 sm:w-36 flex-shrink-0">
-                          <img
-                            src={image}
-                            alt={item.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                      ) : (
-                        <div className="w-28 sm:w-36 flex-shrink-0 bg-reba-card flex items-center justify-center">
-                          <span className="text-3xl">{item.emoji}</span>
-                        </div>
-                      )}
-                      <div className="flex-1 p-5 flex flex-col">
-                        <div className="flex items-start justify-between gap-2 mb-2">
-                          <h3 className="text-reba-cream font-semibold text-xl">
-                            {item.name}
-                          </h3>
-                          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">
-                            ${item.price.toFixed(2)}
-                          </span>
-                        </div>
-                        <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">
-                          {item.description}
-                        </p>
-                        <div className="mt-auto">
-                          <AddToCartButton
-                            size="sm"
-                            product={{
-                              id: slug(item.name),
-                              name: item.name,
-                              price: item.price,
-                              image: image,
-                              emoji: item.emoji,
-                            }}
-                          />
-                        </div>
-                      </div>
-                    </div>
+                      item={item}
+                      image={image}
+                    />
                   );
                 })}
               </div>
