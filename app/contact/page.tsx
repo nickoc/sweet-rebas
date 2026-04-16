@@ -22,10 +22,10 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="py-16 sm:py-24" style={{ background: "linear-gradient(to bottom, #fff5f5, #ffffff)" }}>
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl text-reba-cream mb-4">
+          <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-cream mb-4">
             Contact Us
           </h1>
-          <p className="text-reba-muted text-xl">
+          <p className="text-reba-muted text-2xl sm:text-3xl">
             We&apos;d love to hear from you.
           </p>
         </div>

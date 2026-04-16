@@ -47,37 +47,38 @@ export function CakeSlideshow({ images }: GalleryProps) {
 }
 
 export function CakeCarousel({ images }: GalleryProps) {
-  const [offset, setOffset] = useState(0);
-  const maxOffset = Math.max(0, images.length - 3);
+  // Duplicate images for seamless infinite scroll
+  const doubled = [...images, ...images];
 
   return (
-    <div>
-      <div className="overflow-hidden">
-        <div
-          className="flex gap-4 transition-transform duration-500"
-          style={{ transform: `translateX(-${offset * (100 / 3 + 1.33)}%)` }}
-        >
-          {images.map((img) => (
-            <img
-              key={img.src}
-              src={img.src}
-              alt={img.alt}
-              className="min-w-[calc(33.333%-11px)] h-[440px] object-cover rounded-2xl shadow-lg"
-            />
-          ))}
-        </div>
-      </div>
-      <div className="flex justify-center gap-2.5 mt-4">
-        {Array.from({ length: maxOffset + 1 }).map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setOffset(i)}
-            className={`w-3 h-3 rounded-full transition-colors ${
-              i === offset ? "bg-reba-pink" : "bg-reba-border"
-            }`}
+    <div className="overflow-hidden rounded-2xl">
+      <div
+        className="flex gap-4 animate-scroll"
+        style={{
+          width: `${doubled.length * 320}px`,
+        }}
+      >
+        {doubled.map((img, i) => (
+          <img
+            key={img.src + "-" + i}
+            src={img.src}
+            alt={img.alt}
+            className="w-[300px] h-[440px] object-cover rounded-2xl shadow-lg flex-shrink-0"
           />
         ))}
       </div>
+      <style>{`
+        @keyframes scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-${images.length * 316}px); }
+        }
+        .animate-scroll {
+          animation: scroll ${images.length * 6}s linear infinite;
+        }
+        .animate-scroll:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   );
 }

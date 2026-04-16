@@ -68,7 +68,7 @@ export default function SignatureProducts() {
       <div className="text-center mt-10">
         <Link
           href="/menu"
-          className="text-reba-pink hover:text-reba-pink-hover transition-colors font-bold text-xl"
+          className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-12 py-4 rounded-full text-2xl font-bold transition-colors shadow-lg"
         >
           View Full Menu &rarr;
         </Link>

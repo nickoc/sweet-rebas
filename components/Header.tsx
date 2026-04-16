@@ -108,12 +108,11 @@ export default function Header() {
             >
               Specials of the Day
             </Link>
-            <Link
-              href="/box-builder"
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
+            <span
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-gray-500 text-white/80 px-6 py-3 rounded-full text-base font-semibold shadow-lg whitespace-nowrap cursor-default"
             >
               Order Now
-            </Link>
+            </span>
           </nav>
 
           {/* Mobile hamburger */}
@@ -155,13 +154,11 @@ export default function Header() {
               >
                 Specials of the Day
               </Link>
-              <Link
-                href="/box-builder"
-                onClick={() => setMobileOpen(false)}
-                className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors text-center"
+              <span
+                className="bg-gray-500 text-white/80 px-5 py-2.5 rounded-full text-sm font-medium text-center cursor-default"
               >
                 Order Now
-              </Link>
+              </span>
             </div>
           </nav>
         )}

@@ -33,13 +33,13 @@ export default function HomePage() {
         <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.85)] via-[rgba(255,248,240,0.3)_40%] to-transparent" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-6 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
+          <h1 className="font-[family-name:var(--font-heading)] font-bold text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-6 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Sweet Reba&apos;s
           </h1>
-          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             Artisan Bakery. Made with Love Since 2004.
           </p>
-          <p className="text-reba-pink/90 font-bold drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold mb-2 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             <a
               href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
               target="_blank"
@@ -58,27 +58,15 @@ export default function HomePage() {
               Old Town Salinas
             </a>
           </p>
-        </div>
-      </section>
-
-      {/* Reopening Banner */}
-      <ReopeningBanner />
-
-      {/* View Menu CTA */}
-      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
-        <div className="flex justify-center">
-          <Link
-            href="/menu"
-            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-xl font-semibold transition-colors text-center shadow-lg"
-          >
-            View Menu
-          </Link>
+          <p className="text-lg sm:text-xl text-reba-pink font-semibold drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+            Click here to be the first to know
+          </p>
         </div>
       </section>
 
       {/* What Makes Us Special */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
+        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-14">
           What Makes Us Special
         </h2>
 
@@ -92,8 +80,8 @@ export default function HomePage() {
           ].map((value) => (
             <div key={value.title} className="border border-reba-border rounded-2xl p-6 text-center" style={{ backgroundColor: "#fff5f5" }}>
               <div className="text-3xl mb-3">{value.emoji}</div>
-              <h3 className="text-reba-cream font-semibold text-lg mb-2">{value.title}</h3>
-              <p className="text-reba-muted text-base leading-relaxed">{value.desc}</p>
+              <h3 className="text-reba-cream font-semibold text-xl mb-2">{value.title}</h3>
+              <p className="text-reba-muted text-lg leading-relaxed">{value.desc}</p>
             </div>
           ))}
         </div>
@@ -104,10 +92,10 @@ export default function HomePage() {
       {/* Signature Products */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-4">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-4">
             Our Signature Products
           </h2>
-          <p className="text-reba-muted text-lg text-center mb-14">
+          <p className="text-reba-muted text-xl sm:text-2xl text-center mb-14">
             Scratch-made favorites, baked fresh every day
           </p>
 <SignatureProducts />
@@ -116,11 +104,11 @@ export default function HomePage() {
 
       {/* Sweet Reba's Today's Pick */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-4">
+        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-4">
           Breakfast and Lunch Today in Salinas
         </h2>
-        <p className="text-reba-muted text-lg sm:text-xl text-center mb-14">
-          Order for pick-up
+        <p className="text-reba-pink text-xl sm:text-2xl font-bold text-center mb-14">
+          Order for pick-up. Available until 1:00 PM or until sold out.
         </p>
 
         <HomeDailyPicks />
@@ -130,15 +118,15 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-6">
+            <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream mb-6">
               Our Story
             </h2>
-            <p className="text-reba-soft text-lg leading-relaxed mb-4">
+            <p className="text-reba-soft text-xl leading-relaxed mb-4">
               From grandmother&apos;s kitchen to Food Network, Sweet Reba&apos;s
               is a story of passion, family, and the transformative power of a
               really good cake.
             </p>
-            <p className="text-reba-muted text-lg leading-relaxed mb-6">
+            <p className="text-reba-muted text-xl leading-relaxed mb-6">
               What started as a birthday cake for her son in 2004 grew into one
               of the most beloved bakeries on the Monterey Peninsula. Reba
               brought her grandmother&apos;s recipes to life, earning
@@ -161,7 +149,7 @@ export default function HomePage() {
       {/* Customer Reviews */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-14">
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -44,7 +44,7 @@ function QuickAddCard({ item, image }: { item: typeof menuItems[number]; image?:
         </div>
         <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">{item.description}</p>
         <div className="mt-auto">
-          <span className={`inline-block px-6 py-2 rounded-full font-semibold text-sm transition-colors ${flash ? "bg-green-500 text-white" : "bg-reba-pink text-white"}`}>
+          <span className={`inline-block px-6 py-2 rounded-full font-semibold text-sm transition-colors ${flash ? "bg-green-500 text-white" : "bg-gray-500 text-white/80"}`}>
             {flash ? "Added!" : "Tap to Add"}
           </span>
         </div>
@@ -101,7 +101,7 @@ function CakeOrderCards() {
             <h3 className="text-reba-cream font-semibold text-xl mb-2">{cake.name}</h3>
             <button
               onClick={() => setSelectedCake(selectedCake === cake.name ? null : cake.name)}
-              className="inline-block px-6 py-2 rounded-full font-semibold text-sm bg-reba-pink text-white hover:bg-reba-pink-hover transition-colors"
+              className="inline-block px-6 py-2 rounded-full font-semibold text-sm bg-gray-500 text-white/80 transition-colors"
             >
               {selectedCake === cake.name ? "Close" : "Choose Size & Order"}
             </button>
@@ -185,30 +185,23 @@ export default function MenuPage() {
         <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
+          <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Our Menu
           </h1>
-          <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-3xl sm:text-4xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             Good Food, Great Prices, Made from Scratch
           </p>
         </div>
       </section>
 
-      {/* Flavor Quiz & Chalkboard CTAs */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+      {/* Flavor Quiz CTA */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-4 flex justify-center">
         <Link
           href="/quiz"
           className="inline-flex items-center gap-3 bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
         >
           <span className="text-2xl">{"\u{1F36A}"}</span>
           <span>Flavor Quiz &mdash; What should I try?</span>
-        </Link>
-        <Link
-          href="/chalkboard"
-          className="inline-flex items-center gap-3 bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-lg font-medium transition-colors shadow-md hover:shadow-lg"
-        >
-          <span className="text-2xl">{"\u{1F4CB}"}</span>
-          <span>Today&apos;s Chalkboard at Sweet Reba&apos;s</span>
         </Link>
       </section>
 
@@ -220,15 +213,15 @@ export default function MenuPage() {
 
           return (
             <div key={category} className="mb-16 last:mb-0">
-              <div className="flex items-center gap-4 mb-6">
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream">
+              <div className="flex items-center gap-4 mb-4">
+                <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream">
                   {category}
                 </h2>
                 <div className="flex-1 h-px bg-reba-border" />
               </div>
 
               {categoryNotes[category] && (
-                <p className="text-reba-pink text-base mb-6 italic">
+                <p className="text-reba-pink text-xl sm:text-2xl font-bold mb-6 text-center">
                   {categoryNotes[category]}
                 </p>
               )}
@@ -253,13 +246,13 @@ export default function MenuPage() {
 
       {/* Cakes */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-center gap-4 mb-2">
-          <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream">
+        <div className="flex items-center gap-4 mb-4">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream">
             Cakes
           </h2>
           <div className="flex-1 h-px bg-reba-border" />
         </div>
-        <p className="text-reba-muted text-base mb-8">
+        <p className="text-reba-pink text-xl sm:text-2xl font-bold mb-8 text-center">
           7-day advance notice for custom cakes &amp; pies. 72-hour notice for larger orders. Standard flavors may be available sooner &mdash; call to ask!
         </p>
 
