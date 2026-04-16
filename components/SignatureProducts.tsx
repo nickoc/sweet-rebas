@@ -83,7 +83,7 @@ export default function SignatureProducts() {
           onClick={() => setSelected(null)}
         >
           <div
-            className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 relative"
+            className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto relative"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -96,25 +96,24 @@ export default function SignatureProducts() {
               </svg>
             </button>
 
-            <div className="aspect-square md:aspect-auto md:h-full overflow-hidden">
+            <div className="overflow-hidden rounded-t-3xl">
               <img
                 src={selected.image}
                 alt={selected.name}
-                className="w-full h-full object-cover"
+                className="w-full object-cover"
               />
             </div>
 
-            <div className="p-6 sm:p-8 flex flex-col">
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2">
+            <div className="p-6 text-center">
+              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-1">
                 {selected.name}
               </h2>
-              <p className="text-reba-pink text-2xl font-semibold mb-4">
+              <p className="text-reba-pink text-xl font-semibold mb-2">
                 {formatPrice(selected.price)}
               </p>
-              <p className="text-reba-soft text-lg leading-relaxed mb-6 flex-1">
+              <p className="text-reba-muted text-base leading-relaxed">
                 {selected.desc}
               </p>
-              <AddToCartButton product={selected} onAdded={() => setSelected(null)} />
             </div>
           </div>
         </div>

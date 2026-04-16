@@ -1,4 +1,10 @@
+"use client";
+
+import { useState } from "react";
+
 export default function CateringPage() {
+  const [cateringEmail, setCateringEmail] = useState("");
+  const [cateringSubmitted, setCateringSubmitted] = useState(false);
   return (
     <div>
       {/* Hero */}
@@ -42,6 +48,28 @@ export default function CateringPage() {
                 <a href="tel:8316014818" className="text-reba-pink font-bold text-2xl hover:text-reba-pink-hover transition-colors">
                   (831) 601-4818
                 </a>
+              </div>
+              <div className="pt-4 border-t border-reba-border mt-4">
+                {cateringSubmitted ? (
+                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will reach out soon.</p>
+                ) : (
+                  <>
+                    <p className="text-reba-muted text-sm mb-3">Or leave your email and we&apos;ll reach out</p>
+                    <form onSubmit={(e) => { e.preventDefault(); if (cateringEmail.trim()) setCateringSubmitted(true); }} className="flex gap-3 max-w-sm mx-auto">
+                      <input
+                        type="email"
+                        value={cateringEmail}
+                        onChange={(e) => setCateringEmail(e.target.value)}
+                        placeholder="Your email address"
+                        required
+                        className="flex-1 bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <button type="submit" className="bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors">
+                        Request Consultation
+                      </button>
+                    </form>
+                  </>
+                )}
               </div>
             </div>
           </div>

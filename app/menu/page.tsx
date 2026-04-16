@@ -1,13 +1,36 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { menuItems } from "@/data/sample-data";
 import AddToCartButton from "@/components/AddToCartButton";
 import CartSummary from "@/components/CartSummary";
 import { slug, useCart } from "@/lib/cart-context";
 
-function QuickAddCard({ item, image }: { item: typeof menuItems[number]; image?: string }) {
+function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) { if (e.key === "Escape") onClose(); }
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKey);
+    return () => { document.removeEventListener("keydown", handleKey); document.body.style.overflow = ""; };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
+      <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-cream hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <img src={src} alt={alt} className="w-full object-cover" />
+        <div className="p-4 text-center">
+          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream">{alt}</h3>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function QuickAddCard({ item, image, onImageClick }: { item: typeof menuItems[number]; image?: string; onImageClick?: (src: string, alt: string) => void }) {
   const { addToCart } = useCart();
   const [flash, setFlash] = useState(false);
 
@@ -25,12 +48,11 @@ function QuickAddCard({ item, image }: { item: typeof menuItems[number]; image?:
 
   return (
     <div
-      onClick={handleClick}
-      className={`bg-white border rounded-xl overflow-hidden cursor-pointer transition-all flex ${flash ? "border-reba-pink shadow-lg scale-[1.02]" : "border-reba-border hover:border-reba-pink/30"}`}
+      className="bg-white border rounded-xl overflow-hidden transition-all flex border-reba-border hover:border-reba-pink/30"
     >
       {image ? (
-        <div className="w-28 sm:w-36 flex-shrink-0">
-          <img src={image} alt={item.name} className="w-full h-full object-cover" />
+        <div className="w-28 sm:w-36 flex-shrink-0 cursor-zoom-in" onClick={() => onImageClick?.(image, item.name)}>
+          <img src={image} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
         </div>
       ) : (
         <div className="w-28 sm:w-36 flex-shrink-0 bg-reba-card flex items-center justify-center">
@@ -43,11 +65,6 @@ function QuickAddCard({ item, image }: { item: typeof menuItems[number]; image?:
           <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">${item.price.toFixed(2)}</span>
         </div>
         <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">{item.description}</p>
-        <div className="mt-auto">
-          <span className={`inline-block px-6 py-2 rounded-full font-semibold text-sm transition-colors ${flash ? "bg-green-500 text-white" : "bg-gray-500 text-white/80"}`}>
-            {flash ? "Added!" : "Tap to Add"}
-          </span>
-        </div>
       </div>
     </div>
   );
@@ -67,7 +84,7 @@ const cakeSizes = [
   { label: "Cupcakes (dozen)", serves: "Per dozen", price: 36 },
 ];
 
-function CakeOrderCards() {
+function CakeOrderCards({ onImageClick }: { onImageClick?: (src: string, alt: string) => void }) {
   const { addToCart } = useCart();
   const [selectedCake, setSelectedCake] = useState<string | null>(null);
   const [flashId, setFlashId] = useState<string | null>(null);
@@ -94,8 +111,8 @@ function CakeOrderCards() {
           <img
             src={cake.image}
             alt={cake.name}
-            className="w-full h-[200px] object-cover cursor-pointer"
-            onClick={() => setSelectedCake(selectedCake === cake.name ? null : cake.name)}
+            className="w-full h-[200px] object-cover cursor-zoom-in hover:scale-105 transition-transform duration-300"
+            onClick={() => onImageClick?.(cake.image, cake.name)}
           />
           <div className="p-5 text-center">
             <h3 className="text-reba-cream font-semibold text-xl mb-2">{cake.name}</h3>
@@ -170,6 +187,12 @@ const productImages: Record<string, string> = {
 };
 
 export default function MenuPage() {
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
+
+  function handleImageClick(src: string, alt: string) {
+    setZoomImage({ src, alt });
+  }
+
   const grouped = categories.reduce(
     (acc, cat) => {
       acc[cat] = menuItems.filter((item) => item.category === cat.toLowerCase());
@@ -234,6 +257,7 @@ export default function MenuPage() {
                       key={item.id}
                       item={item}
                       image={image}
+                      onImageClick={handleImageClick}
                     />
                   );
                 })}
@@ -257,7 +281,7 @@ export default function MenuPage() {
         </p>
 
         {/* Cake Products — click to choose size */}
-        <CakeOrderCards />
+        <CakeOrderCards onImageClick={handleImageClick} />
 
         {/* Sizes & Pricing Reference */}
         <h3 className="font-semibold text-reba-cream text-2xl mb-6">Sizes &amp; Pricing</h3>
@@ -316,6 +340,9 @@ export default function MenuPage() {
           </Link>
         </div>
       </section>
+
+      {/* Image Zoom Modal */}
+      {zoomImage && <ImageZoomModal src={zoomImage.src} alt={zoomImage.alt} onClose={() => setZoomImage(null)} />}
     </div>
   );
 }
