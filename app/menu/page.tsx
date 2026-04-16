@@ -185,10 +185,10 @@ export default function MenuPage() {
         <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
+          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Our Menu
           </h1>
-          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             Good Food, Great Prices, Made from Scratch
           </p>
         </div>

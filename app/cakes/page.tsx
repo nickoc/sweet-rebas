@@ -46,37 +46,16 @@ export default function CakesPage() {
         <img src="/banner-unicorn-cakes.jpg" alt="Beautiful unicorn cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
+          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Custom Cakes
           </h1>
-          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-1 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-1 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             As seen on Food Network&apos;s Cake Wars.
           </p>
-          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             Every cake is a custom work of art, designed and baked with love.
           </p>
         </div>
-      </section>
-
-      {/* Dream Cake CTA */}
-      <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-3xl mx-auto px-4 py-14 text-center">
-          <Link
-            href="/dream-cake"
-            className="inline-block bg-reba-pink hover:bg-reba-pink-hover text-white px-14 py-5 rounded-full text-xl sm:text-2xl font-semibold transition-colors shadow-lg hover:shadow-xl"
-          >
-            Tell Us About Your Dream Cake {"\u2728"}
-          </Link>
-        </div>
-      </section>
-
-      {/* Detail Slideshow */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
-          Reba&apos;s Attention to Detail
-        </h2>
-        <p className="text-reba-muted text-center text-xl mb-10">A few of our favorite creations</p>
-        <CakeSlideshow images={detailImages} />
       </section>
 
       {/* Dreamy Gallery */}

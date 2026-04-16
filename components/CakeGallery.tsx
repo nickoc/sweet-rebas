@@ -62,7 +62,7 @@ export function CakeCarousel({ images }: GalleryProps) {
               key={img.src}
               src={img.src}
               alt={img.alt}
-              className="min-w-[calc(33.333%-11px)] h-[380px] object-cover rounded-2xl shadow-lg"
+              className="min-w-[calc(33.333%-11px)] h-[440px] object-cover rounded-2xl shadow-lg"
             />
           ))}
         </div>

@@ -1,6 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { CakeCarousel } from "@/components/CakeGallery";
+
+const whiteWeddingImages = [
+  { src: "/cake-dreamy-3.jpg", alt: "White two-tier cake with ranunculus and eucalyptus" },
+  { src: "/cake-dreamy-1.jpg", alt: "Rustic white tiered cake with anemones" },
+  { src: "/cake-dreamy-4.jpg", alt: "White four-tier wedding cake with red roses" },
+  { src: "/cake-special-3.jpg", alt: "Semi-naked white cake with pink peonies" },
+];
 
 export default function WeddingCakesPage() {
   const [email, setEmail] = useState("");
@@ -20,12 +28,34 @@ export default function WeddingCakesPage() {
         <img src="/cake-dreamy-3.jpg" alt="Beautiful wedding cake with white ranunculus" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
+          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
             Wedding Cakes
           </h1>
-          <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
             Your love story, beautifully told in cake
           </p>
+        </div>
+      </section>
+
+      {/* Reba's Attention to Detail — Single Hero Image */}
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
+          Reba&apos;s Attention to Detail
+        </h2>
+        <p className="text-reba-muted text-center text-xl mb-10">A few of our favorite creations</p>
+        <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-lg">
+          <img src="/cake-detail-1.png" alt="White wedding cake with ranunculus and eucalyptus — close-up detail" className="w-full h-auto object-cover" />
+        </div>
+      </section>
+
+      {/* White Wedding Cakes Gallery */}
+      <section style={{ backgroundColor: "#fff5f5" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
+            White Wedding Cakes
+          </h2>
+          <p className="text-reba-muted text-center text-xl mb-10">Timeless elegance in every tier</p>
+          <CakeCarousel images={whiteWeddingImages} />
         </div>
       </section>
 

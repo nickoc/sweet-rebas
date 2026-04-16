@@ -64,20 +64,14 @@ export default function HomePage() {
       {/* Reopening Banner */}
       <ReopeningBanner />
 
-      {/* Primary CTAs (moved below reopening banner) */}
+      {/* View Menu CTA */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex justify-center">
           <Link
             href="/menu"
-            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3.5 rounded-full text-lg font-medium transition-colors text-center"
+            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-10 py-4 rounded-full text-xl font-semibold transition-colors text-center shadow-lg"
           >
             View Menu
-          </Link>
-          <Link
-            href="/chalkboard"
-            className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3.5 rounded-full text-lg font-medium transition-colors text-center"
-          >
-            Today&apos;s Chalkboard at Sweet Reba&apos;s
           </Link>
         </div>
       </section>
