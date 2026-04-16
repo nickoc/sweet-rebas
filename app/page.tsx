@@ -58,11 +58,11 @@ export default function HomePage() {
               Old Town Salinas
             </a>
           </p>
-          <p className="text-lg sm:text-xl text-reba-pink font-semibold drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-            Click here to be the first to know
-          </p>
         </div>
       </section>
+
+      {/* Reopening Banner */}
+      <ReopeningBanner />
 
       {/* What Makes Us Special */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">

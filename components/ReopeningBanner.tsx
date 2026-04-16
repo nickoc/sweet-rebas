@@ -39,10 +39,10 @@ export default function ReopeningBanner() {
               Our Salinas location is open!
             </p>
             <p className="text-reba-cream text-base sm:text-lg leading-relaxed">
-              Our Carmel location is reopening at the end of May.{" "}
-              <span className="text-reba-pink font-semibold underline underline-offset-2">
-                Click here to be the first to know.
-              </span>
+              Our Carmel location is reopening at the end of May.
+            </p>
+            <p className="text-reba-pink font-semibold text-base sm:text-lg underline underline-offset-2 mt-1">
+              Click here to be the first to know.
             </p>
           </button>
         ) : (
