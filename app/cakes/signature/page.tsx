@@ -188,6 +188,30 @@ export default function SignatureCakesPage() {
       </section>
 
 
+      {/* Planning Buttons */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/cakes"
+            className="flex-1 text-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-4 rounded-full text-xl font-semibold italic transition-colors shadow-md flex items-center justify-center"
+          >
+            Planning for a Special Occasion?
+          </a>
+          <a
+            href="/wedding-cakes"
+            className="flex-1 text-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-4 rounded-full text-xl font-semibold italic transition-colors shadow-md flex items-center justify-center"
+          >
+            Planning a Wedding?
+          </a>
+          <a
+            href="/catering"
+            className="flex-1 text-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-4 rounded-full text-xl font-semibold italic transition-colors shadow-md flex items-center justify-center"
+          >
+            Planning an Event?
+          </a>
+        </div>
+      </section>
+
       {/* Image Zoom Modal */}
       {zoomImage && <ZoomModal src={zoomImage.src} alt={zoomImage.alt} onClose={() => setZoomImage(null)} />}
     </div>
