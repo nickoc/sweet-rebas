@@ -119,8 +119,11 @@ export default function SignatureCakesPage() {
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
               Call to Order Your Cake
             </h3>
+            <p className="text-reba-pink text-lg sm:text-xl font-bold mb-2">
+              Please allow 48 hours for Signature Cake orders, or call to check availability in our store.
+            </p>
             <p className="text-reba-pink text-lg sm:text-xl font-bold mb-8">
-              Please allow 7 days for custom cake orders.
+              We also deliver.
             </p>
             <div className="space-y-4">
               <div>
