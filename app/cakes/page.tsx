@@ -89,7 +89,7 @@ export default function CakesPage() {
         <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
           Custom Cakes
         </h1>
-        <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-1 tracking-wide">
+        <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-4 tracking-wide">
           As seen on Food Network&apos;s Cake Wars.
         </p>
         <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide">
