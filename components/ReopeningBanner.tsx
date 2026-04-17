@@ -18,17 +18,18 @@ export default function ReopeningBanner() {
       <div className="rounded-2xl overflow-hidden" style={{ backgroundColor: "#f8f6f3" }}>
         <div className="grid grid-cols-1 md:grid-cols-2">
           {/* Left: Text */}
-          <div className="p-10 sm:p-12 flex flex-col justify-center">
+          <div className="p-10 sm:p-12 flex flex-col justify-between h-full">
             <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink mb-4">
               Exciting News!
             </h2>
             <p className="text-reba-muted text-xl leading-relaxed mb-3">
               Our Salinas store is now open!
             </p>
-            <p className="text-reba-muted text-xl leading-relaxed mb-8">
+            <p className="text-reba-muted text-xl leading-relaxed mb-4">
               Our Carmel store is reopening at the end of May.
             </p>
 
+            <div className="mt-auto pt-4">
             {submitted ? (
               <p className="text-reba-pink font-semibold text-lg">
                 You&apos;re on the list! We&apos;ll let you know as soon as Carmel reopens.
@@ -56,6 +57,7 @@ export default function ReopeningBanner() {
                 </form>
               </>
             )}
+            </div>
           </div>
 
           {/* Right: Image */}

@@ -37,7 +37,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-[100vh] overflow-hidden">
         <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
+        {/* gradient removed — revert to 01c6c27 to restore */}
         <div className="relative min-h-[100vh]" />
       </section>
 
