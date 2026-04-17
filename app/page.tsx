@@ -84,18 +84,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Signature Products */}
-      <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-4">
-            Our Signature Products
-          </h2>
-          <p className="text-reba-muted text-xl sm:text-2xl text-center mb-14">
-            Scratch-made favorites, baked fresh every day
-          </p>
-<SignatureProducts />
-        </div>
-      </section>
 
       {/* Sweet Reba's Today's Pick */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
