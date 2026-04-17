@@ -132,10 +132,10 @@ export default function WeddingCakesPage() {
         </div>
       </section>
 
-      {/* Pricing Info + Call Us */}
+      {/* Pricing Info */}
       <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-8">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-6">
             Wedding Cake Pricing
           </h2>
           <p className="text-reba-soft text-base sm:text-lg leading-relaxed mb-1">
@@ -144,33 +144,9 @@ export default function WeddingCakesPage() {
           <p className="text-reba-soft text-base sm:text-lg leading-relaxed mb-1">
             Multi-tier designs start at <span className="text-reba-pink font-semibold">$150</span>.
           </p>
-          <p className="text-reba-soft text-base sm:text-lg leading-relaxed mb-10">
+          <p className="text-reba-soft text-base sm:text-lg leading-relaxed">
             Tasting sessions available.
           </p>
-
-          <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
-            <div className="text-5xl mb-4">{"\u{1F4DE}"}</div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
-              Call Us
-            </h3>
-            <p className="text-reba-muted text-base sm:text-lg mb-8">
-              Ready to start planning your wedding cake? Give us a call.
-            </p>
-            <div className="space-y-4">
-              <div>
-                <p className="text-reba-muted text-sm mb-1">Old Town Salinas</p>
-                <a href="tel:8316760628" className="text-reba-pink font-bold text-2xl hover:text-reba-pink-hover transition-colors">
-                  (831) 676-0628
-                </a>
-              </div>
-              <div>
-                <p className="text-reba-muted text-sm mb-1">Carmel Crossroads</p>
-                <a href="tel:8316014818" className="text-reba-pink font-bold text-2xl hover:text-reba-pink-hover transition-colors">
-                  (831) 601-4818
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
