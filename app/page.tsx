@@ -42,11 +42,11 @@ export default function HomePage() {
       </section>
 
       {/* Title + Locations */}
-      <section className="py-10 text-center">
-        <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-2 tracking-wide">
+      <section className="py-10 sm:py-14 text-center">
+        <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-4 tracking-wide">
           Artisan Bakery. Made with Love Since 2004.
         </p>
-        <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold mb-2">
+        <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold">
           <a
             href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
             target="_blank"
@@ -68,7 +68,7 @@ export default function HomePage() {
       </section>
 
       {/* Three Feature Cards */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Our Story */}
           <Link href="/about" className="group block">
@@ -78,7 +78,7 @@ export default function HomePage() {
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
               Our Story
             </h3>
-            <p className="text-reba-muted text-base leading-relaxed">
+            <p className="text-reba-muted text-xl leading-relaxed">
               From grandmother&apos;s kitchen to Food Network — a story of passion, family, and the perfect cake.
             </p>
           </Link>
@@ -91,7 +91,7 @@ export default function HomePage() {
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
               What&apos;s Baking Today?
             </h3>
-            <p className="text-reba-muted text-base leading-relaxed">
+            <p className="text-reba-muted text-xl leading-relaxed">
               Fresh soups, sandwiches, cookies, and daily specials — made from scratch every morning.
             </p>
           </Link>
@@ -104,7 +104,7 @@ export default function HomePage() {
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
               Bakery Pre-Orders
             </h3>
-            <p className="text-reba-muted text-base leading-relaxed">
+            <p className="text-reba-muted text-xl leading-relaxed">
               Place an order for pick-up and we&apos;ll do the rest to make something just for you.
             </p>
           </Link>
@@ -113,18 +113,6 @@ export default function HomePage() {
 
       {/* Reopening Banner */}
       <ReopeningBanner />
-
-      {/* Sweet Reba's Today's Pick */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-4">
-          Breakfast and Lunch Today in Salinas
-        </h2>
-        <p className="text-reba-pink text-xl sm:text-2xl font-bold text-center mb-14">
-          Order for pick-up. Available until 1:00 PM or until sold out.
-        </p>
-
-        <HomeDailyPicks />
-      </section>
 
 
       {/* Dynamic Counter */}
