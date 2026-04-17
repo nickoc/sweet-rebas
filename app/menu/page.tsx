@@ -204,17 +204,18 @@ export default function MenuPage() {
   return (
     <div>
       {/* Hero Photo Banner */}
-      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-8">
+      <section className="relative min-h-[60vh] overflow-hidden">
         <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
-            Our Menu
-          </h1>
-          <p className="text-3xl sm:text-4xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-            Good Food, Great Prices, Made from Scratch
-          </p>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
+        <div className="relative min-h-[60vh]" />
+      </section>
+      <section style={{ backgroundColor: "#fff5f5" }} className="py-10 text-center">
+        <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4">
+          Our Menu
+        </h1>
+        <p className="text-3xl sm:text-4xl font-bold text-reba-pink mb-2 tracking-wide">
+          Good Food, Great Prices, Made from Scratch
+        </p>
       </section>
 
       {/* Flavor Quiz CTA */}

@@ -80,20 +80,21 @@ export default function CakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-8">
+      <section className="relative min-h-[60vh] overflow-hidden">
         <img src="/banner-unicorn-cakes.jpg" alt="Beautiful unicorn cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.95)] via-[rgba(255,248,240,0.6)_45%] to-transparent" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
-            Custom Cakes
-          </h1>
-          <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-1 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-            As seen on Food Network&apos;s Cake Wars.
-          </p>
-          <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-            Every cake is a custom work of art, designed and baked with love.
-          </p>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
+        <div className="relative min-h-[60vh]" />
+      </section>
+      <section style={{ backgroundColor: "#fff5f5" }} className="py-10 text-center">
+        <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
+          Custom Cakes
+        </h1>
+        <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-1 tracking-wide">
+          As seen on Food Network&apos;s Cake Wars.
+        </p>
+        <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide">
+          Every cake is a custom work of art, designed and baked with love.
+        </p>
       </section>
 
       {/* Call to Order */}
