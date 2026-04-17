@@ -29,60 +29,41 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] flex items-end justify-center overflow-hidden pb-16">
+      <section className="relative min-h-[100vh] overflow-hidden">
         <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.6)] via-transparent to-transparent" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-2 tracking-wide drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">
-            Artisan Bakery. Made with Love Since 2004.
-          </p>
-          <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold mb-2 drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">
-            <a
-              href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
-            >
-              Carmel Crossroads
-            </a>
-            {" & "}
-            <a
-              href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
-            >
-              Old Town Salinas
-            </a>
-          </p>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
+        <div className="relative min-h-[100vh]" />
+      </section>
+
+      {/* Title + Locations */}
+      <section className="py-10 text-center">
+        <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-2 tracking-wide">
+          Artisan Bakery. Made with Love Since 2004.
+        </p>
+        <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold mb-2">
+          <a
+            href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
+          >
+            Carmel Crossroads
+          </a>
+          {" & "}
+          <a
+            href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"
+          >
+            Old Town Salinas
+          </a>
+        </p>
       </section>
 
       {/* Reopening Banner */}
       <ReopeningBanner />
 
-      {/* What Makes Us Special */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-14">
-          What Makes Us Special
-        </h2>
-
-        {/* Our Values */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-14">
-          {[
-            { emoji: "🌾", title: "Highest Quality", desc: "We source the finest ingredients available. No shortcuts, no compromises." },
-            { emoji: "🌿", title: "Freshest Ingredients", desc: "Everything is made fresh, from scratch, every single day." },
-            { emoji: "👩‍🍳", title: "Small-Batch", desc: "We bake in small batches to ensure every item meets our standards." },
-            { emoji: "❤️", title: "Made with Love", desc: "The secret ingredient in everything we make. You can taste the difference." },
-          ].map((value) => (
-            <div key={value.title} className="border border-reba-border rounded-2xl p-6 text-center" style={{ backgroundColor: "#fff5f5" }}>
-              <div className="text-3xl mb-3">{value.emoji}</div>
-              <h3 className="text-reba-cream font-semibold text-xl mb-2">{value.title}</h3>
-              <p className="text-reba-muted text-lg leading-relaxed">{value.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
 
       {/* Sweet Reba's Today's Pick */}
