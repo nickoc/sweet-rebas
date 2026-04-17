@@ -6,8 +6,15 @@ import Link from "next/link";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Menu", href: "/menu" },
-  { label: "Cakes", href: "/cakes" },
-  { label: "Wedding Cakes", href: "/wedding-cakes" },
+  {
+    label: "Cakes",
+    href: "/cakes",
+    sub: [
+      { label: "Signature Cakes", href: "/cakes/signature" },
+      { label: "Custom Cakes", href: "/cakes" },
+      { label: "Wedding Cakes", href: "/wedding-cakes" },
+    ],
+  },
   { label: "Catering", href: "/catering" },
   { label: "Our Story", href: "/about" },
   { label: "Contact Us & Locations", href: "/contact" },
@@ -17,6 +24,7 @@ const navLinks = [
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [cakesOpen, setCakesOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -87,14 +95,39 @@ export default function Header() {
               {menuOpen && (
                 <div className="absolute top-full left-0 mt-2 w-72 rounded-xl shadow-xl border border-reba-border overflow-hidden z-50" style={{ backgroundColor: "#fff5f5" }}>
                   {navLinks.map((link) => (
-                    <Link
-                      key={link.href + link.label}
-                      href={link.href}
-                      onClick={() => setMenuOpen(false)}
-                      className="block px-6 py-4 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
-                    >
-                      {link.label}
-                    </Link>
+                    <div key={link.href + link.label}>
+                      {link.sub ? (
+                        <>
+                          <button
+                            onClick={() => setCakesOpen(!cakesOpen)}
+                            className="w-full flex items-center justify-between px-6 py-4 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors"
+                          >
+                            <span>{link.label}</span>
+                            <svg className={`w-4 h-4 transition-transform ${cakesOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                            </svg>
+                          </button>
+                          {cakesOpen && link.sub.map((sub) => (
+                            <Link
+                              key={sub.href + sub.label}
+                              href={sub.href}
+                              onClick={() => { setMenuOpen(false); setCakesOpen(false); }}
+                              className="block px-10 py-3 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
+                            >
+                              {sub.label}
+                            </Link>
+                          ))}
+                        </>
+                      ) : (
+                        <Link
+                          href={link.href}
+                          onClick={() => setMenuOpen(false)}
+                          className="block px-6 py-4 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
+                        >
+                          {link.label}
+                        </Link>
+                      )}
+                    </div>
                   ))}
                 </div>
               )}
@@ -140,14 +173,39 @@ export default function Header() {
           <nav className="md:hidden pb-4 border-t border-reba-border pt-4">
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setMobileOpen(false)}
-                  className="text-reba-soft hover:text-reba-cream transition-colors py-2 text-sm"
-                >
-                  {link.label}
-                </Link>
+                <div key={link.href + link.label}>
+                  {link.sub ? (
+                    <>
+                      <button
+                        onClick={() => setCakesOpen(!cakesOpen)}
+                        className="text-reba-soft hover:text-reba-cream transition-colors py-2 text-sm flex items-center gap-2 w-full"
+                      >
+                        {link.label}
+                        <svg className={`w-3 h-3 transition-transform ${cakesOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </button>
+                      {cakesOpen && link.sub.map((sub) => (
+                        <Link
+                          key={sub.href}
+                          href={sub.href}
+                          onClick={() => { setMobileOpen(false); setCakesOpen(false); }}
+                          className="text-reba-soft hover:text-reba-cream transition-colors py-2 text-sm block pl-6"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="text-reba-soft hover:text-reba-cream transition-colors py-2 text-sm block"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
+                </div>
               ))}
               <Link
                 href="/chalkboard"

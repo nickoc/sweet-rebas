@@ -127,10 +127,6 @@ export default function ChalkboardPage() {
 
       {/* Specials of the Day — 3 on top, 2 below */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-32">
-        <h2 className="font-[family-name:var(--font-heading)] text-6xl sm:text-7xl text-reba-pink text-center mb-3">
-          What Specials Do We Have Today?
-        </h2>
-        <p className="text-center text-reba-muted text-2xl mb-10">Fresh, featured, and made with love</p>
 
         {/* Top row: 3 cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
