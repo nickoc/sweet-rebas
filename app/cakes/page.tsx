@@ -85,7 +85,7 @@ export default function CakesPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
         <div className="relative min-h-[60vh]" />
       </section>
-      <section style={{ backgroundColor: "#fff5f5" }} className="py-10 text-center">
+      <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
           Custom Cakes
         </h1>

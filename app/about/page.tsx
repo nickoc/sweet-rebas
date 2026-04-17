@@ -7,7 +7,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
         <div className="relative min-h-[60vh]" />
       </section>
-      <section style={{ backgroundColor: "#fff5f5" }} className="py-10 text-center">
+      <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4">
           Our Story
         </h1>
