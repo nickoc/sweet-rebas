@@ -65,10 +65,6 @@ export default function SignatureCakesPage() {
 
       {/* Standard Cakes */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-4">
-          Our Signature Cakes
-        </h2>
-        <p className="text-reba-pink text-xl sm:text-2xl font-bold text-center mb-10">Ready today or within 48–72 hours</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
           {standardCakes.map((cake) => (
             <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden">
