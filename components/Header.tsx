@@ -11,8 +11,7 @@ const navLinks = [
   { label: "Catering", href: "/catering" },
   { label: "Our Story", href: "/about" },
   { label: "Contact Us & Locations", href: "/contact" },
-  { label: "Specials of the Day", href: "/chalkboard" },
-  { label: "Order Now", href: "/box-builder" },
+  { label: "What's Baking?", href: "/chalkboard" },
 ];
 
 export default function Header() {
@@ -106,13 +105,16 @@ export default function Header() {
               href="/chalkboard"
               className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold transition-colors shadow-lg whitespace-nowrap"
             >
-              Specials of the Day
+              What's Baking?
             </Link>
-            <span
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-gray-500 text-white/80 px-8 py-4 rounded-full text-xl font-bold shadow-lg whitespace-nowrap cursor-default"
+            <a
+              href="https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg whitespace-nowrap transition-colors"
             >
               Order Now
-            </span>
+            </a>
           </nav>
 
           {/* Mobile hamburger */}
@@ -152,13 +154,17 @@ export default function Header() {
                 onClick={() => setMobileOpen(false)}
                 className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors text-center mt-2"
               >
-                Specials of the Day
+                What's Baking?
               </Link>
-              <span
-                className="bg-gray-500 text-white/80 px-5 py-2.5 rounded-full text-sm font-medium text-center cursor-default"
+              <a
+                href="https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileOpen(false)}
+                className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium text-center transition-colors"
               >
                 Order Now
-              </span>
+              </a>
             </div>
           </nav>
         )}
