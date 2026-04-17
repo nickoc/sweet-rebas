@@ -42,7 +42,9 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
 export default function SignatureCakesPage() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
   const [cakeEmail, setCakeEmail] = useState("");
+  const [cakePhone, setCakePhone] = useState("");
   const [cakeSubmitted, setCakeSubmitted] = useState(false);
+  const [callbackOpen, setCallbackOpen] = useState(false);
 
   return (
     <div>
@@ -138,24 +140,46 @@ export default function SignatureCakesPage() {
               </div>
               <div className="pt-4 border-t border-reba-border mt-4">
                 {cakeSubmitted ? (
-                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will reach out soon.</p>
+                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will call you soon.</p>
+                ) : !callbackOpen ? (
+                  <button
+                    onClick={() => setCallbackOpen(true)}
+                    className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full text-base font-semibold transition-colors"
+                  >
+                    Request a Call Back
+                  </button>
                 ) : (
-                  <>
-                    <p className="text-reba-muted text-sm mb-3">Or leave your email and we&apos;ll reach out</p>
-                    <form onSubmit={(e) => { e.preventDefault(); if (cakeEmail.trim()) setCakeSubmitted(true); }} className="flex gap-3 max-w-sm mx-auto">
+                  <div className="bg-reba-card border border-reba-border rounded-xl p-5 relative">
+                    <button
+                      onClick={() => setCallbackOpen(false)}
+                      className="absolute top-2 right-2 text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
+                      aria-label="Close"
+                    >
+                      &times;
+                    </button>
+                    <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
+                    <form onSubmit={(e) => { e.preventDefault(); if (cakeEmail.trim() && cakePhone.trim()) setCakeSubmitted(true); }} className="space-y-3 max-w-sm mx-auto">
                       <input
                         type="email"
                         value={cakeEmail}
                         onChange={(e) => setCakeEmail(e.target.value)}
-                        placeholder="Your email address"
+                        placeholder="Your email address *"
                         required
-                        className="flex-1 bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <button type="submit" className="bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors">
-                        Request Consultation
+                      <input
+                        type="tel"
+                        value={cakePhone}
+                        onChange={(e) => setCakePhone(e.target.value)}
+                        placeholder="Your phone number *"
+                        required
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <button type="submit" className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors">
+                        Request a Call Back
                       </button>
                     </form>
-                  </>
+                  </div>
                 )}
               </div>
             </div>

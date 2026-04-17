@@ -12,14 +12,9 @@ const whiteWeddingImages = [
 
 export default function WeddingCakesPage() {
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email.trim()) return;
-    // TODO: Connect to email service
-    setSubmitted(true);
-  }
+  const [callbackOpen, setCallbackOpen] = useState(false);
 
   return (
     <div>
@@ -69,43 +64,70 @@ export default function WeddingCakesPage() {
             Reba works personally with every couple to design a centerpiece that&apos;s as beautiful as it is delicious. Multi-tier designs, custom flavors, tasting sessions &mdash; every detail is crafted just for you.
           </p>
 
-          {submitted ? (
-            <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
-              <div className="text-5xl mb-4">{"\u2728"}</div>
-              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-3">
-                We&apos;ll be in touch!
-              </h3>
-              <p className="text-reba-muted text-base">
-                Reba will reach out to schedule your wedding cake consultation. We can&apos;t wait to create something beautiful for your big day!
-              </p>
+          <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
+            <div className="text-5xl mb-4">{"\u{1F382}"}</div>
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-3">
+              Schedule Your Consultation with Reba
+            </h3>
+            <div className="space-y-4">
+              <div>
+                <p className="text-reba-muted text-sm mb-1">Old Town Salinas</p>
+                <a href="tel:8316760628" className="text-reba-pink font-bold text-2xl hover:text-reba-pink-hover transition-colors">
+                  (831) 676-0628
+                </a>
+              </div>
+              <div>
+                <p className="text-reba-muted text-sm mb-1">Carmel Crossroads</p>
+                <a href="tel:8316014818" className="text-reba-pink font-bold text-2xl hover:text-reba-pink-hover transition-colors">
+                  (831) 601-4818
+                </a>
+              </div>
+              <div className="pt-4 border-t border-reba-border mt-4">
+                {submitted ? (
+                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will call you soon.</p>
+                ) : !callbackOpen ? (
+                  <button
+                    onClick={() => setCallbackOpen(true)}
+                    className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full text-base font-semibold transition-colors"
+                  >
+                    Request a Call Back
+                  </button>
+                ) : (
+                  <div className="bg-reba-card border border-reba-border rounded-xl p-5 relative">
+                    <button
+                      onClick={() => setCallbackOpen(false)}
+                      className="absolute top-2 right-2 text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
+                      aria-label="Close"
+                    >
+                      &times;
+                    </button>
+                    <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
+                    <form onSubmit={(e) => { e.preventDefault(); if (email.trim() && phone.trim()) setSubmitted(true); }} className="space-y-3 max-w-sm mx-auto">
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Your email address *"
+                        required
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <input
+                        type="tel"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="Your phone number *"
+                        required
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <button type="submit" className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors">
+                        Request a Call Back
+                      </button>
+                    </form>
+                  </div>
+                )}
+              </div>
             </div>
-          ) : (
-            <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
-              <div className="text-5xl mb-4">{"\u{1F382}"}</div>
-              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-3">
-                Schedule Your Consultation with Reba
-              </h3>
-              <p className="text-reba-muted text-base mb-6">
-                Leave your email and Reba will personally reach out to schedule a tasting and design consultation.
-              </p>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Your email address"
-                  className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3.5 rounded-full text-base font-semibold transition-colors"
-                >
-                  Request Consultation
-                </button>
-              </form>
-            </div>
-          )}
+          </div>
         </div>
       </section>
 
