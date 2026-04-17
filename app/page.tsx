@@ -8,13 +8,19 @@ import HomeDailyPicks from "@/components/HomeDailyPicks";
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
 const topReviews = reviews.filter((review) => review.rating === 5).slice(0, 3);
 
+const reviewImages = [
+  "/product-chocolate-chip.jpg",
+  "/product-breakfast-burrito.jpg",
+  null, // Dutch apple pie — photo coming soon
+];
+
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-0.5">
+    <div className="flex gap-1">
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
-          className={`w-4 h-4 ${i < rating ? "text-reba-pink" : "text-reba-border"}`}
+          className={`w-6 h-6 ${i < rating ? "text-reba-pink" : "text-reba-border"}`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -122,22 +128,36 @@ export default function HomePage() {
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {topReviews.map((review) => (
+            {topReviews.map((review, index) => (
               <div
                 key={review.id}
-                className="bg-white border border-reba-border rounded-2xl p-6"
+                className="bg-white border border-reba-border rounded-2xl overflow-hidden"
               >
+                {reviewImages[index] ? (
+                  <div className="overflow-hidden px-6 pt-6 flex justify-center">
+                    <img src={reviewImages[index]!} alt="" className="rounded-xl max-h-[220px] object-contain" />
+                  </div>
+                ) : (
+                  <div className="h-48 bg-reba-card flex items-center justify-center">
+                    <div className="text-center text-reba-muted">
+                      <div className="text-5xl mb-2">{"\u{2600}\u{FE0F}"}</div>
+                      <p className="text-sm">Photo coming soon</p>
+                    </div>
+                  </div>
+                )}
+                <div className="px-6 py-4">
                 <StarRating rating={review.rating} />
-                <p className="text-reba-soft text-lg leading-relaxed mt-4 mb-4">
+                <p className="text-reba-soft text-base leading-relaxed mt-3 mb-3">
                   &ldquo;{review.text}&rdquo;
                 </p>
                 <div className="flex items-center justify-between">
-                  <p className="text-reba-cream text-lg font-medium">
+                  <p className="text-reba-cream text-base font-medium">
                     {review.author}
                   </p>
                   <span className="text-base text-reba-muted bg-reba-dark px-3 py-1 rounded-full">
                     {review.platform}
                   </span>
+                </div>
                 </div>
               </div>
             ))}
