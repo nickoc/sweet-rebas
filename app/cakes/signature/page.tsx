@@ -184,48 +184,6 @@ export default function SignatureCakesPage() {
         </div>
       </section>
 
-      {/* Visit Us */}
-      <section className="bg-reba-pink">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-6xl text-white mb-5">
-            Visit Us to Discuss Your Dream Cake
-          </h2>
-          <p className="text-white/80 text-lg sm:text-xl mb-10 max-w-lg mx-auto">
-            Every great cake starts with a conversation. Tell us about your occasion
-            and let&apos;s create something extraordinary together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <div className="text-white">
-              <a
-                href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 text-base hover:text-white transition-colors underline underline-offset-2"
-              >
-                Carmel Crossroads
-              </a>
-              <br />
-              <a href="tel:8316014818" className="text-2xl font-semibold hover:text-white/80 transition-colors">
-                (831) 601-4818
-              </a>
-            </div>
-            <div className="text-white">
-              <a
-                href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white/70 text-base hover:text-white transition-colors underline underline-offset-2"
-              >
-                Old Town Salinas
-              </a>
-              <br />
-              <a href="tel:8316760628" className="text-2xl font-semibold hover:text-white/80 transition-colors">
-                (831) 676-0628
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Image Zoom Modal */}
       {zoomImage && <ZoomModal src={zoomImage.src} alt={zoomImage.alt} onClose={() => setZoomImage(null)} />}
