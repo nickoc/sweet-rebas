@@ -67,10 +67,52 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* Three Feature Cards */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Our Story */}
+          <Link href="/about" className="group block">
+            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
+              <img src="/slideshow-snickerdoodles.jpg" alt="Mike and Reba at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+              Our Story
+            </h3>
+            <p className="text-reba-muted text-base leading-relaxed">
+              From grandmother&apos;s kitchen to Food Network — a story of passion, family, and the perfect cake.
+            </p>
+          </Link>
+
+          {/* What's Baking Today */}
+          <Link href="/chalkboard" className="group block">
+            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
+              <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+              What&apos;s Baking Today?
+            </h3>
+            <p className="text-reba-muted text-base leading-relaxed">
+              Fresh soups, sandwiches, cookies, and daily specials — made from scratch every morning.
+            </p>
+          </Link>
+
+          {/* Bakery Pre-Orders */}
+          <Link href="/cakes" className="group block">
+            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
+              <img src="/slideshow-lemons.jpg" alt="Fresh lemons at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+              Bakery Pre-Orders
+            </h3>
+            <p className="text-reba-muted text-base leading-relaxed">
+              Place an order for pick-up and we&apos;ll do the rest to make something just for you.
+            </p>
+          </Link>
+        </div>
+      </section>
+
       {/* Reopening Banner */}
       <ReopeningBanner />
-
-
 
       {/* Sweet Reba's Today's Pick */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
@@ -84,37 +126,6 @@ export default function HomePage() {
         <HomeDailyPicks />
       </section>
 
-      {/* Our Story Preview */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream mb-6">
-              Our Story
-            </h2>
-            <p className="text-reba-soft text-xl leading-relaxed mb-4">
-              From grandmother&apos;s kitchen to Food Network, Sweet Reba&apos;s
-              is a story of passion, family, and the transformative power of a
-              really good cake.
-            </p>
-            <p className="text-reba-muted text-xl leading-relaxed mb-6">
-              What started as a birthday cake for her son in 2004 grew into one
-              of the most beloved bakeries on the Monterey Peninsula. Reba
-              brought her grandmother&apos;s recipes to life, earning
-              recognition from Food Network&apos;s Cake Wars and the hearts of
-              the community.
-            </p>
-            <Link
-              href="/about"
-              className="text-reba-pink hover:text-reba-pink-hover transition-colors font-medium"
-            >
-              Read Our Full Story &rarr;
-            </Link>
-          </div>
-          <div className="rounded-2xl overflow-hidden">
-            <img src="/mike-and-reba.png" alt="Reba and Michael at Sweet Reba's" className="w-full h-full object-cover rounded-2xl" />
-          </div>
-        </div>
-      </section>
 
       {/* Dynamic Counter */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
