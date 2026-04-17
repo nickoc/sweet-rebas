@@ -91,7 +91,7 @@ export default function WeddingCakesPage() {
                     onClick={() => setCallbackOpen(true)}
                     className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full text-base font-semibold transition-colors"
                   >
-                    Request a Call Back
+                    Request a Consultation
                   </button>
                 ) : (
                   <div className="bg-reba-card border border-reba-border rounded-xl p-5 relative">
@@ -121,7 +121,7 @@ export default function WeddingCakesPage() {
                         className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <button type="submit" className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors">
-                        Request a Call Back
+                        Request a Consultation
                       </button>
                     </form>
                   </div>
