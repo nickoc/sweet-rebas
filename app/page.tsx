@@ -29,17 +29,14 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-end justify-center overflow-hidden pb-16">
+      <section className="relative min-h-[100vh] flex items-end justify-center overflow-hidden pb-16">
         <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.85)] via-[rgba(255,248,240,0.3)_40%] to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.6)] via-transparent to-transparent" />
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-[family-name:var(--font-heading)] font-bold text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-6 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
-            Sweet Reba&apos;s
-          </h1>
-          <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-2 tracking-wide drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-2 tracking-wide drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">
             Artisan Bakery. Made with Love Since 2004.
           </p>
-          <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold mb-2 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+          <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold mb-2 drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">
             <a
               href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
               target="_blank"
