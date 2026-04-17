@@ -235,24 +235,10 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-reba-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
           <p className="text-reba-muted text-sm">
             &copy; 2026 Sweet Reba&apos;s Bakery. All rights reserved.
           </p>
-          <div className="flex items-center gap-4 text-reba-muted text-sm">
-            <Link href="/privacy" className="hover:text-reba-pink transition-colors">
-              Privacy Policy
-            </Link>
-            <span>&middot;</span>
-            <span>
-              Crafted by{" "}
-              <a href="https://getbearing.co" target="_blank" rel="noopener noreferrer" className="text-reba-pink hover:text-reba-pink-hover transition-colors">
-                Bearing Intelligence
-              </a>
-              {" "}&amp;{" "}
-              <span className="text-reba-pink">N&oslash;emso Designs</span>
-            </span>
-          </div>
         </div>
       </div>
     </footer>
