@@ -75,7 +75,7 @@ export default function Header() {
             <div ref={menuRef} className="relative flex-1 basis-0 min-w-0">
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="w-full flex items-center justify-center gap-2.5 bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
+                className="w-full flex items-center justify-center gap-2.5 bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold transition-colors shadow-lg whitespace-nowrap"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -104,12 +104,12 @@ export default function Header() {
             {/* Kept-visible CTAs */}
             <Link
               href="/chalkboard"
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-base font-semibold transition-colors shadow-lg whitespace-nowrap"
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold transition-colors shadow-lg whitespace-nowrap"
             >
               Specials of the Day
             </Link>
             <span
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-gray-500 text-white/80 px-6 py-3 rounded-full text-base font-semibold shadow-lg whitespace-nowrap cursor-default"
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-gray-500 text-white/80 px-8 py-4 rounded-full text-xl font-bold shadow-lg whitespace-nowrap cursor-default"
             >
               Order Now
             </span>

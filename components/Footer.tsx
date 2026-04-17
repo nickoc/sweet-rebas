@@ -86,6 +86,20 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Opening Hours */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
+        <div className="bg-reba-card border-2 border-reba-pink/30 rounded-2xl p-8 text-center max-w-2xl mx-auto">
+          <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-4">
+            Opening Hours
+          </h3>
+          <div className="flex flex-wrap justify-center gap-8 text-lg">
+            <div><span className="text-reba-muted">Mon&ndash;Fri:</span> <span className="text-reba-cream font-semibold">7am &ndash; 3pm</span></div>
+            <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 3pm</span></div>
+            <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 2pm</span></div>
+          </div>
+        </div>
+      </div>
+
       {/* Info Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-20">
