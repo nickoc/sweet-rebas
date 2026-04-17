@@ -247,7 +247,7 @@ export default function CakesPage() {
             href="/cakes/signature"
             className="flex-1 text-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-4 rounded-full text-xl font-semibold italic transition-colors shadow-md flex items-center justify-center"
           >
-            Planning for a Special Occasion?
+            Need a Cake Fast?
           </a>
           <a
             href="/wedding-cakes"
