@@ -20,7 +20,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="py-16 sm:py-24" style={{ background: "linear-gradient(to bottom, #fff5f5, #ffffff)" }}>
+      <section className="py-10 sm:py-14" style={{ background: "linear-gradient(to bottom, #fff5f5, #ffffff)" }}>
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-cream mb-4">
             Contact Us
@@ -31,7 +31,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Location Cards */}
           <div className="space-y-6">
