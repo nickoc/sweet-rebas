@@ -85,8 +85,6 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-
-        <CountUpStats />
       </section>
 
       {/* Signature Products */}
@@ -144,6 +142,11 @@ export default function HomePage() {
             <img src="/mike-and-reba.png" alt="Reba and Michael at Sweet Reba's" className="w-full h-full object-cover rounded-2xl" />
           </div>
         </div>
+      </section>
+
+      {/* Dynamic Counter */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <CountUpStats />
       </section>
 
       {/* Customer Reviews */}
