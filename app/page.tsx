@@ -69,9 +69,9 @@ export default function HomePage() {
 
       {/* Three Feature Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 md:mx-0 px-4 md:px-0 pb-2 md:pb-0 scrollbar-hide">
           {/* Our Story */}
-          <Link href="/about" className="group block">
+          <Link href="/about" className="group block shrink-0 snap-center w-[85vw] sm:w-[65vw] md:w-auto">
             <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
               <img src="/slideshow-snickerdoodles.jpg" alt="Mike and Reba at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
@@ -84,7 +84,7 @@ export default function HomePage() {
           </Link>
 
           {/* What's Baking Today */}
-          <Link href="/chalkboard" className="group block">
+          <Link href="/chalkboard" className="group block shrink-0 snap-center w-[85vw] sm:w-[65vw] md:w-auto">
             <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
               <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
@@ -97,7 +97,7 @@ export default function HomePage() {
           </Link>
 
           {/* Bakery Pre-Orders */}
-          <Link href="/cakes" className="group block">
+          <Link href="/cakes" className="group block shrink-0 snap-center w-[85vw] sm:w-[65vw] md:w-auto">
             <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
               <img src="/slideshow-lemons.jpg" alt="Fresh lemons at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
