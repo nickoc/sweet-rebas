@@ -26,9 +26,9 @@ export default function Footer() {
         <h3 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
           Find Us
         </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Carmel Map */}
-          <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+          {/* Carmel Map + Info */}
+          <div className="flex flex-col">
             <div className="rounded-xl overflow-hidden shadow-md border border-reba-border">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-121.9178!3d36.5465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808de45270b5fb23%3A0x386b7aaf900e1e08!2sSweet%20Reba&#39;s!5e0!3m2!1sen!2sus!4v1"
@@ -41,24 +41,27 @@ export default function Footer() {
                 title="Sweet Reba's Carmel Crossroads"
               />
             </div>
-            <div className="mt-4 text-center">
+            <div className="mt-4 flex-1 bg-reba-card border-2 border-reba-pink/30 rounded-2xl p-6 text-center flex flex-col">
               <a
                 href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-reba-cream text-lg font-medium hover:text-reba-pink transition-colors"
+                className="text-reba-cream text-xl font-medium hover:text-reba-pink transition-colors inline-block"
               >
                 Carmel Crossroads
               </a>
-              <p className="text-reba-muted text-base">206 Crossroads Blvd &middot; (831) 601-4818</p>
-              <p className="text-reba-pink text-sm mt-1 italic">
-                Reopening end of May 2026
-              </p>
+              <p className="text-reba-muted text-base mt-1">206 Crossroads Blvd &middot; (831) 601-4818</p>
+              <div className="border-t border-reba-border mt-4 pt-4 flex-1 flex flex-col justify-center">
+                <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+                  Opening Hours
+                </h4>
+                <p className="text-reba-pink text-lg italic">Re-opening end of May 2026</p>
+              </div>
             </div>
           </div>
 
-          {/* Salinas Map */}
-          <div>
+          {/* Salinas Map + Info */}
+          <div className="flex flex-col">
             <div className="rounded-xl overflow-hidden shadow-md border border-reba-border">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-121.6558!3d36.6744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808dfb5d7b0d2e6f%3A0x1c6b3e1f8a5e6d2a!2s268%20Main%20St%2C%20Salinas%2C%20CA!5e0!3m2!1sen!2sus!4v1"
@@ -71,31 +74,27 @@ export default function Footer() {
                 title="Sweet Reba's Old Town Salinas"
               />
             </div>
-            <div className="mt-4 text-center">
+            <div className="mt-4 flex-1 bg-reba-card border-2 border-reba-pink/30 rounded-2xl p-6 text-center flex flex-col">
               <a
                 href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-reba-cream text-lg font-medium hover:text-reba-pink transition-colors"
+                className="text-reba-cream text-xl font-medium hover:text-reba-pink transition-colors inline-block"
               >
                 Old Town Salinas
               </a>
-              <p className="text-reba-muted text-base">268 Main St &middot; (831) 676-0628</p>
+              <p className="text-reba-muted text-base mt-1">268 Main St &middot; (831) 676-0628</p>
+              <div className="border-t border-reba-border mt-4 pt-4 flex-1 flex flex-col justify-center">
+                <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+                  Opening Hours
+                </h4>
+                <div className="space-y-1 text-base">
+                  <div><span className="text-reba-muted">Mon&ndash;Fri:</span> <span className="text-reba-cream font-semibold">7am &ndash; 3pm</span></div>
+                  <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 3pm</span></div>
+                  <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 2pm</span></div>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Opening Hours */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-10">
-        <div className="bg-reba-card border-2 border-reba-pink/30 rounded-2xl p-8 text-center max-w-2xl mx-auto">
-          <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-4">
-            Opening Hours
-          </h3>
-          <div className="flex flex-wrap justify-center gap-8 text-lg">
-            <div><span className="text-reba-muted">Mon&ndash;Fri:</span> <span className="text-reba-cream font-semibold">7am &ndash; 3pm</span></div>
-            <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 3pm</span></div>
-            <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 2pm</span></div>
           </div>
         </div>
       </div>
