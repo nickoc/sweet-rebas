@@ -79,7 +79,7 @@ export default function CountUpStats() {
             />
             {stat.suffix}
           </div>
-          <p className="text-reba-muted text-xs">{stat.label}</p>
+          <p className="text-reba-muted text-base">{stat.label}</p>
         </div>
       ))}
     </div>

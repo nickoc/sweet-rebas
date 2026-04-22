@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { menuItems } from "@/data/sample-data";
+import CartSummary from "@/components/CartSummary";
+import { useCart, slug } from "@/lib/cart-context";
 
 const CATEGORIES = [
   { key: "cookies", label: "Cookies" },
@@ -34,18 +36,12 @@ const productImages: Record<string, string> = {
   "carrot-cake": "/product-carrot-cake.jpg",
 };
 
-interface BoxItem {
-  id: string;
-  name: string;
-  emoji: string;
-  price: number;
-}
-
 export default function BoxBuilderPage() {
   const [activeTab, setActiveTab] = useState("cookies");
-  const [box, setBox] = useState<BoxItem[]>([]);
+  const [flashId, setFlashId] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     setMounted(true);
@@ -60,15 +56,18 @@ export default function BoxBuilderPage() {
 
   const filteredItems = menuItems.filter((item) => item.category === activeTab);
 
-  function addToBox(item: typeof menuItems[number]) {
-    setBox([...box, { id: item.id, name: item.name, emoji: item.emoji, price: item.price }]);
+  function handleAdd(item: typeof menuItems[number]) {
+    const image = productImages[item.id];
+    addToCart({
+      id: slug(item.name),
+      name: item.name,
+      price: item.price,
+      image: image,
+      emoji: item.emoji,
+    }, 1);
+    setFlashId(item.id);
+    setTimeout(() => setFlashId(null), 400);
   }
-
-  function removeFromBox(index: number) {
-    setBox(box.filter((_, i) => i !== index));
-  }
-
-  const total = box.reduce((sum, item) => sum + item.price, 0);
 
   return (
     <div className="min-h-screen">
@@ -83,18 +82,18 @@ export default function BoxBuilderPage() {
               transition: "opacity 0.6s ease, transform 0.6s ease",
             }}
           >
-            <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-3">
+            <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4">
               Build Your Order
             </h1>
-            <p className="text-reba-muted max-w-lg mx-auto">
+            <p className="text-xl sm:text-2xl font-bold text-reba-pink mb-2 tracking-wide">
               Pick your favorites from our full menu and we&apos;ll have it ready for pickup.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Category Tabs — full width */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+      {/* Category Tabs */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
         <div className="grid grid-cols-4 sm:grid-cols-7 gap-3">
           {CATEGORIES.map((cat) => (
             <button
@@ -113,108 +112,41 @@ export default function BoxBuilderPage() {
         </div>
       </section>
 
-      {/* Content */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left: Items */}
-          <div className="lg:col-span-2">
-
-            {/* Product Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {filteredItems.map((item) => {
-                const image = productImages[item.id];
-                return (
-                  <button
-                    key={item.id}
-                    onClick={() => addToBox(item)}
-                    className="w-full text-left rounded-xl border border-reba-border bg-white hover:border-reba-pink/30 hover:shadow-sm transition-all overflow-hidden flex"
-                  >
-                    {image ? (
-                      <div className="w-24 sm:w-28 flex-shrink-0">
-                        <img src={image} alt={item.name} className="w-full h-full object-cover" />
-                      </div>
-                    ) : (
-                      <div className="w-24 sm:w-28 flex-shrink-0 bg-[#fff5f5] flex items-center justify-center">
-                        <span className="text-2xl">{item.emoji}</span>
-                      </div>
-                    )}
-                    <div className="flex-1 p-3">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-reba-cream font-semibold text-sm">{item.name}</h3>
-                        <span className="text-reba-pink font-medium text-sm">${item.price.toFixed(2)}</span>
-                      </div>
-                      <p className="text-reba-muted text-xs mt-0.5 line-clamp-2">{item.description}</p>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Right: Order Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-24">
-              <div className="bg-white border border-reba-border rounded-2xl p-6 shadow-lg">
-                <h3 className="font-semibold text-reba-cream mb-4 flex items-center justify-between">
-                  <span>Your Order</span>
-                  <span className="text-sm text-reba-muted font-normal">
-                    {box.length} {box.length === 1 ? "item" : "items"}
-                  </span>
-                </h3>
-
-                <div className="bg-[#fff5f5] border-2 border-dashed border-reba-border rounded-xl p-4 mb-4 min-h-[180px] max-h-[320px] overflow-y-auto">
-                  {box.length === 0 ? (
-                    <div className="flex items-center justify-center h-[160px] text-reba-muted text-sm">
-                      Click items to add to your order
-                    </div>
-                  ) : (
-                    <div className="space-y-2">
-                      {box.map((item, i) => (
-                        <div key={`${item.id}-${i}`} className="flex items-center justify-between gap-2 text-sm">
-                          <div className="flex items-center gap-2 flex-1 min-w-0">
-                            <span>{item.emoji}</span>
-                            <span className="text-reba-cream truncate">{item.name}</span>
-                          </div>
-                          <span className="text-reba-pink text-xs">${item.price.toFixed(2)}</span>
-                          <button
-                            onClick={() => removeFromBox(i)}
-                            className="text-reba-muted hover:text-red-500 text-xs"
-                            title="Remove"
-                          >
-                            &times;
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Total */}
-                {box.length > 0 && (
-                  <div className="flex justify-between items-center mb-4 pt-2 border-t border-reba-border">
-                    <span className="text-reba-cream font-semibold">Total</span>
-                    <span className="text-reba-pink font-bold text-lg">${total.toFixed(2)}</span>
+      {/* Products */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-32">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {filteredItems.map((item) => {
+            const image = productImages[item.id];
+            return (
+              <div
+                key={item.id}
+                onClick={() => handleAdd(item)}
+                className={`cursor-pointer rounded-xl border bg-white overflow-hidden flex transition-all ${flashId === item.id ? "border-reba-pink shadow-lg scale-[1.02]" : "border-reba-border hover:border-reba-pink/30"}`}
+              >
+                {image ? (
+                  <div className="w-28 sm:w-36 flex-shrink-0">
+                    <img src={image} alt={item.name} className="w-full h-full object-cover" />
+                  </div>
+                ) : (
+                  <div className="w-28 sm:w-36 flex-shrink-0 bg-[#fff5f5] flex items-center justify-center">
+                    <span className="text-3xl">{item.emoji}</span>
                   </div>
                 )}
-
-                <div className="space-y-2">
-                  {box.length === 0 ? (
-                    <button
-                      disabled
-                      className="w-full bg-reba-border text-reba-muted py-3 rounded-full font-medium cursor-not-allowed"
-                    >
-                      Add items to get started
-                    </button>
-                  ) : (
-                    <button className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full font-medium transition-colors">
-                      Complete Order ({box.length} items)
-                    </button>
-                  )}
+                <div className="flex-1 p-5">
+                  <div className="flex items-center justify-between mb-1">
+                    <h3 className="text-reba-cream font-semibold text-lg">{item.name}</h3>
+                    <span className="text-reba-pink font-semibold text-lg">${item.price.toFixed(2)}</span>
+                  </div>
+                  <p className="text-reba-muted text-base mt-1 line-clamp-2 mb-3">{item.description}</p>
+                  <span className={`inline-block px-6 py-2 rounded-full font-semibold text-sm transition-colors ${flashId === item.id ? "bg-green-500 text-white" : "bg-reba-pink text-white"}`}>
+                    {flashId === item.id ? "Added!" : "Tap to Add"}
+                  </span>
                 </div>
               </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
+        <CartSummary />
       </section>
     </div>
   );

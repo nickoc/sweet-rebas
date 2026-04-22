@@ -3,6 +3,7 @@ import { Dancing_Script, Lora } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
+import { CartProvider } from "@/lib/cart-context";
 import "./globals.css";
 
 const dancingScript = Dancing_Script({
@@ -57,10 +58,12 @@ export default function RootLayout({
       className={`${dancingScript.variable} ${lora.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-reba-dark text-reba-cream font-body">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <ChatWidget />
+        <CartProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <ChatWidget />
+        </CartProvider>
       </body>
     </html>
   );

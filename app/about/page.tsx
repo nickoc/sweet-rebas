@@ -2,17 +2,18 @@ export default function AboutPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[60vh] overflow-hidden">
         <img src="/slideshow-lemons.jpg" alt="Fresh lemons in Sweet Reba's kitchen" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.6)] via-[rgba(255,248,240,0.15)_30%] to-transparent" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl lg:text-8xl text-reba-pink mb-4 drop-shadow-[0_2px_8px_rgba(255,255,255,0.6)]">
-            Our Story
-          </h1>
-          <p className="text-xl sm:text-2xl text-white mb-2 tracking-wide drop-shadow-[0_1px_4px_rgba(0,0,0,0.3)]">
-            A journey of love, family, and the perfect cake.
-          </p>
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
+        <div className="relative min-h-[60vh]" />
+      </section>
+      <section className="py-10 text-center">
+        <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4">
+          Our Story
+        </h1>
+        <p className="text-3xl sm:text-4xl font-bold text-reba-pink mb-2 tracking-wide">
+          A journey of love, family, and the perfect cake.
+        </p>
       </section>
 
       {/* The Journey */}
@@ -155,16 +156,16 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {/* Reba */}
             <div className="bg-white border border-reba-border rounded-2xl p-8 text-center">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
+              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
                 <img src="/reba.png" alt="Reba" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
                 Reba
               </h3>
-              <p className="text-reba-pink font-medium text-sm mb-4">
+              <p className="text-reba-pink font-medium text-base mb-4">
                 Baker, Cake Artist &amp; Dreamer
               </p>
-              <p className="text-reba-soft text-sm leading-relaxed">
+              <p className="text-reba-soft text-base leading-relaxed">
                 From her grandmother&apos;s kitchen to Food Network&apos;s Cake Wars,
                 Reba has turned a passion for baking into something extraordinary.
                 Every cake, cookie, and pie is made with the same love she put into
@@ -173,20 +174,17 @@ export default function AboutPage() {
             </div>
             {/* Michael */}
             <div className="bg-white border border-reba-border rounded-2xl p-8 text-center">
-              <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
+              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
                 <img src="/michael.png" alt="Michael" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
-                Michael
+              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
+                Michael Abbruzzese
               </h3>
-              <p className="text-reba-pink font-medium text-sm mb-4">
+              <p className="text-reba-pink font-medium text-base mb-4">
                 Partner, Chef &amp; Rock
               </p>
-              <p className="text-reba-soft text-sm leading-relaxed">
-                Michael brings his Italian heritage and culinary training to the
-                kitchen. His savory creations &mdash; the breakfast burritos,
-                sandwiches, and soups &mdash; perfectly complement Reba&apos;s
-                sweet masterpieces. Together, they&apos;ve built more than a bakery.
+              <p className="text-reba-soft text-base leading-relaxed">
+                Food has always been at the heart of who I am. Growing up surrounded by parents and grandparents with a deep passion for cooking, and with a brother who went on to become a professional chef, a love of great food was simply part of the family DNA. That foundation led me to a business degree and years spent in the restaurant world &mdash; experiences that shaped both my high standards for quality and my understanding of what it takes to run a great operation. At Sweet Reba&apos;s, I get to bring all of that together. Baking alongside Reba is a joy, and being part of a bakery that genuinely serves and celebrates this community is something I&apos;m proud of every single day.
               </p>
             </div>
           </div>

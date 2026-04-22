@@ -27,7 +27,7 @@ export default function ReviewsPage() {
       {/* Hero */}
       <section className="bg-gradient-to-b from-reba-card to-reba-dark py-16 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-5xl sm:text-7xl text-reba-cream mb-4">
+          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl text-reba-cream mb-4">
             Reviews
           </h1>
           <div className="flex items-center justify-center gap-3 mb-3">
