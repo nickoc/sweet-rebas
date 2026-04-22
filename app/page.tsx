@@ -44,7 +44,7 @@ export default function HomePage() {
       {/* Title + Locations */}
       <section className="py-10 sm:py-14 text-center">
         <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-4 tracking-wide">
-          Artisan Bakery. Made with Love Since 2004.
+          Small-Batch Bakery. Made with Love Since 2004.
         </p>
         <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold">
           <a
@@ -116,7 +116,7 @@ export default function HomePage() {
 
 
       {/* Dynamic Counter */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <CountUpStats />
       </section>
 

@@ -3,11 +3,10 @@
 import { useState, useEffect, useRef } from "react";
 
 const STATS = [
-  { value: 22, suffix: "", label: "Years of Love", emoji: "❤️" },
-  { value: 4.8, suffix: "", label: "Star Rating", emoji: "⭐", decimals: 1 },
-  { value: 10, suffix: "", label: "Nextdoor Neighborhoods", emoji: "🏘️" },
-  { value: 2, suffix: "", label: "Locations", emoji: "📍" },
-  { value: 1, suffix: "", label: "Celebrity Status", emoji: "📺" },
+  { value: 22, suffix: "", label: "Years of Love" },
+  { value: 4.8, suffix: "", label: "Star Rating", decimals: 1 },
+  { value: 10, suffix: "", label: "Nextdoor Neighborhoods" },
+  { value: 2, suffix: "", label: "Locations" },
 ];
 
 function AnimatedNumber({
@@ -64,13 +63,12 @@ export default function CountUpStats() {
   }, []);
 
   return (
-    <div ref={ref} className="grid grid-cols-3 sm:grid-cols-5 gap-4">
+    <div ref={ref} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
       {STATS.map((stat) => (
         <div
           key={stat.label}
-          className="text-center"
+          className="flex flex-col items-center justify-center text-center"
         >
-          <div className="text-xl mb-1">{stat.emoji}</div>
           <div className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-pink mb-0.5">
             <AnimatedNumber
               target={stat.value}
