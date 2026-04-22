@@ -2,6 +2,7 @@ import Link from "next/link";
 import { menuItems, reviews } from "@/data/sample-data";
 import CountUpStats from "@/components/CountUpStats";
 import ReopeningBanner from "@/components/ReopeningBanner";
+import NewsBanner from "@/components/NewsBanner";
 import SignatureProducts from "@/components/SignatureProducts";
 import HomeDailyPicks from "@/components/HomeDailyPicks";
 
@@ -119,6 +120,9 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <CountUpStats />
       </section>
+
+      {/* ReBA in the News */}
+      <NewsBanner />
 
       {/* Customer Reviews */}
       <section style={{ backgroundColor: "#fff5f5" }}>
