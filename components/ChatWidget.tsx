@@ -8,10 +8,10 @@ interface Message {
 }
 
 const SUGGESTIONS = [
-  "What's on the menu?",
-  "Are you open today?",
-  "Do you do custom cakes?",
-  "Where are you located?",
+  "Can I get a cake today?",
+  "I need a cake for a birthday next Saturday",
+  "Do you do wedding cakes?",
+  "What's Sweet Reba's known for?",
 ];
 
 // Sweet Reba's concierge is served by Bearing Intelligence's centralized
@@ -25,7 +25,9 @@ const SUGGESTIONS = [
 // TODO(post-launch): promote BEARING_API_URL to NEXT_PUBLIC env var instead
 // of hardcoding. Left as a constant today so preview deploys work without
 // touching Vercel env vars.
-const BEARING_API_URL = "https://getbearing.co/api/bearing-chat";
+const BEARING_API_URL =
+  process.env.NEXT_PUBLIC_BEARING_API_URL ||
+  "https://getbearing.co/api/bearing-chat";
 const PROSPECT_SLUG = "sweet-rebas";
 
 const FALLBACK_PHONE = "(831) 676-0628";
