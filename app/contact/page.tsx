@@ -2,14 +2,24 @@
 
 import { useState } from "react";
 import { bakeryHours } from "@/data/sample-data";
+import { submitWaitlist } from "@/lib/waitlist";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Persist to the waitlist/inquiry table before triggering the mailto so
+    // the record lands even if the user cancels out of their email client.
+    // Fire-and-forget — mailto navigation must not be blocked on the API.
+    void submitWaitlist({
+      name: form.name.trim() || undefined,
+      email: form.email.trim() || undefined,
+      notes: form.message.trim() || undefined,
+      source_context: "contact-form",
+    });
     const subject = encodeURIComponent(`Website message from ${form.name}`);
     const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
     window.location.href = `mailto:reba@sweetrebas.com?subject=${subject}&body=${body}`;
