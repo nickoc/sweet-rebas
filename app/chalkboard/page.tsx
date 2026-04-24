@@ -8,7 +8,7 @@
 
 import ClosingCountdown from "./closing-countdown";
 
-export const revalidate = 300; // 5 minutes
+export const revalidate = 30; // 30 seconds — fast demo/edit loop
 
 const CATALOG_API =
   process.env.NEXT_PUBLIC_BEARING_API_URL?.replace(
@@ -60,7 +60,7 @@ async function loadSpecials(): Promise<{
   specials: Special[];
 }> {
   try {
-    const res = await fetch(CATALOG_API, { next: { revalidate: 300 } });
+    const res = await fetch(CATALOG_API, { next: { revalidate: 30 } });
     if (!res.ok) return { date: "", specials: [] };
     const data = (await res.json()) as {
       date: string;
