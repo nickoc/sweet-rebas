@@ -7,6 +7,7 @@
  */
 
 import ClosingCountdown from "./closing-countdown";
+import ChalkboardNewsletterCard from "@/components/ChalkboardNewsletterCard";
 
 export const revalidate = 30; // 30 seconds — fast demo/edit loop
 
@@ -137,7 +138,7 @@ export default async function ChalkboardPage() {
         </div>
       </section>
 
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-32">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-16">
         {ordered.length === 0 ? (
           <div className="bg-white border-2 border-dashed border-reba-pink/40 rounded-3xl p-12 text-center">
             <p className="text-6xl mb-4">🧁</p>
@@ -193,6 +194,8 @@ export default async function ChalkboardPage() {
             })}
           </div>
         )}
+
+        <ChalkboardNewsletterCard />
       </section>
     </div>
   );
