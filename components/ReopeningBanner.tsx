@@ -35,6 +35,7 @@ export default function ReopeningBanner() {
       name: name.trim() || undefined,
       email: emailTrim || undefined,
       phone: phoneTrim || undefined,
+      sms_consent: phoneTrim ? smsConsent : undefined,
       source_context: "carmel-reopening",
     });
     if (result.ok) {

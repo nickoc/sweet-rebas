@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { CakeCarousel } from "@/components/CakeGallery";
+import { submitWaitlist } from "@/lib/waitlist";
 
 const whiteWeddingImages = [
   { src: "/cake-dreamy-3.jpg", alt: "White two-tier cake with ranunculus and eucalyptus" },
@@ -14,7 +15,28 @@ export default function WeddingCakesPage() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [callbackOpen, setCallbackOpen] = useState(false);
+
+  async function handleWeddingCallback(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email.trim() || !phone.trim()) return;
+    setLoading(true);
+    setErrorMsg("");
+    const result = await submitWaitlist({
+      email: email.trim(),
+      phone: phone.trim(),
+      notes: "Wedding consultation requested from Wedding Cakes page.",
+      source_context: "cake-callback-wedding",
+    });
+    setLoading(false);
+    if (result.ok) {
+      setSubmitted(true);
+    } else {
+      setErrorMsg(result.error);
+    }
+  }
 
   return (
     <div>
@@ -103,7 +125,7 @@ export default function WeddingCakesPage() {
                       &times;
                     </button>
                     <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
-                    <form onSubmit={(e) => { e.preventDefault(); if (email.trim() && phone.trim()) setSubmitted(true); }} className="space-y-3 max-w-sm mx-auto">
+                    <form onSubmit={handleWeddingCallback} className="space-y-3 max-w-sm mx-auto">
                       <input
                         type="email"
                         value={email}
@@ -120,9 +142,16 @@ export default function WeddingCakesPage() {
                         required
                         className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <button type="submit" className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors">
-                        Request a Consultation
+                      <button
+                        type="submit"
+                        disabled={loading}
+                        className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors disabled:opacity-60"
+                      >
+                        {loading ? "Sending..." : "Request a Consultation"}
                       </button>
+                      {errorMsg && (
+                        <p className="text-reba-pink text-xs text-center">{errorMsg}</p>
+                      )}
                     </form>
                   </div>
                 )}
