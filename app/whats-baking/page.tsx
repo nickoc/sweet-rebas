@@ -1,17 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import { submitWaitlist } from "@/lib/waitlist";
 
 export default function WhatsBakingPage() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email.trim()) return;
-    // TODO: Connect to email service
-    setSubmitted(true);
+    const emailTrim = email.trim();
+    if (!emailTrim) return;
+    setLoading(true);
+    setErrorMsg("");
+    const result = await submitWaitlist({
+      name: name.trim() || undefined,
+      email: emailTrim,
+      source_context: "newsletter-whats-baking",
+    });
+    setLoading(false);
+    if (result.ok) {
+      setSubmitted(true);
+    } else {
+      setErrorMsg(result.error);
+    }
   }
 
   return (
@@ -102,11 +117,15 @@ export default function WhatsBakingPage() {
                     />
                     <button
                       type="submit"
-                      className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3.5 rounded-full text-base font-semibold transition-colors"
+                      disabled={loading}
+                      className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3.5 rounded-full text-base font-semibold transition-colors disabled:opacity-60"
                     >
-                      Count Me In!
+                      {loading ? "Adding you..." : "Count Me In!"}
                     </button>
                   </form>
+                  {errorMsg && (
+                    <p className="text-reba-pink text-sm mt-3">{errorMsg}</p>
+                  )}
                   <p className="text-reba-muted text-sm mt-5">No spam, ever. Just the sweet stuff.</p>
                 </div>
               )}
