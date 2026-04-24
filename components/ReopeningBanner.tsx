@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-// Point at the Bearing waitlist API. Falls back to prod if no override.
-const WAITLIST_API_URL =
-  process.env.NEXT_PUBLIC_BEARING_API_URL?.replace(
-    /\/?bearing-chat\/?$/,
-    "/sweet-rebas/waitlist",
-  ) || "https://getbearing.co/api/sweet-rebas/waitlist";
+import { submitWaitlist } from "@/lib/waitlist";
 
 const SMS_CONSENT_TEXT =
   "I agree to receive text messages from Sweet Reba's Bakery about the Carmel reopening and occasional updates. Msg frequency varies. Msg & data rates may apply. Reply STOP to unsubscribe, HELP for help.";
@@ -37,27 +31,16 @@ export default function ReopeningBanner() {
     setStatus("loading");
     setErrorMsg("");
 
-    try {
-      const res = await fetch(WAITLIST_API_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name.trim() || undefined,
-          email: emailTrim || undefined,
-          phone: phoneTrim || undefined,
-          consent: true,
-          source_context: "carmel-reopening",
-        }),
-      });
-      if (res.ok) {
-        setStatus("success");
-      } else {
-        const data = (await res.json().catch(() => ({}))) as { error?: string };
-        setErrorMsg(data.error || "Something went wrong. Please try again.");
-        setStatus("error");
-      }
-    } catch {
-      setErrorMsg("Something went wrong. Please try again.");
+    const result = await submitWaitlist({
+      name: name.trim() || undefined,
+      email: emailTrim || undefined,
+      phone: phoneTrim || undefined,
+      source_context: "carmel-reopening",
+    });
+    if (result.ok) {
+      setStatus("success");
+    } else {
+      setErrorMsg(result.error);
       setStatus("error");
     }
   }
