@@ -51,15 +51,15 @@ function QuickAddCard({ item, image, onImageClick }: { item: typeof menuItems[nu
       className="bg-white border rounded-xl overflow-hidden transition-all flex border-reba-border hover:border-reba-pink/30"
     >
       {image ? (
-        <div className="w-28 sm:w-36 flex-shrink-0 cursor-zoom-in" onClick={() => onImageClick?.(image, item.name)}>
+        <div className="w-32 sm:w-40 flex-shrink-0 cursor-zoom-in" onClick={() => onImageClick?.(image, item.name)}>
           <img src={image} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
         </div>
       ) : (
-        <div className="w-28 sm:w-36 flex-shrink-0 bg-reba-card flex items-center justify-center">
+        <div className="w-32 sm:w-40 flex-shrink-0 bg-reba-card flex items-center justify-center">
           <span className="text-3xl">{item.emoji}</span>
         </div>
       )}
-      <div className="flex-1 p-5 flex flex-col">
+      <div className="flex-1 p-6 flex flex-col">
         <div className="flex items-start justify-between gap-2 mb-2">
           <h3 className="text-reba-cream font-semibold text-xl">{item.name}</h3>
           <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">
