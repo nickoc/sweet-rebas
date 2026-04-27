@@ -187,6 +187,9 @@ const productImages: Record<string, string> = {
   "lemon-loaf": "/product-lemon-loaf.jpg",
   "classic-burrito": "/product-breakfast-burrito.jpg",
   "burrito-supreme": "/product-burrito-supreme.jpg",
+  "albacore-tuna": "/product-albacore-tuna.jpg",
+  "breakfast-sandwich": "/product-breakfast-sandwich.jpg",
+  "italian-sub": "/product-italian-sub.jpg",
 };
 
 export default function MenuPage() {
