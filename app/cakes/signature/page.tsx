@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 
 const standardCakes = [
-  { name: "Life by Chocolate", image: "/product-life-by-chocolate-slice.jpg" },
-  { name: "Carrot Cake", image: "/product-carrot-cake-slice.jpg" },
+  { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg" },
   { name: "Strawberries and Cream", image: "/product-strawberries-cream.jpg" },
+  { name: "Carrot Cake", image: "/product-carrot-cake.jpg" },
 ];
 
 const cakeSizes = [
@@ -50,7 +50,7 @@ export default function SignatureCakesPage() {
     <div>
       {/* Hero */}
       <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/banner-unicorn-cakes.jpg" alt="Beautiful cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
+        <img src="/banner-signature-cakes.jpg" alt="Layered strawberries and cream cake slice" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
         <div className="relative min-h-[60vh]" />
       </section>

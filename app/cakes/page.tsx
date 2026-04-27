@@ -97,6 +97,22 @@ export default function CakesPage() {
         </p>
       </section>
 
+      {/* Ask Reba to build your dream cake */}
+      <section>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-8">
+            Ask Reba to build your dream cake!
+          </h2>
+          <div className="rounded-2xl overflow-hidden shadow-xl border border-reba-border">
+            <img
+              src="/cake-r2d2.jpg"
+              alt="Custom R2-D2 birthday cake by Sweet Reba's"
+              className="w-full h-auto object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
       {/* Call to Order */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-3xl mx-auto px-4 py-16 text-center">
