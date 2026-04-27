@@ -62,9 +62,21 @@ function QuickAddCard({ item, image, onImageClick }: { item: typeof menuItems[nu
       <div className="flex-1 p-5 flex flex-col">
         <div className="flex items-start justify-between gap-2 mb-2">
           <h3 className="text-reba-cream font-semibold text-xl">{item.name}</h3>
-          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">${item.price.toFixed(2)}</span>
+          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">
+            {item.sizes ? `From $${Math.min(...item.sizes.map((s) => s.price)).toFixed(2)}` : `$${item.price.toFixed(2)}`}
+          </span>
         </div>
         <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">{item.description}</p>
+        {item.sizes && (
+          <div className="border-t border-reba-border pt-3 space-y-1.5">
+            {item.sizes.map((size) => (
+              <div key={size.label} className="flex items-center justify-between text-base">
+                <span className="text-reba-cream font-medium">{size.label}</span>
+                <span className="text-reba-pink font-semibold">${size.price.toFixed(2)}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -193,6 +205,7 @@ const productImages: Record<string, string> = {
   "italian-sub": "/product-italian-sub.jpg",
   "mediterranean-quinoa-salad": "/product-mediterranean-quinoa-salad.jpg",
   "potato-salad": "/product-potato-salad.jpg",
+  "soup": "/about-soup.jpg",
 };
 
 export default function MenuPage() {

@@ -10,6 +10,7 @@ export interface MenuItem {
   emoji: string;
   available: number;
   popular?: boolean;
+  sizes?: { label: string; price: number }[];
 }
 
 export interface Review {
@@ -121,9 +122,11 @@ export const menuItems: MenuItem[] = [
   { id: "italian-sub", name: "The Italian Sub", description: "Cured Italian meats, sharp cheese, and peppery greens on rustic ciabatta. Old-school, no apologies.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
   { id: "mediterranean-quinoa-salad", name: "Mediterranean Quinoa Salad", description: "Fluffy quinoa tossed with bright Mediterranean vegetables and herbs. Light, fresh, and full of sunshine.", price: 6.00, category: "salads", emoji: "🥗", available: 10 },
   { id: "potato-salad", name: "Potato Salad", description: "Classic creamy potato salad — Reba's recipe, made fresh in-house. The cookout side that disappears first.", price: 6.00, category: "salads", emoji: "🥗", available: 10 },
-  { id: "soup-12oz", name: "Soup — 12oz Cup", description: "A perfect side to any meal. Rotating homemade soups, made fresh daily.", price: 5.00, category: "soup", emoji: "🥣", available: 24 },
-  { id: "soup-16oz", name: "Soup — 16oz Bowl", description: "A hearty bowl to warm you up. Rotating homemade soups.", price: 7.00, category: "soup", emoji: "🥣", available: 18 },
-  { id: "soup-quart", name: "Soup — Quart", description: "Take home a quart for the family.", price: 12.00, category: "soup", emoji: "🥣", available: 8 },
+  { id: "soup", name: "Soup of the Day", description: "Rotating homemade soups, made fresh daily. Pick your size.", price: 5.00, category: "soup", emoji: "🥣", available: 50, sizes: [
+    { label: "12oz Cup", price: 5.00 },
+    { label: "16oz Bowl", price: 7.00 },
+    { label: "Quart", price: 12.00 },
+  ] },
   { id: "key-lime-pie", name: "Key Lime Pie", description: "Tangy key lime custard in a graham cracker crust, topped with fresh whipped cream. A crowd favorite.", price: 18.00, category: "pies", emoji: "🥧", available: 4 },
   { id: "dutch-apple-pie", name: "Dutch Apple Pie", description: "Cinnamon-spiced apples under a buttery crumble topping. Reba's grandmother's recipe.", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
   { id: "pecan-pie", name: "Pecan Pie", description: "Rich, caramelized pecan filling in a flaky butter crust. Southern tradition, Monterey made.", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
