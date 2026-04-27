@@ -63,7 +63,7 @@ export default function AboutPage() {
                 </p>
               </div>
               <div className="rounded-xl overflow-hidden">
-                <img src="/about-birthday-cake.jpg" alt="Beach-themed birthday cake by Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+                <img src="/about-r2d2-birthday-cake.jpg" alt="Reba's son with the R2-D2 birthday cake she made for his 7th birthday" className="w-full h-64 md:h-80 object-cover rounded-xl" />
               </div>
             </div>
           </div>
@@ -71,6 +71,9 @@ export default function AboutPage() {
           {/* Local Legend */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div className="rounded-xl overflow-hidden">
+                <img src="/about-local-legend-cake.jpg" alt="Big Sur International Marathon 2019 commemorative cake by Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
                   Becoming a Local Legend
@@ -88,24 +91,12 @@ export default function AboutPage() {
                   &mdash; it was an institution.
                 </p>
               </div>
-              <div className="bg-reba-warm border-2 border-dashed border-reba-border rounded-xl h-64 md:h-80 flex items-center justify-center">
-                <div className="text-center text-reba-muted">
-                  <div className="text-5xl mb-3">{"\u{1F30A}"}</div>
-                  <p className="text-sm">Photo coming soon</p>
-                </div>
-              </div>
             </div>
           </div>
 
           {/* Food Network */}
           <div className="bg-reba-card border border-reba-pink/30 rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="bg-reba-warm border-2 border-dashed border-reba-border rounded-xl h-64 md:h-80 flex items-center justify-center">
-                <div className="text-center text-reba-muted">
-                  <div className="text-5xl mb-3">{"\u{1F4FA}"}</div>
-                  <p className="text-sm">Photo coming soon</p>
-                </div>
-              </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
                   Food Network Cake Wars
@@ -121,6 +112,9 @@ export default function AboutPage() {
                   on a child&apos;s face when they see their birthday cake for the
                   first time.
                 </p>
+              </div>
+              <div className="rounded-xl overflow-hidden">
+                <img src="/cake-wars-thumbnail.png" alt="Food Network Cake Wars" className="w-full h-64 md:h-80 object-cover rounded-xl" />
               </div>
             </div>
           </div>
@@ -149,11 +143,11 @@ export default function AboutPage() {
 
       {/* Reba & Michael Section */}
       <section className="bg-reba-card">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
           <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
             The Heart Behind the Bakery
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Reba */}
             <div className="bg-white border border-reba-border rounded-2xl p-8 text-center">
               <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
@@ -184,7 +178,7 @@ export default function AboutPage() {
                 Partner, Chef &amp; Rock
               </p>
               <p className="text-reba-soft text-base leading-relaxed">
-                Food has always been at the heart of who I am. Growing up surrounded by parents and grandparents with a deep passion for cooking, and with a brother who went on to become a professional chef, a love of great food was simply part of the family DNA. That foundation led me to a business degree and years spent in the restaurant world &mdash; experiences that shaped both my high standards for quality and my understanding of what it takes to run a great operation. At Sweet Reba&apos;s, I get to bring all of that together. Baking alongside Reba is a joy, and being part of a bakery that genuinely serves and celebrates this community is something I&apos;m proud of every single day.
+                Growing up surrounded by parents and grandparents with a deep passion for cooking, a love of great food was simply part of the family DNA. That foundation led me to a business degree and years spent in the restaurant world. At Sweet Reba&apos;s, I get to bring all of that together. Being part of a bakery that genuinely serves and celebrates this community is something I&apos;m proud of every single day.
               </p>
             </div>
           </div>
