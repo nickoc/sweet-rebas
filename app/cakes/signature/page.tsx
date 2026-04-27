@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react";
 
 const standardCakes = [
-  { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg" },
-  { name: "Carrot Cake", image: "/product-carrot-cake.jpg" },
-  { name: 'Chocolate 6" Cake', image: "/product-chocolate-whole-cake.jpg" },
+  { name: "Life by Chocolate", image: "/product-life-by-chocolate-slice.jpg" },
+  { name: "Carrot Cake", image: "/product-carrot-cake-slice.jpg" },
+  { name: "Strawberries and Cream", image: "/product-strawberries-cream.jpg" },
 ];
 
 const cakeSizes = [

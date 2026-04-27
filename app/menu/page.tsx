@@ -178,12 +178,15 @@ const productImages: Record<string, string> = {
   "butterscotch-blondies": "/product-blondie.jpg",
   "lemon-brownies": "/product-lemon-brownie.jpg",
   "coconut-joy": "/product-coconut-joy.jpg",
+  "peanut-butter-brownie": "/product-peanut-butter-brownie.jpg",
+  "peanut-butter-chocolate-chip-brownie": "/product-peanut-butter-chocolate-chip-brownie.jpg",
   "cinnamon-donut-muffins": "/product-cinnamon-donut-muffins.jpg",
   "coffee-cake-muffins": "/product-coffee-cake.jpg",
   "morning-muffins": "/product-morning-muffins.jpg",
   "loaf-slices": "/product-loaf-slices.jpg",
   "lemon-loaf": "/product-lemon-loaf.jpg",
   "classic-burrito": "/product-breakfast-burrito.jpg",
+  "burrito-supreme": "/product-burrito-supreme.jpg",
 };
 
 export default function MenuPage() {
