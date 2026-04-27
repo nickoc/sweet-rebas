@@ -158,6 +158,7 @@ const categories = [
   "Breakfast",
   "Burritos",
   "Sandwiches",
+  "Salads",
   "Soup",
   "Pies",
 ];
@@ -190,6 +191,8 @@ const productImages: Record<string, string> = {
   "albacore-tuna": "/product-albacore-tuna.jpg",
   "breakfast-sandwich": "/product-breakfast-sandwich.jpg",
   "italian-sub": "/product-italian-sub.jpg",
+  "mediterranean-quinoa-salad": "/product-mediterranean-quinoa-salad.jpg",
+  "potato-salad": "/product-potato-salad.jpg",
 };
 
 export default function MenuPage() {

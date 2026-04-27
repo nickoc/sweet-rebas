@@ -6,7 +6,7 @@ export interface MenuItem {
   name: string;
   description: string;
   price: number;
-  category: "cookies" | "bars" | "breakfast" | "burritos" | "sandwiches" | "soup" | "pies";
+  category: "cookies" | "bars" | "breakfast" | "burritos" | "sandwiches" | "salads" | "soup" | "pies";
   emoji: string;
   available: number;
   popular?: boolean;
@@ -119,6 +119,8 @@ export const menuItems: MenuItem[] = [
   { id: "albacore-tuna", name: "Albacore Tuna Sandwich", description: "Premium albacore tuna salad on soft fresh bread. Light, clean, and the way a tuna sandwich should be.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
   { id: "breakfast-sandwich", name: "Breakfast Sandwich", description: "Sweet Reba's all-day breakfast sandwich on toasted bread — egg-forward, savory, and built to start the morning right.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
   { id: "italian-sub", name: "The Italian Sub", description: "Cured Italian meats, sharp cheese, and peppery greens on rustic ciabatta. Old-school, no apologies.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
+  { id: "mediterranean-quinoa-salad", name: "Mediterranean Quinoa Salad", description: "Fluffy quinoa tossed with bright Mediterranean vegetables and herbs. Light, fresh, and full of sunshine.", price: 6.00, category: "salads", emoji: "🥗", available: 10 },
+  { id: "potato-salad", name: "Potato Salad", description: "Classic creamy potato salad — Reba's recipe, made fresh in-house. The cookout side that disappears first.", price: 6.00, category: "salads", emoji: "🥗", available: 10 },
   { id: "soup-12oz", name: "Soup — 12oz Cup", description: "A perfect side to any meal. Rotating homemade soups, made fresh daily.", price: 5.00, category: "soup", emoji: "🥣", available: 24 },
   { id: "soup-16oz", name: "Soup — 16oz Bowl", description: "A hearty bowl to warm you up. Rotating homemade soups.", price: 7.00, category: "soup", emoji: "🥣", available: 18 },
   { id: "soup-quart", name: "Soup — Quart", description: "Take home a quart for the family.", price: 12.00, category: "soup", emoji: "🥣", available: 8 },
