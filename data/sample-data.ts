@@ -119,7 +119,7 @@ export const menuItems: MenuItem[] = [
     { label: "Slice", price: 4.00 },
     { label: "Whole Loaf", price: 4.00 },
   ] },
-  { id: "morning-glory-muffins", name: "Morning Glory Muffins", description: "Packed with carrots, apples, raisins, and walnuts. A hearty start to any morning.", price: 4.00, category: "breakfast", emoji: "🧁", available: 14, sizes: [
+  { id: "morning-glory-muffins", name: "Morning Glory", description: "Packed with carrots, apples, raisins, and walnuts. A hearty start to any morning.", price: 4.00, category: "breakfast", emoji: "🧁", available: 14, sizes: [
     { label: "Slice", price: 4.00 },
     { label: "Whole Loaf", price: 4.00 },
   ] },

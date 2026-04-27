@@ -30,7 +30,7 @@ function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClo
   );
 }
 
-function QuickAddCard({ item, image, onImageClick }: { item: typeof menuItems[number]; image?: string; onImageClick?: (src: string, alt: string) => void }) {
+function QuickAddCard({ item, image, imagePositionClass, onImageClick }: { item: typeof menuItems[number]; image?: string; imagePositionClass?: string; onImageClick?: (src: string, alt: string) => void }) {
   const { addToCart } = useCart();
   const [flash, setFlash] = useState(false);
 
@@ -52,7 +52,7 @@ function QuickAddCard({ item, image, onImageClick }: { item: typeof menuItems[nu
     >
       {image ? (
         <div className="w-32 sm:w-40 flex-shrink-0 cursor-zoom-in" onClick={() => onImageClick?.(image, item.name)}>
-          <img src={image} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          <img src={image} alt={item.name} className={`w-full h-full object-cover hover:scale-105 transition-transform duration-300 ${imagePositionClass ?? ""}`} />
         </div>
       ) : (
         <div className="w-32 sm:w-40 flex-shrink-0 bg-reba-card flex items-center justify-center">
@@ -210,6 +210,13 @@ const productImages: Record<string, string> = {
   "soup": "/about-soup.jpg",
 };
 
+const productImagePositions: Record<string, string> = {
+  "banana-bread": "object-right",
+  "lemon-loaf": "object-right",
+  "coffee-cake": "object-right",
+  "morning-glory-muffins": "object-right",
+};
+
 export default function MenuPage() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
@@ -277,11 +284,13 @@ export default function MenuPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {items.map((item) => {
                   const image = productImages[item.id];
+                  const imagePositionClass = productImagePositions[item.id];
                   return (
                     <QuickAddCard
                       key={item.id}
                       item={item}
                       image={image}
+                      imagePositionClass={imagePositionClass}
                       onImageClick={handleImageClick}
                     />
                   );
