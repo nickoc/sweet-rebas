@@ -21,11 +21,23 @@ const navLinks = [
   { label: "Catering", href: "/catering" },
 ];
 
+const DOORDASH_URL = "https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-";
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [cakesOpen, setCakesOpen] = useState(false);
+  const [orderEmailOpen, setOrderEmailOpen] = useState(false);
+  const [orderEmail, setOrderEmail] = useState("");
   const menuRef = useRef<HTMLDivElement>(null);
+
+  function handleOrderSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!orderEmail.trim()) return;
+    window.open(DOORDASH_URL, "_blank", "noopener,noreferrer");
+    setOrderEmail("");
+    setOrderEmailOpen(false);
+  }
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -144,14 +156,47 @@ export default function Header() {
             >
               What's Baking?
             </Link>
-            <a
-              href="https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg whitespace-nowrap transition-colors"
-            >
-              Order Now
-            </a>
+            <div className="relative flex-1 basis-0 min-w-0">
+              <button
+                type="button"
+                onClick={() => setOrderEmailOpen(!orderEmailOpen)}
+                className="w-full flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg whitespace-nowrap transition-colors"
+              >
+                Order Now
+              </button>
+              {orderEmailOpen && (
+                <div className="absolute top-full right-0 mt-3 w-80 bg-white rounded-2xl shadow-xl border border-reba-border p-5 z-50">
+                  <button
+                    type="button"
+                    onClick={() => setOrderEmailOpen(false)}
+                    className="absolute top-2 right-3 text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
+                    aria-label="Close"
+                  >
+                    &times;
+                  </button>
+                  <p className="text-reba-cream text-sm font-semibold mb-3 pr-4">
+                    Enter your email to continue to DoorDash
+                  </p>
+                  <form onSubmit={handleOrderSubmit} className="flex gap-2">
+                    <input
+                      type="email"
+                      value={orderEmail}
+                      onChange={(e) => setOrderEmail(e.target.value)}
+                      placeholder="Your email"
+                      required
+                      autoFocus
+                      className="flex-1 bg-white border border-reba-border rounded-full px-4 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2.5 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
+                    >
+                      Go &rarr;
+                    </button>
+                  </form>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Mobile hamburger */}
@@ -218,15 +263,45 @@ export default function Header() {
               >
                 What's Baking?
               </Link>
-              <a
-                href="https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
+              <button
+                type="button"
+                onClick={() => setOrderEmailOpen(!orderEmailOpen)}
                 className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium text-center transition-colors"
               >
                 Order Now
-              </a>
+              </button>
+              {orderEmailOpen && (
+                <div className="bg-white border border-reba-border rounded-xl p-4 relative">
+                  <button
+                    type="button"
+                    onClick={() => setOrderEmailOpen(false)}
+                    className="absolute top-2 right-3 text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
+                    aria-label="Close"
+                  >
+                    &times;
+                  </button>
+                  <p className="text-reba-cream text-sm font-semibold mb-3 pr-4">
+                    Enter your email to continue to DoorDash
+                  </p>
+                  <form onSubmit={handleOrderSubmit} className="flex gap-2">
+                    <input
+                      type="email"
+                      value={orderEmail}
+                      onChange={(e) => setOrderEmail(e.target.value)}
+                      placeholder="Your email"
+                      required
+                      autoFocus
+                      className="flex-1 bg-white border border-reba-border rounded-full px-4 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors whitespace-nowrap"
+                    >
+                      Go &rarr;
+                    </button>
+                  </form>
+                </div>
+              )}
             </div>
           </nav>
         )}

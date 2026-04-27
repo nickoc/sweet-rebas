@@ -30,7 +30,8 @@ function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClo
   );
 }
 
-function QuickAddCard({ item, image, imagePositionClass, onImageClick }: { item: typeof menuItems[number]; image?: string; imagePositionClass?: string; onImageClick?: (src: string, alt: string) => void }) {
+function QuickAddCard({ item, image, imagePositionClass, imageWidthClass, onImageClick }: { item: typeof menuItems[number]; image?: string; imagePositionClass?: string; imageWidthClass?: string; onImageClick?: (src: string, alt: string) => void }) {
+  const widthClass = imageWidthClass ?? "w-32 sm:w-40";
   const { addToCart } = useCart();
   const [flash, setFlash] = useState(false);
 
@@ -51,11 +52,11 @@ function QuickAddCard({ item, image, imagePositionClass, onImageClick }: { item:
       className="bg-white border rounded-xl overflow-hidden transition-all flex border-reba-border hover:border-reba-pink/30"
     >
       {image ? (
-        <div className="w-32 sm:w-40 flex-shrink-0 cursor-zoom-in" onClick={() => onImageClick?.(image, item.name)}>
+        <div className={`${widthClass} flex-shrink-0 cursor-zoom-in`} onClick={() => onImageClick?.(image, item.name)}>
           <img src={image} alt={item.name} className={`w-full h-full object-cover hover:scale-105 transition-transform duration-300 ${imagePositionClass ?? ""}`} />
         </div>
       ) : (
-        <div className="w-32 sm:w-40 flex-shrink-0 bg-reba-card flex items-center justify-center">
+        <div className={`${widthClass} flex-shrink-0 bg-reba-card flex items-center justify-center`}>
           <span className="text-3xl">{item.emoji}</span>
         </div>
       )}
@@ -211,10 +212,17 @@ const productImages: Record<string, string> = {
 };
 
 const productImagePositions: Record<string, string> = {
-  "banana-bread": "object-right",
-  "lemon-loaf": "object-right",
-  "coffee-cake": "object-right",
-  "morning-glory-muffins": "object-right",
+  "banana-bread": "object-[68%_center]",
+  "lemon-loaf": "object-[68%_center]",
+  "coffee-cake": "object-[68%_center]",
+  "morning-glory-muffins": "object-[68%_center]",
+};
+
+const productImageWidths: Record<string, string> = {
+  "banana-bread": "w-40 sm:w-52",
+  "lemon-loaf": "w-40 sm:w-52",
+  "coffee-cake": "w-40 sm:w-52",
+  "morning-glory-muffins": "w-40 sm:w-52",
 };
 
 export default function MenuPage() {
@@ -285,12 +293,14 @@ export default function MenuPage() {
                 {items.map((item) => {
                   const image = productImages[item.id];
                   const imagePositionClass = productImagePositions[item.id];
+                  const imageWidthClass = productImageWidths[item.id];
                   return (
                     <QuickAddCard
                       key={item.id}
                       item={item}
                       image={image}
                       imagePositionClass={imagePositionClass}
+                      imageWidthClass={imageWidthClass}
                       onImageClick={handleImageClick}
                     />
                   );
