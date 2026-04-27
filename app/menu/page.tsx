@@ -199,6 +199,7 @@ const productImages: Record<string, string> = {
   "banana-bread": "/product-banana-bread.jpg",
   "lemon-loaf": "/product-lemon-loaf.jpg",
   "morning-glory-muffins": "/product-morning-glory-muffins.jpg",
+  "whole-loaves": "/product-whole-loaves.jpg",
   "classic-burrito": "/product-breakfast-burrito.jpg",
   "burrito-supreme": "/product-burrito-supreme.jpg",
   "albacore-tuna": "/product-albacore-tuna.jpg",
