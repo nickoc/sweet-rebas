@@ -9,7 +9,8 @@ LOCATIONS:
 - Salinas: 268 Main St, Salinas, CA — Phone: (831) 676-0628 — OPEN! This is our currently operating location.
 
 HOURS (Salinas):
-- Monday–Friday: 8:00 AM – 5:00 PM
+- Monday: Closed
+- Tuesday–Friday: 8:00 AM – 5:00 PM
 - Saturday: 9:00 AM – 5:00 PM
 - Sunday: Closed
 

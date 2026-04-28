@@ -72,7 +72,8 @@ export default function ChalkboardPage() {
   useEffect(() => {
     function calcClosing() {
       const now = new Date();
-      if (now.getDay() === 0) return "Closed";
+      const day = now.getDay();
+      if (day === 0 || day === 1) return "Closed";
       const close = new Date();
       close.setHours(17, 0, 0, 0);
       const diff = close.getTime() - now.getTime();
@@ -117,7 +118,8 @@ export default function ChalkboardPage() {
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-6 text-center">
             <h3 className="text-reba-cream font-semibold text-xl mb-3">Opening Hours</h3>
             <div className="flex flex-wrap justify-center gap-6 text-base">
-              <div><span className="text-reba-muted">Mon&ndash;Fri:</span> <span className="text-reba-cream font-medium">8am &ndash; 5pm</span></div>
+              <div><span className="text-reba-muted">Monday:</span> <span className="text-reba-cream font-medium">Closed</span></div>
+              <div><span className="text-reba-muted">Tue&ndash;Fri:</span> <span className="text-reba-cream font-medium">8am &ndash; 5pm</span></div>
               <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-medium">9am &ndash; 5pm</span></div>
               <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-medium">Closed</span></div>
             </div>

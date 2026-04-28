@@ -301,7 +301,7 @@ export const customerInsights = customers;
 
 // Bakery hours
 export const bakeryHours = [
-  { day: "Monday", hours: "8am - 5pm" },
+  { day: "Monday", hours: "CLOSED" },
   { day: "Tuesday", hours: "8am - 5pm" },
   { day: "Wednesday", hours: "8am - 5pm" },
   { day: "Thursday", hours: "8am - 5pm" },

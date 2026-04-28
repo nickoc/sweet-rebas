@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 const standardCakes = [
-  { name: "Strawberries and Cream", image: "/product-carrot-cake.jpg", description: "Light vanilla sponge layered with fresh strawberries and whipped cream." },
+  { name: "Classic Vanilla Cake", image: "/product-carrot-cake.jpg", description: "Classic vanilla cake filled and frosted with vanilla buttercream." },
   { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg", description: "Rich chocolate cake with chocolate fudge filling and ganache topping." },
   { name: "Carrot Cake", image: "/product-carrot-cake.jpg", description: "Spiced carrot cake with toasted walnuts and cream cheese frosting." },
 ];
@@ -58,13 +58,13 @@ export default function SignatureCakesPage() {
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
           {standardCakes.map((cake) => (
-            <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden">
+            <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden flex flex-col">
               <div className="cursor-zoom-in overflow-hidden" onClick={() => setZoomImage({ src: cake.image, alt: cake.name })}>
                 <img src={cake.image} alt={cake.name} className="w-full h-[250px] object-cover hover:scale-105 transition-transform duration-300" />
               </div>
-              <div className="p-5 text-center">
+              <div className="p-5 text-center flex-1 flex flex-col">
                 <h3 className="text-reba-cream font-semibold text-xl">{cake.name}</h3>
-                <p className="text-reba-muted text-base mt-2 mb-4">{cake.description}</p>
+                <p className="text-reba-muted text-base mt-2 mb-4 flex-1">{cake.description}</p>
                 <div className="border-t border-reba-border pt-3 space-y-1">
                   <p className="text-reba-cream font-medium">6&quot; Round</p>
                   <p className="text-reba-muted text-sm">10&ndash;12 servings</p>
