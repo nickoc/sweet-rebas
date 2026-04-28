@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 const standardCakes = [
-  { name: "Strawberries and Cream", image: "/product-strawberries-cream.jpg", description: "Light vanilla sponge layered with fresh strawberries and whipped cream." },
+  { name: "Strawberries and Cream", image: "/product-carrot-cake.jpg", description: "Light vanilla sponge layered with fresh strawberries and whipped cream." },
   { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg", description: "Rich chocolate cake with chocolate fudge filling and ganache topping." },
   { name: "Carrot Cake", image: "/product-carrot-cake.jpg", description: "Spiced carrot cake with toasted walnuts and cream cheese frosting." },
 ];
