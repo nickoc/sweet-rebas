@@ -97,19 +97,25 @@ export default function CakesPage() {
         </p>
       </section>
 
-      {/* Ask Reba to build your dream cake */}
+      {/* Favorite Thing Gallery */}
       <section>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-8">
-            Ask Reba to build your dream cake!
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
+            Favorite Thing
           </h2>
-          <div className="rounded-2xl overflow-hidden shadow-xl border border-reba-border">
-            <img
-              src="/cake-r2d2.jpg"
-              alt="Custom R2-D2 birthday cake by Sweet Reba's"
-              className="w-full h-auto object-cover"
-            />
-          </div>
+          <p className="text-reba-muted text-center text-xl mb-8">The ones everyone asks about</p>
+          <CakeCarousel images={favoriteImages} />
+        </div>
+      </section>
+
+      {/* Special Occasion Gallery */}
+      <section style={{ backgroundColor: "#fff5f5" }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
+            Special Occasion
+          </h2>
+          <p className="text-reba-muted text-center text-xl mb-8">Weddings, milestones, and celebrations worth remembering</p>
+          <CakeCarousel images={specialImages} />
         </div>
       </section>
 
@@ -189,72 +195,7 @@ export default function CakesPage() {
         </div>
       </section>
 
-      {/* Favorite Thing Gallery */}
-      <section>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
-            Favorite Thing
-          </h2>
-          <p className="text-reba-muted text-center text-xl mb-8">The ones everyone asks about</p>
-          <CakeCarousel images={favoriteImages} />
-        </div>
-      </section>
 
-      {/* Special Occasion Gallery */}
-      <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-4">
-            Special Occasion
-          </h2>
-          <p className="text-reba-muted text-center text-xl mb-8">Weddings, milestones, and celebrations worth remembering</p>
-          <CakeCarousel images={specialImages} />
-        </div>
-      </section>
-
-
-
-      {/* Visit Us */}
-      <section style={{ backgroundColor: "#fff5f5" }}>
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-6xl text-reba-pink mb-5">
-            Visit Us to Discuss Your Dream Cake
-          </h2>
-          <p className="text-reba-muted text-lg sm:text-xl mb-10 max-w-lg mx-auto">
-            Every great cake starts with a conversation. Tell us about your occasion
-            and let&apos;s create something extraordinary together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center">
-            <div>
-              <a
-                href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-reba-muted text-base hover:text-reba-pink transition-colors underline underline-offset-2"
-              >
-                Carmel Crossroads
-              </a>
-              <br />
-              <a href="tel:8316014818" className="text-reba-pink text-2xl font-semibold hover:text-reba-pink-hover transition-colors">
-                (831) 601-4818
-              </a>
-            </div>
-            <div>
-              <a
-                href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-reba-muted text-base hover:text-reba-pink transition-colors underline underline-offset-2"
-              >
-                Old Town Salinas
-              </a>
-              <br />
-              <a href="tel:8316760628" className="text-reba-pink text-2xl font-semibold hover:text-reba-pink-hover transition-colors">
-                (831) 676-0628
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Planning Buttons */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

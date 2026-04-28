@@ -89,9 +89,9 @@ export default function Footer() {
                   Opening Hours
                 </h4>
                 <div className="space-y-1 text-base">
-                  <div><span className="text-reba-muted">Mon&ndash;Fri:</span> <span className="text-reba-cream font-semibold">7am &ndash; 3pm</span></div>
-                  <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 3pm</span></div>
-                  <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-semibold">8am &ndash; 2pm</span></div>
+                  <div><span className="text-reba-muted">Mon&ndash;Fri:</span> <span className="text-reba-cream font-semibold">8am &ndash; 5pm</span></div>
+                  <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-semibold">9am &ndash; 5pm</span></div>
+                  <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-semibold">Closed</span></div>
                 </div>
               </div>
             </div>

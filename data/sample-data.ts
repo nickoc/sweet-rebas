@@ -301,11 +301,11 @@ export const customerInsights = customers;
 
 // Bakery hours
 export const bakeryHours = [
-  { day: "Monday", hours: "7am - 3pm" },
-  { day: "Tuesday", hours: "7am - 3pm" },
-  { day: "Wednesday", hours: "7am - 3pm" },
-  { day: "Thursday", hours: "7am - 3pm" },
-  { day: "Friday", hours: "7am - 3pm" },
-  { day: "Saturday", hours: "7am - 3pm" },
+  { day: "Monday", hours: "8am - 5pm" },
+  { day: "Tuesday", hours: "8am - 5pm" },
+  { day: "Wednesday", hours: "8am - 5pm" },
+  { day: "Thursday", hours: "8am - 5pm" },
+  { day: "Friday", hours: "8am - 5pm" },
+  { day: "Saturday", hours: "9am - 5pm" },
   { day: "Sunday", hours: "CLOSED" },
 ];

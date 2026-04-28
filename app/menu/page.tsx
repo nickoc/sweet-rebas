@@ -31,7 +31,7 @@ function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClo
 }
 
 function QuickAddCard({ item, image, imagePositionClass, imageWidthClass, onImageClick }: { item: typeof menuItems[number]; image?: string; imagePositionClass?: string; imageWidthClass?: string; onImageClick?: (src: string, alt: string) => void }) {
-  const widthClass = imageWidthClass ?? "w-32 sm:w-40";
+  const widthClass = imageWidthClass ?? "w-40 sm:w-52";
   const { addToCart } = useCart();
   const [flash, setFlash] = useState(false);
 
@@ -218,12 +218,7 @@ const productImagePositions: Record<string, string> = {
   "morning-glory-muffins": "object-[68%_center]",
 };
 
-const productImageWidths: Record<string, string> = {
-  "banana-bread": "w-40 sm:w-52",
-  "lemon-loaf": "w-40 sm:w-52",
-  "coffee-cake": "w-40 sm:w-52",
-  "morning-glory-muffins": "w-40 sm:w-52",
-};
+const productImageWidths: Record<string, string> = {};
 
 export default function MenuPage() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
