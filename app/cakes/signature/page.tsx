@@ -42,8 +42,7 @@ export default function SignatureCakesPage() {
     <div>
       {/* Hero */}
       <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/banner-signature-cakes.jpg" alt="Layered strawberries and cream cake slice" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
+        <img src="/banner-signature-cakes.jpg" alt="Sweet Reba's signature cakes" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="relative min-h-[60vh]" />
       </section>
       <section className="py-10 text-center">

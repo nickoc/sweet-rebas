@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const DOORDASH_URL = "https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOopv3nAXQdH-_n6RfHiBu3WfDdYdxUyIU3WBPPv_7o5U_C8PecyU";
 
@@ -9,6 +10,10 @@ export default function Footer() {
   const [email, setEmail] = useState("");
   const [doorDashOpen, setDoorDashOpen] = useState(false);
   const [doorDashEmail, setDoorDashEmail] = useState("");
+  const pathname = usePathname();
+  const isWeddingPage = pathname === "/wedding-cakes";
+  const igHandle = isWeddingPage ? "weddingcakesbyReba" : "sweetrebas";
+  const igUrl = `https://instagram.com/${igHandle.toLowerCase()}`;
 
   function handleDoorDashSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -50,7 +55,7 @@ export default function Footer() {
               >
                 Carmel Crossroads
               </a>
-              <p className="text-reba-muted text-base mt-1">206 Crossroads Blvd &middot; (831) 601-4818</p>
+              <p className="text-reba-muted text-lg mt-1">206 Crossroads Blvd &middot; (831) 601-4818</p>
               <div className="border-t border-reba-border mt-4 pt-4 flex-1 flex flex-col justify-center">
                 <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
                   Opening Hours
@@ -83,12 +88,12 @@ export default function Footer() {
               >
                 Old Town Salinas
               </a>
-              <p className="text-reba-muted text-base mt-1">268 Main St &middot; (831) 676-0628</p>
+              <p className="text-reba-muted text-lg mt-1">268 Main St &middot; (831) 676-0628</p>
               <div className="border-t border-reba-border mt-4 pt-4 flex-1 flex flex-col justify-center">
                 <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
                   Opening Hours
                 </h4>
-                <div className="space-y-1 text-base">
+                <div className="space-y-1 text-lg">
                   <div><span className="text-reba-muted">Mon&ndash;Fri:</span> <span className="text-reba-cream font-semibold">8am &ndash; 5pm</span></div>
                   <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-semibold">9am &ndash; 5pm</span></div>
                   <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-semibold">Closed</span></div>
@@ -107,7 +112,7 @@ export default function Footer() {
             <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-3">
               Sweet Reba&apos;s
             </h3>
-            <p className="text-reba-muted text-base leading-relaxed mb-3">
+            <p className="text-reba-muted text-lg leading-relaxed mb-3">
               Artisan bakery serving Carmel &amp; Salinas since 2004. Every item
               is made from scratch with the freshest ingredients and a whole lot
               of love.
@@ -116,7 +121,7 @@ export default function Footer() {
               href="https://instagram.com/sweetrebas"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-reba-muted hover:text-reba-pink transition-colors text-base mt-1"
+              className="inline-flex items-center gap-2 text-reba-muted hover:text-reba-pink transition-colors text-lg mt-1"
             >
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
@@ -127,7 +132,7 @@ export default function Footer() {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h4 className="text-reba-cream font-semibold mb-4 text-base uppercase tracking-wider">
+            <h4 className="text-reba-cream font-semibold mb-4 text-lg uppercase tracking-wider">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -142,7 +147,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-reba-muted hover:text-reba-pink transition-colors text-base"
+                    className="text-reba-muted hover:text-reba-pink transition-colors text-lg"
                   >
                     {link.label}
                   </Link>
@@ -153,10 +158,10 @@ export default function Footer() {
 
           {/* Col 3: Newsletter & Social */}
           <div>
-            <h4 className="text-reba-cream font-semibold mb-4 text-base uppercase tracking-wider">
+            <h4 className="text-reba-cream font-semibold mb-4 text-lg uppercase tracking-wider">
               Stay Connected
             </h4>
-            <p className="text-reba-muted text-base mb-3">
+            <p className="text-reba-muted text-lg mb-3">
               Get updates on seasonal specials and new treats.
             </p>
             <form
@@ -245,7 +250,7 @@ export default function Footer() {
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 text-center">
           <a
-            href="https://instagram.com/sweetrebas"
+            href={igUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex flex-col items-center gap-5 hover:-translate-y-1 transition-transform duration-300"
@@ -266,13 +271,13 @@ export default function Footer() {
               />
             </svg>
             <div>
-              <p className="text-reba-muted text-base sm:text-lg uppercase tracking-widest mb-2">
+              <p className="text-reba-muted text-lg sm:text-lg uppercase tracking-widest mb-2">
                 Follow Us On Instagram
               </p>
               <p className="font-[family-name:var(--font-heading)] text-reba-cream text-5xl sm:text-6xl group-hover:text-reba-pink transition-colors">
-                @sweetrebas
+                @{igHandle}
               </p>
-              <p className="text-reba-muted text-base sm:text-lg mt-3">
+              <p className="text-reba-muted text-lg sm:text-lg mt-3">
                 Fresh bakes daily &middot; behind the scenes &middot; new specials
               </p>
             </div>

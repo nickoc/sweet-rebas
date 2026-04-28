@@ -4,7 +4,6 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative min-h-[60vh] overflow-hidden">
         <img src="/slideshow-lemons.jpg" alt="Fresh lemons in Sweet Reba's kitchen" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
         <div className="relative min-h-[60vh]" />
       </section>
       <section className="py-10 text-center">

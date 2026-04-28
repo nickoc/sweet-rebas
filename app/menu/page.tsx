@@ -209,6 +209,10 @@ const productImages: Record<string, string> = {
   "mediterranean-quinoa-salad": "/product-mediterranean-quinoa-salad.jpg",
   "potato-salad": "/product-potato-salad.jpg",
   "soup": "/about-soup.jpg",
+  "dutch-apple-pie": "/product-dutch-apple-pie.jpg",
+  "key-lime-pie": "/product-key-lime-pie.jpg",
+  "lemon-meringue-pie": "/product-lemon-meringue-pie.jpg",
+  "pecan-pie": "/product-pecan-pie.jpg",
 };
 
 const productImagePositions: Record<string, string> = {
@@ -216,6 +220,8 @@ const productImagePositions: Record<string, string> = {
   "lemon-loaf": "object-[68%_center]",
   "coffee-cake": "object-[68%_center]",
   "morning-glory-muffins": "object-[68%_center]",
+  "key-lime-pie": "object-[60%_center]",
+  "lemon-meringue-pie": "object-[60%_center]",
 };
 
 const productImageWidths: Record<string, string> = {};
@@ -240,7 +246,6 @@ export default function MenuPage() {
       {/* Hero Photo Banner */}
       <section className="relative min-h-[60vh] overflow-hidden">
         <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
         <div className="relative min-h-[60vh]" />
       </section>
       <section className="py-10 text-center">

@@ -12,7 +12,7 @@ const topReviews = reviews.filter((review) => review.rating === 5).slice(0, 3);
 const reviewImages = [
   "/product-chocolate-chip.jpg",
   "/product-breakfast-burrito.jpg",
-  null, // Dutch apple pie — photo coming soon
+  "/product-dutch-apple-pie.jpg",
 ];
 
 function StarRating({ rating }: { rating: number }) {
@@ -71,19 +71,6 @@ export default function HomePage() {
       {/* Three Feature Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 md:mx-0 px-4 md:px-0 pb-2 md:pb-0 scrollbar-hide">
-          {/* Our Story */}
-          <Link href="/about" className="group block shrink-0 snap-center w-[85vw] sm:w-[65vw] md:w-auto">
-            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
-              <img src="/slideshow-snickerdoodles.jpg" alt="Mike and Reba at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
-            </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
-              Our Story
-            </h3>
-            <p className="text-reba-muted text-xl leading-relaxed">
-              From grandmother&apos;s kitchen to Food Network — a story of passion, family, and the perfect cake.
-            </p>
-          </Link>
-
           {/* What's Baking Today */}
           <Link href="/chalkboard" className="group block shrink-0 snap-center w-[85vw] sm:w-[65vw] md:w-auto">
             <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
@@ -107,6 +94,19 @@ export default function HomePage() {
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
               Place an order for pick-up and we&apos;ll do the rest to make something just for you.
+            </p>
+          </Link>
+
+          {/* Our Story */}
+          <Link href="/about" className="group block shrink-0 snap-center w-[85vw] sm:w-[65vw] md:w-auto">
+            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
+              <img src="/slideshow-snickerdoodles.jpg" alt="Mike and Reba at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            </div>
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+              Our Story
+            </h3>
+            <p className="text-reba-muted text-xl leading-relaxed">
+              From grandmother&apos;s kitchen to Food Network — a story of passion, family, and the perfect cake.
             </p>
           </Link>
         </div>
