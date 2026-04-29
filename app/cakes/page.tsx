@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
+import { submitWaitlist } from "@/lib/waitlist";
 
 const detailImages = [
   { src: "/cake-detail-1.png", alt: "White ranunculus detail" },
@@ -75,7 +76,28 @@ export default function CakesPage() {
   const [cakeEmail, setCakeEmail] = useState("");
   const [cakePhone, setCakePhone] = useState("");
   const [cakeSubmitted, setCakeSubmitted] = useState(false);
+  const [cakeLoading, setCakeLoading] = useState(false);
+  const [cakeError, setCakeError] = useState("");
   const [callbackOpen, setCallbackOpen] = useState(false);
+
+  async function handleCustomCakeCallback(e: React.FormEvent) {
+    e.preventDefault();
+    if (!cakeEmail.trim() || !cakePhone.trim()) return;
+    setCakeLoading(true);
+    setCakeError("");
+    const result = await submitWaitlist({
+      email: cakeEmail.trim(),
+      phone: cakePhone.trim(),
+      notes: "Callback requested from Custom Cakes page.",
+      source_context: "cake-callback-custom",
+    });
+    setCakeLoading(false);
+    if (result.ok) {
+      setCakeSubmitted(true);
+    } else {
+      setCakeError(result.error);
+    }
+  }
 
   return (
     <div>
@@ -166,7 +188,7 @@ export default function CakesPage() {
                       &times;
                     </button>
                     <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
-                    <form onSubmit={(e) => { e.preventDefault(); if (cakeEmail.trim() && cakePhone.trim()) setCakeSubmitted(true); }} className="space-y-3 max-w-sm mx-auto">
+                    <form onSubmit={handleCustomCakeCallback} className="space-y-3 max-w-sm mx-auto">
                       <input
                         type="email"
                         value={cakeEmail}
@@ -183,9 +205,16 @@ export default function CakesPage() {
                         required
                         className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <button type="submit" className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors">
-                        Request a Call Back
+                      <button
+                        type="submit"
+                        disabled={cakeLoading}
+                        className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors disabled:opacity-60"
+                      >
+                        {cakeLoading ? "Sending..." : "Request a Call Back"}
                       </button>
+                      {cakeError && (
+                        <p className="text-reba-pink text-xs text-center">{cakeError}</p>
+                      )}
                     </form>
                   </div>
                 )}

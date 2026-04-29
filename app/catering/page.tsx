@@ -1,10 +1,32 @@
 "use client";
 
 import { useState } from "react";
+import { submitWaitlist } from "@/lib/waitlist";
 
 export default function CateringPage() {
   const [cateringEmail, setCateringEmail] = useState("");
   const [cateringSubmitted, setCateringSubmitted] = useState(false);
+  const [cateringLoading, setCateringLoading] = useState(false);
+  const [cateringError, setCateringError] = useState("");
+
+  async function handleCateringSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const trimmed = cateringEmail.trim();
+    if (!trimmed) return;
+    setCateringLoading(true);
+    setCateringError("");
+    const result = await submitWaitlist({
+      email: trimmed,
+      source_context: "catering-inquiry",
+    });
+    setCateringLoading(false);
+    if (result.ok) {
+      setCateringSubmitted(true);
+    } else {
+      setCateringError(result.error);
+    }
+  }
+
   return (
     <div>
       {/* Hero */}
@@ -48,7 +70,7 @@ export default function CateringPage() {
                 ) : (
                   <>
                     <p className="text-reba-muted text-sm mb-3">Or leave your email and we&apos;ll reach out</p>
-                    <form onSubmit={(e) => { e.preventDefault(); if (cateringEmail.trim()) setCateringSubmitted(true); }} className="flex gap-3 max-w-sm mx-auto">
+                    <form onSubmit={handleCateringSubmit} className="flex gap-3 max-w-sm mx-auto">
                       <input
                         type="email"
                         value={cateringEmail}
@@ -57,10 +79,17 @@ export default function CateringPage() {
                         required
                         className="flex-1 bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <button type="submit" className="bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors">
-                        Request Consultation
+                      <button
+                        type="submit"
+                        disabled={cateringLoading}
+                        className="bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors disabled:opacity-60"
+                      >
+                        {cateringLoading ? "..." : "Request Consultation"}
                       </button>
                     </form>
+                    {cateringError && (
+                      <p className="text-reba-pink text-xs mt-2">{cateringError}</p>
+                    )}
                   </>
                 )}
               </div>

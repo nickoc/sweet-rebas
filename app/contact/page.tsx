@@ -2,14 +2,24 @@
 
 import { useState } from "react";
 import { bakeryHours } from "@/data/sample-data";
+import { submitWaitlist } from "@/lib/waitlist";
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Persist to the waitlist/inquiry table before triggering the mailto so
+    // the record lands even if the user cancels out of their email client.
+    // Fire-and-forget — mailto navigation must not be blocked on the API.
+    void submitWaitlist({
+      name: form.name.trim() || undefined,
+      email: form.email.trim() || undefined,
+      notes: form.message.trim() || undefined,
+      source_context: "contact-form",
+    });
     const subject = encodeURIComponent(`Website message from ${form.name}`);
     const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
     window.location.href = `mailto:reba@sweetrebas.com?subject=${subject}&body=${body}`;
@@ -35,6 +45,33 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Location Cards */}
           <div className="space-y-6">
+            {/* AI Concierge — NEW, top of column */}
+            <div className="border-2 border-reba-pink/30 rounded-2xl p-8" style={{ backgroundColor: "#fff5f5" }}>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-reba-pink text-white text-lg">
+                  🤖
+                </span>
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream">
+                  AI Concierge
+                </h2>
+              </div>
+              <p className="text-reba-muted text-base mb-5">
+                Available 24/7. Ask about hours, menu, or custom cakes — she&apos;ll text Reba anything that needs her attention.
+              </p>
+              <a
+                href="tel:8313152253"
+                className="inline-flex items-center gap-2 bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-lg font-semibold transition-colors"
+              >
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                (831) 315-2253
+              </a>
+              <p className="text-reba-muted text-sm mt-4 italic">
+                This line is answered by Reba&apos;s AI assistant — not Reba herself.
+              </p>
+            </div>
+
             {/* Salinas — first */}
             <div className="border-2 border-reba-pink/30 rounded-2xl p-8" style={{ backgroundColor: "#fff5f5" }}>
               <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">

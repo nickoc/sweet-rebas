@@ -1,10 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { submitWaitlist } from "@/lib/waitlist";
 
 export default function DreamCakeForm() {
   const [open, setOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
   const [form, setForm] = useState({
     name: "",
     contact: "",
@@ -12,11 +15,28 @@ export default function DreamCakeForm() {
     description: "",
   });
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!form.name || !form.contact || !form.description) return;
-    // TODO: Connect to email service
-    setSubmitted(true);
+    setLoading(true);
+    setErrorMsg("");
+    // Pack event date + description into notes so Reba sees the full
+    // request body in one field when she reviews inbound.
+    const notesLines: string[] = [];
+    if (form.date) notesLines.push(`Event date: ${form.date}`);
+    notesLines.push(form.description.trim());
+    const result = await submitWaitlist({
+      name: form.name.trim(),
+      email: form.contact.trim(),
+      notes: notesLines.join("\n\n"),
+      source_context: "dream-cake-inquiry",
+    });
+    setLoading(false);
+    if (result.ok) {
+      setSubmitted(true);
+    } else {
+      setErrorMsg(result.error);
+    }
   }
 
   if (submitted) {
@@ -104,10 +124,14 @@ export default function DreamCakeForm() {
           </div>
           <button
             type="submit"
-            className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full font-medium transition-colors"
+            disabled={loading}
+            className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full font-medium transition-colors disabled:opacity-60"
           >
-            Send My Dream Cake Idea {"\u2728"}
+            {loading ? "Sending..." : `Send My Dream Cake Idea ${"\u2728"}`}
           </button>
+          {errorMsg && (
+            <p className="text-reba-pink text-sm text-center">{errorMsg}</p>
+          )}
         </form>
       </div>
     </div>

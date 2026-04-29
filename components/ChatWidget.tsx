@@ -8,11 +8,30 @@ interface Message {
 }
 
 const SUGGESTIONS = [
-  "What's on the menu?",
-  "Are you open today?",
-  "Do you have pies?",
-  "Where are you located?",
+  "Can I get a cake today?",
+  "I need a cake for a birthday next Saturday",
+  "Do you do wedding cakes?",
+  "What's Sweet Reba's known for?",
 ];
+
+// Sweet Reba's concierge is served by Bearing Intelligence's centralized
+// bearing-chat API, called with { prospect_slug: "sweet-rebas" }. The system
+// prompt (voice, profile, positioning, faq) lives in the bearing repo at
+// src/lib/prospects-context/sweet-rebas/ and is loaded at build time.
+//
+// Source of truth: ~/Development/bearing-data/prospects/sweet-rebas/*.md
+// Re-sync: cp ~/Development/bearing-data/prospects/sweet-rebas/{voice,profile,positioning,faq}.md ~/Development/bearing/src/lib/prospects-context/sweet-rebas/
+//
+// TODO(post-launch): promote BEARING_API_URL to NEXT_PUBLIC env var instead
+// of hardcoding. Left as a constant today so preview deploys work without
+// touching Vercel env vars.
+const BEARING_API_URL =
+  process.env.NEXT_PUBLIC_BEARING_API_URL ||
+  "https://getbearing.co/api/bearing-chat";
+const PROSPECT_SLUG = "sweet-rebas";
+
+const FALLBACK_PHONE = "(831) 676-0628";
+const FALLBACK_MESSAGE = `I'm sorry, I'm having trouble right now. Please call us at ${FALLBACK_PHONE}!`;
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -29,28 +48,57 @@ export default function ChatWidget() {
   async function send(text: string) {
     if (!text.trim()) return;
     const userMsg: Message = { role: "user", content: text.trim() };
-    const next = [...messages, userMsg];
-    setMessages(next);
+    const nextMessages = [...messages, userMsg];
+    setMessages(nextMessages);
     setInput("");
     setLoading(true);
     setError(false);
 
+    // Add an empty assistant message we'll stream into.
+    setMessages([...nextMessages, { role: "assistant", content: "" }]);
+
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(BEARING_API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next }),
+        body: JSON.stringify({
+          messages: nextMessages,
+          prospect_slug: PROSPECT_SLUG,
+        }),
       });
-      if (!res.ok) throw new Error("API error");
-      const data = await res.json();
-      setMessages([...next, { role: "assistant", content: data.reply }]);
-    } catch {
+
+      if (!res.ok || !res.body) {
+        throw new Error(`bearing-chat ${res.status}`);
+      }
+
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let assistant = "";
+
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        assistant += decoder.decode(value, { stream: true });
+        setMessages([
+          ...nextMessages,
+          { role: "assistant", content: assistant },
+        ]);
+      }
+
+      // Final decode flush (handles any trailing bytes).
+      assistant += decoder.decode();
+      setMessages([
+        ...nextMessages,
+        { role: "assistant", content: assistant },
+      ]);
+    } catch (err) {
+      console.error("chat widget error:", err);
       setError(true);
       setMessages([
-        ...next,
+        ...nextMessages,
         {
           role: "assistant",
-          content: "I'm sorry, I'm having trouble right now. Please call us at (831) 601-4818!",
+          content: FALLBACK_MESSAGE,
         },
       ]);
     } finally {
@@ -120,7 +168,7 @@ export default function ChatWidget() {
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                 <div
-                  className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
+                  className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap ${
                     m.role === "user"
                       ? "bg-reba-pink text-white rounded-br-md"
                       : "bg-reba-card text-reba-cream rounded-bl-md"
@@ -131,7 +179,7 @@ export default function ChatWidget() {
               </div>
             ))}
 
-            {loading && (
+            {loading && messages[messages.length - 1]?.content === "" && (
               <div className="flex justify-start">
                 <div className="flex items-center gap-1.5 rounded-2xl bg-reba-card px-4 py-3 rounded-bl-md">
                   <span className="h-2 w-2 animate-bounce rounded-full bg-reba-pink [animation-delay:0ms]" />
@@ -145,7 +193,7 @@ export default function ChatWidget() {
           {/* Error banner */}
           {error && (
             <div className="mx-4 mb-2 rounded-lg bg-red-900/30 border border-red-800/50 px-3 py-2 text-xs text-red-300">
-              Having trouble connecting. Please call us at (831) 601-4818!
+              Having trouble connecting. Please call us at {FALLBACK_PHONE}!
             </div>
           )}
 

@@ -3,11 +3,13 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { submitWaitlist } from "@/lib/waitlist";
 
 const DOORDASH_URL = "https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOopv3nAXQdH-_n6RfHiBu3WfDdYdxUyIU3WBPPv_7o5U_C8PecyU";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [doorDashOpen, setDoorDashOpen] = useState(false);
   const [doorDashEmail, setDoorDashEmail] = useState("");
   const pathname = usePathname();
@@ -15,10 +17,32 @@ export default function Footer() {
   const igHandle = isWeddingPage ? "weddingcakesbyReba" : "sweetrebas";
   const igUrl = `https://instagram.com/${igHandle.toLowerCase()}`;
 
-  function handleDoorDashSubmit(e: React.FormEvent) {
+  async function handleNewsletterSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!doorDashEmail.trim()) return;
-    // TODO: wire to actual email list (same service as newsletter)
+    const trimmed = email.trim();
+    if (!trimmed) return;
+    setNewsletterStatus("loading");
+    const result = await submitWaitlist({
+      email: trimmed,
+      source_context: "newsletter-footer",
+    });
+    if (result.ok) {
+      setNewsletterStatus("success");
+      setEmail("");
+    } else {
+      setNewsletterStatus("error");
+    }
+  }
+
+  async function handleDoorDashSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const trimmed = doorDashEmail.trim();
+    if (!trimmed) return;
+    // Fire-and-forget the opt-in; don't block the DoorDash redirect.
+    void submitWaitlist({
+      email: trimmed,
+      source_context: "doordash-gate",
+    });
     window.open(DOORDASH_URL, "_blank", "noopener,noreferrer");
     setDoorDashEmail("");
     setDoorDashOpen(false);
@@ -165,27 +189,34 @@ export default function Footer() {
             <p className="text-reba-muted text-lg mb-3">
               Get updates on seasonal specials and new treats.
             </p>
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setEmail("");
-              }}
-              className="flex gap-2"
-            >
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your email"
-                className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
-              />
-              <button
-                type="submit"
-                className="bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-              >
-                Join
-              </button>
-            </form>
+            {newsletterStatus === "success" ? (
+              <p className="text-reba-pink text-sm font-medium">
+                You&apos;re on the list! We&apos;ll be in touch.
+              </p>
+            ) : (
+              <form onSubmit={handleNewsletterSubmit} className="flex gap-2">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your email"
+                  className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
+                />
+                <button
+                  type="submit"
+                  disabled={newsletterStatus === "loading"}
+                  className="bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors disabled:opacity-60"
+                >
+                  {newsletterStatus === "loading" ? "..." : "Join"}
+                </button>
+              </form>
+            )}
+            {newsletterStatus === "error" && (
+              <p className="text-reba-pink text-xs mt-2">
+                Something went wrong. Please try again.
+              </p>
+            )}
             <p className="text-reba-pink text-xl font-bold mt-4">
               We deliver across Monterey County.
             </p>
