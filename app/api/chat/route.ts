@@ -9,8 +9,10 @@ LOCATIONS:
 - Salinas: 268 Main St, Salinas, CA — Phone: (831) 676-0628 — OPEN! This is our currently operating location.
 
 HOURS (Salinas):
-- Monday–Saturday: 7:00 AM – 3:00 PM
-- Sunday: 8:00 AM – 2:00 PM
+- Monday: Closed
+- Tuesday–Friday: 8:00 AM – 5:00 PM
+- Saturday: 9:00 AM – 5:00 PM
+- Sunday: Closed
 
 MENU & PRICES:
 Cookies: $3.50 each (chocolate chip, oatmeal raisin, snickerdoodle, peanut butter)

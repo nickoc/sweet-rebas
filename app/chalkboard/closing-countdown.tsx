@@ -8,9 +8,11 @@ export default function ClosingCountdown() {
   useEffect(() => {
     function calc() {
       const now = new Date();
+      const day = now.getDay();
+      // Sun (0) and Mon (1) closed.
+      if (day === 0 || day === 1) return "Closed";
       const close = new Date();
-      close.setHours(15, 0, 0, 0);
-      if (now.getDay() === 0) close.setHours(14, 0, 0, 0);
+      close.setHours(17, 0, 0, 0);
       const diff = close.getTime() - now.getTime();
       if (diff <= 0) return "Closed";
       const h = Math.floor(diff / 3600000);

@@ -47,14 +47,19 @@ const SLOT_META: Record<
     emoji: "🍪",
     fallbackImage: "/product-chocolate-chip.jpg",
   },
-  featured: {
-    label: "Today's Feature",
-    emoji: "✨",
-    fallbackImage: "/slideshow-baked-goods.jpg",
+  bar: {
+    label: "Bar of the Day",
+    emoji: "🍰",
+    fallbackImage: "/product-blondie.jpg",
+  },
+  sandwich_cookie: {
+    label: "Sandwich Cookie of the Day",
+    emoji: "🍩",
+    fallbackImage: "/product-sandwich-cookies.jpg",
   },
 };
 
-const SLOT_ORDER = ["soup", "sandwich", "cookie", "featured"];
+const SLOT_ORDER = ["soup", "sandwich", "cookie", "bar", "sandwich_cookie"];
 
 async function loadSpecials(): Promise<{
   date: string;
@@ -82,7 +87,6 @@ function formatDate(iso: string): string {
       timeZone: "America/Los_Angeles",
     });
   }
-  // iso is YYYY-MM-DD in Pacific. Render consistently.
   return new Date(`${iso}T12:00:00`).toLocaleDateString("en-US", {
     weekday: "long",
     month: "long",
@@ -91,13 +95,49 @@ function formatDate(iso: string): string {
   });
 }
 
+function SpecialCard({ s }: { s: Special }) {
+  const meta = SLOT_META[s.slot] ?? {
+    label: s.slot,
+    emoji: "⭐",
+    fallbackImage: "/slideshow-baked-goods.jpg",
+  };
+  const image = s.image_url ?? meta.fallbackImage;
+  return (
+    <div className="bg-white border-2 rounded-2xl overflow-hidden transition-all flex flex-col border-reba-pink/20 hover:border-reba-pink/40 hover:shadow-lg">
+      <div className="w-full h-48 sm:h-56 overflow-hidden">
+        <img src={image} alt={s.name} className="w-full h-full object-cover" />
+      </div>
+      <div className="px-5 py-5 flex-1 flex flex-col">
+        <span className="text-sm uppercase tracking-wider text-reba-pink font-bold mb-2">
+          {meta.emoji} {meta.label}
+        </span>
+        <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
+          {s.name}
+        </h3>
+        {s.description && (
+          <p className="text-reba-muted text-base leading-relaxed mb-4 flex-1">
+            {s.description}
+          </p>
+        )}
+        {s.price_label && (
+          <span className="text-reba-pink font-bold text-2xl">
+            {s.price_label}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default async function ChalkboardPage() {
   const { date, specials } = await loadSpecials();
 
-  // Keep ordering consistent regardless of insert order
   const ordered = SLOT_ORDER.map((slot) =>
     specials.find((s) => s.slot === slot),
   ).filter((s): s is Special => !!s);
+
+  const top = ordered.slice(0, 3);
+  const bottom = ordered.slice(3, 5);
 
   return (
     <div className="min-h-screen">
@@ -122,16 +162,20 @@ export default async function ChalkboardPage() {
             </h3>
             <div className="flex flex-wrap justify-center gap-6 text-base">
               <div>
-                <span className="text-reba-muted">Mon&ndash;Fri:</span>{" "}
-                <span className="text-reba-cream font-medium">7am &ndash; 3pm</span>
+                <span className="text-reba-muted">Monday:</span>{" "}
+                <span className="text-reba-cream font-medium">Closed</span>
+              </div>
+              <div>
+                <span className="text-reba-muted">Tue&ndash;Fri:</span>{" "}
+                <span className="text-reba-cream font-medium">8am &ndash; 5pm</span>
               </div>
               <div>
                 <span className="text-reba-muted">Saturday:</span>{" "}
-                <span className="text-reba-cream font-medium">8am &ndash; 3pm</span>
+                <span className="text-reba-cream font-medium">9am &ndash; 5pm</span>
               </div>
               <div>
                 <span className="text-reba-muted">Sunday:</span>{" "}
-                <span className="text-reba-cream font-medium">8am &ndash; 2pm</span>
+                <span className="text-reba-cream font-medium">Closed</span>
               </div>
             </div>
           </div>
@@ -151,48 +195,23 @@ export default async function ChalkboardPage() {
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
-            {ordered.map((s) => {
-              const meta = SLOT_META[s.slot] ?? {
-                label: s.slot,
-                emoji: "⭐",
-                fallbackImage: "/slideshow-baked-goods.jpg",
-              };
-              const image = s.image_url ?? meta.fallbackImage;
-              return (
-                <div
-                  key={s.id}
-                  className="bg-white border-2 rounded-2xl overflow-hidden transition-all flex flex-col border-reba-pink/20 hover:border-reba-pink/40 hover:shadow-lg"
-                >
-                  <div className="w-full h-48 sm:h-56 overflow-hidden">
-                    <img
-                      src={image}
-                      alt={s.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="px-5 py-5 flex-1 flex flex-col">
-                    <span className="text-sm uppercase tracking-wider text-reba-pink font-bold mb-2">
-                      {meta.emoji} {meta.label}
-                    </span>
-                    <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
-                      {s.name}
-                    </h3>
-                    {s.description && (
-                      <p className="text-reba-muted text-base leading-relaxed mb-4 flex-1">
-                        {s.description}
-                      </p>
-                    )}
-                    {s.price_label && (
-                      <span className="text-reba-pink font-bold text-2xl">
-                        {s.price_label}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <>
+            {/* Top row: up to 3 cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-5">
+              {top.map((s) => (
+                <SpecialCard key={s.id} s={s} />
+              ))}
+            </div>
+
+            {/* Bottom row: up to 2 cards, centered */}
+            {bottom.length > 0 && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-3xl mx-auto">
+                {bottom.map((s) => (
+                  <SpecialCard key={s.id} s={s} />
+                ))}
+              </div>
+            )}
+          </>
         )}
 
         <ChalkboardNewsletterCard />

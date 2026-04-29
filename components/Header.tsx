@@ -21,6 +21,8 @@ const navLinks = [
   { label: "Catering", href: "/catering" },
 ];
 
+const DOORDASH_URL = "https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-";
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -145,10 +147,10 @@ export default function Header() {
               What's Baking?
             </Link>
             <a
-              href="https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-"
+              href={DOORDASH_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg whitespace-nowrap transition-colors"
+              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold transition-colors shadow-lg whitespace-nowrap"
             >
               Order Now
             </a>
@@ -219,7 +221,7 @@ export default function Header() {
                 What's Baking?
               </Link>
               <a
-                href="https://www.doordash.com/store/sweet-rebas-salinas-40954727/97268547/?srsltid=AfmBOor52NrSxODC2YxPVOzspFdcLefzNh-IezOa_tHxOLljG5Yxt8u-"
+                href={DOORDASH_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setMobileOpen(false)}

@@ -6,10 +6,11 @@ export interface MenuItem {
   name: string;
   description: string;
   price: number;
-  category: "cookies" | "bars" | "breakfast" | "burritos" | "sandwiches" | "soup" | "pies";
+  category: "cookies" | "bars" | "breakfast" | "burritos" | "sandwiches" | "salads" | "soup" | "pies";
   emoji: string;
   available: number;
   popular?: boolean;
+  sizes?: { label: string; price: number }[];
 }
 
 export interface Review {
@@ -93,40 +94,53 @@ export interface SalesForecast {
 // ─── MENU ITEMS ─────────────────────────────────────────────
 
 export const menuItems: MenuItem[] = [
-  { id: "choc-chip-cookie", name: "Chocolate Chip Cookie", description: "Classic homemade chocolate chip — crispy edges, chewy center, loaded with chips. Reba's signature.", price: 3.50, category: "cookies", emoji: "🍪", available: 36, popular: true },
-  { id: "snickerdoodles", name: "Snickerdoodles", description: "Soft cinnamon-sugar cookies with a crackled top. Warm spice, buttery dough, pure comfort.", price: 3.50, category: "cookies", emoji: "🍪", available: 24, popular: true },
-  { id: "oatmeal-cranberry", name: "Oatmeal Cranberry", description: "Hearty oats with tart dried cranberries. A wholesome cookie that doesn't compromise on flavor.", price: 3.50, category: "cookies", emoji: "🍪", available: 18 },
-  { id: "sandwich-cookies", name: "Sandwich Cookies", description: "Oatmeal cream, chocolate cream, or spice. Rotating flavors weekly.", price: 4.00, category: "cookies", emoji: "🍪", available: 12 },
-  { id: "peanut-butter", name: "Peanut Butter Cookie", description: "Rich, nutty, melt-in-your-mouth classic. A peanut butter lover's dream.", price: 3.50, category: "cookies", emoji: "🍪", available: 18 },
-  { id: "ginger-cookie", name: "Ginger Cookie", description: "Warm spice with a soft, chewy bite. Perfect with tea or coffee.", price: 3.50, category: "cookies", emoji: "🍪", available: 12 },
-  { id: "revolving-cookie", name: "Revolving Cookie", description: "Ask what's fresh today! A new flavor every week.", price: 3.50, category: "cookies", emoji: "🍪", available: 12 },
-  { id: "triple-choc-brownies", name: "Triple Chocolate Brownies", description: "Dense, fudgy, three kinds of chocolate. The brownie that ruins all other brownies for you.", price: 3.50, category: "bars", emoji: "🟫", available: 20, popular: true },
-  { id: "butterscotch-blondies", name: "White Choc Butterscotch Blondies", description: "Rich blondies studded with white chocolate chips and swirled with butterscotch. Dangerously good.", price: 3.50, category: "bars", emoji: "🟨", available: 16 },
-  { id: "lemon-brownies", name: "Lemon Brownies", description: "Bright, tangy, and buttery — like a lemon bar and a brownie had a perfect child.", price: 3.50, category: "bars", emoji: "🍋", available: 14 },
-  { id: "coconut-joy", name: "Coconut Joy", description: "Toasted coconut, dark chocolate, and almond in a chewy bar. Inspired by the candy bar, elevated by Reba.", price: 4.00, category: "bars", emoji: "🥥", available: 12 },
-  { id: "revolving-bar", name: "Revolving Bar", description: "Ask what's fresh today! A new bar every week.", price: 3.50, category: "bars", emoji: "🍫", available: 12 },
-  { id: "cinnamon-donut-muffins", name: "Cinnamon Donut Muffins", description: "Our famous 50-cent muffin — grab a bag!", price: 0.50, category: "breakfast", emoji: "🧁", available: 48 },
-  { id: "scones", name: "Scones", description: "Flaky, buttery, and golden. Rotating flavors — today's batch: blueberry lemon.", price: 3.50, category: "breakfast", emoji: "🫓", available: 18 },
-  { id: "coffee-cake-muffins", name: "Coffee Cake Muffins", description: "Cinnamon streusel top, tender cake center. The muffin that pairs perfectly with your morning coffee.", price: 4.00, category: "breakfast", emoji: "🧁", available: 16 },
-  { id: "morning-muffins", name: "Morning Muffins", description: "Packed with carrots, apples, raisins, and walnuts. A hearty start to any morning.", price: 4.00, category: "breakfast", emoji: "🧁", available: 14 },
-  { id: "loaf-slices", name: "Loaf Slices", description: "Banana bread, pumpkin, and seasonal flavors. A comforting slice any time of day.", price: 3.50, category: "breakfast", emoji: "🍞", available: 18 },
-  { id: "lemon-loaf", name: "Lemon Loaf", description: "Bright, tangy, and perfectly glazed. A Sweet Reba's classic.", price: 3.50, category: "breakfast", emoji: "🍋", available: 12 },
-  { id: "whole-loaves", name: "Whole Loaves", description: "Take a full loaf home for the family. Banana bread, pumpkin, or lemon.", price: 22.00, category: "breakfast", emoji: "🍞", available: 6 },
+  { id: "choc-chip-cookie", name: "Chocolate Chip Cookie", description: "Does it get more classic than this? Made with extra brown sugar and the best quality chocolate chips.", price: 3.50, category: "cookies", emoji: "🍪", available: 36, popular: true },
+  { id: "snickerdoodles", name: "Snickerdoodles", description: "Just saying the word makes you happy! Our Snickerdoodles will bring you straight back to your childhood.", price: 3.50, category: "cookies", emoji: "🍪", available: 24, popular: true },
+  { id: "oatmeal-cranberry", name: "Oatmeal Cranberry", description: "Ummmm, yes please!", price: 3.50, category: "cookies", emoji: "🍪", available: 18 },
+  { id: "sandwich-cookies", name: "Sandwich Cookies", description: "Little Debbie’s got nothin on us! From oatmeal cream, to chocolate cream and spice, they are deeeeelish!", price: 4.00, category: "cookies", emoji: "🍪", available: 12 },
+  { id: "peanut-butter", name: "Peanut Butter Cookie", description: "if You love peanut butter, these cookies are for you! We pack them with crunchy peanut butter for that classic taste.", price: 3.50, category: "cookies", emoji: "🍪", available: 18 },
+  { id: "ginger-cookie", name: "Ginger Cookie", description: "Old fashioned ginger flavor! We add molasses to these classic cookies for a spicy, chewy bite. Just like grandma used to make!", price: 3.50, category: "cookies", emoji: "🍪", available: 12 },
+  { id: "revolving-cookie", name: "Revolving Cookie", description: "Different every day!", price: 3.50, category: "cookies", emoji: "✨", available: 12 },
+  { id: "triple-choc-brownies", name: "Triple Chocolate Brownies", description: "Yes, we said TRIPLE CHOCOLATE! Dense and fudge, these are the real deal!", price: 3.50, category: "bars", emoji: "🟫", available: 20, popular: true },
+  { id: "butterscotch-blondies", name: "White Choc Butterscotch Blondies", description: "If our Triple Chocolate Brownies had an out of town cousin, this would be him.", price: 3.50, category: "bars", emoji: "🟨", available: 16 },
+  { id: "lemon-brownies", name: "Lemon Brownies", description: "Yes, you read that right…LEMON brownies! They are brownies in the way they are moist, chewy, and delicious, but full of real lemon flavor! We zest and squeeze actual lemons and add white chocolate chips to make them even more irresistible.", price: 3.50, category: "bars", emoji: "🍋", available: 14 },
+  { id: "coconut-joy", name: "Coconut Joy", description: "Dark chocolate brownie on the bottom, moist, chewy coconutty macaroon on the top. The best of all worlds!", price: 4.00, category: "bars", emoji: "🥥", available: 12 },
+  { id: "peanut-butter-brownie", name: "Peanut Butter Brownie", description: "Fudgy chocolate brownie crowned with a thick layer of creamy peanut butter. Two classics, one bar.", price: 3.50, category: "bars", emoji: "🥜", available: 12 },
+  { id: "peanut-butter-chocolate-chip-brownie", name: "Peanut Butter Chocolate Chip", description: "Fudgy brownie meets peanut butter chocolate chip cookie. Half brownie, half cookie, all magic.", price: 3.50, category: "bars", emoji: "🍫", available: 12 },
+  { id: "revolving-bar", name: "Revolving Bar", description: "Ask what's fresh today! A new bar every week.", price: 3.50, category: "bars", emoji: "✨", available: 12 },
+  { id: "cinnamon-donut-muffins", name: "Cinnamon Donut Muffin", description: "Seriously addictive. There is a reason we call them the gateway muffin. For .50 we dare you to buy only one!", price: 0.50, category: "breakfast", emoji: "🧁", available: 48 },
+  { id: "coffee-cake", name: "Coffee Cake Muffins", description: "Baked fresh every morning, our Coffee Cake Muffins are chock full of delicious cinnamon and loaded with crunchy topping. A great accompaniment to your favorite morning brew.", price: 4.00, category: "breakfast", emoji: "🧁", available: 16 },
+  { id: "banana-pudding", name: "Banana Pudding", description: "Layers of velvety vanilla pudding, fresh banana, and Nilla wafers. A Reba's comfort favorite, made fresh.", price: 4.00, category: "breakfast", emoji: "🍌", available: 12 },
+  { id: "banana-bread", name: "Banana Bread", description: "Moist banana bread baked with toasted nuts. A Reba's classic, made from scratch.", price: 4.00, category: "breakfast", emoji: "🍌", available: 12, sizes: [
+    { label: "Slice", price: 4.00 },
+    { label: "Whole Loaf", price: 4.00 },
+  ] },
+  { id: "lemon-loaf", name: "Lemon Loaf", description: "Bright, tangy, and perfectly glazed. A Sweet Reba's classic.", price: 3.50, category: "breakfast", emoji: "🍋", available: 12, sizes: [
+    { label: "Slice", price: 3.50 },
+    { label: "Whole Loaf", price: 4.00 },
+  ] },
+  { id: "morning-glory-muffins", name: "Morning Muffin or Buckle", description: "The term \"Buckle\" is used to describe a muffin that has \"buckled\" in on itself due to the large amount of fresh fruit within. Our Muffins and Buckles certainly live up to that! Baked fresh every morning, we use fresh seasonal fruits and berries to make to MOST delicious muffins ever!", price: 3.50, category: "breakfast", emoji: "🧁", available: 14, sizes: [
+    { label: "Slice", price: 3.50 },
+    { label: "Whole Loaf", price: 4.00 },
+  ] },
+  { id: "scones", name: "Scones", description: "Our delicious scones are made fresh every morning. We offer an assortment of flavors from Cranberry to Cherry Almond. Come check daily and see which one is your favorite, but be here early, they sell out quick!", price: 3.50, category: "breakfast", emoji: "🫓", available: 18 },
+  { id: "whole-loaves", name: "Whole Loaves", description: "Our Morning Glory loaf is second to none — carrots, cranberries, apples, coconut, pecans, and pineapple. Also Lemon Loaf, Banana Pecan, and Mocha. Sold by the slice or whole loaf — can always be ordered ahead.", price: 22.00, category: "breakfast", emoji: "🍞", available: 6 },
   { id: "classic-burrito", name: "Classic Burrito", description: "Eggs, cheese, potatoes, and Reba's house salsa in a warm flour tortilla. Simple and satisfying.", price: 5.50, category: "burritos", emoji: "🌯", available: 20, popular: true },
-  { id: "bacon-burrito", name: "Bacon Burrito", description: "Crispy bacon, scrambled eggs, cheddar, and potatoes. The weekend warrior's breakfast.", price: 6.00, category: "burritos", emoji: "🌯", available: 16, popular: true },
-  { id: "sausage-burrito", name: "Sausage Burrito", description: "Savory sausage, eggs, pepper jack, and roasted peppers. Hearty and filling.", price: 6.00, category: "burritos", emoji: "🌯", available: 14, popular: true },
-  { id: "chorizo-burrito", name: "Chorizo Burrito", description: "Spicy chorizo, eggs, cotija cheese, and pico de gallo. A kick to start your day.", price: 6.00, category: "burritos", emoji: "🌯", available: 12, popular: true },
-  { id: "tuna-salad-sandwich", name: "Tuna Salad Sandwich", description: "House-made tuna salad with celery, red onion, and dill on fresh bread. Light and satisfying.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
-  { id: "turkey-swiss", name: "Turkey & Swiss", description: "Sliced turkey, Swiss cheese, lettuce, tomato, and honey mustard on sourdough.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
-  { id: "ham-swiss", name: "Ham & Swiss", description: "Honey ham and Swiss cheese on fresh-baked buttermilk bread.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
-  { id: "egg-salad", name: "Egg Salad", description: "Creamy homemade egg salad on your choice of bread.", price: 6.00, category: "sandwiches", emoji: "🥪", available: 10 },
-  { id: "soup-12oz", name: "Soup — 12oz Cup", description: "A perfect side to any meal. Rotating homemade soups, made fresh daily.", price: 5.00, category: "soup", emoji: "🥣", available: 24 },
-  { id: "soup-16oz", name: "Soup — 16oz Bowl", description: "A hearty bowl to warm you up. Rotating homemade soups.", price: 7.00, category: "soup", emoji: "🥣", available: 18 },
-  { id: "soup-quart", name: "Soup — Quart", description: "Take home a quart for the family.", price: 12.00, category: "soup", emoji: "🥣", available: 8 },
-  { id: "key-lime-pie", name: "Key Lime Pie", description: "Tangy key lime custard in a graham cracker crust, topped with fresh whipped cream. A crowd favorite.", price: 18.00, category: "pies", emoji: "🥧", available: 4 },
-  { id: "dutch-apple-pie", name: "Dutch Apple Pie", description: "Cinnamon-spiced apples under a buttery crumble topping. Reba's grandmother's recipe.", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
-  { id: "pecan-pie", name: "Pecan Pie", description: "Rich, caramelized pecan filling in a flaky butter crust. Southern tradition, Monterey made.", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
-  { id: "lemon-meringue-pie", name: "Lemon Meringue Pie", description: "Tart lemon curd topped with fluffy meringue. A showstopper.", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
+  { id: "burrito-supreme", name: "Burrito Supreme", description: "Scrambled eggs, melted cheese, fresh pico de gallo, and bell peppers in a warm flour tortilla. Loaded, fresh, and impossible to share.", price: 9.50, category: "burritos", emoji: "🌯", available: 12 },
+  { id: "albacore-tuna", name: "Albacore Tuna Sandwich", description: "Premium albacore tuna salad on soft fresh bread. Light, clean, and the way a tuna sandwich should be.", price: 5.50, category: "sandwiches", emoji: "🥪", available: 10 },
+  { id: "breakfast-sandwich", name: "Breakfast Sandwich", description: "Sweet Reba's all-day breakfast sandwich on toasted bread — egg-forward, savory, and built to start the morning right.", price: 5.50, category: "sandwiches", emoji: "🥪", available: 10 },
+  { id: "italian-sub", name: "The Italian Sub", description: "Cured Italian meats, sharp cheese, and peppery greens on rustic ciabatta. Old-school, no apologies.", price: 8.50, category: "sandwiches", emoji: "🥪", available: 10 },
+  { id: "mediterranean-quinoa-salad", name: "Mediterranean Quinoa Salad", description: "Fluffy quinoa tossed with bright Mediterranean vegetables and herbs. Light, fresh, and full of sunshine.", price: 4.50, category: "salads", emoji: "🥗", available: 10 },
+  { id: "potato-salad", name: "Potato Salad", description: "Classic creamy potato salad — Reba's recipe, made fresh in-house. The cookout side that disappears first.", price: 4.50, category: "salads", emoji: "🥗", available: 10 },
+  { id: "soup", name: "Soup of the Day", description: "Rotating homemade soups, made fresh daily. Pick your size.", price: 5.00, category: "soup", emoji: "🥣", available: 50, sizes: [
+    { label: "12oz Cup", price: 5.00 },
+    { label: "16oz Bowl", price: 7.00 },
+    { label: "Quart", price: 12.00 },
+  ] },
+  { id: "key-lime-pie", name: "Key Lime Pie", description: "Sweet, tart, creamy and deeeee-licious! Made with a traditional graham cracker crust, and served with vanilla whipped cream.", price: 25.00, category: "pies", emoji: "🥧", available: 4 },
+  { id: "dutch-apple-pie", name: "Dutch Apple Pie", description: "Flakey crust, crisp, tart apples, and plenty of brown sugar. You can add salted caramel sauce on the side for $5.00.", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
+  { id: "pecan-pie", name: "Pecan Pie", description: "Pecans, pecans, and more pecans! We load it full of pecans!", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
+  { id: "lemon-meringue-pie", name: "Lemon Meringue Pie", description: "We squeeze actual lemons to make this sweet, tart classic. Topped with a toasted Swiss meringue, it is literally heavin in a pie tin.", price: 25.00, category: "pies", emoji: "🥧", available: 3 },
 ];
 
 // ─── REVIEWS WITH AI RESPONSES ──────────────────────────────
@@ -287,11 +301,11 @@ export const customerInsights = customers;
 
 // Bakery hours
 export const bakeryHours = [
-  { day: "Monday", hours: "7am - 3pm" },
-  { day: "Tuesday", hours: "7am - 3pm" },
-  { day: "Wednesday", hours: "7am - 3pm" },
-  { day: "Thursday", hours: "7am - 3pm" },
-  { day: "Friday", hours: "7am - 3pm" },
-  { day: "Saturday", hours: "7am - 3pm" },
+  { day: "Monday", hours: "CLOSED" },
+  { day: "Tuesday", hours: "8am - 5pm" },
+  { day: "Wednesday", hours: "8am - 5pm" },
+  { day: "Thursday", hours: "8am - 5pm" },
+  { day: "Friday", hours: "8am - 5pm" },
+  { day: "Saturday", hours: "9am - 5pm" },
   { day: "Sunday", hours: "CLOSED" },
 ];

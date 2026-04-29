@@ -4,17 +4,9 @@ import { useState, useEffect } from "react";
 import { submitWaitlist } from "@/lib/waitlist";
 
 const standardCakes = [
-  { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg" },
-  { name: "Carrot Cake", image: "/product-carrot-cake.jpg" },
-  { name: 'Chocolate 6" Cake', image: "/product-chocolate-whole-cake.jpg" },
-];
-
-const cakeSizes = [
-  { name: '6" Round', serves: "~10-12 servings", price: "$40" },
-  { name: '8" Round', serves: "~15-20 servings", price: "$55" },
-  { name: '9" Round', serves: "~20-25 servings", price: "$65" },
-  { name: "1/4 Sheet", serves: "~30-35 servings", price: "$45" },
-  { name: "Cupcakes", serves: "Per dozen", price: "$36/dz" },
+  { name: "Classic Vanilla Cake", image: "/product-carrot-cake.jpg", description: "Classic vanilla cake filled and frosted with vanilla buttercream." },
+  { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg", description: "Rich chocolate cake with chocolate fudge filling and ganache topping." },
+  { name: "Carrot Cake", image: "/product-carrot-cake.jpg", description: "Spiced carrot cake with toasted walnuts and cream cheese frosting." },
 ];
 
 function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
@@ -72,8 +64,7 @@ export default function SignatureCakesPage() {
     <div>
       {/* Hero */}
       <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/banner-unicorn-cakes.jpg" alt="Beautiful cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
+        <img src="/banner-signature-cakes.jpg" alt="Sweet Reba's signature cakes" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="relative min-h-[60vh]" />
       </section>
       <section className="py-10 text-center">
@@ -89,47 +80,21 @@ export default function SignatureCakesPage() {
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
           {standardCakes.map((cake) => (
-            <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden">
+            <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden flex flex-col">
               <div className="cursor-zoom-in overflow-hidden" onClick={() => setZoomImage({ src: cake.image, alt: cake.name })}>
                 <img src={cake.image} alt={cake.name} className="w-full h-[250px] object-cover hover:scale-105 transition-transform duration-300" />
               </div>
-              <div className="p-5 text-center">
+              <div className="p-5 text-center flex-1 flex flex-col">
                 <h3 className="text-reba-cream font-semibold text-xl">{cake.name}</h3>
+                <p className="text-reba-muted text-base mt-2 mb-4 flex-1">{cake.description}</p>
+                <div className="border-t border-reba-border pt-3 space-y-1">
+                  <p className="text-reba-cream font-medium">6&quot; Round</p>
+                  <p className="text-reba-muted text-sm">10&ndash;12 servings</p>
+                  <p className="text-reba-pink font-bold text-lg">$40</p>
+                </div>
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Sizes & Pricing */}
-        <h3 className="font-semibold text-reba-cream text-2xl mb-6 text-center">Sizes &amp; Pricing</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
-          {cakeSizes.map((size) => (
-            <div key={size.name} className="bg-white border border-reba-pink/30 rounded-xl p-4 text-center">
-              <h4 className="text-reba-cream font-semibold text-lg">{size.name}</h4>
-              <p className="text-reba-muted text-base mb-1">{size.serves}</p>
-              <p className="text-reba-pink font-bold text-xl">{size.price}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Flavor Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
-            <h4 className="text-reba-pink font-semibold text-lg mb-2">
-              Standard Flavors <span className="font-normal text-base text-reba-muted">(always available)</span>
-            </h4>
-            <p className="text-reba-soft text-[1.1rem] leading-relaxed">
-              Classic Vanilla<br />Carrot<br />Life by Chocolate
-            </p>
-          </div>
-          <div className="bg-white rounded-xl p-6 border-l-4 border-reba-pink shadow-sm">
-            <h4 className="text-reba-pink font-semibold text-lg mb-2">
-              Specialty Flavors <span className="font-normal text-base text-reba-muted">(7-day notice)</span>
-            </h4>
-            <p className="text-reba-soft text-[1.1rem] leading-relaxed">
-              Raspberry Lemonade<br />Blackberry Lavender Lemon<br />Razzelberry<br />Lemon<br />Red Velvet<br />Cookies &amp; Cream<br />Chocolate Peanut Butter
-            </p>
-          </div>
         </div>
       </section>
 

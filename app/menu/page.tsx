@@ -30,7 +30,8 @@ function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClo
   );
 }
 
-function QuickAddCard({ item, image, onImageClick }: { item: typeof menuItems[number]; image?: string; onImageClick?: (src: string, alt: string) => void }) {
+function QuickAddCard({ item, image, imagePositionClass, imageWidthClass, onImageClick }: { item: typeof menuItems[number]; image?: string; imagePositionClass?: string; imageWidthClass?: string; onImageClick?: (src: string, alt: string) => void }) {
+  const widthClass = imageWidthClass ?? "w-40 sm:w-52";
   const { addToCart } = useCart();
   const [flash, setFlash] = useState(false);
 
@@ -51,20 +52,32 @@ function QuickAddCard({ item, image, onImageClick }: { item: typeof menuItems[nu
       className="bg-white border rounded-xl overflow-hidden transition-all flex border-reba-border hover:border-reba-pink/30"
     >
       {image ? (
-        <div className="w-28 sm:w-36 flex-shrink-0 cursor-zoom-in" onClick={() => onImageClick?.(image, item.name)}>
-          <img src={image} alt={item.name} className="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+        <div className={`${widthClass} flex-shrink-0 cursor-zoom-in`} onClick={() => onImageClick?.(image, item.name)}>
+          <img src={image} alt={item.name} className={`w-full h-full object-cover hover:scale-105 transition-transform duration-300 ${imagePositionClass ?? ""}`} />
         </div>
       ) : (
-        <div className="w-28 sm:w-36 flex-shrink-0 bg-reba-card flex items-center justify-center">
+        <div className={`${widthClass} flex-shrink-0 bg-reba-card flex items-center justify-center`}>
           <span className="text-3xl">{item.emoji}</span>
         </div>
       )}
-      <div className="flex-1 p-5 flex flex-col">
+      <div className="flex-1 p-6 flex flex-col">
         <div className="flex items-start justify-between gap-2 mb-2">
           <h3 className="text-reba-cream font-semibold text-xl">{item.name}</h3>
-          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">${item.price.toFixed(2)}</span>
+          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">
+            {item.sizes ? `From $${Math.min(...item.sizes.map((s) => s.price)).toFixed(2)}` : `$${item.price.toFixed(2)}`}
+          </span>
         </div>
         <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">{item.description}</p>
+        {item.sizes && (
+          <div className="border-t border-reba-border pt-3 space-y-1.5">
+            {item.sizes.map((size) => (
+              <div key={size.label} className="flex items-center justify-between text-base">
+                <span className="text-reba-cream font-medium">{size.label}</span>
+                <span className="text-reba-pink font-semibold">${size.price.toFixed(2)}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -158,6 +171,7 @@ const categories = [
   "Breakfast",
   "Burritos",
   "Sandwiches",
+  "Salads",
   "Soup",
   "Pies",
 ];
@@ -178,13 +192,40 @@ const productImages: Record<string, string> = {
   "butterscotch-blondies": "/product-blondie.jpg",
   "lemon-brownies": "/product-lemon-brownie.jpg",
   "coconut-joy": "/product-coconut-joy.jpg",
+  "peanut-butter-brownie": "/product-peanut-butter-brownie.jpg",
+  "peanut-butter-chocolate-chip-brownie": "/product-peanut-butter-chocolate-chip-brownie.jpg",
   "cinnamon-donut-muffins": "/product-cinnamon-donut-muffins.jpg",
-  "coffee-cake-muffins": "/product-coffee-cake.jpg",
-  "morning-muffins": "/product-morning-muffins.jpg",
-  "loaf-slices": "/product-loaf-slices.jpg",
+  "coffee-cake": "/product-coffee-cake.jpg",
+  "banana-pudding": "/product-banana-pudding.jpg",
+  "banana-bread": "/product-banana-bread.jpg",
   "lemon-loaf": "/product-lemon-loaf.jpg",
+  "morning-glory-muffins": "/product-morning-glory-muffins.jpg",
+  "scones": "/product-scones.jpg",
+  "whole-loaves": "/product-whole-loaves.jpg",
   "classic-burrito": "/product-breakfast-burrito.jpg",
+  "burrito-supreme": "/product-burrito-supreme.jpg",
+  "albacore-tuna": "/product-albacore-tuna.jpg",
+  "breakfast-sandwich": "/product-breakfast-sandwich.jpg",
+  "italian-sub": "/product-italian-sub.jpg",
+  "mediterranean-quinoa-salad": "/product-mediterranean-quinoa-salad.jpg",
+  "potato-salad": "/product-potato-salad.jpg",
+  "soup": "/about-soup.jpg",
+  "dutch-apple-pie": "/product-dutch-apple-pie.jpg",
+  "key-lime-pie": "/product-key-lime-pie.jpg",
+  "lemon-meringue-pie": "/product-lemon-meringue-pie.jpg",
+  "pecan-pie": "/product-pecan-pie.jpg",
 };
+
+const productImagePositions: Record<string, string> = {
+  "banana-bread": "object-[68%_center]",
+  "lemon-loaf": "object-[68%_center]",
+  "coffee-cake": "object-[68%_center]",
+  "morning-glory-muffins": "object-[68%_center]",
+  "key-lime-pie": "object-[60%_center]",
+  "lemon-meringue-pie": "object-[60%_center]",
+};
+
+const productImageWidths: Record<string, string> = {};
 
 export default function MenuPage() {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
@@ -206,7 +247,6 @@ export default function MenuPage() {
       {/* Hero Photo Banner */}
       <section className="relative min-h-[60vh] overflow-hidden">
         <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
         <div className="relative min-h-[60vh]" />
       </section>
       <section className="py-10 text-center">
@@ -253,11 +293,15 @@ export default function MenuPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {items.map((item) => {
                   const image = productImages[item.id];
+                  const imagePositionClass = productImagePositions[item.id];
+                  const imageWidthClass = productImageWidths[item.id];
                   return (
                     <QuickAddCard
                       key={item.id}
                       item={item}
                       image={image}
+                      imagePositionClass={imagePositionClass}
+                      imageWidthClass={imageWidthClass}
                       onImageClick={handleImageClick}
                     />
                   );
