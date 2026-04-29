@@ -40,6 +40,11 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  // Persist session_id across messages so every turn lands in the
+  // same prospect_conversations row group — one inbox thread per
+  // conversation, not one per turn. Captured from the X-Session-Id
+  // response header on the first reply.
+  const sessionIdRef = useRef<string | null>(null);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -64,11 +69,19 @@ export default function ChatWidget() {
         body: JSON.stringify({
           messages: nextMessages,
           prospect_slug: PROSPECT_SLUG,
+          session_id: sessionIdRef.current ?? undefined,
         }),
       });
 
       if (!res.ok || !res.body) {
         throw new Error(`bearing-chat ${res.status}`);
+      }
+
+      // Capture the server-assigned session_id once so subsequent
+      // turns reuse it and group as one inbox thread.
+      const returnedSessionId = res.headers.get("X-Session-Id");
+      if (returnedSessionId && !sessionIdRef.current) {
+        sessionIdRef.current = returnedSessionId;
       }
 
       const reader = res.body.getReader();
