@@ -288,7 +288,10 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-reba-border">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-2 text-center sm:text-left">
+          <p className="text-reba-muted text-sm">
+            Designed by Noemsø Designs
+          </p>
           <p className="text-reba-muted text-sm">
             &copy; 2026 Sweet Reba&apos;s Bakery. All rights reserved.
           </p>
