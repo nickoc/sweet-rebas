@@ -67,11 +67,11 @@ export default function SignatureCakesPage() {
         <img src="/banner-signature-cakes.jpg" alt="Sweet Reba's signature cakes" className="absolute inset-0 w-full h-full object-cover object-center" />
         <div className="relative min-h-[60vh]" />
       </section>
-      <section className="py-10 text-center">
-        <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
+      <section className="py-10 text-center px-4">
+        <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-8xl lg:text-9xl text-reba-pink mb-6 sm:mb-4 leading-tight">
           Signature Cakes
         </h1>
-        <p className="text-2xl sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide">
+        <p className="text-lg sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide">
           Our most loved cakes, baked fresh for you.
         </p>
       </section>

@@ -46,12 +46,12 @@ export default function ContactPage() {
           {/* Location Cards */}
           <div className="space-y-6">
             {/* AI Concierge — NEW, top of column */}
-            <div className="border-2 border-reba-pink/30 rounded-2xl p-8" style={{ backgroundColor: "#fff5f5" }}>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="inline-flex items-center justify-center h-10 w-10 rounded-full bg-reba-pink text-white text-lg">
+            <div className="border-2 border-reba-pink/30 rounded-2xl p-6 sm:p-8" style={{ backgroundColor: "#fff5f5" }}>
+              <div className="flex items-center gap-3 mb-5 sm:mb-3">
+                <span className="inline-flex flex-shrink-0 items-center justify-center h-10 w-10 rounded-full bg-reba-pink text-white text-lg">
                   🤖
                 </span>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream">
+                <h2 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream leading-tight">
                   AI Concierge
                 </h2>
               </div>

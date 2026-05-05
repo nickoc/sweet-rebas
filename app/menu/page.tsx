@@ -60,14 +60,14 @@ function QuickAddCard({ item, image, imagePositionClass, imageWidthClass, onImag
           <span className="text-3xl">{item.emoji}</span>
         </div>
       )}
-      <div className="flex-1 p-6 flex flex-col">
-        <div className="flex items-start justify-between gap-2 mb-2">
-          <h3 className="text-reba-cream font-semibold text-xl">{item.name}</h3>
-          <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">
+      <div className="flex-1 min-w-0 p-4 sm:p-6 flex flex-col">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-2 mb-2">
+          <h3 className="text-reba-cream font-semibold text-lg sm:text-xl">{item.name}</h3>
+          <span className="text-reba-pink font-semibold text-lg sm:text-xl whitespace-nowrap">
             {item.sizes ? `From $${Math.min(...item.sizes.map((s) => s.price)).toFixed(2)}` : `$${item.price.toFixed(2)}`}
           </span>
         </div>
-        <p className="text-reba-muted text-[1.05rem] leading-relaxed mb-3 flex-1">{item.description}</p>
+        <p className="text-reba-muted text-sm sm:text-[1.05rem] leading-relaxed mb-3 flex-1 break-words">{item.description}</p>
         {item.sizes && (
           <div className="border-t border-reba-border pt-3 space-y-1.5">
             {item.sizes.map((size) => (
