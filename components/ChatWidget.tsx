@@ -123,7 +123,7 @@ export default function ChatWidget() {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed bottom-6 right-6 z-50 flex h-[500px] w-[380px] flex-col rounded-2xl border border-reba-border bg-reba-dark shadow-2xl">
+        <div className="fixed inset-x-2 bottom-2 z-50 flex h-[min(500px,calc(100dvh-1rem))] flex-col rounded-2xl border border-reba-border bg-reba-dark shadow-2xl sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[500px] sm:w-[380px]">
           {/* Header */}
           <div className="flex items-center gap-3 rounded-t-2xl bg-reba-card px-4 py-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-reba-pink text-white font-heading text-lg font-bold">
