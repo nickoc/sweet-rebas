@@ -48,13 +48,13 @@ export default function Header() {
           {/* Logo + Locations (stacked under wordmark) */}
           <div className="flex items-center gap-4">
             <Link href="/" aria-label="Sweet Reba's home">
-              <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-20 h-20 sm:w-24 sm:h-24" />
+              <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-14 h-14 sm:w-24 sm:h-24" />
             </Link>
             <div className="leading-tight">
-              <Link href="/" className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream block">
+              <Link href="/" className="font-[family-name:var(--font-heading)] text-xl sm:text-3xl text-reba-cream block whitespace-nowrap">
                 Sweet Reba&apos;s
               </Link>
-              <div className="text-sm text-reba-muted flex items-center gap-1 mt-0.5">
+              <div className="text-sm text-reba-muted hidden sm:flex items-center gap-1 mt-0.5">
                 <a
                   href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
                   target="_blank"
