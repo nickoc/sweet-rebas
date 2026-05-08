@@ -134,7 +134,7 @@ export default function BoxBuilderPage() {
                 )}
                 <div className="flex-1 p-5">
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="text-reba-cream font-semibold text-lg">{item.name}</h3>
+                    <h3 className="text-reba-ink font-semibold text-lg">{item.name}</h3>
                     <span className="text-reba-pink font-semibold text-lg">${item.price.toFixed(2)}</span>
                   </div>
                   <p className="text-reba-muted text-base mt-1 line-clamp-2 mb-3">{item.description}</p>

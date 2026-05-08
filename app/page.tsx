@@ -76,7 +76,7 @@ export default function HomePage() {
             <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
               <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               What&apos;s Baking Today?
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -89,7 +89,7 @@ export default function HomePage() {
             <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
               <img src="/slideshow-lemons.jpg" alt="Fresh lemons at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               Bakery Pre-Orders
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -102,7 +102,7 @@ export default function HomePage() {
             <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
               <img src="/slideshow-snickerdoodles.jpg" alt="Mike and Reba at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               Our Story
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -127,7 +127,7 @@ export default function HomePage() {
       {/* Customer Reviews */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-ink text-center mb-14">
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -154,10 +154,10 @@ export default function HomePage() {
                   &ldquo;{review.text}&rdquo;
                 </p>
                 <div className="flex items-center justify-between">
-                  <p className="text-reba-cream text-base font-medium">
+                  <p className="text-reba-ink text-base font-medium">
                     {review.author}
                   </p>
-                  <span className="text-base text-reba-muted bg-reba-dark px-3 py-1 rounded-full">
+                  <span className="text-base text-reba-muted bg-reba-bg px-3 py-1 rounded-full">
                     {review.platform}
                   </span>
                 </div>

@@ -20,12 +20,12 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
   return (
     <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
       <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-cream hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-ink hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
         <img src={src} alt={alt} className="w-full object-cover" />
         <div className="p-4 text-center">
-          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream">{alt}</h3>
+          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">{alt}</h3>
         </div>
       </div>
     </div>
@@ -85,10 +85,10 @@ export default function SignatureCakesPage() {
                 <img src={cake.image} alt={cake.name} className="w-full h-[250px] object-cover hover:scale-105 transition-transform duration-300" />
               </div>
               <div className="p-5 text-center flex-1 flex flex-col">
-                <h3 className="text-reba-cream font-semibold text-xl">{cake.name}</h3>
+                <h3 className="text-reba-ink font-semibold text-xl">{cake.name}</h3>
                 <p className="text-reba-muted text-base mt-2 mb-4 flex-1">{cake.description}</p>
                 <div className="border-t border-reba-border pt-3 space-y-1">
-                  <p className="text-reba-cream font-medium">6&quot; Round</p>
+                  <p className="text-reba-ink font-medium">6&quot; Round</p>
                   <p className="text-reba-muted text-sm">10&ndash;12 servings</p>
                   <p className="text-reba-pink font-bold text-lg">$40</p>
                 </div>
@@ -103,7 +103,7 @@ export default function SignatureCakesPage() {
         <div className="max-w-3xl mx-auto px-4 py-16 text-center">
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
             <div className="text-5xl mb-4">{"\u{1F382}"}</div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
               Call to Order Your Cake
             </h3>
             <p className="text-reba-pink text-lg sm:text-xl font-bold mb-2">
@@ -144,7 +144,7 @@ export default function SignatureCakesPage() {
                     >
                       &times;
                     </button>
-                    <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
+                    <p className="text-reba-ink font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
                     <form onSubmit={handleSignatureCallback} className="space-y-3 max-w-sm mx-auto">
                       <input
                         type="email"
@@ -152,7 +152,7 @@ export default function SignatureCakesPage() {
                         onChange={(e) => setCakeEmail(e.target.value)}
                         placeholder="Your email address *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <input
                         type="tel"
@@ -160,7 +160,7 @@ export default function SignatureCakesPage() {
                         onChange={(e) => setCakePhone(e.target.value)}
                         placeholder="Your phone number *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <button
                         type="submit"

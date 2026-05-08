@@ -49,12 +49,12 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
 
   return (
     <div className="border border-reba-pink/30 rounded-2xl p-3 bg-reba-pink/5">
-      <p className="text-reba-cream text-xs font-medium mb-2 text-center">How many?</p>
+      <p className="text-reba-ink text-xs font-medium mb-2 text-center">How many?</p>
       <div className="flex items-center justify-center gap-2 mb-2">
         <button
           type="button"
           onClick={() => setQty((q) => Math.max(1, q - 1))}
-          className={`rounded-full border border-reba-border bg-white text-reba-cream hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
+          className={`rounded-full border border-reba-border bg-white text-reba-ink hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
           aria-label="Decrease quantity"
         >
           −
@@ -67,12 +67,12 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
             const v = parseInt(e.target.value, 10);
             setQty(Number.isFinite(v) && v >= 1 ? v : 1);
           }}
-          className={`text-center bg-white border border-reba-border rounded-lg text-reba-cream font-semibold focus:outline-none focus:border-reba-pink ${inputClass}`}
+          className={`text-center bg-white border border-reba-border rounded-lg text-reba-ink font-semibold focus:outline-none focus:border-reba-pink ${inputClass}`}
         />
         <button
           type="button"
           onClick={() => setQty((q) => q + 1)}
-          className={`rounded-full border border-reba-border bg-white text-reba-cream hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
+          className={`rounded-full border border-reba-border bg-white text-reba-ink hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
           aria-label="Increase quantity"
         >
           +

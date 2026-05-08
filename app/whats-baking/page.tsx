@@ -84,7 +84,7 @@ export default function WhatsBakingPage() {
               {submitted ? (
                 <div>
                   <div className="text-5xl mb-4">{"\u2728"}</div>
-                  <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-3">
+                  <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-3">
                     You&apos;re on the list!
                   </h3>
                   <p className="text-reba-muted text-base">
@@ -93,7 +93,7 @@ export default function WhatsBakingPage() {
                 </div>
               ) : (
                 <div>
-                  <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream mb-3">
+                  <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-ink mb-3">
                     Sign up to always know what we&apos;re up to!
                   </h3>
                   <p className="text-reba-muted text-base sm:text-lg mb-8">
@@ -105,7 +105,7 @@ export default function WhatsBakingPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="First name"
-                      className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                     />
                     <input
                       type="email"
@@ -113,7 +113,7 @@ export default function WhatsBakingPage() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="you@example.com"
-                      className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                     />
                     <button
                       type="submit"

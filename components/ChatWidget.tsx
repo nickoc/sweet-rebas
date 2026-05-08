@@ -136,19 +136,19 @@ export default function ChatWidget() {
 
       {/* Chat window */}
       {open && (
-        <div className="fixed inset-x-2 bottom-2 z-50 flex h-[min(500px,calc(100dvh-1rem))] flex-col rounded-2xl border border-reba-border bg-reba-dark shadow-2xl sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[500px] sm:w-[380px]">
+        <div className="fixed inset-x-2 bottom-2 z-50 flex h-[min(500px,calc(100dvh-1rem))] flex-col rounded-2xl border border-reba-border bg-reba-bg shadow-2xl sm:inset-auto sm:bottom-6 sm:right-6 sm:h-[500px] sm:w-[380px]">
           {/* Header */}
           <div className="flex items-center gap-3 rounded-t-2xl bg-reba-card px-4 py-3">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-reba-pink text-white font-heading text-lg font-bold">
               SR
             </div>
             <div className="flex-1">
-              <p className="text-sm font-semibold text-reba-cream font-body">Sweet Reba&apos;s</p>
+              <p className="text-sm font-semibold text-reba-ink font-body">Sweet Reba&apos;s</p>
               <p className="text-xs text-reba-muted">AI Concierge</p>
             </div>
             <button
               onClick={() => setOpen(false)}
-              className="text-reba-muted transition hover:text-reba-cream"
+              className="text-reba-muted transition hover:text-reba-ink"
               aria-label="Close chat"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -169,7 +169,7 @@ export default function ChatWidget() {
                     <button
                       key={s}
                       onClick={() => send(s)}
-                      className="rounded-full border border-reba-border bg-reba-card px-3 py-1.5 text-xs text-reba-cream transition hover:border-reba-pink hover:text-reba-pink"
+                      className="rounded-full border border-reba-border bg-reba-card px-3 py-1.5 text-xs text-reba-ink transition hover:border-reba-pink hover:text-reba-pink"
                     >
                       {s}
                     </button>
@@ -184,7 +184,7 @@ export default function ChatWidget() {
                   className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed whitespace-pre-wrap break-words ${
                     m.role === "user"
                       ? "bg-reba-pink text-white rounded-br-md"
-                      : "bg-reba-card text-reba-cream rounded-bl-md"
+                      : "bg-reba-card text-reba-ink rounded-bl-md"
                   }`}
                 >
                   {m.content}
@@ -222,7 +222,7 @@ export default function ChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask us anything..."
-              className="flex-1 rounded-full bg-reba-card border border-reba-border px-4 py-2 text-sm text-reba-cream placeholder:text-reba-muted outline-none focus:border-reba-pink transition"
+              className="flex-1 rounded-full bg-reba-card border border-reba-border px-4 py-2 text-sm text-reba-ink placeholder:text-reba-muted outline-none focus:border-reba-pink transition"
               disabled={loading}
             />
             <button

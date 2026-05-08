@@ -32,7 +32,7 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="py-10 sm:py-14" style={{ background: "linear-gradient(to bottom, #fff5f5, #ffffff)" }}>
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-cream mb-4">
+          <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-ink mb-4">
             Contact Us
           </h1>
           <p className="text-reba-muted text-2xl sm:text-3xl">
@@ -51,7 +51,7 @@ export default function ContactPage() {
                 <span className="inline-flex flex-shrink-0 items-center justify-center h-10 w-10 rounded-full bg-reba-pink text-white text-lg">
                   🤖
                 </span>
-                <h2 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream leading-tight">
+                <h2 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-ink leading-tight">
                   AI Concierge
                 </h2>
               </div>
@@ -74,7 +74,7 @@ export default function ContactPage() {
 
             {/* Salinas — first */}
             <div className="border-2 border-reba-pink/30 rounded-2xl p-8" style={{ backgroundColor: "#fff5f5" }}>
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
                 Old Town Salinas
               </h2>
               <div className="space-y-2 text-base">
@@ -90,7 +90,7 @@ export default function ContactPage() {
 
               {/* Hours */}
               <div className="mt-5 border-t border-reba-border pt-5">
-                <h3 className="text-reba-cream text-base font-semibold mb-3">
+                <h3 className="text-reba-ink text-base font-semibold mb-3">
                   Hours
                 </h3>
                 <div className="space-y-2">
@@ -130,7 +130,7 @@ export default function ContactPage() {
 
             {/* Carmel — second */}
             <div className="border-2 border-reba-pink/30 rounded-2xl p-8" style={{ backgroundColor: "#fff5f5" }}>
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
                 Carmel Crossroads
               </h2>
               <div className="space-y-2 text-base">
@@ -156,7 +156,7 @@ export default function ContactPage() {
           {/* Contact Form */}
           <div>
             <div className="border-2 border-reba-pink/30 rounded-2xl p-8 sm:p-10" style={{ backgroundColor: "#fff5f5" }}>
-              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
+              <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-2">
                 Send Us a Message
               </h2>
               <p className="text-reba-muted text-base mb-6">
@@ -181,7 +181,7 @@ export default function ContactPage() {
                       setForm({ ...form, name: e.target.value })
                     }
                     required
-                    className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition-colors"
+                    className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition-colors"
                     placeholder="Your name"
                   />
                 </div>
@@ -200,7 +200,7 @@ export default function ContactPage() {
                       setForm({ ...form, email: e.target.value })
                     }
                     required
-                    className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition-colors"
+                    className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
@@ -219,7 +219,7 @@ export default function ContactPage() {
                     }
                     required
                     rows={5}
-                    className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition-colors resize-none"
+                    className="w-full bg-white border border-reba-pink/20 rounded-lg px-5 py-3.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition-colors resize-none"
                     placeholder="How can we help you?"
                   />
                 </div>
@@ -234,7 +234,7 @@ export default function ContactPage() {
 
             {/* Social — under the form */}
             <div className="border-2 border-reba-pink/30 rounded-2xl p-8 mt-6" style={{ backgroundColor: "#fff5f5" }}>
-              <h2 className="text-reba-cream font-semibold text-xl mb-4">Follow Us</h2>
+              <h2 className="text-reba-ink font-semibold text-xl mb-4">Follow Us</h2>
               <a
                 href="https://instagram.com/sweetrebas"
                 target="_blank"

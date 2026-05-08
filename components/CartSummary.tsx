@@ -19,7 +19,7 @@ export default function CartSummary() {
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
         <div className="bg-white rounded-3xl shadow-2xl border-2 border-reba-pink/30 p-8 sm:p-10 max-w-lg mx-4 text-center">
           <div className="text-5xl mb-4">{"\u{1F389}"}</div>
-          <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2">
+          <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2">
             Thank You!
           </h3>
           <p className="text-reba-muted text-lg mb-6">
@@ -28,7 +28,7 @@ export default function CartSummary() {
           <ul className="text-left mb-6 divide-y divide-reba-border">
             {confirmed.items.map((line) => (
               <li key={line.product.id} className="flex justify-between py-3">
-                <span className="text-reba-cream text-base">
+                <span className="text-reba-ink text-base">
                   {line.quantity} &times; {line.product.name}
                 </span>
                 <span className="text-reba-pink font-semibold text-base">
@@ -38,7 +38,7 @@ export default function CartSummary() {
             ))}
           </ul>
           <div className="flex justify-between items-center border-t border-reba-border pt-4 mb-6">
-            <span className="text-reba-cream font-semibold text-xl">Total</span>
+            <span className="text-reba-ink font-semibold text-xl">Total</span>
             <span className="text-reba-pink font-semibold text-2xl">{formatPrice(confirmed.total)}</span>
           </div>
           <button
@@ -60,7 +60,7 @@ export default function CartSummary() {
       {expanded && (
         <div className="max-w-2xl mx-auto mb-0 bg-white rounded-t-3xl shadow-2xl border-2 border-b-0 border-reba-pink/30 p-6 sm:p-8 max-h-[60vh] overflow-y-auto">
           <div className="flex items-baseline justify-between mb-4">
-            <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream">
+            <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-ink">
               Your Order
             </h3>
             <button
@@ -86,7 +86,7 @@ export default function CartSummary() {
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className="text-reba-cream font-semibold text-base truncate">
+                  <p className="text-reba-ink font-semibold text-base truncate">
                     {line.product.name}
                   </p>
                   <p className="text-reba-muted text-sm">

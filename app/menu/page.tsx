@@ -18,12 +18,12 @@ function ImageZoomModal({ src, alt, onClose }: { src: string; alt: string; onClo
   return (
     <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
       <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-cream hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-ink hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
         <img src={src} alt={alt} className="w-full object-cover" />
         <div className="p-4 text-center">
-          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream">{alt}</h3>
+          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">{alt}</h3>
         </div>
       </div>
     </div>
@@ -62,7 +62,7 @@ function QuickAddCard({ item, image, imagePositionClass, imageWidthClass, onImag
       )}
       <div className="flex-1 min-w-0 p-4 sm:p-6 flex flex-col">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1 sm:gap-2 mb-2">
-          <h3 className="text-reba-cream font-semibold text-lg sm:text-xl">{item.name}</h3>
+          <h3 className="text-reba-ink font-semibold text-lg sm:text-xl">{item.name}</h3>
           <span className="text-reba-pink font-semibold text-lg sm:text-xl whitespace-nowrap">
             {item.sizes ? `From $${Math.min(...item.sizes.map((s) => s.price)).toFixed(2)}` : `$${item.price.toFixed(2)}`}
           </span>
@@ -72,7 +72,7 @@ function QuickAddCard({ item, image, imagePositionClass, imageWidthClass, onImag
           <div className="border-t border-reba-border pt-3 space-y-1.5">
             {item.sizes.map((size) => (
               <div key={size.label} className="flex items-center justify-between text-base">
-                <span className="text-reba-cream font-medium">{size.label}</span>
+                <span className="text-reba-ink font-medium">{size.label}</span>
                 <span className="text-reba-pink font-semibold">${size.price.toFixed(2)}</span>
               </div>
             ))}
@@ -128,10 +128,10 @@ function CakeOrderCards({ onImageClick }: { onImageClick?: (src: string, alt: st
             onClick={() => onImageClick?.(cake.image, cake.name)}
           />
           <div className="p-5 text-center">
-            <h3 className="text-reba-cream font-semibold text-xl mb-2">{cake.name}</h3>
+            <h3 className="text-reba-ink font-semibold text-xl mb-2">{cake.name}</h3>
             <button
               onClick={() => setSelectedCake(selectedCake === cake.name ? null : cake.name)}
-              className="inline-block px-6 py-2 rounded-full font-semibold text-sm bg-gray-500 text-white/80 transition-colors"
+              className="inline-block px-6 py-3 rounded-full font-semibold text-base bg-reba-pink hover:bg-reba-pink-hover text-white transition-colors min-h-12"
             >
               {selectedCake === cake.name ? "Close" : "Choose Size & Order"}
             </button>
@@ -148,7 +148,7 @@ function CakeOrderCards({ onImageClick }: { onImageClick?: (src: string, alt: st
                     className={`w-full flex items-center justify-between px-4 py-3 rounded-xl border transition-all text-left ${flashId === id ? "border-reba-pink bg-green-50" : "border-reba-border hover:border-reba-pink/30"}`}
                   >
                     <div>
-                      <span className="text-reba-cream font-semibold text-base">{size.label}</span>
+                      <span className="text-reba-ink font-semibold text-base">{size.label}</span>
                       <span className="text-reba-muted text-sm ml-2">{size.serves}</span>
                     </div>
                     <span className={`font-semibold text-base ${flashId === id ? "text-green-500" : "text-reba-pink"}`}>
@@ -278,7 +278,7 @@ export default function MenuPage() {
           return (
             <div key={category} className="mb-16 last:mb-0">
               <div className="flex items-center gap-4 mb-4">
-                <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream">
+                <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-ink">
                   {category}
                 </h2>
                 <div className="flex-1 h-px bg-reba-border" />

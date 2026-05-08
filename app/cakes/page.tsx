@@ -59,12 +59,12 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
   return (
     <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
       <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-cream hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-ink hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
         <img src={src} alt={alt} className="w-full object-cover" />
         <div className="p-4 text-center">
-          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream">{alt}</h3>
+          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">{alt}</h3>
         </div>
       </div>
     </div>
@@ -146,10 +146,10 @@ export default function CakesPage() {
         <div className="max-w-3xl mx-auto px-4 py-16 text-center">
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
             <div className="text-5xl mb-4">{"\u{1F382}"}</div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-1">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-1">
               Call to Order
             </h3>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
               Your Custom Cake
             </h3>
             <p className="text-reba-pink text-lg sm:text-xl font-bold mb-8">
@@ -187,7 +187,7 @@ export default function CakesPage() {
                     >
                       &times;
                     </button>
-                    <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
+                    <p className="text-reba-ink font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
                     <form onSubmit={handleCustomCakeCallback} className="space-y-3 max-w-sm mx-auto">
                       <input
                         type="email"
@@ -195,7 +195,7 @@ export default function CakesPage() {
                         onChange={(e) => setCakeEmail(e.target.value)}
                         placeholder="Your email address *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <input
                         type="tel"
@@ -203,7 +203,7 @@ export default function CakesPage() {
                         onChange={(e) => setCakePhone(e.target.value)}
                         placeholder="Your phone number *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <button
                         type="submit"

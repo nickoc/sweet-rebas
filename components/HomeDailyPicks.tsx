@@ -55,7 +55,7 @@ export default function HomeDailyPicks() {
             </div>
             <div className="px-6 py-5">
               <div className="flex items-start justify-between gap-2 mb-2">
-                <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream">
+                <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">
                   {pick.name}
                 </h3>
                 <span className="text-reba-pink font-semibold text-xl whitespace-nowrap">

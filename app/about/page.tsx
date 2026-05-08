@@ -25,7 +25,7 @@ export default function AboutPage() {
                 <img src="/about-soup.jpg" alt="Homemade soup at Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
               </div>
               <div>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
                   Where It All Began
                 </h2>
                 <p className="text-reba-soft leading-relaxed mb-4">
@@ -47,7 +47,7 @@ export default function AboutPage() {
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
                   The Birthday Cake That Changed Everything
                 </h2>
                 <p className="text-reba-soft leading-relaxed mb-4">
@@ -74,7 +74,7 @@ export default function AboutPage() {
                 <img src="/about-local-legend-cake.jpg" alt="Big Sur International Marathon 2019 commemorative cake by Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
               </div>
               <div>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
                   Becoming a Local Legend
                 </h2>
                 <p className="text-reba-soft leading-relaxed mb-4">
@@ -97,7 +97,7 @@ export default function AboutPage() {
           <div className="bg-reba-card border border-reba-pink/30 rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
                   Food Network Cake Wars
                 </h2>
                 <p className="text-reba-soft leading-relaxed mb-4">
@@ -125,7 +125,7 @@ export default function AboutPage() {
                 <img src="/about-team.png" alt="The Sweet Reba's team" className="w-full h-64 md:h-80 object-cover rounded-xl" />
               </div>
               <div>
-                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-4">
+                <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
                   Two Locations, One Team
                 </h2>
                 <p className="text-reba-soft leading-relaxed">
@@ -143,7 +143,7 @@ export default function AboutPage() {
       {/* Reba & Michael Section */}
       <section className="bg-reba-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink text-center mb-14">
             The Heart Behind the Bakery
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -152,7 +152,7 @@ export default function AboutPage() {
               <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
                 <img src="/reba.png" alt="Reba" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
+              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-2">
                 Reba
               </h3>
               <p className="text-reba-pink font-medium text-base mb-4">
@@ -170,7 +170,7 @@ export default function AboutPage() {
               <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
                 <img src="/michael.png" alt="Michael" className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
+              <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-2">
                 Michael Abbruzzese
               </h3>
               <p className="text-reba-pink font-medium text-base mb-4">
@@ -186,7 +186,7 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
-        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
+        <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink text-center mb-14">
           Our Values
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -217,7 +217,7 @@ export default function AboutPage() {
               className="bg-reba-card border border-reba-border rounded-2xl p-6 text-center"
             >
               <div className="text-3xl mb-3">{value.emoji}</div>
-              <h3 className="text-reba-cream font-semibold mb-2">
+              <h3 className="text-reba-ink font-semibold mb-2">
                 {value.title}
               </h3>
               <p className="text-reba-muted text-sm leading-relaxed">
@@ -231,7 +231,7 @@ export default function AboutPage() {
       {/* Community */}
       <section className="bg-reba-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-6">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink mb-6">
             Our Community
           </h2>
           <p className="text-reba-soft leading-relaxed mb-4 max-w-2xl mx-auto">

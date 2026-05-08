@@ -111,7 +111,7 @@ function SpecialCard({ s }: { s: Special }) {
         <span className="text-sm uppercase tracking-wider text-reba-pink font-bold mb-2">
           {meta.emoji} {meta.label}
         </span>
-        <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-2">
+        <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-2">
           {s.name}
         </h3>
         {s.description && (
@@ -157,25 +157,25 @@ export default async function ChalkboardPage() {
           </div>
 
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-6 text-center">
-            <h3 className="text-reba-cream font-semibold text-xl mb-3">
+            <h3 className="text-reba-ink font-semibold text-xl mb-3">
               Opening Hours
             </h3>
             <div className="flex flex-wrap justify-center gap-6 text-base">
               <div>
                 <span className="text-reba-muted">Monday:</span>{" "}
-                <span className="text-reba-cream font-medium">Closed</span>
+                <span className="text-reba-ink font-medium">Closed</span>
               </div>
               <div>
                 <span className="text-reba-muted">Tue&ndash;Fri:</span>{" "}
-                <span className="text-reba-cream font-medium">8am &ndash; 5pm</span>
+                <span className="text-reba-ink font-medium">8am &ndash; 5pm</span>
               </div>
               <div>
                 <span className="text-reba-muted">Saturday:</span>{" "}
-                <span className="text-reba-cream font-medium">9am &ndash; 5pm</span>
+                <span className="text-reba-ink font-medium">9am &ndash; 5pm</span>
               </div>
               <div>
                 <span className="text-reba-muted">Sunday:</span>{" "}
-                <span className="text-reba-cream font-medium">Closed</span>
+                <span className="text-reba-ink font-medium">Closed</span>
               </div>
             </div>
           </div>
@@ -186,7 +186,7 @@ export default async function ChalkboardPage() {
         {ordered.length === 0 ? (
           <div className="bg-white border-2 border-dashed border-reba-pink/40 rounded-3xl p-12 text-center">
             <p className="text-6xl mb-4">🧁</p>
-            <p className="font-[family-name:var(--font-heading)] text-4xl text-reba-cream mb-3">
+            <p className="font-[family-name:var(--font-heading)] text-4xl text-reba-ink mb-3">
               Reba&apos;s baking something up.
             </p>
             <p className="text-reba-muted text-lg max-w-md mx-auto">

@@ -42,7 +42,7 @@ export default function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="relative z-50 bg-reba-dark/95 backdrop-blur border-b border-reba-border">
+    <header className="relative z-50 bg-reba-bg/95 backdrop-blur border-b border-reba-border">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="relative flex items-center h-20 sm:h-24 gap-6">
           {/* Logo + Locations (stacked under wordmark) */}
@@ -51,7 +51,7 @@ export default function Header() {
               <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-14 h-14 sm:w-24 sm:h-24" />
             </Link>
             <div className="leading-tight">
-              <Link href="/" className="font-[family-name:var(--font-heading)] text-xl sm:text-3xl text-reba-cream block whitespace-nowrap">
+              <Link href="/" className="font-[family-name:var(--font-heading)] text-xl sm:text-3xl text-reba-ink block whitespace-nowrap">
                 Sweet Reba&apos;s
               </Link>
               <div className="text-sm text-reba-muted hidden sm:flex items-center gap-1 mt-0.5">
@@ -158,7 +158,7 @@ export default function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden ml-auto p-2 text-reba-soft hover:text-reba-cream"
+            className="md:hidden ml-auto p-2 text-reba-soft hover:text-reba-ink"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation"
           >
@@ -184,7 +184,7 @@ export default function Header() {
                     <>
                       <button
                         onClick={() => setCakesOpen(!cakesOpen)}
-                        className="text-reba-soft hover:text-reba-cream transition-colors py-2 text-sm flex items-center gap-2 w-full"
+                        className="text-reba-soft hover:text-reba-ink transition-colors py-2 text-sm flex items-center gap-2 w-full"
                       >
                         {link.label}
                         <svg className={`w-3 h-3 transition-transform ${cakesOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -196,7 +196,7 @@ export default function Header() {
                           key={sub.href}
                           href={sub.href}
                           onClick={() => { setMobileOpen(false); setCakesOpen(false); }}
-                          className="text-reba-soft hover:text-reba-cream transition-colors py-2 text-sm block pl-6"
+                          className="text-reba-soft hover:text-reba-ink transition-colors py-2 text-sm block pl-6"
                         >
                           {sub.label}
                         </Link>
@@ -206,7 +206,7 @@ export default function Header() {
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="text-reba-soft hover:text-reba-cream transition-colors py-2 text-sm block"
+                      className="text-reba-soft hover:text-reba-ink transition-colors py-2 text-sm block"
                     >
                       {link.label}
                     </Link>

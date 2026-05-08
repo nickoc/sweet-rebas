@@ -45,7 +45,7 @@ export default function CateringPage() {
 
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
             <div className="text-5xl mb-4">{"\u{1F4DE}"}</div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
               Call Us
             </h3>
             <p className="text-reba-muted text-base sm:text-lg mb-8">
@@ -77,7 +77,7 @@ export default function CateringPage() {
                         onChange={(e) => setCateringEmail(e.target.value)}
                         placeholder="Your email address"
                         required
-                        className="flex-1 bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="flex-1 bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <button
                         type="submit"

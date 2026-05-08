@@ -68,7 +68,7 @@ export default function NewsBanner() {
                   <span className="text-reba-pink font-semibold text-base sm:text-[15px] uppercase tracking-wide">
                     {item.outlet}
                   </span>
-                  <span className="text-reba-muted text-lg sm:text-base group-hover:text-reba-cream group-hover:underline transition-colors">
+                  <span className="text-reba-muted text-lg sm:text-base group-hover:text-reba-ink group-hover:underline transition-colors">
                     {item.title}
                   </span>
                   <span className="text-reba-muted/70 text-sm whitespace-nowrap">
