@@ -6,6 +6,7 @@
  * and picked up here within ~5 minutes via Next.js ISR cache.
  */
 
+import Image from "next/image";
 import ClosingCountdown from "./closing-countdown";
 import ChalkboardNewsletterCard from "@/components/ChalkboardNewsletterCard";
 
@@ -104,8 +105,14 @@ function SpecialCard({ s }: { s: Special }) {
   const image = s.image_url ?? meta.fallbackImage;
   return (
     <div className="bg-white border-2 rounded-2xl overflow-hidden transition-all flex flex-col border-reba-pink/20 hover:border-reba-pink/40 hover:shadow-lg">
-      <div className="w-full h-48 sm:h-56 overflow-hidden">
-        <img src={image} alt={s.name} className="w-full h-full object-cover" />
+      <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+        <Image
+          src={image}
+          alt={s.name}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover"
+        />
       </div>
       <div className="px-5 py-5 flex-1 flex flex-col">
         <span className="text-sm uppercase tracking-wider text-reba-pink font-bold mb-2">

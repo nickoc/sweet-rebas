@@ -1,10 +1,20 @@
+import Image from "next/image";
+
 export default function AboutPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/slideshow-lemons.jpg" alt="Fresh lemons in Sweet Reba's kitchen" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="relative min-h-[60vh]" />
+      <section className="relative min-h-[60dvh] overflow-hidden">
+        <Image
+          src="/slideshow-lemons.jpg"
+          alt="Fresh lemons in Sweet Reba's kitchen"
+          fill
+          sizes="100vw"
+          loading="eager"
+          fetchPriority="high"
+          className="object-cover object-center"
+        />
+        <div className="relative min-h-[60dvh]" />
       </section>
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4">
@@ -21,8 +31,14 @@ export default function AboutPage() {
           {/* Grandmother's Kitchen */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="rounded-xl overflow-hidden">
-                <img src="/about-soup.jpg" alt="Homemade soup at Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
+                <Image
+                  src="/about-soup.jpg"
+                  alt="Homemade soup at Sweet Reba's"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
@@ -61,8 +77,14 @@ export default function AboutPage() {
                   Sweet Reba&apos;s was born.
                 </p>
               </div>
-              <div className="rounded-xl overflow-hidden">
-                <img src="/about-r2d2-birthday-cake.jpg" alt="Reba's son with the R2-D2 birthday cake she made for his 7th birthday" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
+                <Image
+                  src="/about-r2d2-birthday-cake.jpg"
+                  alt="Reba's son with the R2-D2 birthday cake she made for his 7th birthday"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -70,8 +92,14 @@ export default function AboutPage() {
           {/* Local Legend */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="rounded-xl overflow-hidden">
-                <img src="/about-local-legend-cake.jpg" alt="Big Sur International Marathon 2019 commemorative cake by Sweet Reba's" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
+                <Image
+                  src="/about-local-legend-cake.jpg"
+                  alt="Big Sur International Marathon 2019 commemorative cake by Sweet Reba's"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
@@ -112,8 +140,14 @@ export default function AboutPage() {
                   first time.
                 </p>
               </div>
-              <div className="rounded-xl overflow-hidden">
-                <img src="/cake-wars-thumbnail.png" alt="Food Network Cake Wars" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
+                <Image
+                  src="/cake-wars-thumbnail.png"
+                  alt="Food Network Cake Wars"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
             </div>
           </div>
@@ -121,8 +155,14 @@ export default function AboutPage() {
           {/* Expansion */}
           <div className="bg-reba-card border border-reba-border rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              <div className="rounded-xl overflow-hidden">
-                <img src="/about-team.png" alt="The Sweet Reba's team" className="w-full h-64 md:h-80 object-cover rounded-xl" />
+              <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
+                <Image
+                  src="/about-team.png"
+                  alt="The Sweet Reba's team"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover"
+                />
               </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
@@ -149,8 +189,14 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Reba */}
             <div className="bg-white border border-reba-border rounded-2xl p-8 text-center">
-              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
-                <img src="/reba.png" alt="Reba" className="w-full h-full object-cover" />
+              <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
+                <Image
+                  src="/reba.png"
+                  alt="Reba"
+                  fill
+                  sizes="160px"
+                  className="object-cover"
+                />
               </div>
               <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-2">
                 Reba
@@ -167,8 +213,14 @@ export default function AboutPage() {
             </div>
             {/* Michael */}
             <div className="bg-white border border-reba-border rounded-2xl p-8 text-center">
-              <div className="w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
-                <img src="/michael.png" alt="Michael" className="w-full h-full object-cover" />
+              <div className="relative w-40 h-40 mx-auto mb-6 rounded-full overflow-hidden border-4 border-reba-pink">
+                <Image
+                  src="/michael.png"
+                  alt="Michael"
+                  fill
+                  sizes="160px"
+                  className="object-cover"
+                />
               </div>
               <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-2">
                 Michael Abbruzzese

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { submitWaitlist } from "@/lib/waitlist";
 
 const standardCakes = [
@@ -23,7 +24,7 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
         <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-ink hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
-        <img src={src} alt={alt} className="w-full object-cover" />
+        <Image src={src} alt={alt} width={1200} height={1500} sizes="(max-width: 640px) 100vw, 512px" className="w-full h-auto object-cover" />
         <div className="p-4 text-center">
           <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">{alt}</h3>
         </div>
@@ -63,9 +64,17 @@ export default function SignatureCakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/banner-signature-cakes.jpg" alt="Sweet Reba's signature cakes" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="relative min-h-[60vh]" />
+      <section className="relative min-h-[60dvh] overflow-hidden">
+        <Image
+          src="/banner-signature-cakes.jpg"
+          alt="Sweet Reba's signature cakes"
+          fill
+          sizes="100vw"
+          loading="eager"
+          fetchPriority="high"
+          className="object-cover object-center"
+        />
+        <div className="relative min-h-[60dvh]" />
       </section>
       <section className="py-10 text-center px-4">
         <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-8xl lg:text-9xl text-reba-pink mb-6 sm:mb-4 leading-tight">
@@ -81,8 +90,14 @@ export default function SignatureCakesPage() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
           {standardCakes.map((cake) => (
             <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden flex flex-col">
-              <div className="cursor-zoom-in overflow-hidden" onClick={() => setZoomImage({ src: cake.image, alt: cake.name })}>
-                <img src={cake.image} alt={cake.name} className="w-full h-[250px] object-cover hover:scale-105 transition-transform duration-300" />
+              <div className="relative w-full h-[250px] cursor-zoom-in overflow-hidden" onClick={() => setZoomImage({ src: cake.image, alt: cake.name })}>
+                <Image
+                  src={cake.image}
+                  alt={cake.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
               <div className="p-5 text-center flex-1 flex flex-col">
                 <h3 className="text-reba-ink font-semibold text-xl">{cake.name}</h3>

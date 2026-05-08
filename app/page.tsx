@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { menuItems, reviews } from "@/data/sample-data";
 import CountUpStats from "@/components/CountUpStats";
@@ -36,10 +37,17 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] overflow-hidden">
-        <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
-        {/* gradient removed — revert to 01c6c27 to restore */}
-        <div className="relative min-h-[100vh]" />
+      <section className="relative min-h-[100dvh] overflow-hidden">
+        <Image
+          src="/cookie-face-reba.jpg"
+          alt="Reba holding up two cookies"
+          fill
+          sizes="100vw"
+          loading="eager"
+          fetchPriority="high"
+          className="object-cover object-[center_30%]"
+        />
+        <div className="relative min-h-[100dvh]" />
       </section>
 
       {/* Title + Locations */}
@@ -73,8 +81,14 @@ export default function HomePage() {
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 md:mx-0 px-[5vw] md:px-0 pb-2 md:pb-0 scrollbar-hide">
           {/* What's Baking Today */}
           <Link href="/chalkboard" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
-              <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+              <Image
+                src="/slideshow-baked-goods.jpg"
+                alt="Fresh baked goods from Sweet Reba's"
+                fill
+                sizes="(max-width: 768px) 90vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               What&apos;s Baking Today?
@@ -86,8 +100,14 @@ export default function HomePage() {
 
           {/* Bakery Pre-Orders */}
           <Link href="/cakes" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
-              <img src="/slideshow-lemons.jpg" alt="Fresh lemons at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+              <Image
+                src="/slideshow-lemons.jpg"
+                alt="Fresh lemons at Sweet Reba's"
+                fill
+                sizes="(max-width: 768px) 90vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               Bakery Pre-Orders
@@ -99,8 +119,14 @@ export default function HomePage() {
 
           {/* Our Story */}
           <Link href="/about" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
-              <img src="/slideshow-snickerdoodles.jpg" alt="Mike and Reba at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+              <Image
+                src="/slideshow-snickerdoodles.jpg"
+                alt="Mike and Reba at Sweet Reba's"
+                fill
+                sizes="(max-width: 768px) 90vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               Our Story
@@ -138,7 +164,14 @@ export default function HomePage() {
               >
                 {reviewImages[index] ? (
                   <div className="overflow-hidden px-6 pt-6 flex justify-center">
-                    <img src={reviewImages[index]!} alt="" className="rounded-xl max-h-[220px] object-contain" />
+                    <Image
+                      src={reviewImages[index]!}
+                      alt=""
+                      width={300}
+                      height={220}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="rounded-xl max-h-[220px] w-auto object-contain"
+                    />
                   </div>
                 ) : (
                   <div className="h-48 bg-reba-card flex items-center justify-center">

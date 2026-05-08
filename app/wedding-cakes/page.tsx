@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { CakeCarousel } from "@/components/CakeGallery";
 import { submitWaitlist } from "@/lib/waitlist";
 
@@ -41,10 +42,18 @@ export default function WeddingCakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/cake-dreamy-3.jpg" alt="Beautiful wedding cake with white ranunculus" className="absolute inset-0 w-full h-full object-cover object-center" />
+      <section className="relative min-h-[60dvh] overflow-hidden">
+        <Image
+          src="/cake-dreamy-3.jpg"
+          alt="Beautiful wedding cake with white ranunculus"
+          fill
+          sizes="100vw"
+          loading="eager"
+          fetchPriority="high"
+          className="object-cover object-center"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
-        <div className="relative min-h-[60vh]" />
+        <div className="relative min-h-[60dvh]" />
       </section>
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
@@ -62,7 +71,14 @@ export default function WeddingCakesPage() {
         </h2>
         <p className="text-reba-muted text-center text-xl mb-10">A few of our favorite creations</p>
         <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-lg">
-          <img src="/cake-detail-1.png" alt="White wedding cake with ranunculus and eucalyptus — close-up detail" className="w-full h-auto object-cover" />
+          <Image
+            src="/cake-detail-1.png"
+            alt="White wedding cake with ranunculus and eucalyptus — close-up detail"
+            width={1200}
+            height={1500}
+            sizes="(max-width: 768px) 100vw, 448px"
+            className="w-full h-auto object-cover"
+          />
         </div>
       </section>
 

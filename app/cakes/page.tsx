@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
 import { submitWaitlist } from "@/lib/waitlist";
@@ -62,7 +63,7 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
         <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-ink hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
-        <img src={src} alt={alt} className="w-full object-cover" />
+        <Image src={src} alt={alt} width={1200} height={1500} sizes="(max-width: 640px) 100vw, 512px" className="w-full h-auto object-cover" />
         <div className="p-4 text-center">
           <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">{alt}</h3>
         </div>
@@ -102,10 +103,18 @@ export default function CakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/banner-unicorn-cakes.jpg" alt="Beautiful unicorn cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
+      <section className="relative min-h-[60dvh] overflow-hidden">
+        <Image
+          src="/banner-unicorn-cakes.jpg"
+          alt="Beautiful unicorn cakes with sprinkles and floral decorations"
+          fill
+          sizes="100vw"
+          loading="eager"
+          fetchPriority="high"
+          className="object-cover object-center"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
-        <div className="relative min-h-[60vh]" />
+        <div className="relative min-h-[60dvh]" />
       </section>
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">

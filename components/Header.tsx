@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
@@ -48,7 +49,14 @@ export default function Header() {
           {/* Logo + Locations (stacked under wordmark) */}
           <div className="flex items-center gap-4">
             <Link href="/" aria-label="Sweet Reba's home">
-              <img src="/sweet-rebas-logo.png" alt="Sweet Reba's" className="w-14 h-14 sm:w-24 sm:h-24" />
+              <Image
+                src="/sweet-rebas-logo.png"
+                alt="Sweet Reba's"
+                width={96}
+                height={96}
+                priority
+                className="w-14 h-14 sm:w-24 sm:h-24"
+              />
             </Link>
             <div className="leading-tight">
               <Link href="/" className="font-[family-name:var(--font-heading)] text-xl sm:text-3xl text-reba-ink block whitespace-nowrap">
