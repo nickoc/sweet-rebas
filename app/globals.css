@@ -1,17 +1,26 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-reba-dark: #ffffff;
+  --color-reba-bg: #ffffff;
   --color-reba-card: #fff5f5;
   --color-reba-pink: #cb3d81;
   --color-reba-pink-hover: #b5336f;
-  --color-reba-cream: #2d1810;
+  --color-reba-ink: #2d1810;
   --color-reba-warm: #f5e6d8;
   --color-reba-soft: #5c3d2e;
   --color-reba-muted: #8b6b5a;
   --color-reba-border: #e0dcd7;
   --font-heading: var(--font-dancing-script);
   --font-body: var(--font-lora);
+
+  /* Z-index scale — explicit ordering across overlays.
+     Header sticks above content; ChatWidget bubble sits above sticky cart;
+     full-screen modals win over everything. Reach for these instead of magic numbers. */
+  --z-content: 1;
+  --z-header: 30;
+  --z-cart: 40;
+  --z-chat: 50;
+  --z-modal: 100;
 }
 
 html {
@@ -20,8 +29,8 @@ html {
 }
 
 body {
-  background: var(--color-reba-dark);
-  color: var(--color-reba-cream);
+  background: var(--color-reba-bg);
+  color: var(--color-reba-ink);
   font-family: var(--font-body), Georgia, serif;
 }
 
@@ -99,7 +108,7 @@ body {
 .stat-card .stat-value {
   font-size: 1.75rem;
   font-weight: 700;
-  color: var(--color-reba-cream);
+  color: var(--color-reba-ink);
   line-height: 1.2;
 }
 
@@ -133,7 +142,7 @@ body {
   height: 40px;
   border-radius: 50%;
   background: var(--color-reba-pink);
-  color: var(--color-reba-cream);
+  color: var(--color-reba-ink);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -178,7 +187,7 @@ body {
 
 .btn-approve {
   background: var(--color-reba-pink);
-  color: var(--color-reba-cream);
+  color: var(--color-reba-ink);
   border: none;
   border-radius: 8px;
   padding: 0.4rem 1rem;
@@ -207,7 +216,7 @@ body {
 }
 
 .btn-ghost:hover {
-  color: var(--color-reba-cream);
+  color: var(--color-reba-ink);
   border-color: var(--color-reba-pink);
 }
 
@@ -329,7 +338,7 @@ body {
 }
 
 .briefing-row .briefing-value {
-  color: var(--color-reba-cream);
+  color: var(--color-reba-ink);
   font-weight: 500;
 }
 
@@ -338,7 +347,7 @@ body {
 .section-title {
   font-family: var(--font-heading), cursive;
   font-size: 2rem;
-  color: var(--color-reba-cream);
+  color: var(--color-reba-ink);
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
@@ -365,7 +374,7 @@ body {
   margin-left: auto;
   max-width: 80%;
   font-size: 0.875rem;
-  color: var(--color-reba-cream);
+  color: var(--color-reba-ink);
 }
 
 .chat-bot {

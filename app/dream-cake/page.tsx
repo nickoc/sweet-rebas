@@ -86,7 +86,7 @@ export default function DreamCakePage() {
           <div className="flex-1 overflow-y-auto px-6 py-6 space-y-4">
             {/* Intro message */}
             <div className="flex justify-start">
-              <div className="max-w-[85%] bg-reba-card rounded-2xl rounded-bl-md px-5 py-4 text-base text-reba-cream leading-relaxed whitespace-pre-line">
+              <div className="max-w-[85%] bg-reba-card rounded-2xl rounded-bl-md px-5 py-4 text-base text-reba-ink leading-relaxed whitespace-pre-line">
                 {SYSTEM_INTRO}
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function DreamCakePage() {
                     <button
                       key={s}
                       onClick={() => send(s)}
-                      className="w-full text-left border border-reba-pink/20 rounded-xl px-5 py-4 text-base text-reba-cream hover:border-reba-pink/40 hover:bg-reba-pink/5 transition-colors"
+                      className="w-full text-left border border-reba-pink/20 rounded-xl px-5 py-4 text-base text-reba-ink hover:border-reba-pink/40 hover:bg-reba-pink/5 transition-colors"
                     >
                       {s}
                     </button>
@@ -119,7 +119,7 @@ export default function DreamCakePage() {
                   className={`max-w-[85%] rounded-2xl px-5 py-4 text-base leading-relaxed whitespace-pre-line ${
                     m.role === "user"
                       ? "bg-reba-pink text-white rounded-br-md"
-                      : "bg-reba-card text-reba-cream rounded-bl-md"
+                      : "bg-reba-card text-reba-ink rounded-bl-md"
                   }`}
                 >
                   {m.content}
@@ -152,7 +152,7 @@ export default function DreamCakePage() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Describe your dream cake..."
                 disabled={loading}
-                className="flex-1 bg-white border border-reba-pink/20 rounded-full px-6 py-3 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                className="flex-1 bg-white border border-reba-pink/20 rounded-full px-6 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
               />
               <button
                 type="submit"

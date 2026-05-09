@@ -1,5 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import { menuItems, reviews } from "@/data/sample-data";
+import { Hero } from "@/components/Hero";
 import CountUpStats from "@/components/CountUpStats";
 import ReopeningBanner from "@/components/ReopeningBanner";
 import NewsBanner from "@/components/NewsBanner";
@@ -36,11 +38,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[100vh] overflow-hidden">
-        <img src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" className="absolute inset-0 w-full h-full object-cover object-[center_30%]" />
-        {/* gradient removed — revert to 01c6c27 to restore */}
-        <div className="relative min-h-[100vh]" />
-      </section>
+      <Hero src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" height="full" position="center 30%" />
 
       {/* Title + Locations */}
       <section className="py-10 sm:py-14 text-center">
@@ -73,10 +71,16 @@ export default function HomePage() {
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 md:mx-0 px-[5vw] md:px-0 pb-2 md:pb-0 scrollbar-hide">
           {/* What's Baking Today */}
           <Link href="/chalkboard" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
-              <img src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+              <Image
+                src="/slideshow-baked-goods.jpg"
+                alt="Fresh baked goods from Sweet Reba's"
+                fill
+                sizes="(max-width: 768px) 90vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               What&apos;s Baking Today?
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -86,10 +90,16 @@ export default function HomePage() {
 
           {/* Bakery Pre-Orders */}
           <Link href="/cakes" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
-              <img src="/slideshow-lemons.jpg" alt="Fresh lemons at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+              <Image
+                src="/slideshow-lemons.jpg"
+                alt="Fresh lemons at Sweet Reba's"
+                fill
+                sizes="(max-width: 768px) 90vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               Bakery Pre-Orders
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -99,10 +109,16 @@ export default function HomePage() {
 
           {/* Our Story */}
           <Link href="/about" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="rounded-2xl overflow-hidden mb-5 aspect-square">
-              <img src="/slideshow-snickerdoodles.jpg" alt="Mike and Reba at Sweet Reba's" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+              <Image
+                src="/slideshow-snickerdoodles.jpg"
+                alt="Mike and Reba at Sweet Reba's"
+                fill
+                sizes="(max-width: 768px) 90vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               Our Story
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -127,7 +143,7 @@ export default function HomePage() {
       {/* Customer Reviews */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-cream text-center mb-14">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-ink text-center mb-14">
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -138,7 +154,14 @@ export default function HomePage() {
               >
                 {reviewImages[index] ? (
                   <div className="overflow-hidden px-6 pt-6 flex justify-center">
-                    <img src={reviewImages[index]!} alt="" className="rounded-xl max-h-[220px] object-contain" />
+                    <Image
+                      src={reviewImages[index]!}
+                      alt=""
+                      width={300}
+                      height={220}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="rounded-xl max-h-[220px] w-auto object-contain"
+                    />
                   </div>
                 ) : (
                   <div className="h-48 bg-reba-card flex items-center justify-center">
@@ -154,10 +177,10 @@ export default function HomePage() {
                   &ldquo;{review.text}&rdquo;
                 </p>
                 <div className="flex items-center justify-between">
-                  <p className="text-reba-cream text-base font-medium">
+                  <p className="text-reba-ink text-base font-medium">
                     {review.author}
                   </p>
-                  <span className="text-base text-reba-muted bg-reba-dark px-3 py-1 rounded-full">
+                  <span className="text-base text-reba-muted bg-reba-bg px-3 py-1 rounded-full">
                     {review.platform}
                   </span>
                 </div>

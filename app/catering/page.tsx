@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 
 export default function CateringPage() {
@@ -30,11 +31,7 @@ export default function CateringPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] flex items-end justify-center overflow-hidden pb-6">
-        <img src="/slideshow-snickerdoodles.jpg" alt="Fresh-baked snickerdoodle cookies" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        </div>
-      </section>
+      <Hero src="/slideshow-snickerdoodles.jpg" alt="Fresh-baked snickerdoodle cookies" height="md" />
 
       {/* Coming Soon + Call Us */}
       <section style={{ backgroundColor: "#fff5f5" }}>
@@ -45,7 +42,7 @@ export default function CateringPage() {
 
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
             <div className="text-5xl mb-4">{"\u{1F4DE}"}</div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
               Call Us
             </h3>
             <p className="text-reba-muted text-base sm:text-lg mb-8">
@@ -77,7 +74,7 @@ export default function CateringPage() {
                         onChange={(e) => setCateringEmail(e.target.value)}
                         placeholder="Your email address"
                         required
-                        className="flex-1 bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="flex-1 bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <button
                         type="submit"

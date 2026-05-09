@@ -1,7 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { Hero } from "@/components/Hero";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
 import { submitWaitlist } from "@/lib/waitlist";
 
@@ -59,12 +63,12 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
   return (
     <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
       <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-cream hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-ink hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
         </button>
-        <img src={src} alt={alt} className="w-full object-cover" />
+        <Image src={src} alt={alt} width={1200} height={1500} sizes="(max-width: 640px) 100vw, 512px" className="w-full h-auto object-cover" />
         <div className="p-4 text-center">
-          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream">{alt}</h3>
+          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">{alt}</h3>
         </div>
       </div>
     </div>
@@ -102,11 +106,12 @@ export default function CakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/banner-unicorn-cakes.jpg" alt="Beautiful unicorn cakes with sprinkles and floral decorations" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
-        <div className="relative min-h-[60vh]" />
-      </section>
+      <Hero
+        src="/banner-unicorn-cakes.jpg"
+        alt="Beautiful unicorn cakes with sprinkles and floral decorations"
+        height="md"
+        gradient
+      />
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
           Custom Cakes
@@ -146,10 +151,10 @@ export default function CakesPage() {
         <div className="max-w-3xl mx-auto px-4 py-16 text-center">
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
             <div className="text-5xl mb-4">{"\u{1F382}"}</div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-1">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-1">
               Call to Order
             </h3>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
               Your Custom Cake
             </h3>
             <p className="text-reba-pink text-lg sm:text-xl font-bold mb-8">
@@ -172,46 +177,41 @@ export default function CakesPage() {
                 {cakeSubmitted ? (
                   <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will call you soon.</p>
                 ) : !callbackOpen ? (
-                  <button
-                    onClick={() => setCallbackOpen(true)}
-                    className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full text-base font-semibold transition-colors"
-                  >
+                  <Button onClick={() => setCallbackOpen(true)}>
                     Request a Call Back
-                  </button>
+                  </Button>
                 ) : (
                   <div className="bg-reba-card border border-reba-border rounded-xl p-5 relative">
                     <button
                       onClick={() => setCallbackOpen(false)}
-                      className="absolute top-2 right-2 text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
+                      className="absolute top-2 right-2 min-w-12 min-h-12 inline-flex items-center justify-center text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
                       aria-label="Close"
                     >
                       &times;
                     </button>
-                    <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
+                    <p className="text-reba-ink font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
                     <form onSubmit={handleCustomCakeCallback} className="space-y-3 max-w-sm mx-auto">
-                      <input
+                      <Input
+                        variant="rounded"
                         type="email"
+                        name="cakeEmail"
                         value={cakeEmail}
                         onChange={(e) => setCakeEmail(e.target.value)}
                         placeholder="Your email address *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <input
+                      <Input
+                        variant="rounded"
                         type="tel"
+                        name="cakePhone"
                         value={cakePhone}
                         onChange={(e) => setCakePhone(e.target.value)}
                         placeholder="Your phone number *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <button
-                        type="submit"
-                        disabled={cakeLoading}
-                        className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors disabled:opacity-60"
-                      >
+                      <Button type="submit" disabled={cakeLoading} className="w-full">
                         {cakeLoading ? "Sending..." : "Request a Call Back"}
-                      </button>
+                      </Button>
                       {cakeError && (
                         <p className="text-reba-pink text-xs text-center">{cakeError}</p>
                       )}

@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { CakeCarousel } from "@/components/CakeGallery";
+import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 
 const whiteWeddingImages = [
@@ -41,11 +43,12 @@ export default function WeddingCakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60vh] overflow-hidden">
-        <img src="/cake-dreamy-3.jpg" alt="Beautiful wedding cake with white ranunculus" className="absolute inset-0 w-full h-full object-cover object-center" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
-        <div className="relative min-h-[60vh]" />
-      </section>
+      <Hero
+        src="/cake-dreamy-3.jpg"
+        alt="Beautiful wedding cake with white ranunculus"
+        height="md"
+        gradient
+      />
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
           Wedding Cakes
@@ -62,7 +65,14 @@ export default function WeddingCakesPage() {
         </h2>
         <p className="text-reba-muted text-center text-xl mb-10">A few of our favorite creations</p>
         <div className="max-w-md mx-auto rounded-2xl overflow-hidden shadow-lg">
-          <img src="/cake-detail-1.png" alt="White wedding cake with ranunculus and eucalyptus — close-up detail" className="w-full h-auto object-cover" />
+          <Image
+            src="/cake-detail-1.png"
+            alt="White wedding cake with ranunculus and eucalyptus — close-up detail"
+            width={1200}
+            height={1500}
+            sizes="(max-width: 768px) 100vw, 448px"
+            className="w-full h-auto object-cover"
+          />
         </div>
       </section>
 
@@ -89,7 +99,7 @@ export default function WeddingCakesPage() {
 
           <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
             <div className="text-5xl mb-4">{"\u{1F382}"}</div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-cream mb-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-3">
               Schedule Your Consultation with Reba
             </h3>
             <div className="space-y-4">
@@ -124,7 +134,7 @@ export default function WeddingCakesPage() {
                     >
                       &times;
                     </button>
-                    <p className="text-reba-cream font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
+                    <p className="text-reba-ink font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
                     <form onSubmit={handleWeddingCallback} className="space-y-3 max-w-sm mx-auto">
                       <input
                         type="email"
@@ -132,7 +142,7 @@ export default function WeddingCakesPage() {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Your email address *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <input
                         type="tel"
@@ -140,7 +150,7 @@ export default function WeddingCakesPage() {
                         onChange={(e) => setPhone(e.target.value)}
                         placeholder="Your phone number *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <button
                         type="submit"
@@ -164,7 +174,7 @@ export default function WeddingCakesPage() {
       {/* Pricing Info */}
       <section style={{ backgroundColor: "#fff5f5" }}>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-6">
+          <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink mb-6">
             Wedding Cake Pricing
           </h2>
           <p className="text-reba-soft text-base sm:text-lg leading-relaxed mb-1">

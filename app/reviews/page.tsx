@@ -25,9 +25,9 @@ export default function ReviewsPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-b from-reba-card to-reba-dark py-16 sm:py-24">
+      <section className="bg-gradient-to-b from-reba-card to-reba-bg py-16 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl text-reba-cream mb-4">
+          <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl text-reba-ink mb-4">
             Reviews
           </h1>
           <div className="flex items-center justify-center gap-3 mb-3">
@@ -66,7 +66,7 @@ export default function ReviewsPage() {
             >
               <div className="flex items-center justify-between mb-3">
                 <StarRating rating={review.rating} />
-                <span className="text-xs text-reba-muted bg-reba-dark px-2.5 py-1 rounded-full border border-reba-border">
+                <span className="text-xs text-reba-muted bg-reba-bg px-2.5 py-1 rounded-full border border-reba-border">
                   {review.platform}
                 </span>
               </div>
@@ -74,7 +74,7 @@ export default function ReviewsPage() {
                 &ldquo;{review.text}&rdquo;
               </p>
               <div className="flex items-center justify-between border-t border-reba-border pt-3">
-                <p className="text-reba-cream text-sm font-medium">
+                <p className="text-reba-ink text-sm font-medium">
                   {review.author}
                 </p>
                 <p className="text-reba-muted text-xs">

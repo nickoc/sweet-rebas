@@ -25,14 +25,12 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
     onAdded?.();
   }
 
+  // All sizes meet 48px minimum — Apple HIG 44pt + Material 48dp + WCAG AAA.
+  // Inputs at text-base (16px) — iOS Safari auto-zoom prevented.
   const buttonClass =
-    size === "sm"
-      ? "px-6 py-2 text-sm"
-      : "px-8 py-2.5 text-base";
-  const inputClass =
-    size === "sm" ? "w-12 py-1 text-sm" : "w-14 py-1.5 text-base";
-  const stepBtn =
-    size === "sm" ? "w-7 h-7 text-base" : "w-9 h-9 text-lg";
+    size === "sm" ? "min-h-12 px-6 py-3 text-base" : "min-h-12 px-8 py-3 text-base";
+  const inputClass = "w-14 min-h-12 py-2 text-base";
+  const stepBtn = "min-w-12 min-h-12 text-xl";
 
   if (!open) {
     return (
@@ -49,12 +47,12 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
 
   return (
     <div className="border border-reba-pink/30 rounded-2xl p-3 bg-reba-pink/5">
-      <p className="text-reba-cream text-xs font-medium mb-2 text-center">How many?</p>
+      <p className="text-reba-ink text-xs font-medium mb-2 text-center">How many?</p>
       <div className="flex items-center justify-center gap-2 mb-2">
         <button
           type="button"
           onClick={() => setQty((q) => Math.max(1, q - 1))}
-          className={`rounded-full border border-reba-border bg-white text-reba-cream hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
+          className={`rounded-full border border-reba-border bg-white text-reba-ink hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
           aria-label="Decrease quantity"
         >
           −
@@ -67,12 +65,12 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
             const v = parseInt(e.target.value, 10);
             setQty(Number.isFinite(v) && v >= 1 ? v : 1);
           }}
-          className={`text-center bg-white border border-reba-border rounded-lg text-reba-cream font-semibold focus:outline-none focus:border-reba-pink ${inputClass}`}
+          className={`text-center bg-white border border-reba-border rounded-lg text-reba-ink font-semibold focus:outline-none focus:border-reba-pink ${inputClass}`}
         />
         <button
           type="button"
           onClick={() => setQty((q) => q + 1)}
-          className={`rounded-full border border-reba-border bg-white text-reba-cream hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
+          className={`rounded-full border border-reba-border bg-white text-reba-ink hover:border-reba-pink hover:text-reba-pink font-semibold transition-colors ${stepBtn}`}
           aria-label="Increase quantity"
         >
           +

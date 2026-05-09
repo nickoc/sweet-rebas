@@ -154,7 +154,7 @@ export default function QuizPage() {
             }}
           >
             <div className="text-6xl mb-6">{"\u{1F36A}"}</div>
-            <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-4">
+            <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink mb-4">
               What Should I Try?
             </h1>
             <p className="text-reba-muted mb-8 max-w-md mx-auto">
@@ -205,7 +205,7 @@ export default function QuizPage() {
             Question {currentQ + 1} of {QUESTIONS.length}
           </p>
 
-          <h2 className="text-2xl sm:text-3xl font-bold text-reba-cream mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-reba-ink mb-8">
             {q.question}
           </h2>
 
@@ -217,7 +217,7 @@ export default function QuizPage() {
                 className="flex items-center gap-3 rounded-xl border border-reba-border bg-white p-5 text-left transition-all hover:border-reba-pink/30 hover:shadow-sm active:scale-[0.98]"
               >
                 <span className="text-2xl">{opt.emoji}</span>
-                <span className="text-reba-cream text-sm font-medium">
+                <span className="text-reba-ink text-sm font-medium">
                   {opt.label}
                 </span>
               </button>
@@ -237,7 +237,7 @@ export default function QuizPage() {
         <p className="text-xs text-reba-pink uppercase tracking-wider font-semibold mb-2">
           Your Flavor Personality
         </p>
-        <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream mb-3">
+        <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink mb-3">
           {result.title}
         </h1>
         <p className="text-reba-pink italic text-lg mb-8">{result.tagline}</p>
@@ -250,7 +250,7 @@ export default function QuizPage() {
             <p className="text-xs text-reba-muted uppercase tracking-wider mb-1">
               You Should Try
             </p>
-            <p className="text-reba-cream font-bold text-lg">{result.product}</p>
+            <p className="text-reba-ink font-bold text-lg">{result.product}</p>
             <p className="text-reba-pink font-medium">{result.price}</p>
           </div>
         </div>
@@ -264,7 +264,7 @@ export default function QuizPage() {
           </Link>
           <button
             onClick={startQuiz}
-            className="border border-reba-border text-reba-cream hover:border-reba-pink/30 px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
+            className="border border-reba-border text-reba-ink hover:border-reba-pink/30 px-8 py-3.5 rounded-full text-lg font-medium transition-colors"
           >
             Retake Quiz
           </button>

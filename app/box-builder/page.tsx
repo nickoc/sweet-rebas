@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { menuItems } from "@/data/sample-data";
 import CartSummary from "@/components/CartSummary";
 import { useCart, slug } from "@/lib/cart-context";
@@ -124,8 +125,14 @@ export default function BoxBuilderPage() {
                 className={`cursor-pointer rounded-xl border bg-white overflow-hidden flex transition-all ${flashId === item.id ? "border-reba-pink shadow-lg scale-[1.02]" : "border-reba-border hover:border-reba-pink/30"}`}
               >
                 {image ? (
-                  <div className="w-28 sm:w-36 flex-shrink-0">
-                    <img src={image} alt={item.name} className="w-full h-full object-cover" />
+                  <div className="relative w-28 sm:w-36 flex-shrink-0">
+                    <Image
+                      src={image}
+                      alt={item.name}
+                      fill
+                      sizes="(max-width: 640px) 112px, 144px"
+                      className="object-cover"
+                    />
                   </div>
                 ) : (
                   <div className="w-28 sm:w-36 flex-shrink-0 bg-[#fff5f5] flex items-center justify-center">
@@ -134,7 +141,7 @@ export default function BoxBuilderPage() {
                 )}
                 <div className="flex-1 p-5">
                   <div className="flex items-center justify-between mb-1">
-                    <h3 className="text-reba-cream font-semibold text-lg">{item.name}</h3>
+                    <h3 className="text-reba-ink font-semibold text-lg">{item.name}</h3>
                     <span className="text-reba-pink font-semibold text-lg">${item.price.toFixed(2)}</span>
                   </div>
                   <p className="text-reba-muted text-base mt-1 line-clamp-2 mb-3">{item.description}</p>

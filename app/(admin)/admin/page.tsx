@@ -16,7 +16,7 @@ import {
 
 function AgentPill({ emoji, name }: { emoji: string; name: string }) {
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-reba-dark border border-reba-border px-3 py-1 text-xs text-reba-muted">
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-reba-bg border border-reba-border px-3 py-1 text-xs text-reba-muted">
       <span>{emoji}</span>
       <span>{name}</span>
       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
@@ -56,7 +56,7 @@ function SectionCard({
   return (
     <div className="rounded-xl border border-reba-border bg-reba-card p-5">
       <div className="mb-4 flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-reba-cream font-body">{title}</h2>
+        <h2 className="text-lg font-semibold text-reba-ink font-body">{title}</h2>
         <AgentPill emoji={agent.emoji} name={agent.name} />
       </div>
       {children}
@@ -104,16 +104,16 @@ export default function AdminDashboard() {
   const greeting = hour < 12 ? "Good Morning" : hour < 17 ? "Good Afternoon" : "Good Evening";
 
   return (
-    <div className="min-h-screen bg-reba-dark">
+    <div className="min-h-screen bg-reba-bg">
       {/* Header */}
       <header className="border-b border-reba-border bg-reba-card/50 px-6 py-5">
         <div className="mx-auto max-w-7xl flex items-center justify-between">
           <div>
-            <h1 className="text-2xl text-reba-cream font-heading">{greeting}, Reba</h1>
+            <h1 className="text-2xl text-reba-ink font-heading">{greeting}, Reba</h1>
             <p className="text-sm text-reba-muted mt-0.5">{today}</p>
           </div>
           <div className="flex items-center gap-3">
-            <div className="rounded-lg border border-reba-border bg-reba-dark px-3 py-2 text-xs text-reba-muted">
+            <div className="rounded-lg border border-reba-border bg-reba-bg px-3 py-2 text-xs text-reba-muted">
               72&deg;F Sunny &mdash; Salinas
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function AdminDashboard() {
       {/* Agent Banner */}
       <div className="border-b border-reba-border bg-reba-card/30 px-6 py-3">
         <div className="mx-auto max-w-7xl flex items-center justify-between">
-          <p className="text-sm text-reba-cream font-body">
+          <p className="text-sm text-reba-ink font-body">
             Sweet Reba&apos;s AI Operating System &mdash;{" "}
             <span className="text-reba-pink font-semibold">8 Agents Active</span>
           </p>
@@ -156,11 +156,11 @@ export default function AdminDashboard() {
                   <tbody>
                     {bakeItems.map((item, i) => (
                       <tr key={item.item} className="border-b border-reba-border/50">
-                        <td className="py-2.5 pr-3 text-reba-cream">{item.item}</td>
+                        <td className="py-2.5 pr-3 text-reba-ink">{item.item}</td>
                         <td className="py-2.5 pr-3 text-reba-muted">{item.baseQty}</td>
                         <td className="py-2.5 pr-3">
                           {planLocked ? (
-                            <span className="text-reba-cream">{item.adjustedQty}</span>
+                            <span className="text-reba-ink">{item.adjustedQty}</span>
                           ) : (
                             <input
                               type="number"
@@ -170,7 +170,7 @@ export default function AdminDashboard() {
                                 next[i] = { ...next[i], adjustedQty: parseInt(e.target.value) || 0 };
                                 setBakeItems(next);
                               }}
-                              className="w-16 rounded border border-reba-border bg-reba-dark px-2 py-1 text-reba-cream text-sm outline-none focus:border-reba-pink"
+                              className="w-16 rounded border border-reba-border bg-reba-bg px-2 py-1 text-reba-ink text-sm outline-none focus:border-reba-pink"
                             />
                           )}
                         </td>
@@ -187,7 +187,7 @@ export default function AdminDashboard() {
                 onClick={() => setPlanLocked(!planLocked)}
                 className={`mt-4 rounded-lg px-4 py-2 text-sm font-medium transition ${
                   planLocked
-                    ? "bg-reba-dark border border-reba-border text-reba-muted hover:text-reba-cream"
+                    ? "bg-reba-bg border border-reba-border text-reba-muted hover:text-reba-ink"
                     : "bg-reba-pink text-white hover:bg-reba-pink-hover"
                 }`}
               >
@@ -198,22 +198,22 @@ export default function AdminDashboard() {
             {/* Sales Forecast */}
             <SectionCard title="Sales Forecast" agent={{ emoji: "\uD83D\uDCCA", name: "Ops Dashboard" }}>
               <div className="grid grid-cols-3 gap-3 mb-4">
-                <div className="rounded-lg bg-reba-dark border border-reba-border p-3 text-center">
+                <div className="rounded-lg bg-reba-bg border border-reba-border p-3 text-center">
                   <p className="text-xs text-reba-muted mb-1">Today (Projected)</p>
-                  <p className="text-xl font-semibold text-reba-cream">${salesForecast.todayProjected.toLocaleString()}</p>
+                  <p className="text-xl font-semibold text-reba-ink">${salesForecast.todayProjected.toLocaleString()}</p>
                 </div>
-                <div className="rounded-lg bg-reba-dark border border-reba-border p-3 text-center">
+                <div className="rounded-lg bg-reba-bg border border-reba-border p-3 text-center">
                   <p className="text-xs text-reba-muted mb-1">Yesterday</p>
-                  <p className="text-xl font-semibold text-reba-cream">${salesForecast.yesterdayActual.toLocaleString()}</p>
+                  <p className="text-xl font-semibold text-reba-ink">${salesForecast.yesterdayActual.toLocaleString()}</p>
                 </div>
-                <div className="rounded-lg bg-reba-dark border border-reba-border p-3 text-center">
+                <div className="rounded-lg bg-reba-bg border border-reba-border p-3 text-center">
                   <p className="text-xs text-reba-muted mb-1">WoW Change</p>
                   <p className="text-xl font-semibold text-emerald-400">+{salesForecast.weekOverWeek}%</p>
                 </div>
               </div>
               <div className="flex items-center justify-between text-sm">
                 <p className="text-reba-muted">
-                  Top Seller: <span className="text-reba-cream">{salesForecast.topSeller}</span>
+                  Top Seller: <span className="text-reba-ink">{salesForecast.topSeller}</span>
                 </p>
                 <p className="text-reba-muted">
                   Pre-orders: <span className="text-reba-pink font-semibold">{salesForecast.preOrders}</span>
@@ -236,7 +236,7 @@ export default function AdminDashboard() {
                     }`}
                   >
                     <div>
-                      <p className="text-sm text-reba-cream">{alert.item}</p>
+                      <p className="text-sm text-reba-ink">{alert.item}</p>
                       <p className="text-xs text-reba-muted">
                         {alert.daysRemaining} days remaining — {alert.action}
                       </p>
@@ -258,10 +258,10 @@ export default function AdminDashboard() {
             <SectionCard title="Review Queue" agent={{ emoji: "\u2B50", name: "Review Responder" }}>
               <div className="space-y-4">
                 {reviews.map((review, i) => (
-                  <div key={review.id} className="rounded-lg border border-reba-border bg-reba-dark p-4">
+                  <div key={review.id} className="rounded-lg border border-reba-border bg-reba-bg p-4">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium text-reba-cream">{review.author}</span>
+                        <span className="text-sm font-medium text-reba-ink">{review.author}</span>
                         <span className="text-xs text-reba-muted">{review.platform}</span>
                       </div>
                       <div className="flex items-center gap-0.5">
@@ -284,11 +284,11 @@ export default function AdminDashboard() {
                             next[i] = { ...next[i], editText: e.target.value };
                             setReviews(next);
                           }}
-                          className="w-full rounded border border-reba-border bg-reba-dark p-2 text-sm text-reba-cream outline-none focus:border-reba-pink resize-none"
+                          className="w-full rounded border border-reba-border bg-reba-bg p-2 text-sm text-reba-ink outline-none focus:border-reba-pink resize-none"
                           rows={4}
                         />
                       ) : (
-                        <p className="text-sm text-reba-cream">{review.editText}</p>
+                        <p className="text-sm text-reba-ink">{review.editText}</p>
                       )}
                     </div>
 
@@ -316,7 +316,7 @@ export default function AdminDashboard() {
                             }
                             setReviews(next);
                           }}
-                          className="rounded-lg border border-reba-border px-3 py-1.5 text-xs text-reba-muted hover:text-reba-cream transition"
+                          className="rounded-lg border border-reba-border px-3 py-1.5 text-xs text-reba-muted hover:text-reba-ink transition"
                         >
                           {review.editing ? "Save" : "Edit"}
                         </button>
@@ -331,7 +331,7 @@ export default function AdminDashboard() {
             <SectionCard title="Content Queue" agent={{ emoji: "\uD83D\uDCDD", name: "Content Engine" }}>
               <div className="space-y-4">
                 {content.map((post, i) => (
-                  <div key={post.id} className="rounded-lg border border-reba-border bg-reba-dark p-4">
+                  <div key={post.id} className="rounded-lg border border-reba-border bg-reba-bg p-4">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <span
@@ -345,7 +345,7 @@ export default function AdminDashboard() {
                         >
                           {post.platform}
                         </span>
-                        <span className="text-sm font-medium text-reba-cream">{post.caption}</span>
+                        <span className="text-sm font-medium text-reba-ink">{post.caption}</span>
                       </div>
                       <span className="text-xs text-reba-muted">{post.scheduledFor}</span>
                     </div>
@@ -375,7 +375,7 @@ export default function AdminDashboard() {
                             next[i] = { ...next[i], skipped: true };
                             setContent(next);
                           }}
-                          className="rounded-lg border border-reba-border px-3 py-1.5 text-xs text-reba-muted hover:text-reba-cream transition"
+                          className="rounded-lg border border-reba-border px-3 py-1.5 text-xs text-reba-muted hover:text-reba-ink transition"
                         >
                           Skip
                         </button>
@@ -390,14 +390,14 @@ export default function AdminDashboard() {
             <SectionCard title="Customer Insights" agent={{ emoji: "\uD83E\uDDE0", name: "Customer Memory" }}>
               <div className="space-y-3">
                 {customers.map((customer, i) => (
-                  <div key={customer.id} className="rounded-lg border border-reba-border bg-reba-dark p-4">
+                  <div key={customer.id} className="rounded-lg border border-reba-border bg-reba-bg p-4">
                     <div className="flex items-start gap-3">
                       <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-reba-pink/20 text-reba-pink text-sm font-semibold">
                         {customer.initials}
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-medium text-reba-cream">{customer.name}</span>
+                          <span className="text-sm font-medium text-reba-ink">{customer.name}</span>
                           <span
                             className={`rounded-full px-2 py-0.5 text-xs ${
                               customer.frequency === "daily"
@@ -424,7 +424,7 @@ export default function AdminDashboard() {
                                 next[i] = { ...next[i], messageSent: true };
                                 setCustomers(next);
                               }}
-                              className="rounded-lg border border-reba-border px-3 py-1 text-xs text-reba-muted hover:text-reba-cream hover:border-reba-pink transition"
+                              className="rounded-lg border border-reba-border px-3 py-1 text-xs text-reba-muted hover:text-reba-ink hover:border-reba-pink transition"
                             >
                               Send a personal note
                             </button>
@@ -453,7 +453,7 @@ export default function AdminDashboard() {
                   <tbody>
                     {wholesale.map((account, i) => (
                       <tr key={account.business} className="border-b border-reba-border/50">
-                        <td className="py-2.5 pr-3 text-reba-cream">{account.business}</td>
+                        <td className="py-2.5 pr-3 text-reba-ink">{account.business}</td>
                         <td className="py-2.5 pr-3 text-xs text-reba-muted">{account.order}</td>
                         <td className="py-2.5 pr-3 text-xs text-reba-muted">{account.nextDelivery}</td>
                         <td className="py-2.5 pr-3">
@@ -492,10 +492,10 @@ export default function AdminDashboard() {
                 {staffSchedule.map((person) => (
                   <div
                     key={person.name}
-                    className="flex items-center justify-between rounded-lg border border-reba-border bg-reba-dark px-4 py-2.5"
+                    className="flex items-center justify-between rounded-lg border border-reba-border bg-reba-bg px-4 py-2.5"
                   >
                     <div>
-                      <p className="text-sm text-reba-cream">{person.name}</p>
+                      <p className="text-sm text-reba-ink">{person.name}</p>
                       <p className="text-xs text-reba-muted">{person.role}</p>
                     </div>
                     <div className="text-right">

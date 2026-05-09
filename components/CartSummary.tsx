@@ -16,10 +16,13 @@ export default function CartSummary() {
 
   if (confirmed) {
     return (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm">
+      <div
+        className="fixed inset-0 flex items-center justify-center bg-black/30 backdrop-blur-sm"
+        style={{ zIndex: "var(--z-modal)" }}
+      >
         <div className="bg-white rounded-3xl shadow-2xl border-2 border-reba-pink/30 p-8 sm:p-10 max-w-lg mx-4 text-center">
           <div className="text-5xl mb-4">{"\u{1F389}"}</div>
-          <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-2">
+          <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2">
             Thank You!
           </h3>
           <p className="text-reba-muted text-lg mb-6">
@@ -28,7 +31,7 @@ export default function CartSummary() {
           <ul className="text-left mb-6 divide-y divide-reba-border">
             {confirmed.items.map((line) => (
               <li key={line.product.id} className="flex justify-between py-3">
-                <span className="text-reba-cream text-base">
+                <span className="text-reba-ink text-base">
                   {line.quantity} &times; {line.product.name}
                 </span>
                 <span className="text-reba-pink font-semibold text-base">
@@ -38,7 +41,7 @@ export default function CartSummary() {
             ))}
           </ul>
           <div className="flex justify-between items-center border-t border-reba-border pt-4 mb-6">
-            <span className="text-reba-cream font-semibold text-xl">Total</span>
+            <span className="text-reba-ink font-semibold text-xl">Total</span>
             <span className="text-reba-pink font-semibold text-2xl">{formatPrice(confirmed.total)}</span>
           </div>
           <button
@@ -55,12 +58,18 @@ export default function CartSummary() {
   if (cart.length === 0) return null;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50">
+    <div
+      className="fixed bottom-0 left-0 right-0"
+      style={{
+        zIndex: "var(--z-cart)",
+        paddingBottom: "env(safe-area-inset-bottom)",
+      }}
+    >
       {/* Expanded cart detail */}
       {expanded && (
         <div className="max-w-2xl mx-auto mb-0 bg-white rounded-t-3xl shadow-2xl border-2 border-b-0 border-reba-pink/30 p-6 sm:p-8 max-h-[60vh] overflow-y-auto">
           <div className="flex items-baseline justify-between mb-4">
-            <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-cream">
+            <h3 className="font-[family-name:var(--font-heading)] text-2xl sm:text-3xl text-reba-ink">
               Your Order
             </h3>
             <button
@@ -86,7 +95,7 @@ export default function CartSummary() {
                   </div>
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className="text-reba-cream font-semibold text-base truncate">
+                  <p className="text-reba-ink font-semibold text-base truncate">
                     {line.product.name}
                   </p>
                   <p className="text-reba-muted text-sm">
@@ -118,22 +127,22 @@ export default function CartSummary() {
         </div>
       )}
 
-      {/* Sticky bottom bar — always visible when cart has items */}
+      {/* Sticky bottom bar — slimmer than before so it doesn't cover ChatWidget FAB */}
       <div
         className="bg-reba-pink cursor-pointer shadow-[0_-6px_30px_rgba(0,0,0,0.15)]"
         onClick={() => setExpanded(!expanded)}
       >
-        <div className="max-w-2xl mx-auto px-8 py-8 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <span className="bg-white text-reba-pink text-lg font-bold w-11 h-11 rounded-full flex items-center justify-center shadow-md">
+        <div className="max-w-2xl mx-auto px-5 py-4 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3 min-w-0">
+            <span className="bg-white text-reba-pink text-base font-bold w-10 h-10 rounded-full flex items-center justify-center shadow-md flex-shrink-0">
               {totalItems}
             </span>
-            <span className="text-white font-semibold text-xl sm:text-2xl">
-              {expanded ? "Hide Order" : "Click to View Your Order"}
+            <span className="text-white font-semibold text-base sm:text-lg truncate">
+              {expanded ? "Hide Order" : "View Your Order"}
             </span>
           </div>
-          <div className="flex items-center gap-5">
-            <span className="text-white text-2xl sm:text-3xl font-semibold">
+          <div className="flex items-center gap-3 flex-shrink-0">
+            <span className="text-white text-lg sm:text-xl font-semibold">
               {formatPrice(totalPrice)}
             </span>
             <button
@@ -142,11 +151,11 @@ export default function CartSummary() {
                 clearCart();
                 setExpanded(false);
               }}
-              className="w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-colors"
+              className="min-w-12 min-h-12 rounded-full bg-white/20 hover:bg-white/40 text-white flex items-center justify-center transition-colors"
               aria-label="Clear cart and close"
               title="Clear cart and start over"
             >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>

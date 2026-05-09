@@ -34,7 +34,7 @@ export default function ChalkboardNewsletterCard() {
         <p className="text-sm uppercase tracking-wider text-reba-pink font-bold mb-3">
           ✉️ Weekly Newsletter
         </p>
-        <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-cream mb-3">
+        <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
           Love what you&apos;re seeing?
         </h3>
         <p className="text-reba-muted text-base sm:text-lg mb-6">
@@ -57,7 +57,7 @@ export default function ChalkboardNewsletterCard() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="you@example.com"
-              className="flex-1 bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+              className="flex-1 bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
             />
             <button
               type="submit"

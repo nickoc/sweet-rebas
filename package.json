@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build --webpack",
-    "start": "next start"
+    "start": "next start",
+    "qa:screenshots": "bun run scripts/qa-screenshots.ts",
+    "qa:screenshots:strict": "bun run scripts/qa-screenshots.ts --strict"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.82.0",

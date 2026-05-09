@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Dancing_Script, Lora } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ChatWidget from "@/components/ChatWidget";
+import ChatWidgetLazy from "@/components/ChatWidgetLazy";
 import { CartProvider } from "@/lib/cart-context";
 import "./globals.css";
 
@@ -19,6 +19,15 @@ const lora = Lora({
   subsets: ["latin"],
   display: "swap",
 });
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  // viewport-fit=cover is required for env(safe-area-inset-*) to return non-zero on iPhone X+
+  viewportFit: "cover",
+  // Forward-compatible: Chrome/FF only today, harmless on Safari
+  interactiveWidget: "resizes-content",
+};
 
 export const metadata: Metadata = {
   title: {
@@ -57,12 +66,12 @@ export default function RootLayout({
       lang="en"
       className={`${dancingScript.variable} ${lora.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-reba-dark text-reba-cream font-body">
+      <body className="min-h-full flex flex-col bg-reba-bg text-reba-ink font-body">
         <CartProvider>
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <ChatWidget />
+          <ChatWidgetLazy />
         </CartProvider>
       </body>
     </html>

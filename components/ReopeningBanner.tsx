@@ -79,7 +79,7 @@ export default function ReopeningBanner() {
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Your name (optional)"
                       autoComplete="name"
-                      className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                     />
                     <input
                       type="email"
@@ -87,7 +87,7 @@ export default function ReopeningBanner() {
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="Your email address"
                       autoComplete="email"
-                      className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                     />
                     <input
                       type="tel"
@@ -95,7 +95,7 @@ export default function ReopeningBanner() {
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="Mobile number (optional — for SMS)"
                       autoComplete="tel"
-                      className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-base text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                     />
                     {phone.trim() && (
                       <label className="flex items-start gap-3 p-4 rounded-xl bg-white/70 border border-reba-border cursor-pointer">

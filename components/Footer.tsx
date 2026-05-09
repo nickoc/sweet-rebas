@@ -52,7 +52,7 @@ export default function Footer() {
     <footer className="border-t border-reba-border" style={{ backgroundColor: "#ffffff" }}>
       {/* Maps Section */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 sm:pt-16 pb-8">
-        <h3 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-cream text-center mb-14">
+        <h3 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink text-center mb-14">
           Find Us
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
@@ -75,13 +75,13 @@ export default function Footer() {
                 href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-reba-cream text-xl font-medium hover:text-reba-pink transition-colors inline-block"
+                className="text-reba-ink text-xl font-medium hover:text-reba-pink transition-colors inline-block"
               >
                 Carmel Crossroads
               </a>
               <p className="text-reba-muted text-lg mt-1">206 Crossroads Blvd &middot; (831) 601-4818</p>
               <div className="border-t border-reba-border mt-4 pt-4 flex-1 flex flex-col justify-center">
-                <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+                <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink mb-2">
                   Opening Hours
                 </h4>
                 <p className="text-reba-pink text-lg italic">Re-opening end of May 2026</p>
@@ -108,20 +108,20 @@ export default function Footer() {
                 href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-reba-cream text-xl font-medium hover:text-reba-pink transition-colors inline-block"
+                className="text-reba-ink text-xl font-medium hover:text-reba-pink transition-colors inline-block"
               >
                 Old Town Salinas
               </a>
               <p className="text-reba-muted text-lg mt-1">268 Main St &middot; (831) 676-0628</p>
               <div className="border-t border-reba-border mt-4 pt-4 flex-1 flex flex-col justify-center">
-                <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-2">
+                <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink mb-2">
                   Opening Hours
                 </h4>
                 <div className="space-y-1 text-lg">
-                  <div><span className="text-reba-muted">Monday:</span> <span className="text-reba-cream font-semibold">Closed</span></div>
-                  <div><span className="text-reba-muted">Tue&ndash;Fri:</span> <span className="text-reba-cream font-semibold">8am &ndash; 5pm</span></div>
-                  <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-cream font-semibold">9am &ndash; 5pm</span></div>
-                  <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-cream font-semibold">Closed</span></div>
+                  <div><span className="text-reba-muted">Monday:</span> <span className="text-reba-ink font-semibold">Closed</span></div>
+                  <div><span className="text-reba-muted">Tue&ndash;Fri:</span> <span className="text-reba-ink font-semibold">8am &ndash; 5pm</span></div>
+                  <div><span className="text-reba-muted">Saturday:</span> <span className="text-reba-ink font-semibold">9am &ndash; 5pm</span></div>
+                  <div><span className="text-reba-muted">Sunday:</span> <span className="text-reba-ink font-semibold">Closed</span></div>
                 </div>
               </div>
             </div>
@@ -134,7 +134,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-20">
           {/* Col 1: About */}
           <div>
-            <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-cream mb-3">
+            <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink mb-3">
               Sweet Reba&apos;s
             </h3>
             <p className="text-reba-muted text-lg leading-relaxed mb-3">
@@ -157,7 +157,7 @@ export default function Footer() {
 
           {/* Col 2: Quick Links */}
           <div>
-            <h4 className="text-reba-cream font-semibold mb-4 text-lg uppercase tracking-wider">
+            <h4 className="text-reba-ink font-semibold mb-4 text-lg uppercase tracking-wider">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -183,7 +183,7 @@ export default function Footer() {
 
           {/* Col 3: Newsletter & Social */}
           <div>
-            <h4 className="text-reba-cream font-semibold mb-4 text-lg uppercase tracking-wider">
+            <h4 className="text-reba-ink font-semibold mb-4 text-lg uppercase tracking-wider">
               Stay Connected
             </h4>
             <p className="text-reba-muted text-lg mb-3">
@@ -201,7 +201,7 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Your email"
-                  className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
+                  className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
                 />
                 <button
                   type="submit"
@@ -238,7 +238,7 @@ export default function Footer() {
                   onSubmit={handleDoorDashSubmit}
                   className="border border-reba-border rounded-lg p-3 bg-white"
                 >
-                  <p className="text-reba-cream text-xs mb-2 font-medium">
+                  <p className="text-reba-ink text-xs mb-2 font-medium">
                     Enter your email to continue to DoorDash
                   </p>
                   <div className="flex gap-2">
@@ -249,7 +249,7 @@ export default function Footer() {
                       placeholder="Your email"
                       required
                       autoFocus
-                      className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-cream placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
+                      className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
                     />
                     <button
                       type="submit"
@@ -306,7 +306,7 @@ export default function Footer() {
               <p className="text-reba-muted text-lg sm:text-lg uppercase tracking-widest mb-2">
                 Follow Us On Instagram
               </p>
-              <p className="font-[family-name:var(--font-heading)] text-reba-cream text-5xl sm:text-6xl group-hover:text-reba-pink transition-colors">
+              <p className="font-[family-name:var(--font-heading)] text-reba-ink text-5xl sm:text-6xl group-hover:text-reba-pink transition-colors">
                 @{igHandle}
               </p>
               <p className="text-reba-muted text-lg sm:text-lg mt-3">
