@@ -12,6 +12,15 @@
   --color-reba-border: #e0dcd7;
   --font-heading: var(--font-dancing-script);
   --font-body: var(--font-lora);
+
+  /* Z-index scale — explicit ordering across overlays.
+     Header sticks above content; ChatWidget bubble sits above sticky cart;
+     full-screen modals win over everything. Reach for these instead of magic numbers. */
+  --z-content: 1;
+  --z-header: 30;
+  --z-cart: 40;
+  --z-chat: 50;
+  --z-modal: 100;
 }
 
 html {

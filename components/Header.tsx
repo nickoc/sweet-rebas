@@ -43,26 +43,35 @@ export default function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="relative z-50 bg-reba-bg/95 backdrop-blur border-b border-reba-border">
+    <header
+      className="sticky top-0 bg-reba-bg/95 backdrop-blur border-b border-reba-border"
+      style={{
+        zIndex: "var(--z-header)",
+        paddingTop: "env(safe-area-inset-top)",
+      }}
+    >
       <div className="px-4 sm:px-6 lg:px-8">
-        <div className="relative flex items-center h-20 sm:h-24 gap-6">
-          {/* Logo + Locations (stacked under wordmark) */}
-          <div className="flex items-center gap-4">
-            <Link href="/" aria-label="Sweet Reba's home">
+        <div className="flex items-center h-16 sm:h-20 gap-4 sm:gap-6">
+          {/* Logo + Wordmark */}
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <Link href="/" aria-label="Sweet Reba's home" className="flex-shrink-0">
               <Image
                 src="/sweet-rebas-logo.png"
                 alt="Sweet Reba's"
                 width={96}
                 height={96}
                 priority
-                className="w-14 h-14 sm:w-24 sm:h-24"
+                className="w-12 h-12 sm:w-16 sm:h-16"
               />
             </Link>
-            <div className="leading-tight">
-              <Link href="/" className="font-[family-name:var(--font-heading)] text-xl sm:text-3xl text-reba-ink block whitespace-nowrap">
+            <div className="leading-tight min-w-0">
+              <Link
+                href="/"
+                className="font-[family-name:var(--font-heading)] text-lg sm:text-2xl lg:text-3xl text-reba-ink block whitespace-nowrap"
+              >
                 Sweet Reba&apos;s
               </Link>
-              <div className="text-sm text-reba-muted hidden sm:flex items-center gap-1 mt-0.5">
+              <div className="text-xs sm:text-sm text-reba-muted hidden sm:flex items-center gap-1 mt-0.5 whitespace-nowrap">
                 <a
                   href="https://maps.google.com/?q=Sweet+Rebas+206+Crossroads+Blvd+Carmel+CA"
                   target="_blank"
@@ -86,45 +95,66 @@ export default function Header() {
             </div>
           </div>
 
-          {/* Desktop nav: three matching buttons, half-overlapping the hero */}
-          <nav className="hidden md:flex items-stretch justify-center gap-4 absolute left-[calc(50%+4rem)] bottom-0 -translate-x-1/2 translate-y-1/2 z-10 w-full max-w-4xl px-4">
-            {/* Explore Our Offers — dropdown menu */}
-            <div ref={menuRef} className="relative flex-1 basis-0 min-w-0">
+          {/* Desktop nav — inline flex, no magic numbers, no overlap with hero */}
+          <nav className="hidden lg:flex items-center justify-end gap-3 ml-auto flex-shrink-0">
+            <div ref={menuRef} className="relative">
               <button
                 onClick={() => setMenuOpen(!menuOpen)}
-                className="w-full flex items-center justify-center gap-2.5 bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold transition-colors shadow-lg whitespace-nowrap"
+                className="inline-flex items-center justify-center gap-2 min-h-12 bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-3 rounded-full text-base font-bold transition-colors shadow-md whitespace-nowrap"
+                aria-expanded={menuOpen}
+                aria-haspopup="menu"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
                 <span>Menu</span>
-                <svg className={`w-4 h-4 transition-transform ${menuOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <svg
+                  className={`w-4 h-4 transition-transform ${menuOpen ? "rotate-180" : ""}`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2.5}
+                >
                   <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               {menuOpen && (
-                <div className="absolute top-full left-0 mt-2 w-72 rounded-xl shadow-xl border border-reba-border z-50" style={{ backgroundColor: "#fff5f5" }}>
+                <div
+                  className="absolute top-full right-0 mt-2 w-72 rounded-xl shadow-xl border border-reba-border bg-reba-card overflow-hidden"
+                  style={{ zIndex: "var(--z-modal)" }}
+                  role="menu"
+                >
                   {navLinks.map((link) => (
                     <div key={link.href + link.label}>
                       {link.sub ? (
                         <div className="relative">
                           <button
                             onClick={() => setCakesOpen(!cakesOpen)}
-                            className="w-full flex items-center justify-between px-6 py-4 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors"
+                            className="w-full flex items-center justify-between px-5 py-3 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors min-h-12"
+                            aria-expanded={cakesOpen}
                           >
                             <span>{link.label}</span>
-                            <svg className={`w-4 h-4 transition-transform ${cakesOpen ? "rotate-90" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                            <svg
+                              className={`w-4 h-4 transition-transform ${cakesOpen ? "rotate-90" : ""}`}
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              strokeWidth={2.5}
+                            >
                               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                             </svg>
                           </button>
                           {cakesOpen && (
-                            <div className="absolute left-full top-0 ml-1 w-60 rounded-xl shadow-xl border border-reba-border overflow-hidden z-50" style={{ backgroundColor: "#fff5f5" }}>
+                            <div className="bg-reba-card">
                               {link.sub.map((sub) => (
                                 <Link
                                   key={sub.href + sub.label}
                                   href={sub.href}
-                                  onClick={() => { setMenuOpen(false); setCakesOpen(false); }}
-                                  className="block px-6 py-4 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
+                                  onClick={() => {
+                                    setMenuOpen(false);
+                                    setCakesOpen(false);
+                                  }}
+                                  className="block pl-10 pr-5 py-3 text-sm font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors min-h-12 flex items-center"
                                 >
                                   {sub.label}
                                 </Link>
@@ -136,7 +166,7 @@ export default function Header() {
                         <Link
                           href={link.href}
                           onClick={() => setMenuOpen(false)}
-                          className="block px-6 py-4 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0"
+                          className="block px-5 py-3 text-base font-medium italic text-reba-pink hover:bg-reba-pink hover:text-white transition-colors border-b border-reba-border last:border-b-0 min-h-12 flex items-center"
                         >
                           {link.label}
                         </Link>
@@ -147,28 +177,28 @@ export default function Header() {
               )}
             </div>
 
-            {/* Kept-visible CTAs */}
             <Link
               href="/chalkboard"
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold transition-colors shadow-lg whitespace-nowrap"
+              className="inline-flex items-center justify-center min-h-12 bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-3 rounded-full text-base font-bold transition-colors shadow-md whitespace-nowrap"
             >
-              What's Baking?
+              What&apos;s Baking?
             </Link>
             <a
               href={DOORDASH_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 basis-0 min-w-0 flex items-center justify-center bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-4 rounded-full text-xl font-bold transition-colors shadow-lg whitespace-nowrap"
+              className="inline-flex items-center justify-center min-h-12 bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-3 rounded-full text-base font-bold transition-colors shadow-md whitespace-nowrap"
             >
               Order Now
             </a>
           </nav>
 
-          {/* Mobile hamburger */}
+          {/* Mobile hamburger — 48px touch target */}
           <button
-            className="md:hidden ml-auto p-2 text-reba-soft hover:text-reba-ink"
+            className="lg:hidden ml-auto p-3 -mr-1 min-h-12 min-w-12 inline-flex items-center justify-center text-reba-soft hover:text-reba-ink"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle navigation"
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? (
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -184,59 +214,72 @@ export default function Header() {
 
         {/* Mobile menu */}
         {mobileOpen && (
-          <nav className="md:hidden pb-4 border-t border-reba-border pt-4">
-            <div className="flex flex-col gap-3">
+          <nav className="lg:hidden pb-4 border-t border-reba-border pt-2">
+            <div className="flex flex-col">
               {navLinks.map((link) => (
                 <div key={link.href + link.label}>
                   {link.sub ? (
                     <>
                       <button
                         onClick={() => setCakesOpen(!cakesOpen)}
-                        className="text-reba-soft hover:text-reba-ink transition-colors py-2 text-sm flex items-center gap-2 w-full"
+                        className="text-reba-soft hover:text-reba-ink transition-colors py-3 text-base flex items-center justify-between w-full min-h-12"
+                        aria-expanded={cakesOpen}
                       >
-                        {link.label}
-                        <svg className={`w-3 h-3 transition-transform ${cakesOpen ? "rotate-180" : ""}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                        <span>{link.label}</span>
+                        <svg
+                          className={`w-4 h-4 transition-transform ${cakesOpen ? "rotate-180" : ""}`}
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth={2.5}
+                        >
                           <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                       </button>
-                      {cakesOpen && link.sub.map((sub) => (
-                        <Link
-                          key={sub.href}
-                          href={sub.href}
-                          onClick={() => { setMobileOpen(false); setCakesOpen(false); }}
-                          className="text-reba-soft hover:text-reba-ink transition-colors py-2 text-sm block pl-6"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
+                      {cakesOpen &&
+                        link.sub.map((sub) => (
+                          <Link
+                            key={sub.href}
+                            href={sub.href}
+                            onClick={() => {
+                              setMobileOpen(false);
+                              setCakesOpen(false);
+                            }}
+                            className="text-reba-soft hover:text-reba-ink transition-colors py-3 text-base block pl-6 min-h-12 flex items-center"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
                     </>
                   ) : (
                     <Link
                       href={link.href}
                       onClick={() => setMobileOpen(false)}
-                      className="text-reba-soft hover:text-reba-ink transition-colors py-2 text-sm block"
+                      className="text-reba-soft hover:text-reba-ink transition-colors py-3 text-base block min-h-12 flex items-center"
                     >
                       {link.label}
                     </Link>
                   )}
                 </div>
               ))}
-              <Link
-                href="/chalkboard"
-                onClick={() => setMobileOpen(false)}
-                className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium transition-colors text-center mt-2"
-              >
-                What's Baking?
-              </Link>
-              <a
-                href={DOORDASH_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileOpen(false)}
-                className="bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-2.5 rounded-full text-sm font-medium text-center transition-colors"
-              >
-                Order Now
-              </a>
+              <div className="flex flex-col gap-2 mt-4">
+                <Link
+                  href="/chalkboard"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center justify-center min-h-12 bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-3 rounded-full text-base font-semibold transition-colors text-center"
+                >
+                  What&apos;s Baking?
+                </Link>
+                <a
+                  href={DOORDASH_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="inline-flex items-center justify-center min-h-12 bg-reba-pink hover:bg-reba-pink-hover text-white px-5 py-3 rounded-full text-base font-semibold text-center transition-colors"
+                >
+                  Order Now
+                </a>
+              </div>
             </div>
           </nav>
         )}

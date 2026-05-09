@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { menuItems, reviews } from "@/data/sample-data";
+import { Hero } from "@/components/Hero";
 import CountUpStats from "@/components/CountUpStats";
 import ReopeningBanner from "@/components/ReopeningBanner";
 import NewsBanner from "@/components/NewsBanner";
@@ -37,18 +38,7 @@ export default function HomePage() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[100dvh] overflow-hidden">
-        <Image
-          src="/cookie-face-reba.jpg"
-          alt="Reba holding up two cookies"
-          fill
-          sizes="100vw"
-          loading="eager"
-          fetchPriority="high"
-          className="object-cover object-[center_30%]"
-        />
-        <div className="relative min-h-[100dvh]" />
-      </section>
+      <Hero src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" height="full" position="center 30%" />
 
       {/* Title + Locations */}
       <section className="py-10 sm:py-14 text-center">

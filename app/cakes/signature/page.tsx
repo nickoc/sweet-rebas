@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 
 const standardCakes = [
@@ -64,18 +65,7 @@ export default function SignatureCakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60dvh] overflow-hidden">
-        <Image
-          src="/banner-signature-cakes.jpg"
-          alt="Sweet Reba's signature cakes"
-          fill
-          sizes="100vw"
-          loading="eager"
-          fetchPriority="high"
-          className="object-cover object-center"
-        />
-        <div className="relative min-h-[60dvh]" />
-      </section>
+      <Hero src="/banner-signature-cakes.jpg" alt="Sweet Reba's signature cakes" height="md" />
       <section className="py-10 text-center px-4">
         <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-8xl lg:text-9xl text-reba-pink mb-6 sm:mb-4 leading-tight">
           Signature Cakes

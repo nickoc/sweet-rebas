@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { CakeCarousel } from "@/components/CakeGallery";
+import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 
 const whiteWeddingImages = [
@@ -42,19 +43,12 @@ export default function WeddingCakesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60dvh] overflow-hidden">
-        <Image
-          src="/cake-dreamy-3.jpg"
-          alt="Beautiful wedding cake with white ranunculus"
-          fill
-          sizes="100vw"
-          loading="eager"
-          fetchPriority="high"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[rgba(255,248,240,0.3)] to-transparent" />
-        <div className="relative min-h-[60dvh]" />
-      </section>
+      <Hero
+        src="/cake-dreamy-3.jpg"
+        alt="Beautiful wedding cake with white ranunculus"
+        height="md"
+        gradient
+      />
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-6xl sm:text-8xl lg:text-9xl text-reba-pink mb-4">
           Wedding Cakes

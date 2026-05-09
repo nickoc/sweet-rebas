@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 
 export default function CateringPage() {
@@ -31,19 +31,7 @@ export default function CateringPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60dvh] flex items-end justify-center overflow-hidden pb-6">
-        <Image
-          src="/slideshow-snickerdoodles.jpg"
-          alt="Fresh-baked snickerdoodle cookies"
-          fill
-          sizes="100vw"
-          loading="eager"
-          fetchPriority="high"
-          className="object-cover object-center"
-        />
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        </div>
-      </section>
+      <Hero src="/slideshow-snickerdoodles.jpg" alt="Fresh-baked snickerdoodle cookies" height="md" />
 
       {/* Coming Soon + Call Us */}
       <section style={{ backgroundColor: "#fff5f5" }}>

@@ -1,21 +1,11 @@
 import Image from "next/image";
+import { Hero } from "@/components/Hero";
 
 export default function AboutPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[60dvh] overflow-hidden">
-        <Image
-          src="/slideshow-lemons.jpg"
-          alt="Fresh lemons in Sweet Reba's kitchen"
-          fill
-          sizes="100vw"
-          loading="eager"
-          fetchPriority="high"
-          className="object-cover object-center"
-        />
-        <div className="relative min-h-[60dvh]" />
-      </section>
+      <Hero src="/slideshow-lemons.jpg" alt="Fresh lemons in Sweet Reba's kitchen" height="md" />
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4">
           Our Story

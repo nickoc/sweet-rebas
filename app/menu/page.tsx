@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Hero } from "@/components/Hero";
 import { menuItems } from "@/data/sample-data";
 import AddToCartButton from "@/components/AddToCartButton";
 import CartSummary from "@/components/CartSummary";
@@ -255,18 +256,7 @@ export default function MenuPage() {
   return (
     <div>
       {/* Hero Photo Banner */}
-      <section className="relative min-h-[60dvh] overflow-hidden">
-        <Image
-          src="/slideshow-baked-goods.jpg"
-          alt="Fresh baked goods from Sweet Reba's"
-          fill
-          sizes="100vw"
-          loading="eager"
-          fetchPriority="high"
-          className="object-cover object-center"
-        />
-        <div className="relative min-h-[60dvh]" />
-      </section>
+      <Hero src="/slideshow-baked-goods.jpg" alt="Fresh baked goods from Sweet Reba's" height="md" />
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4">
           Our Menu
