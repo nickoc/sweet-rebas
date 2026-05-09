@@ -25,14 +25,12 @@ export default function AddToCartButton({ product, size = "md", onAdded }: Props
     onAdded?.();
   }
 
+  // All sizes meet 48px minimum — Apple HIG 44pt + Material 48dp + WCAG AAA.
+  // Inputs at text-base (16px) — iOS Safari auto-zoom prevented.
   const buttonClass =
-    size === "sm"
-      ? "px-6 py-2 text-sm"
-      : "px-8 py-2.5 text-base";
-  const inputClass =
-    size === "sm" ? "w-12 py-1 text-sm" : "w-14 py-1.5 text-base";
-  const stepBtn =
-    size === "sm" ? "w-7 h-7 text-base" : "w-9 h-9 text-lg";
+    size === "sm" ? "min-h-12 px-6 py-3 text-base" : "min-h-12 px-8 py-3 text-base";
+  const inputClass = "w-14 min-h-12 py-2 text-base";
+  const stepBtn = "min-w-12 min-h-12 text-xl";
 
   if (!open) {
     return (

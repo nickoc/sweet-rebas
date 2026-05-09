@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
 import { submitWaitlist } from "@/lib/waitlist";
 
@@ -175,46 +177,41 @@ export default function CakesPage() {
                 {cakeSubmitted ? (
                   <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will call you soon.</p>
                 ) : !callbackOpen ? (
-                  <button
-                    onClick={() => setCallbackOpen(true)}
-                    className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full text-base font-semibold transition-colors"
-                  >
+                  <Button onClick={() => setCallbackOpen(true)}>
                     Request a Call Back
-                  </button>
+                  </Button>
                 ) : (
                   <div className="bg-reba-card border border-reba-border rounded-xl p-5 relative">
                     <button
                       onClick={() => setCallbackOpen(false)}
-                      className="absolute top-2 right-2 text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
+                      className="absolute top-2 right-2 min-w-12 min-h-12 inline-flex items-center justify-center text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
                       aria-label="Close"
                     >
                       &times;
                     </button>
                     <p className="text-reba-ink font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
                     <form onSubmit={handleCustomCakeCallback} className="space-y-3 max-w-sm mx-auto">
-                      <input
+                      <Input
+                        variant="rounded"
                         type="email"
+                        name="cakeEmail"
                         value={cakeEmail}
                         onChange={(e) => setCakeEmail(e.target.value)}
                         placeholder="Your email address *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <input
+                      <Input
+                        variant="rounded"
                         type="tel"
+                        name="cakePhone"
                         value={cakePhone}
                         onChange={(e) => setCakePhone(e.target.value)}
                         placeholder="Your phone number *"
                         required
-                        className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
-                      <button
-                        type="submit"
-                        disabled={cakeLoading}
-                        className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors disabled:opacity-60"
-                      >
+                      <Button type="submit" disabled={cakeLoading} className="w-full">
                         {cakeLoading ? "Sending..." : "Request a Call Back"}
-                      </button>
+                      </Button>
                       {cakeError && (
                         <p className="text-reba-pink text-xs text-center">{cakeError}</p>
                       )}
