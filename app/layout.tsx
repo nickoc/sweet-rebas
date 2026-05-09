@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Dancing_Script, Lora } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import ChatWidget from "@/components/ChatWidget";
+import ChatWidgetLazy from "@/components/ChatWidgetLazy";
 import { CartProvider } from "@/lib/cart-context";
 import "./globals.css";
 
@@ -71,7 +71,7 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <ChatWidget />
+          <ChatWidgetLazy />
         </CartProvider>
       </body>
     </html>

@@ -33,8 +33,8 @@ const PROSPECT_SLUG = "sweet-rebas";
 const FALLBACK_PHONE = "(831) 676-0628";
 const FALLBACK_MESSAGE = `I'm sorry, I'm having trouble right now. Please call us at ${FALLBACK_PHONE}!`;
 
-export default function ChatWidget() {
-  const [open, setOpen] = useState(false);
+export default function ChatWidget({ initialOpen = false }: { initialOpen?: boolean } = {}) {
+  const [open, setOpen] = useState(initialOpen);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
