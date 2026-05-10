@@ -2,9 +2,17 @@
 
 import { useState, useRef, useEffect } from "react";
 
+interface Attachment {
+  url: string;
+  media_type: string;
+  filename?: string;
+  size_bytes?: number;
+}
+
 interface Message {
   role: "user" | "assistant";
   content: string;
+  attachments?: Attachment[];
 }
 
 const SUGGESTIONS = [
@@ -29,6 +37,12 @@ const BEARING_API_URL =
   process.env.NEXT_PUBLIC_BEARING_API_URL ||
   "https://getbearing.co/api/bearing-chat";
 const PROSPECT_SLUG = "sweet-rebas";
+const UPLOADS_URL = BEARING_API_URL.replace(
+  /\/api\/bearing-chat\/?$/,
+  `/api/uploads/${PROSPECT_SLUG}`,
+);
+const ACCEPTED_IMAGE_TYPES = "image/jpeg,image/png,image/webp,image/heic,image/heif,image/gif";
+const MAX_PENDING_ATTACHMENTS = 4;
 
 const FALLBACK_PHONE = "(831) 676-0628";
 const FALLBACK_MESSAGE = `I'm sorry, I'm having trouble right now. Please call us at ${FALLBACK_PHONE}!`;
@@ -39,6 +53,10 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [pendingAttachments, setPendingAttachments] = useState<Attachment[]>([]);
+  const [uploading, setUploading] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   // Persist session_id across messages so every turn lands in the
   // same prospect_conversations row group — one inbox thread per
@@ -50,12 +68,49 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, loading]);
 
-  async function send(text: string) {
-    if (!text.trim()) return;
-    const userMsg: Message = { role: "user", content: text.trim() };
+  async function uploadFile(file: File) {
+    if (pendingAttachments.length >= MAX_PENDING_ATTACHMENTS) {
+      setUploadError(`Up to ${MAX_PENDING_ATTACHMENTS} images per message`);
+      return;
+    }
+    setUploading(true);
+    setUploadError(null);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      if (sessionIdRef.current) fd.append("session_id", sessionIdRef.current);
+      const res = await fetch(UPLOADS_URL, { method: "POST", body: fd });
+      if (!res.ok) {
+        const j = await res.json().catch(() => ({}));
+        throw new Error(j.error ?? `upload ${res.status}`);
+      }
+      const j = (await res.json()) as Attachment;
+      setPendingAttachments((prev) => [...prev, j]);
+    } catch (e) {
+      setUploadError(String(e instanceof Error ? e.message : e));
+    } finally {
+      setUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  }
+
+  function removePendingAttachment(idx: number) {
+    setPendingAttachments((prev) => prev.filter((_, i) => i !== idx));
+  }
+
+  async function send(text: string, attachmentsOverride?: Attachment[]) {
+    const attachments = attachmentsOverride ?? pendingAttachments;
+    if (!text.trim() && attachments.length === 0) return;
+    const userMsg: Message = {
+      role: "user",
+      content: text.trim(),
+      attachments: attachments.length > 0 ? attachments : undefined,
+    };
     const nextMessages = [...messages, userMsg];
     setMessages(nextMessages);
     setInput("");
+    setPendingAttachments([]);
+    setUploadError(null);
     setLoading(true);
     setError(false);
 
@@ -187,6 +242,19 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
                       : "bg-reba-card text-reba-ink rounded-bl-md"
                   }`}
                 >
+                  {m.attachments && m.attachments.length > 0 && (
+                    <div className="mb-2 flex flex-wrap gap-1.5">
+                      {m.attachments.map((a, ai) => (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img
+                          key={ai}
+                          src={a.url}
+                          alt={a.filename ?? "attachment"}
+                          className="h-24 w-24 object-cover rounded-md border border-white/30"
+                        />
+                      ))}
+                    </div>
+                  )}
                   {m.content}
                 </div>
               </div>
@@ -210,6 +278,40 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
             </div>
           )}
 
+          {/* Pending attachments preview */}
+          {(pendingAttachments.length > 0 || uploading || uploadError) && (
+            <div className="border-t border-reba-border px-4 py-2 space-y-1.5">
+              {pendingAttachments.length > 0 && (
+                <div className="flex flex-wrap gap-1.5">
+                  {pendingAttachments.map((a, i) => (
+                    <div key={i} className="relative">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={a.url}
+                        alt={a.filename ?? "attachment"}
+                        className="h-14 w-14 object-cover rounded-md border border-reba-border"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => removePendingAttachment(i)}
+                        className="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-reba-ink text-white text-[11px]"
+                        aria-label="Remove attachment"
+                      >
+                        ×
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {uploading && (
+                <p className="text-[11px] text-reba-muted">Uploading…</p>
+              )}
+              {uploadError && (
+                <p className="text-[11px] text-red-500">{uploadError}</p>
+              )}
+            </div>
+          )}
+
           {/* Input */}
           <form
             onSubmit={(e) => {
@@ -219,15 +321,37 @@ export default function ChatWidget({ initialOpen = false }: { initialOpen?: bool
             className="flex items-center gap-2 border-t border-reba-border px-4 py-3"
           >
             <input
+              ref={fileInputRef}
+              type="file"
+              accept={ACCEPTED_IMAGE_TYPES}
+              className="hidden"
+              onChange={(e) => {
+                const f = e.target.files?.[0];
+                if (f) void uploadFile(f);
+              }}
+            />
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              disabled={loading || uploading || pendingAttachments.length >= MAX_PENDING_ATTACHMENTS}
+              className="flex h-9 w-9 items-center justify-center rounded-full text-reba-muted transition hover:bg-reba-card hover:text-reba-pink disabled:opacity-40"
+              aria-label="Attach image"
+              title="Attach an image"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+              </svg>
+            </button>
+            <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask us anything..."
+              placeholder={pendingAttachments.length > 0 ? "Add a message (optional)…" : "Ask us anything..."}
               className="flex-1 rounded-full bg-reba-card border border-reba-border px-4 py-2 text-sm text-reba-ink placeholder:text-reba-muted outline-none focus:border-reba-pink transition"
               disabled={loading}
             />
             <button
               type="submit"
-              disabled={loading || !input.trim()}
+              disabled={loading || uploading || (!input.trim() && pendingAttachments.length === 0)}
               className="flex h-9 w-9 items-center justify-center rounded-full bg-reba-pink text-white transition hover:bg-reba-pink-hover disabled:opacity-40"
               aria-label="Send message"
             >
