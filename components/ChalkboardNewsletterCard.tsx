@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { submitWaitlist } from "@/lib/waitlist";
 
@@ -72,15 +71,6 @@ export default function ChalkboardNewsletterCard() {
         {status === "error" && (
           <p className="text-reba-pink text-sm mt-3">{errorMsg}</p>
         )}
-
-        <p className="text-reba-muted text-sm mt-5">
-          <Link
-            href="/whats-baking"
-            className="underline underline-offset-2 hover:text-reba-pink transition-colors"
-          >
-            See a sample issue →
-          </Link>
-        </p>
       </div>
     </div>
   );

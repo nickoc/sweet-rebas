@@ -20,6 +20,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Legacy /whats-baking page was retired in favor of /chalkboard. Permanent
+  // redirect catches old QR codes, bookmarks, Instagram links, and any cached
+  // search results so visitors land on the live page instead of a 404.
+  async redirects() {
+    return [
+      {
+        source: "/whats-baking",
+        destination: "/chalkboard",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
