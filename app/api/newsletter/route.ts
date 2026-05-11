@@ -2,7 +2,7 @@ import Anthropic from "@anthropic-ai/sdk";
 
 const client = new Anthropic();
 
-const SYSTEM_PROMPT = `You are writing the weekly email newsletter for Sweet Reba's Bakery, a beloved artisan bakery on California's Monterey Peninsula.
+const SYSTEM_PROMPT = `You are writing the email newsletter for Sweet Reba's Bakery, a beloved bakery on California's Monterey Peninsula.
 
 VOICE & TONE:
 - Warm community voice, like a letter from a friend who happens to run the best bakery in town
@@ -12,7 +12,7 @@ VOICE & TONE:
 
 ALWAYS INCLUDE:
 - Current specials or featured items
-- Both locations info: Salinas (268 Main St — OPEN) and Carmel (206 Crossroads Blvd — temporarily closed for fire repairs, updates welcome)
+- Both locations info: Salinas (268 Main St — OPEN) and Carmel (206 Crossroads Blvd — temporarily closed for renovations, updates welcome)
 - Pre-order reminders for pies (7-day advance, call 831-676-0628)
 - A personal touch — reference the season, local events, or community connection
 
@@ -38,10 +38,10 @@ export async function POST(request: Request) {
   try {
     const { topic, specials, notes } = await request.json();
 
-    const userMessage = `Write this week's newsletter for Sweet Reba's Bakery.
+    const userMessage = `Write the next newsletter for Sweet Reba's Bakery.
 
-Topic/Theme: ${topic || "Weekly update"}
-Current Specials: ${specials || "Chef's choice this week"}
+Topic/Theme: ${topic || "Update"}
+Current Specials: ${specials || "Chef's choice"}
 Additional Notes: ${notes || "None"}
 
 Generate a complete, beautifully styled HTML email newsletter.`;

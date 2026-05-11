@@ -31,14 +31,13 @@ export default function ChalkboardNewsletterCard() {
     <div className="mt-12 bg-white border-2 border-reba-pink/30 rounded-3xl p-8 sm:p-10">
       <div className="max-w-2xl mx-auto text-center">
         <p className="text-sm uppercase tracking-wider text-reba-pink font-bold mb-3">
-          ✉️ Weekly Newsletter
+          ✉️ Newsletter
         </p>
         <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
           Love what you&apos;re seeing?
         </h3>
         <p className="text-reba-muted text-base sm:text-lg mb-6">
-          Get the week&apos;s fresh picks, specials, and Sweet Reba&apos;s news in
-          your inbox every Thursday.
+          Get fresh picks, specials, and Sweet Reba&apos;s news in your inbox.
         </p>
 
         {status === "success" ? (
