@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api/
+
+Host: https://sweet-rebas.vercel.app
+Sitemap: https://sweet-rebas.vercel.app/sitemap.xml
