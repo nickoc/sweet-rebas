@@ -43,7 +43,7 @@ export default function HomePage() {
       {/* Title + Locations */}
       <section className="py-10 sm:py-14 text-center">
         <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-4 tracking-wide">
-          Small-Batch Bakery. Made with Love Since 2004.
+          Small-Batch Bakery. Made with Love.
         </p>
         <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold">
           <a

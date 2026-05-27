@@ -84,7 +84,7 @@ export default function Footer() {
                 <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink mb-2">
                   Opening Hours
                 </h4>
-                <p className="text-reba-pink text-lg italic">Re-opening end of May 2026</p>
+                <p className="text-reba-pink text-lg italic">Re-opening early June 2026</p>
               </div>
             </div>
           </div>
@@ -138,9 +138,8 @@ export default function Footer() {
               Sweet Reba&apos;s
             </h3>
             <p className="text-reba-muted text-lg leading-relaxed mb-3">
-              Artisan bakery serving Carmel &amp; Salinas since 2004. Every item
-              is made from scratch with the freshest ingredients and a whole lot
-              of love.
+              Artisan bakery serving Carmel &amp; Salinas. Every item is made
+              from scratch with the freshest ingredients and a whole lot of love.
             </p>
             <a
               href="https://instagram.com/sweetrebas"

@@ -57,7 +57,7 @@ export default function AboutPage() {
                   The Birthday Cake That Changed Everything
                 </h2>
                 <p className="text-reba-soft leading-relaxed mb-4">
-                  In 2004, Reba made a birthday cake for her son&apos;s 7th
+                  It started with a birthday cake Reba made for her son&apos;s 7th
                   birthday. It was more than a cake &mdash; it was a work of art.
                   The other parents at the party couldn&apos;t stop talking about it.
                   Orders started coming in. Word spread through the neighborhood.
@@ -198,7 +198,7 @@ export default function AboutPage() {
                 From her grandmother&apos;s kitchen to Food Network&apos;s Cake Wars,
                 Reba has turned a passion for baking into something extraordinary.
                 Every cake, cookie, and pie is made with the same love she put into
-                that very first birthday cake in 2004.
+                that very first birthday cake.
               </p>
             </div>
             {/* Michael */}
