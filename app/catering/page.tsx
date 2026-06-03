@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 
@@ -11,9 +11,16 @@ export default function CateringPage() {
   const [cateringSubmitted, setCateringSubmitted] = useState(false);
   const [cateringLoading, setCateringLoading] = useState(false);
   const [cateringError, setCateringError] = useState("");
+  // Synchronous in-flight guard. setCateringLoading is async (the disabled
+  // button only updates on the next render), so two submits firing in the
+  // same tick could both pass the checks and double-POST — which sent Reba
+  // duplicate inquiries + alerts. A ref flips immediately, so the second
+  // call returns before it can submit.
+  const submittingRef = useRef(false);
 
   async function handleCateringSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submittingRef.current) return;
     const name = cateringName.trim();
     const phone = cateringPhone.trim();
     const notes = cateringNotes.trim();
@@ -24,6 +31,7 @@ export default function CateringPage() {
       setCateringError("Please enter a valid phone number so Reba can reach you.");
       return;
     }
+    submittingRef.current = true;
     setCateringLoading(true);
     setCateringError("");
     const result = await submitWaitlist({
@@ -33,6 +41,7 @@ export default function CateringPage() {
       source_context: "catering-inquiry",
     });
     setCateringLoading(false);
+    submittingRef.current = false;
     if (result.ok) {
       setCateringSubmitted(true);
     } else {
