@@ -5,19 +5,31 @@ import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 
 export default function CateringPage() {
-  const [cateringEmail, setCateringEmail] = useState("");
+  const [cateringName, setCateringName] = useState("");
+  const [cateringPhone, setCateringPhone] = useState("");
+  const [cateringNotes, setCateringNotes] = useState("");
   const [cateringSubmitted, setCateringSubmitted] = useState(false);
   const [cateringLoading, setCateringLoading] = useState(false);
   const [cateringError, setCateringError] = useState("");
 
   async function handleCateringSubmit(e: React.FormEvent) {
     e.preventDefault();
-    const trimmed = cateringEmail.trim();
-    if (!trimmed) return;
+    const name = cateringName.trim();
+    const phone = cateringPhone.trim();
+    const notes = cateringNotes.trim();
+    if (!name || !phone) return;
+    // Phone is the only callback channel now (no email field), so guard
+    // against junk: require at least 10 digits before it can reach Reba.
+    if (phone.replace(/\D/g, "").length < 10) {
+      setCateringError("Please enter a valid phone number so Reba can reach you.");
+      return;
+    }
     setCateringLoading(true);
     setCateringError("");
     const result = await submitWaitlist({
-      email: trimmed,
+      name,
+      phone,
+      notes,
       source_context: "catering-inquiry",
     });
     setCateringLoading(false);
@@ -66,22 +78,39 @@ export default function CateringPage() {
                   <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will reach out soon.</p>
                 ) : (
                   <>
-                    <p className="text-reba-muted text-sm mb-3">Or leave your email and we&apos;ll reach out</p>
-                    <form onSubmit={handleCateringSubmit} className="flex gap-3 max-w-sm mx-auto">
+                    <p className="text-reba-muted text-sm mb-4">Or tell us about your event and we&apos;ll reach out</p>
+                    <form onSubmit={handleCateringSubmit} className="space-y-3 max-w-sm mx-auto text-left">
                       <input
-                        type="email"
-                        value={cateringEmail}
-                        onChange={(e) => setCateringEmail(e.target.value)}
-                        placeholder="Your email address"
+                        type="text"
+                        value={cateringName}
+                        onChange={(e) => setCateringName(e.target.value)}
+                        placeholder="Your name"
                         required
-                        className="flex-1 bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                        autoComplete="name"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <input
+                        type="tel"
+                        value={cateringPhone}
+                        onChange={(e) => setCateringPhone(e.target.value)}
+                        placeholder="Phone number"
+                        required
+                        autoComplete="tel"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <textarea
+                        value={cateringNotes}
+                        onChange={(e) => setCateringNotes(e.target.value)}
+                        placeholder="What are you looking for? (event, date, how many people, what you'd love)"
+                        rows={4}
+                        className="w-full bg-white border border-reba-border rounded-2xl px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition resize-y"
                       />
                       <button
                         type="submit"
                         disabled={cateringLoading}
-                        className="bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-2.5 rounded-full text-sm font-medium transition-colors disabled:opacity-60"
+                        className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-3 rounded-full text-sm font-medium transition-colors disabled:opacity-60"
                       >
-                        {cateringLoading ? "..." : "Request Consultation"}
+                        {cateringLoading ? "Sending..." : "Request Consultation"}
                       </button>
                     </form>
                     {cateringError && (
