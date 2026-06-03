@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { CakeSlideshow, CakeCarousel } from "@/components/CakeGallery";
 import { submitWaitlist } from "@/lib/waitlist";
+import CustomCakeOrderForm from "@/components/CustomCakeOrderForm";
 
 const detailImages = [
   { src: "/cake-detail-1.png", alt: "White ranunculus detail" },
@@ -143,6 +144,19 @@ export default function CakesPage() {
           </h2>
           <p className="text-reba-muted text-center text-xl mb-8">Weddings, milestones, and celebrations worth remembering</p>
           <CakeCarousel images={specialImages} />
+        </div>
+      </section>
+
+      {/* Order Your Custom Cake (online order form) */}
+      <section className="py-14">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="font-[family-name:var(--font-heading)] text-5xl sm:text-6xl text-reba-pink text-center mb-3">
+            Start Your Order
+          </h2>
+          <p className="text-reba-muted text-center text-xl mb-8">
+            Order online below, give us a call, or chat with us &mdash; whatever&apos;s easiest for you.
+          </p>
+          <CustomCakeOrderForm />
         </div>
       </section>
 
