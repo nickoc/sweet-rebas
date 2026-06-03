@@ -155,7 +155,7 @@ export default async function ChalkboardPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <div className="text-center mb-8">
             <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-8xl text-reba-pink mb-3">
-              Specials of the Day
+              Specials
             </h1>
             <p className="text-reba-muted text-2xl mb-4">
               {formatDate(date)} &mdash; Salinas Location
