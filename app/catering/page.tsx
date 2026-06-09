@@ -7,6 +7,7 @@ import { submitWaitlist } from "@/lib/waitlist";
 export default function CateringPage() {
   const [cateringName, setCateringName] = useState("");
   const [cateringPhone, setCateringPhone] = useState("");
+  const [cateringEmail, setCateringEmail] = useState("");
   const [cateringNotes, setCateringNotes] = useState("");
   const [cateringSubmitted, setCateringSubmitted] = useState(false);
   const [cateringLoading, setCateringLoading] = useState(false);
@@ -23,10 +24,12 @@ export default function CateringPage() {
     if (submittingRef.current) return;
     const name = cateringName.trim();
     const phone = cateringPhone.trim();
+    const email = cateringEmail.trim();
     const notes = cateringNotes.trim();
     if (!name || !phone) return;
-    // Phone is the only callback channel now (no email field), so guard
-    // against junk: require at least 10 digits before it can reach Reba.
+    // Phone is required as the primary callback channel; email is optional
+    // (also used to add them to Reba's Notebook). Guard against junk:
+    // require at least 10 digits before it can reach Reba.
     if (phone.replace(/\D/g, "").length < 10) {
       setCateringError("Please enter a valid phone number so Reba can reach you.");
       return;
@@ -37,6 +40,7 @@ export default function CateringPage() {
     const result = await submitWaitlist({
       name,
       phone,
+      email: email || undefined,
       notes,
       source_context: "catering-inquiry",
     });
@@ -105,6 +109,14 @@ export default function CateringPage() {
                         placeholder="Phone number"
                         required
                         autoComplete="tel"
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <input
+                        type="email"
+                        value={cateringEmail}
+                        onChange={(e) => setCateringEmail(e.target.value)}
+                        placeholder="Email (optional)"
+                        autoComplete="email"
                         className="w-full bg-white border border-reba-border rounded-full px-5 py-3 text-base text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
                       />
                       <textarea
