@@ -145,7 +145,7 @@ export default function ContactPage() {
               </div>
               <div className="mt-5 border border-reba-pink/20 rounded-lg p-4">
                 <p className="text-reba-pink text-base italic">
-                  Reopening in early June 2026. We can&apos;t wait to
+                  Reopening in late June 2026. We can&apos;t wait to
                   see you back at Crossroads!
                 </p>
               </div>
