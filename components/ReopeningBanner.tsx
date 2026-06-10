@@ -59,7 +59,7 @@ export default function ReopeningBanner() {
               Our Salinas store is now open!
             </p>
             <p className="text-reba-muted text-xl leading-relaxed mb-4">
-              Our Carmel store is reopening in early June.
+              Our Carmel store is reopening in late June.
             </p>
 
             <div className="mt-auto pt-4">

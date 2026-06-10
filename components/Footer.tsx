@@ -84,7 +84,7 @@ export default function Footer() {
                 <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink mb-2">
                   Opening Hours
                 </h4>
-                <p className="text-reba-pink text-lg italic">Re-opening early June 2026</p>
+                <p className="text-reba-pink text-lg italic">Re-opening late June 2026</p>
               </div>
             </div>
           </div>
