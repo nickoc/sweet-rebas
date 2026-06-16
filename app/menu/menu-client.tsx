@@ -64,8 +64,13 @@ function QuickAddCard({ item, image, imagePositionClass, imageWidthClass, onImag
           />
         </div>
       ) : (
-        <div className={`${widthClass} flex-shrink-0 bg-reba-card flex items-center justify-center`}>
-          <span className="text-3xl">{item.emoji}</span>
+        <div
+          className={`${widthClass} flex-shrink-0 bg-gradient-to-br from-reba-card to-reba-pink/15 flex items-center justify-center`}
+          aria-hidden="true"
+        >
+          <span className="text-6xl sm:text-7xl leading-none select-none drop-shadow-sm">
+            {item.emoji}
+          </span>
         </div>
       )}
       <div className="flex-1 min-w-0 p-4 sm:p-6 flex flex-col">
