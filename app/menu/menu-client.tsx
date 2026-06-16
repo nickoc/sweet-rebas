@@ -245,6 +245,21 @@ const productImagePositions: Record<string, string> = {
 
 const productImageWidths: Record<string, string> = {};
 
+// AI-generated studio fallback photos (Nano Banana wedge, white-marble style) for
+// items that have no real photo yet — keyed by slug(item.name). These are better
+// placeholders than the emoji tile; an uploaded portal photo (item.imageUrl) or a
+// curated local photo (productImages) always wins over these. Replace a key with a
+// real /public photo, or have the owner upload in the catalog, and it auto-swaps.
+const generatedFallbackImages: Record<string, string> = {
+  "bacon-burrito": "/product-bacon-burrito.webp",
+  "sausage-burrito": "/product-sausage-burrito.webp",
+  "chorizo-burrito": "/product-chorizo-burrito.webp",
+  "turkey-swiss": "/product-turkey-swiss.webp",
+  "ham-swiss": "/product-ham-swiss.webp",
+  "egg-salad": "/product-egg-salad.webp",
+  "loaf-slices": "/product-loaf-slices.webp",
+};
+
 export default function MenuClient({ items }: { items: MergedMenuItem[] }) {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
 
@@ -308,7 +323,10 @@ export default function MenuClient({ items }: { items: MergedMenuItem[] }) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {catItems.map((item) => {
                   // Portal photo wins; otherwise fall back to the curated local map.
-                  const image = item.imageUrl ?? productImages[item.id];
+                  const image =
+                    item.imageUrl ??
+                    productImages[item.id] ??
+                    generatedFallbackImages[slug(item.name)];
                   const imagePositionClass = productImagePositions[item.id];
                   const imageWidthClass = productImageWidths[item.id];
                   return (
