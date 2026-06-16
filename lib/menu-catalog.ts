@@ -1,13 +1,23 @@
 // Merge layer: the Bearing catalog is the source of truth for the menu, but the
 // curated static data (data/sample-data.ts) is the fallback so the site never
 // regresses. Per item, the portal wins where it has a value; otherwise the
-// static value stays. Static-only items (e.g. salads, not yet in the catalog)
-// survive untouched, and portal-only new items get appended.
+// static value stays. Static-only items (e.g. salads not yet in the catalog)
+// survive untouched, and portal-only NEW items get appended as their own card.
 //
-// Why a merge and not a cutover: today the catalog is missing salads, has no
-// photo on ~97% of items, and models soup as three size-rows. A blind cutover
-// would wipe those from the live menu. As Reba fills the catalog in the portal,
-// the merged menu improves automatically.
+// Why a merge and not a cutover: the static menu carries curated structure the
+// catalog doesn't model — soup/loaf SIZES, long-form descriptions, category
+// ordering. A blind cutover would wipe those. As Reba fills the catalog in the
+// portal, the merged menu improves automatically.
+//
+// HOW ITEMS ARE LINKED (the important part):
+// We link each catalog item to its static counterpart by the catalog item's
+// STABLE UUID (CATALOG_ID_TO_SLUG below), falling back to an exact normalized
+// name match. Keying on the UUID — not the display name — means Reba can rename
+// or pluralize an item in the portal ("Morning Muffin" → "Morning Muffins")
+// without ever breaking the link. The previous version matched on name only, so
+// a one-character difference (a trailing "s", a "& " vs "and") silently dropped
+// the portal's description/photo edit AND rendered a duplicate card. That is the
+// bug this file exists to kill.
 
 import { menuItems as STATIC_MENU, type MenuItem } from "@/data/sample-data";
 
@@ -40,6 +50,21 @@ const KNOWN_CATEGORIES: ReadonlySet<MenuItem["category"]> = new Set([
   "cookies", "bars", "breakfast", "burritos", "sandwiches", "salads", "soup", "pies",
 ]);
 
+// Durable links from a catalog item's STABLE UUID to its static menu slug.
+// Only the genuine renames need an entry here — items whose portal name already
+// matches the static name are linked automatically by name. Brand-new catalog
+// items (e.g. extra burrito/sandwich varieties Reba added) intentionally have NO
+// entry: they render as their own card. When you confirm a new rename pairing,
+// add its UUID here so the link survives any future name change.
+const CATALOG_ID_TO_SLUG: Record<string, string> = {
+  // catalog "Cinnamon Donut Muffins" → static "Cinnamon Donut Muffin" (plural)
+  "0cf18d08-8890-4e93-b18f-9361ce6d570b": "cinnamon-donut-muffins",
+  // catalog "Morning Muffins" → static "Morning Muffin or Buckle"
+  "b2a92b87-3ba1-4c6f-a4c9-bf70b5364835": "morning-glory-muffins",
+  // catalog "Tuna Salad Sandwich" → static "Albacore Tuna Sandwich"
+  "d6a6bc48-ebb0-4ad1-a8f5-d2df7cc9cc1e": "albacore-tuna",
+};
+
 function norm(s: string): string {
   return s.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
 }
@@ -47,6 +72,11 @@ function norm(s: string): string {
 function isSoup(c: CatalogItem): boolean {
   return c.category === "soup" || norm(c.name).startsWith("soup");
 }
+
+const EMOJI_BY_CATEGORY: Record<string, string> = {
+  cookies: "🍪", bars: "🍫", breakfast: "🧁", burritos: "🌯",
+  sandwiches: "🥪", salads: "🥗", soup: "🥣", pies: "🥧",
+};
 
 /**
  * Overlay the catalog onto the static menu. Pure + deterministic so it can be
@@ -56,31 +86,44 @@ export function mergeMenu(
   catalog: CatalogItem[],
   staticItems: MenuItem[] = STATIC_MENU,
 ): MergedMenuItem[] {
-  // Index non-soup catalog items by normalized name; capture the first soup
-  // photo to attach to the canonical static soup item.
-  const catByName = new Map<string, CatalogItem>();
+  const staticBySlug = new Map<string, MenuItem>();
+  const slugByName = new Map<string, string>();
+  for (const s of staticItems) {
+    staticBySlug.set(s.id, s);
+    slugByName.set(norm(s.name), s.id);
+  }
+
+  // Link each non-soup catalog item to a static slug: UUID alias first (stable
+  // across renames), then exact normalized-name match. First claim on a slug
+  // wins; a later catalog item that would collide falls through to "new card".
+  const catalogForSlug = new Map<string, CatalogItem>();
+  const usedCatalogIds = new Set<string>();
   let soupPhoto: string | null = null;
+
   for (const c of catalog) {
     if (isSoup(c)) {
       if (!soupPhoto && c.image_url) soupPhoto = c.image_url;
       continue;
     }
-    catByName.set(norm(c.name), c);
+    const slug = CATALOG_ID_TO_SLUG[c.id] ?? slugByName.get(norm(c.name));
+    if (slug && staticBySlug.has(slug) && !catalogForSlug.has(slug)) {
+      catalogForSlug.set(slug, c);
+      usedCatalogIds.add(c.id);
+    }
   }
 
-  const usedKeys = new Set<string>();
   const merged: MergedMenuItem[] = [];
 
+  // Pass 1: every static item in curated order, with the linked portal content
+  // overlaid where present. Soup keeps its static size-rows and adopts a portal
+  // photo if one was uploaded.
   for (const s of staticItems) {
-    // Soup: keep the static item-with-sizes; adopt the portal photo if uploaded.
     if (s.category === "soup") {
       merged.push(soupPhoto ? { ...s, imageUrl: soupPhoto } : { ...s });
       continue;
     }
-    const key = norm(s.name);
-    const c = catByName.get(key);
+    const c = catalogForSlug.get(s.id);
     if (c) {
-      usedKeys.add(key);
       merged.push({
         ...s,
         description: c.description ?? s.description,
@@ -90,17 +133,16 @@ export function mergeMenu(
         imageUrl: c.image_url ?? undefined,
       });
     } else {
-      // Static-only item (e.g. the salads, not yet in the catalog) — keep as-is.
+      // Static-only item (e.g. a salad not yet in the catalog) — keep as-is.
       merged.push({ ...s });
     }
   }
 
-  // Portal-only NEW items the static menu doesn't have, in categories the page
-  // can render. (The public API already filters to available=true.)
+  // Pass 2: portal-only NEW items the static menu doesn't have (e.g. extra
+  // burrito/sandwich varieties), in categories the page can render. These are
+  // real items Reba added — render them visibly, not as sold-out phantoms.
   for (const c of catalog) {
-    if (isSoup(c)) continue;
-    const key = norm(c.name);
-    if (usedKeys.has(key)) continue;
+    if (isSoup(c) || usedCatalogIds.has(c.id)) continue;
     const category = c.category as MenuItem["category"];
     if (!KNOWN_CATEGORIES.has(category)) continue;
     merged.push({
@@ -109,8 +151,8 @@ export function mergeMenu(
       description: c.description ?? "",
       price: c.price_cents != null ? c.price_cents / 100 : 0,
       category,
-      emoji: c.emoji ?? "⭐",
-      available: 0,
+      emoji: c.emoji ?? EMOJI_BY_CATEGORY[category] ?? "⭐",
+      available: 1,
       popular: c.popular ?? false,
       imageUrl: c.image_url ?? undefined,
     });
