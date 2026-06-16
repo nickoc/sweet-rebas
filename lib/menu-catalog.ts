@@ -110,7 +110,10 @@ export function mergeMenu(
   const nonSoup: CatalogItem[] = [];
   for (const c of catalog) {
     if (isSoup(c)) {
-      if (!soupPhoto && c.image_url) soupPhoto = c.image_url;
+      // Don't adopt a hidden soup item's photo onto the static soup card.
+      if (!soupPhoto && c.image_url && c.available !== false) {
+        soupPhoto = c.image_url;
+      }
       continue;
     }
     nonSoup.push(c);
