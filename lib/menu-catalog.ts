@@ -93,19 +93,42 @@ export function mergeMenu(
     slugByName.set(norm(s.name), s.id);
   }
 
-  // Link each non-soup catalog item to a static slug: UUID alias first (stable
-  // across renames), then exact normalized-name match. First claim on a slug
-  // wins; a later catalog item that would collide falls through to "new card".
+  // Link each non-soup catalog item to a static slug. Two ordered passes so the
+  // UUID alias is AUTHORITATIVE — independent of catalog arrival order:
+  //   Pass A: lock every valid UUID alias to its slug first.
+  //   Pass B: name-match the rest, over slugs not already claimed.
+  // A single pass with `alias ?? name` would (1) let a name-match beat the
+  // canonical aliased row if it arrived first, and (2) let a stale alias (one
+  // pointing at a non-existent slug) swallow the name fallback entirely — both
+  // re-introduce the silent-drop + duplicate-card bug. Splitting the passes and
+  // treating the alias as a hint (fall through to name when it doesn't resolve)
+  // closes both.
   const catalogForSlug = new Map<string, CatalogItem>();
   const usedCatalogIds = new Set<string>();
   let soupPhoto: string | null = null;
 
+  const nonSoup: CatalogItem[] = [];
   for (const c of catalog) {
     if (isSoup(c)) {
       if (!soupPhoto && c.image_url) soupPhoto = c.image_url;
       continue;
     }
-    const slug = CATALOG_ID_TO_SLUG[c.id] ?? slugByName.get(norm(c.name));
+    nonSoup.push(c);
+  }
+
+  // Pass A — UUID aliases (authoritative, locked first).
+  for (const c of nonSoup) {
+    const slug = CATALOG_ID_TO_SLUG[c.id];
+    if (slug && staticBySlug.has(slug) && !catalogForSlug.has(slug)) {
+      catalogForSlug.set(slug, c);
+      usedCatalogIds.add(c.id);
+    }
+  }
+
+  // Pass B — exact normalized-name match for whatever the aliases didn't claim.
+  for (const c of nonSoup) {
+    if (usedCatalogIds.has(c.id)) continue;
+    const slug = slugByName.get(norm(c.name));
     if (slug && staticBySlug.has(slug) && !catalogForSlug.has(slug)) {
       catalogForSlug.set(slug, c);
       usedCatalogIds.add(c.id);
