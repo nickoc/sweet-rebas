@@ -91,7 +91,7 @@ export default function CustomCakeOrderForm() {
           Order request received!
         </h3>
         <p className="text-reba-muted text-base">
-          Reba will reach out to finalize the details of your custom cake. Can&apos;t wait to make something special for you!
+          Reba will reach out to finalize the details of your custom cake — we reply during business hours (Tue–Fri 8–5, Sat 9–5). Can&apos;t wait to make something special for you!
         </p>
       </div>
     );

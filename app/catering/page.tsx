@@ -88,7 +88,7 @@ export default function CateringPage() {
               </div>
               <div className="pt-4 border-t border-reba-border mt-4">
                 {cateringSubmitted ? (
-                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will reach out soon.</p>
+                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will reach out soon — we reply during business hours (Tue–Fri 8–5, Sat 9–5).</p>
                 ) : (
                   <>
                     <p className="text-reba-muted text-sm mb-4">Or tell us about your event and we&apos;ll reach out</p>
