@@ -132,7 +132,7 @@ export default function SignatureCakesPage() {
               </div>
               <div className="pt-4 border-t border-reba-border mt-4">
                 {cakeSubmitted ? (
-                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will call you soon.</p>
+                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will call you soon — we reply during business hours (Tue–Fri 8–5, Sat 9–5).</p>
                 ) : !callbackOpen ? (
                   <button
                     onClick={() => setCallbackOpen(true)}

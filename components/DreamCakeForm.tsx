@@ -48,7 +48,7 @@ export default function DreamCakeForm() {
             We Got Your Dream Cake Idea!
           </h3>
           <p className="text-reba-muted text-sm">
-            We&apos;ll be in touch soon to discuss your vision. Can&apos;t wait to create something amazing for you!
+            We&apos;ll be in touch soon to discuss your vision — we reply during business hours (Tue–Fri 8–5, Sat 9–5). Can&apos;t wait to create something amazing for you!
           </p>
         </div>
       </div>
