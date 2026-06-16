@@ -146,6 +146,12 @@ export function mergeMenu(
       continue;
     }
     const c = catalogForSlug.get(s.id);
+    if (c && c.available === false) {
+      // Owner hid this item in the portal → drop its menu card entirely.
+      // (Only present here when the API is fetched with ?visibility=all; without
+      // it, hidden items are absent and this branch never fires.)
+      continue;
+    }
     if (c) {
       merged.push({
         ...s,
@@ -166,6 +172,7 @@ export function mergeMenu(
   // real items Reba added — render them visibly, not as sold-out phantoms.
   for (const c of catalog) {
     if (isSoup(c) || usedCatalogIds.has(c.id)) continue;
+    if (c.available === false) continue; // owner hid it → don't add as a new card
     const category = c.category as MenuItem["category"];
     if (!KNOWN_CATEGORIES.has(category)) continue;
     merged.push({
@@ -190,7 +197,11 @@ export function mergeMenu(
  */
 export async function getMenuItems(): Promise<MergedMenuItem[]> {
   try {
-    const res = await fetch(CATALOG_API, { next: { revalidate: 60 } });
+    // ?visibility=all returns items the owner hid (tagged available:false) so the
+    // merge can drop their menu cards; without it the API omits them and hidden
+    // items would still render via the static fallback.
+    const url = `${CATALOG_API}${CATALOG_API.includes("?") ? "&" : "?"}visibility=all`;
+    const res = await fetch(url, { next: { revalidate: 60 } });
     if (!res.ok) return STATIC_MENU.map((s) => ({ ...s }));
     const data = (await res.json()) as { items?: CatalogItem[] };
     const menuSection = (data.items ?? []).filter((i) => i.section === "menu");
