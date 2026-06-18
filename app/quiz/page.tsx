@@ -52,7 +52,6 @@ interface Result {
   tagline: string;
   description: string;
   product: string;
-  price: string;
 }
 
 const RESULTS: Record<string, Result> = {
@@ -63,7 +62,6 @@ const RESULTS: Record<string, Result> = {
     description:
       "You go all in. Half measures aren\u2019t your thing. When you walk into a room, people notice \u2014 and when they bite into your energy, they never forget it.",
     product: "Double Chocolate Cookie",
-    price: "$4.50",
   },
   cozy: {
     emoji: "\u{1F36A}",
@@ -72,7 +70,6 @@ const RESULTS: Record<string, Result> = {
     description:
       "You\u2019re the person everyone wants at the party. Reliable, comforting, and always just right. You don\u2019t need to be flashy \u2014 your warmth speaks for itself.",
     product: "Snickerdoodle Cookie",
-    price: "$4.00",
   },
   fresh: {
     emoji: "\u{1F34B}",
@@ -81,7 +78,6 @@ const RESULTS: Record<string, Result> = {
     description:
       "You bring sunshine wherever you go. Sweet but never too much, tart but never bitter \u2014 you\u2019ve figured out the balance that most people spend their whole lives searching for.",
     product: "Lemon Bar",
-    price: "$5.00",
   },
   wild: {
     emoji: "\u{1F32F}",
@@ -90,7 +86,6 @@ const RESULTS: Record<string, Result> = {
     description:
       "Nobody expected you to show up at a bakery \u2014 and that\u2019s exactly why you\u2019re the most exciting thing on the menu. Rules are suggestions. Breakfast is all day.",
     product: "Breakfast Burrito",
-    price: "$12.00",
   },
 };
 
@@ -251,7 +246,6 @@ export default function QuizPage() {
               You Should Try
             </p>
             <p className="text-reba-ink font-bold text-lg">{result.product}</p>
-            <p className="text-reba-pink font-medium">{result.price}</p>
           </div>
         </div>
 
