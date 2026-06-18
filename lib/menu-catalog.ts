@@ -258,3 +258,27 @@ export async function getCakeSizes(): Promise<CakeSize[]> {
     return [];
   }
 }
+
+/**
+ * Fetch the wedding-cake STARTING price from the catalog (section
+ * "wedding-cakes"). Returns the price label (e.g. "$150") or null on any
+ * failure so the page falls back to its static default.
+ */
+export async function getWeddingStartPrice(): Promise<string | null> {
+  try {
+    const url = `${CATALOG_API}${CATALOG_API.includes("?") ? "&" : "?"}visibility=all`;
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { items?: CatalogItem[] };
+    const w = (data.items ?? [])
+      .filter((i) => i.section === "wedding-cakes" && i.available !== false)
+      .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0))[0];
+    if (!w) return null;
+    return (
+      w.price_label ??
+      (w.price_cents != null ? `$${(w.price_cents / 100).toFixed(0)}` : null)
+    );
+  } catch {
+    return null;
+  }
+}
