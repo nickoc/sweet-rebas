@@ -45,7 +45,7 @@ const standardCakes = [
   { name: 'Chocolate 6" Cake', image: "/product-chocolate-whole-cake.jpg" },
 ];
 
-const DEFAULT_CAKE_SIZES = [
+const cakeSizes = [
   { name: '6" Round', serves: "~10-12 servings", price: "$40" },
   { name: '8" Round', serves: "~15-20 servings", price: "$55" },
   { name: '9" Round', serves: "~20-25 servings", price: "$65" },
@@ -84,22 +84,6 @@ export default function CakesPage() {
   const [cakeLoading, setCakeLoading] = useState(false);
   const [cakeError, setCakeError] = useState("");
   const [callbackOpen, setCallbackOpen] = useState(false);
-  // Cake sizes/prices come from the Bearing catalog (section "cake-sizes"). The
-  // static list is the first-paint default + fallback, so there is no loading
-  // flash (identical values) and a catalog miss never blanks the table.
-  const [cakeSizes, setCakeSizes] = useState(DEFAULT_CAKE_SIZES);
-  useEffect(() => {
-    let active = true;
-    fetch("/api/cake-sizes")
-      .then((r) => (r.ok ? r.json() : null))
-      .then((d) => {
-        if (active && Array.isArray(d?.sizes) && d.sizes.length) setCakeSizes(d.sizes);
-      })
-      .catch(() => {});
-    return () => {
-      active = false;
-    };
-  }, []);
 
   async function handleCustomCakeCallback(e: React.FormEvent) {
     e.preventDefault();
