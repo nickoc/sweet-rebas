@@ -17,7 +17,7 @@ VOICE & TONE:
 
 ALWAYS INCLUDE:
 - Current specials or featured items
-- Both locations info: Salinas (268 Main St — OPEN) and Carmel (206 Crossroads Blvd — temporarily closed for renovations, updates welcome)
+- Both locations info: Salinas (268 S Main St — OPEN) and Carmel (206 Crossroads Blvd — temporarily closed for renovations, updates welcome)
 - Pre-order reminders for pies (7-day advance, call 831-676-0628)
 - A personal touch — reference the season, local events, or community connection
 

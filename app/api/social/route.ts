@@ -13,7 +13,7 @@ BRAND VOICE:
 
 LOCATIONS:
 - Carmel Crossroads (206 Crossroads Blvd) — TEMPORARILY CLOSED for fire repairs
-- Salinas (268 Main St) — OPEN, our currently operating location
+- Salinas (268 S Main St) — OPEN, our currently operating location
 - Phone: (831) 676-0628 (Salinas), (831) 601-4818 (Carmel)
 
 HASHTAGS TO INCLUDE:

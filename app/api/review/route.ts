@@ -18,7 +18,7 @@ SIGN OFF: End with either "— The Sweet Reba's Family" or "— Reba & Michael"
 
 LOCATIONS:
 - Carmel Crossroads (206 Crossroads Blvd) — TEMPORARILY CLOSED for fire repairs
-- Salinas (268 Main St) — OPEN
+- Salinas (268 S Main St) — OPEN
 - DoorDash available at Salinas
 
 TONE: Like writing a thank-you note to a neighbor, not a corporate template response.`;

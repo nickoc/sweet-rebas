@@ -93,7 +93,7 @@ export default function Footer() {
           <div className="flex flex-col">
             <div className="rounded-xl overflow-hidden shadow-md border border-reba-border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-121.6558!3d36.6744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808dfb5d7b0d2e6f%3A0x1c6b3e1f8a5e6d2a!2s268%20Main%20St%2C%20Salinas%2C%20CA!5e0!3m2!1sen!2sus!4v1"
+                src="https://www.google.com/maps?q=268%20S%20Main%20St%2C%20Salinas%2C%20CA%2093901&output=embed"
                 width="100%"
                 height="440"
                 style={{ border: 0 }}
@@ -105,14 +105,14 @@ export default function Footer() {
             </div>
             <div className="mt-4 flex-1 bg-reba-card border-2 border-reba-pink/30 rounded-2xl p-6 text-center flex flex-col">
               <a
-                href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
+                href="https://maps.google.com/?q=Sweet+Rebas+268+S+Main+St+Salinas+CA+93901"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-reba-ink text-xl font-medium hover:text-reba-pink transition-colors inline-block"
               >
                 Old Town Salinas
               </a>
-              <p className="text-reba-muted text-lg mt-1">268 Main St &middot; (831) 676-0628</p>
+              <p className="text-reba-muted text-lg mt-1">268 S Main St &middot; (831) 676-0628</p>
               <div className="border-t border-reba-border mt-4 pt-4 flex-1 flex flex-col justify-center">
                 <h4 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink mb-2">
                   Opening Hours

@@ -6,7 +6,7 @@ const SYSTEM_PROMPT = `You are the AI Concierge for Sweet Reba's Bakery, a belov
 
 LOCATIONS:
 - Carmel Crossroads: 206 Crossroads Blvd, Carmel, CA — Phone: (831) 601-4818 — TEMPORARILY CLOSED for fire repairs. We hope to reopen soon!
-- Salinas: 268 Main St, Salinas, CA — Phone: (831) 676-0628 — OPEN! This is our currently operating location.
+- Salinas: 268 S Main St, Salinas, CA — Phone: (831) 676-0628 — OPEN! This is our currently operating location.
 
 HOURS (Salinas):
 - Monday: Closed
