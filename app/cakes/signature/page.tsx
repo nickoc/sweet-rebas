@@ -42,6 +42,24 @@ export default function SignatureCakesPage() {
   const [cakeLoading, setCakeLoading] = useState(false);
   const [cakeError, setCakeError] = useState("");
   const [callbackOpen, setCallbackOpen] = useState(false);
+  // 6" Round price comes from the Bearing catalog (section "cake-sizes"); "$40"
+  // is the first-paint default so there's no flash when the values match.
+  const [sixInchPrice, setSixInchPrice] = useState("$40");
+  useEffect(() => {
+    let active = true;
+    fetch("/api/cake-sizes")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        const six = Array.isArray(d?.sizes)
+          ? d.sizes.find((s: { name?: string }) => s.name?.includes('6"'))
+          : null;
+        if (active && six?.price) setSixInchPrice(six.price);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   async function handleSignatureCallback(e: React.FormEvent) {
     e.preventDefault();
@@ -95,7 +113,7 @@ export default function SignatureCakesPage() {
                 <div className="border-t border-reba-border pt-3 space-y-1">
                   <p className="text-reba-ink font-medium">6&quot; Round</p>
                   <p className="text-reba-muted text-sm">10&ndash;12 servings</p>
-                  <p className="text-reba-pink font-bold text-lg">$40</p>
+                  <p className="text-reba-pink font-bold text-lg">{sixInchPrice}</p>
                 </div>
               </div>
             </div>

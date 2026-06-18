@@ -39,6 +39,7 @@ type CatalogItem = {
   description: string | null;
   price_cents: number | null;
   price_label: string | null;
+  serves: string | null;
   available: boolean;
   popular: boolean;
   sort_order: number;
@@ -106,6 +107,10 @@ export function mergeMenu(
   const catalogForSlug = new Map<string, CatalogItem>();
   const usedCatalogIds = new Set<string>();
   let soupPhoto: string | null = null;
+  // Each catalog soup item is a size variant ("Soup — 12oz Cup", "Soup — Quart").
+  // We rebuild the static soup card's size rows from these so soup pricing is
+  // catalog-editable. Empty → Pass 1 keeps the static sizes as the fallback.
+  const soupSizeRows: { label: string; price: number; sort: number }[] = [];
 
   const nonSoup: CatalogItem[] = [];
   for (const c of catalog) {
@@ -114,10 +119,15 @@ export function mergeMenu(
       if (!soupPhoto && c.image_url && c.available !== false) {
         soupPhoto = c.image_url;
       }
+      if (c.available !== false && c.price_cents != null) {
+        const label = c.name.split(/[—–-]/).pop()?.trim() || c.name;
+        soupSizeRows.push({ label, price: c.price_cents / 100, sort: c.sort_order ?? 0 });
+      }
       continue;
     }
     nonSoup.push(c);
   }
+  soupSizeRows.sort((a, b) => a.sort - b.sort || a.price - b.price);
 
   // Pass A — UUID aliases (authoritative, locked first).
   for (const c of nonSoup) {
@@ -145,7 +155,10 @@ export function mergeMenu(
   // photo if one was uploaded.
   for (const s of staticItems) {
     if (s.category === "soup") {
-      merged.push(soupPhoto ? { ...s, imageUrl: soupPhoto } : { ...s });
+      const sizes = soupSizeRows.length
+        ? soupSizeRows.map((r) => ({ label: r.label, price: r.price }))
+        : s.sizes;
+      merged.push({ ...s, sizes, ...(soupPhoto ? { imageUrl: soupPhoto } : {}) });
       continue;
     }
     const c = catalogForSlug.get(s.id);
@@ -212,5 +225,36 @@ export async function getMenuItems(): Promise<MergedMenuItem[]> {
     return mergeMenu(menuSection);
   } catch {
     return STATIC_MENU.map((s) => ({ ...s }));
+  }
+}
+
+// A cake size/price row for the cakes pages. The catalog (section "cake-sizes")
+// is the source of truth; the cakes pages pass their hardcoded list as a fallback
+// so a catalog miss never blanks the page.
+export type CakeSize = { name: string; serves: string; price: string };
+
+/**
+ * Fetch the cake size/price rows from the catalog (section "cake-sizes"),
+ * ordered by sort_order. Returns [] on any failure so callers fall back to
+ * their static defaults.
+ */
+export async function getCakeSizes(): Promise<CakeSize[]> {
+  try {
+    const url = `${CATALOG_API}${CATALOG_API.includes("?") ? "&" : "?"}visibility=all`;
+    const res = await fetch(url, { next: { revalidate: 60 } });
+    if (!res.ok) return [];
+    const data = (await res.json()) as { items?: CatalogItem[] };
+    const cakes = (data.items ?? [])
+      .filter((i) => i.section === "cake-sizes" && i.available !== false)
+      .sort((a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0));
+    return cakes.map((c) => ({
+      name: c.name,
+      serves: c.serves ?? "",
+      price:
+        c.price_label ??
+        (c.price_cents != null ? `$${(c.price_cents / 100).toFixed(0)}` : ""),
+    }));
+  } catch {
+    return [];
   }
 }
