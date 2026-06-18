@@ -78,7 +78,7 @@ export default function ContactPage() {
                 Old Town Salinas
               </h2>
               <div className="space-y-2 text-base">
-                <p className="text-reba-soft">268 Main St</p>
+                <p className="text-reba-soft">268 S Main St</p>
                 <p className="text-reba-soft">Salinas, CA 93901</p>
                 <a
                   href="tel:8316760628"

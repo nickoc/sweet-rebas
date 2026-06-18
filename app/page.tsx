@@ -56,7 +56,7 @@ export default function HomePage() {
           </a>
           {" & "}
           <a
-            href="https://maps.google.com/?q=Sweet+Rebas+268+Main+St+Salinas+CA"
+            href="https://maps.google.com/?q=Sweet+Rebas+268+S+Main+St+Salinas+CA+93901"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-reba-pink underline-offset-2 hover:underline transition-colors"

@@ -111,18 +111,9 @@ export const menuItems: MenuItem[] = [
   { id: "cinnamon-donut-muffins", name: "Cinnamon Donut Muffin", description: "Seriously addictive. There is a reason we call them the gateway muffin. For .50 we dare you to buy only one!", price: 0.50, category: "breakfast", emoji: "🧁", available: 48 },
   { id: "coffee-cake", name: "Coffee Cake Muffins", description: "Baked fresh every morning, our Coffee Cake Muffins are chock full of delicious cinnamon and loaded with crunchy topping. A great accompaniment to your favorite morning brew.", price: 4.00, category: "breakfast", emoji: "🧁", available: 16 },
   { id: "banana-pudding", name: "Banana Pudding", description: "Layers of velvety vanilla pudding, fresh banana, and Nilla wafers. A Reba's comfort favorite, made fresh.", price: 4.00, category: "breakfast", emoji: "🍌", available: 12 },
-  { id: "banana-bread", name: "Banana Bread", description: "Moist banana bread baked with toasted nuts. A Reba's classic, made from scratch.", price: 4.00, category: "breakfast", emoji: "🍌", available: 12, sizes: [
-    { label: "Slice", price: 4.00 },
-    { label: "Whole Loaf", price: 4.00 },
-  ] },
-  { id: "lemon-loaf", name: "Lemon Loaf", description: "Bright, tangy, and perfectly glazed. A Sweet Reba's classic.", price: 3.50, category: "breakfast", emoji: "🍋", available: 12, sizes: [
-    { label: "Slice", price: 3.50 },
-    { label: "Whole Loaf", price: 4.00 },
-  ] },
-  { id: "morning-glory-muffins", name: "Morning Muffin or Buckle", description: "The term \"Buckle\" is used to describe a muffin that has \"buckled\" in on itself due to the large amount of fresh fruit within. Our Muffins and Buckles certainly live up to that! Baked fresh every morning, we use fresh seasonal fruits and berries to make to MOST delicious muffins ever!", price: 3.50, category: "breakfast", emoji: "🧁", available: 14, sizes: [
-    { label: "Slice", price: 3.50 },
-    { label: "Whole Loaf", price: 4.00 },
-  ] },
+  { id: "banana-bread", name: "Banana Bread", description: "Moist banana bread baked with toasted nuts. A Reba's classic, made from scratch.", price: 4.00, category: "breakfast", emoji: "🍌", available: 12 },
+  { id: "lemon-loaf", name: "Lemon Loaf", description: "Bright, tangy, and perfectly glazed. A Sweet Reba's classic.", price: 3.50, category: "breakfast", emoji: "🍋", available: 12 },
+  { id: "morning-glory-muffins", name: "Morning Muffin or Buckle", description: "The term \"Buckle\" is used to describe a muffin that has \"buckled\" in on itself due to the large amount of fresh fruit within. Our Muffins and Buckles certainly live up to that! Baked fresh every morning, we use fresh seasonal fruits and berries to make to MOST delicious muffins ever!", price: 3.50, category: "breakfast", emoji: "🧁", available: 14 },
   { id: "scones", name: "Scones", description: "Our delicious scones are made fresh every morning. We offer an assortment of flavors from Cranberry to Cherry Almond. Come check daily and see which one is your favorite, but be here early, they sell out quick!", price: 3.50, category: "breakfast", emoji: "🫓", available: 18 },
   { id: "whole-loaves", name: "Whole Loaves", description: "Our Morning Glory loaf is second to none — carrots, cranberries, apples, coconut, pecans, and pineapple. Also Lemon Loaf, Banana Pecan, and Mocha. Sold by the slice or whole loaf — can always be ordered ahead.", price: 22.00, category: "breakfast", emoji: "🍞", available: 6 },
   { id: "classic-burrito", name: "Classic Burrito", description: "Eggs, cheese, potatoes, and Reba's house salsa in a warm flour tortilla. Simple and satisfying.", price: 5.50, category: "burritos", emoji: "🌯", available: 20, popular: true },
