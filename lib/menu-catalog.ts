@@ -45,6 +45,9 @@ type CatalogItem = {
   sort_order: number;
   emoji: string | null;
   image_url: string | null;
+  metadata:
+    | { sizes?: { label: string; price_cents?: number | null }[] }
+    | null;
 };
 
 const KNOWN_CATEGORIES: ReadonlySet<MenuItem["category"]> = new Set([
@@ -107,19 +110,27 @@ export function mergeMenu(
   const catalogForSlug = new Map<string, CatalogItem>();
   const usedCatalogIds = new Set<string>();
   let soupPhoto: string | null = null;
-  // Each catalog soup item is a size variant ("Soup — 12oz Cup", "Soup — Quart").
-  // We rebuild the static soup card's size rows from these so soup pricing is
-  // catalog-editable. Empty → Pass 1 keeps the static sizes as the fallback.
+  let soupDescription: string | null = null;
+  // Soup pricing is catalog-driven and collapses to the single soup card's size
+  // rows. Preferred model: ONE soup item carrying its sizes in metadata.sizes
+  // ([{label, price_cents}]). Legacy fallback: multiple "Soup — <size>" items,
+  // one per size. Empty → Pass 1 keeps the static sizes as the fallback.
   const soupSizeRows: { label: string; price: number; sort: number }[] = [];
 
   const nonSoup: CatalogItem[] = [];
   for (const c of catalog) {
     if (isSoup(c)) {
-      // Don't adopt a hidden soup item's photo onto the static soup card.
-      if (!soupPhoto && c.image_url && c.available !== false) {
-        soupPhoto = c.image_url;
-      }
-      if (c.available !== false && c.price_cents != null) {
+      if (c.available === false) continue; // hidden soup contributes nothing
+      if (!soupPhoto && c.image_url) soupPhoto = c.image_url;
+      if (!soupDescription && c.description) soupDescription = c.description;
+      const metaSizes = c.metadata?.sizes;
+      if (Array.isArray(metaSizes) && metaSizes.length) {
+        metaSizes.forEach((sz, i) => {
+          if (sz?.label && sz.price_cents != null) {
+            soupSizeRows.push({ label: sz.label, price: sz.price_cents / 100, sort: (c.sort_order ?? 0) * 100 + i });
+          }
+        });
+      } else if (c.price_cents != null) {
         const label = c.name.split(/[—–-]/).pop()?.trim() || c.name;
         soupSizeRows.push({ label, price: c.price_cents / 100, sort: c.sort_order ?? 0 });
       }
@@ -158,7 +169,12 @@ export function mergeMenu(
       const sizes = soupSizeRows.length
         ? soupSizeRows.map((r) => ({ label: r.label, price: r.price }))
         : s.sizes;
-      merged.push({ ...s, sizes, ...(soupPhoto ? { imageUrl: soupPhoto } : {}) });
+      merged.push({
+        ...s,
+        sizes,
+        ...(soupDescription ? { description: soupDescription } : {}),
+        ...(soupPhoto ? { imageUrl: soupPhoto } : {}),
+      });
       continue;
     }
     const c = catalogForSlug.get(s.id);
