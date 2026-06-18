@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { CakeCarousel } from "@/components/CakeGallery";
 import { Hero } from "@/components/Hero";
@@ -20,6 +20,21 @@ export default function WeddingCakesPage() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [callbackOpen, setCallbackOpen] = useState(false);
+  // Wedding starting price comes from the Bearing catalog (section
+  // "wedding-cakes"); "$150" is the first-paint default so there's no flash.
+  const [weddingPrice, setWeddingPrice] = useState("$150");
+  useEffect(() => {
+    let active = true;
+    fetch("/api/wedding-price")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        if (active && typeof d?.price === "string" && d.price) setWeddingPrice(d.price);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
 
   async function handleWeddingCallback(e: React.FormEvent) {
     e.preventDefault();
@@ -181,7 +196,7 @@ export default function WeddingCakesPage() {
             Custom consultation required for all wedding cakes.
           </p>
           <p className="text-reba-soft text-base sm:text-lg leading-relaxed mb-1">
-            Multi-tier designs start at <span className="text-reba-pink font-semibold">$150</span>.
+            Multi-tier designs start at <span className="text-reba-pink font-semibold">{weddingPrice}</span>.
           </p>
           <p className="text-reba-soft text-base sm:text-lg leading-relaxed">
             Tasting sessions available.
