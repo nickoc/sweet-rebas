@@ -60,7 +60,7 @@ export default function Footer() {
           <div className="flex flex-col">
             <div className="rounded-xl overflow-hidden shadow-md border border-reba-border">
               <iframe
-                src="https://www.google.com/maps?q=268%20S%20Main%20St%2C%20Salinas%2C%20CA%2093901&output=embed"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-121.9178!3d36.5465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808de45270b5fb23%3A0x386b7aaf900e1e08!2sSweet%20Reba&#39;s!5e0!3m2!1sen!2sus!4v1"
                 width="100%"
                 height="440"
                 style={{ border: 0 }}
@@ -93,7 +93,7 @@ export default function Footer() {
           <div className="flex flex-col">
             <div className="rounded-xl overflow-hidden shadow-md border border-reba-border">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3204.5!2d-121.6558!3d36.6744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808dfb5d7b0d2e6f%3A0x1c6b3e1f8a5e6d2a!2s268%20Main%20St%2C%20Salinas%2C%20CA!5e0!3m2!1sen!2sus!4v1"
+                src="https://www.google.com/maps?q=268%20S%20Main%20St%2C%20Salinas%2C%20CA%2093901&output=embed"
                 width="100%"
                 height="440"
                 style={{ border: 0 }}
