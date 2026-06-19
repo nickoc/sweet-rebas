@@ -7,6 +7,7 @@ import ReopeningBanner from "@/components/ReopeningBanner";
 import NewsBanner from "@/components/NewsBanner";
 import SignatureProducts from "@/components/SignatureProducts";
 import HomeDailyPicks from "@/components/HomeDailyPicks";
+import { getSiteContent } from "@/lib/site-content";
 
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
 const topReviews = reviews.filter((review) => review.rating === 5).slice(0, 3);
@@ -34,16 +35,22 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const sc = await getSiteContent();
   return (
     <div>
       {/* Hero Section */}
-      <Hero src="/cookie-face-reba.jpg" alt="Reba holding up two cookies" height="full" position="center 30%" />
+      <Hero
+        src={sc.img("home.hero.image", "/cookie-face-reba.jpg")}
+        alt="Reba holding up two cookies"
+        height="full"
+        position="center 30%"
+      />
 
       {/* Title + Locations */}
       <section className="py-10 sm:py-14 text-center">
         <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-4 tracking-wide">
-          Small-Batch Bakery. Made with Love.
+          {sc.get("home.hero.tagline", "Small-Batch Bakery. Made with Love.")}
         </p>
         <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold">
           <a

@@ -1,17 +1,19 @@
 import Image from "next/image";
 import { Hero } from "@/components/Hero";
+import { getSiteContent } from "@/lib/site-content";
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const sc = await getSiteContent();
   return (
     <div>
       {/* Hero */}
       <Hero src="/slideshow-lemons.jpg" alt="Fresh lemons in Sweet Reba's kitchen" height="md" />
       <section className="py-10 text-center">
         <h1 className="font-[family-name:var(--font-heading)] text-7xl sm:text-9xl lg:text-[10rem] text-reba-pink mb-4">
-          Our Story
+          {sc.get("about.intro.heading", "Our Story")}
         </h1>
         <p className="text-3xl sm:text-4xl font-bold text-reba-pink mb-2 tracking-wide">
-          A journey of love, family, and the perfect cake.
+          {sc.get("about.intro.subhead", "A journey of love, family, and the perfect cake.")}
         </p>
       </section>
 
@@ -192,13 +194,13 @@ export default function AboutPage() {
                 Reba
               </h3>
               <p className="text-reba-pink font-medium text-base mb-4">
-                Baker, Cake Artist &amp; Dreamer
+                {sc.get("about.reba.role", "Baker, Cake Artist & Dreamer")}
               </p>
               <p className="text-reba-soft text-base leading-relaxed">
-                From her grandmother&apos;s kitchen to Food Network&apos;s Cake Wars,
-                Reba has turned a passion for baking into something extraordinary.
-                Every cake, cookie, and pie is made with the same love she put into
-                that very first birthday cake.
+                {sc.get(
+                  "about.reba.bio",
+                  "From her grandmother's kitchen to Food Network's Cake Wars, Reba has turned a passion for baking into something extraordinary. Every cake, cookie, and pie is made with the same love she put into that very first birthday cake.",
+                )}
               </p>
             </div>
             {/* Michael */}
