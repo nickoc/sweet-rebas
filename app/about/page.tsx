@@ -2,6 +2,21 @@ import Image from "next/image";
 import { Hero } from "@/components/Hero";
 import { getSiteContent } from "@/lib/site-content";
 
+const STORY1_BODY_FALLBACK =
+  "Every great bakery has an origin story, and ours starts in a grandmother's kitchen. Reba grew up watching her grandmother transform simple ingredients into extraordinary creations — cakes that made people smile, cookies that brought comfort, and pies that turned ordinary days into celebrations.\n\nThose recipes, passed down through generations, became the foundation for everything Sweet Reba's would become.";
+
+const STORY2_BODY_FALLBACK =
+  "It started with a birthday cake Reba made for her son's 7th birthday. It was more than a cake — it was a work of art. The other parents at the party couldn't stop talking about it. Orders started coming in. Word spread through the neighborhood.\n\nWhat began as a mother's gift to her child became a calling. Sweet Reba's was born.";
+
+const STORY3_BODY_FALLBACK =
+  "Reba's cakes became legendary at Nepenthe's famous Sign Parties along the Big Sur coast. Her creations were the talk of every gathering — intricate designs, incredible flavors, and that unmistakable warmth that only comes from baking with genuine love.\n\nThe reputation grew from Carmel to Monterey to the entire peninsula. Sweet Reba's wasn't just a bakery anymore — it was an institution.";
+
+const STORY4_BODY_FALLBACK =
+  "Then came the call from Food Network. Reba competed on Cake Wars, where her artistry earned recognition from the legendary Ron Ben Israel himself. It was validation of what her community already knew — Reba's cakes are extraordinary.\n\nBut for Reba, the greatest recognition still comes from the smile on a child's face when they see their birthday cake for the first time.";
+
+const COMMUNITY_BODY_FALLBACK =
+  "We're humbled and honored that 10 Nextdoor neighborhoods have named Sweet Reba's as their favorite bakery. From Carmel to Salinas, Marina to Pacific Grove, our community is our greatest ingredient.\n\nEvery cookie, every cake, every breakfast burrito is made for the people who walk through our doors.";
+
 export default async function AboutPage({
   searchParams,
 }: {
@@ -39,19 +54,20 @@ export default async function AboutPage({
               </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
-                  Where It All Began
+                  {sc.get("about.story1.heading", "Where It All Began")}
                 </h2>
-                <p className="text-reba-soft leading-relaxed mb-4">
-                  Every great bakery has an origin story, and ours starts in a
-                  grandmother&apos;s kitchen. Reba grew up watching her grandmother
-                  transform simple ingredients into extraordinary creations &mdash;
-                  cakes that made people smile, cookies that brought comfort, and
-                  pies that turned ordinary days into celebrations.
-                </p>
-                <p className="text-reba-muted leading-relaxed">
-                  Those recipes, passed down through generations, became the
-                  foundation for everything Sweet Reba&apos;s would become.
-                </p>
+                {sc.get("about.story1.body", STORY1_BODY_FALLBACK).split("\n\n").map((para, i, arr) => (
+                  <p
+                    key={i}
+                    className={
+                      i < arr.length - 1
+                        ? "text-reba-soft leading-relaxed mb-4"
+                        : "text-reba-muted leading-relaxed"
+                    }
+                  >
+                    {para}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
@@ -61,18 +77,20 @@ export default async function AboutPage({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
-                  The Birthday Cake That Changed Everything
+                  {sc.get("about.story2.heading", "The Birthday Cake That Changed Everything")}
                 </h2>
-                <p className="text-reba-soft leading-relaxed mb-4">
-                  It started with a birthday cake Reba made for her son&apos;s 7th
-                  birthday. It was more than a cake &mdash; it was a work of art.
-                  The other parents at the party couldn&apos;t stop talking about it.
-                  Orders started coming in. Word spread through the neighborhood.
-                </p>
-                <p className="text-reba-muted leading-relaxed">
-                  What began as a mother&apos;s gift to her child became a calling.
-                  Sweet Reba&apos;s was born.
-                </p>
+                {sc.get("about.story2.body", STORY2_BODY_FALLBACK).split("\n\n").map((para, i, arr) => (
+                  <p
+                    key={i}
+                    className={
+                      i < arr.length - 1
+                        ? "text-reba-soft leading-relaxed mb-4"
+                        : "text-reba-muted leading-relaxed"
+                    }
+                  >
+                    {para}
+                  </p>
+                ))}
               </div>
               <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
                 <Image
@@ -100,20 +118,20 @@ export default async function AboutPage({
               </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
-                  Becoming a Local Legend
+                  {sc.get("about.story3.heading", "Becoming a Local Legend")}
                 </h2>
-                <p className="text-reba-soft leading-relaxed mb-4">
-                  Reba&apos;s cakes became legendary at Nepenthe&apos;s famous Sign
-                  Parties along the Big Sur coast. Her creations were the talk of
-                  every gathering &mdash; intricate designs, incredible flavors, and
-                  that unmistakable warmth that only comes from baking with genuine
-                  love.
-                </p>
-                <p className="text-reba-muted leading-relaxed">
-                  The reputation grew from Carmel to Monterey to the entire
-                  peninsula. Sweet Reba&apos;s wasn&apos;t just a bakery anymore
-                  &mdash; it was an institution.
-                </p>
+                {sc.get("about.story3.body", STORY3_BODY_FALLBACK).split("\n\n").map((para, i, arr) => (
+                  <p
+                    key={i}
+                    className={
+                      i < arr.length - 1
+                        ? "text-reba-soft leading-relaxed mb-4"
+                        : "text-reba-muted leading-relaxed"
+                    }
+                  >
+                    {para}
+                  </p>
+                ))}
               </div>
             </div>
           </div>
@@ -123,19 +141,20 @@ export default async function AboutPage({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
-                  Food Network Cake Wars
+                  {sc.get("about.story4.heading", "Food Network Cake Wars")}
                 </h2>
-                <p className="text-reba-soft leading-relaxed mb-4">
-                  Then came the call from Food Network. Reba competed on Cake Wars,
-                  where her artistry earned recognition from the legendary Ron Ben
-                  Israel himself. It was validation of what her community already
-                  knew &mdash; Reba&apos;s cakes are extraordinary.
-                </p>
-                <p className="text-reba-muted leading-relaxed">
-                  But for Reba, the greatest recognition still comes from the smile
-                  on a child&apos;s face when they see their birthday cake for the
-                  first time.
-                </p>
+                {sc.get("about.story4.body", STORY4_BODY_FALLBACK).split("\n\n").map((para, i, arr) => (
+                  <p
+                    key={i}
+                    className={
+                      i < arr.length - 1
+                        ? "text-reba-soft leading-relaxed mb-4"
+                        : "text-reba-muted leading-relaxed"
+                    }
+                  >
+                    {para}
+                  </p>
+                ))}
               </div>
               <div className="relative w-full h-64 md:h-80 rounded-xl overflow-hidden">
                 <Image
@@ -163,13 +182,13 @@ export default async function AboutPage({
               </div>
               <div>
                 <h2 className="font-[family-name:var(--font-heading)] text-3xl text-reba-ink mb-4">
-                  Two Locations, One Team
+                  {sc.get("about.story5.heading", "Two Locations, One Team")}
                 </h2>
                 <p className="text-reba-soft leading-relaxed">
-                  The bakery found its first permanent home at Carmel Crossroads,
-                  becoming a beloved stop for locals and visitors alike. Then came
-                  Old Town Salinas, bringing Sweet Reba&apos;s magic to a whole new
-                  community. Two locations, same recipes, same love.
+                  {sc.get(
+                    "about.story5.body",
+                    "The bakery found its first permanent home at Carmel Crossroads, becoming a beloved stop for locals and visitors alike. Then came Old Town Salinas, bringing Sweet Reba's magic to a whole new community. Two locations, same recipes, same love.",
+                  )}
                 </p>
               </div>
             </div>
@@ -281,18 +300,20 @@ export default async function AboutPage({
       <section className="bg-reba-card">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
           <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-ink mb-6">
-            Our Community
+            {sc.get("about.community.heading", "Our Community")}
           </h2>
-          <p className="text-reba-soft leading-relaxed mb-4 max-w-2xl mx-auto">
-            We&apos;re humbled and honored that 10 Nextdoor neighborhoods have
-            named Sweet Reba&apos;s as their favorite bakery. From Carmel to
-            Salinas, Marina to Pacific Grove, our community is our greatest
-            ingredient.
-          </p>
-          <p className="text-reba-muted leading-relaxed max-w-2xl mx-auto mb-6">
-            Every cookie, every cake, every breakfast burrito is made for the
-            people who walk through our doors.
-          </p>
+          {sc.get("about.community.body", COMMUNITY_BODY_FALLBACK).split("\n\n").map((para, i, arr) => (
+            <p
+              key={i}
+              className={
+                i < arr.length - 1
+                  ? "text-reba-soft leading-relaxed mb-4 max-w-2xl mx-auto"
+                  : "text-reba-muted leading-relaxed max-w-2xl mx-auto mb-6"
+              }
+            >
+              {para}
+            </p>
+          ))}
           <p className="text-reba-pink font-bold text-lg max-w-2xl mx-auto">
             You&apos;re not customers &mdash; you&apos;re family.
           </p>
