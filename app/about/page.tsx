@@ -2,8 +2,13 @@ import Image from "next/image";
 import { Hero } from "@/components/Hero";
 import { getSiteContent } from "@/lib/site-content";
 
-export default async function AboutPage() {
-  const sc = await getSiteContent();
+export default async function AboutPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ preview?: string }>;
+}) {
+  const { preview } = await searchParams;
+  const sc = await getSiteContent({ preview: preview === "1" });
   return (
     <div>
       {/* Hero */}
