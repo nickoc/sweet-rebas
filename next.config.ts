@@ -39,7 +39,16 @@ const nextConfig: NextConfig = {
       {
         source: "/:path*",
         headers: [
-          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          // Allow ONLY our own portal (getbearing.co) + Vercel previews to
+          // embed the site — this powers the live preview in the content
+          // editor. frame-ancestors supersedes X-Frame-Options in modern
+          // browsers, and unlike XFO it can allowlist specific origins, so we
+          // use CSP here instead of X-Frame-Options.
+          {
+            key: "Content-Security-Policy",
+            value:
+              "frame-ancestors 'self' https://getbearing.co https://*.vercel.app",
+          },
           { key: "X-Content-Type-Options", value: "nosniff" },
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           {

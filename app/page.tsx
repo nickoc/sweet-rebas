@@ -35,8 +35,13 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
-export default async function HomePage() {
-  const sc = await getSiteContent();
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ preview?: string }>;
+}) {
+  const { preview } = await searchParams;
+  const sc = await getSiteContent({ preview: preview === "1" });
   return (
     <div>
       {/* Hero Section */}

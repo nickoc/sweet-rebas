@@ -52,9 +52,16 @@ function build(rows: ContentRow[]): SiteContent {
  * Fetch the editable website content. Always resolves — on any fetch/parse
  * failure it returns an empty overlay so every field uses its hardcoded default.
  */
-export async function getSiteContent(): Promise<SiteContent> {
+export async function getSiteContent(
+  opts?: { preview?: boolean },
+): Promise<SiteContent> {
   try {
-    const res = await fetch(SITE_CONTENT_API, { next: { revalidate: 60 } });
+    // Preview mode (the editor's live-preview iframe) fetches fresh on every
+    // load so a just-saved edit shows immediately; normal traffic uses ISR.
+    const res = await fetch(
+      SITE_CONTENT_API,
+      opts?.preview ? { cache: "no-store" } : { next: { revalidate: 60 } },
+    );
     if (!res.ok) return build([]);
     const data = (await res.json()) as { content?: ContentRow[] };
     return build(Array.isArray(data.content) ? data.content : []);
