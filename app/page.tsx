@@ -93,10 +93,13 @@ export default async function HomePage({
               />
             </div>
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
-              What&apos;s Baking Today?
+              {sc.get("home.cards.baking_title", "What's Baking Today?")}
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
-              Fresh soups, sandwiches, cookies, and daily specials — made from scratch every morning.
+              {sc.get(
+                "home.cards.baking_body",
+                "Fresh soups, sandwiches, cookies, and daily specials — made from scratch every morning.",
+              )}
             </p>
           </Link>
 
@@ -112,10 +115,13 @@ export default async function HomePage({
               />
             </div>
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
-              Bakery Pre-Orders
+              {sc.get("home.cards.preorders_title", "Bakery Pre-Orders")}
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
-              Place an order for pick-up and we&apos;ll do the rest to make something just for you.
+              {sc.get(
+                "home.cards.preorders_body",
+                "Place an order for pick-up and we'll do the rest to make something just for you.",
+              )}
             </p>
           </Link>
 
@@ -131,10 +137,13 @@ export default async function HomePage({
               />
             </div>
             <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
-              Our Story
+              {sc.get("home.cards.story_title", "Our Story")}
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
-              From grandmother&apos;s kitchen to Food Network — a story of passion, family, and the perfect cake.
+              {sc.get(
+                "home.cards.story_body",
+                "From grandmother's kitchen to Food Network — a story of passion, family, and the perfect cake.",
+              )}
             </p>
           </Link>
         </div>
