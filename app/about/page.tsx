@@ -261,23 +261,35 @@ export default async function AboutPage({
           {[
             {
               emoji: "🌾",
-              title: "Highest Quality",
-              desc: "We source the finest ingredients available. No shortcuts, no compromises.",
+              title: sc.get("about.values.v1_title", "Highest Quality"),
+              desc: sc.get(
+                "about.values.v1_desc",
+                "We source the finest ingredients available. No shortcuts, no compromises.",
+              ),
             },
             {
               emoji: "🌿",
-              title: "Freshest Ingredients",
-              desc: "Everything is made fresh, from scratch, every single day.",
+              title: sc.get("about.values.v2_title", "Freshest Ingredients"),
+              desc: sc.get(
+                "about.values.v2_desc",
+                "Everything is made fresh, from scratch, every single day.",
+              ),
             },
             {
               emoji: "👩\u200d🍳",
-              title: "Small-Batch",
-              desc: "We bake in small batches to ensure every item meets our standards.",
+              title: sc.get("about.values.v3_title", "Small-Batch"),
+              desc: sc.get(
+                "about.values.v3_desc",
+                "We bake in small batches to ensure every item meets our standards.",
+              ),
             },
             {
               emoji: "❤️",
-              title: "Made with Love",
-              desc: "The secret ingredient in everything we make. You can taste the difference.",
+              title: sc.get("about.values.v4_title", "Made with Love"),
+              desc: sc.get(
+                "about.values.v4_desc",
+                "The secret ingredient in everything we make. You can taste the difference.",
+              ),
             },
           ].map((value) => (
             <div
