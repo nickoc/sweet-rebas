@@ -2,7 +2,14 @@
 
 import { useState, useEffect, useRef } from "react";
 
-const STATS = [
+export type Stat = {
+  value: number;
+  label: string;
+  decimals?: number;
+  suffix?: string;
+};
+
+const STATS: Stat[] = [
   { value: 10, suffix: "", label: "Years of Love" },
   { value: 4.8, suffix: "", label: "Star Rating", decimals: 1 },
   { value: 10, suffix: "", label: "Nextdoor Neighborhoods" },
@@ -43,7 +50,7 @@ function AnimatedNumber({
   return <>{decimals > 0 ? current.toFixed(decimals) : Math.round(current)}</>;
 }
 
-export default function CountUpStats() {
+export default function CountUpStats({ stats = STATS }: { stats?: Stat[] }) {
   const [started, setStarted] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -64,7 +71,7 @@ export default function CountUpStats() {
 
   return (
     <div ref={ref} className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-      {STATS.map((stat) => (
+      {stats.map((stat) => (
         <div
           key={stat.label}
           className="flex flex-col items-center justify-center text-center"

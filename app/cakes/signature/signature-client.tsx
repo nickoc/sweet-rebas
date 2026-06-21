@@ -1,0 +1,266 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { Hero } from "@/components/Hero";
+import { submitWaitlist } from "@/lib/waitlist";
+import { CONTACT_FALLBACK, type ContactInfo } from "@/lib/contact-info";
+
+const standardCakes = [
+  { name: "Classic Vanilla Cake", image: "/product-carrot-cake.jpg", description: "Classic vanilla cake filled and frosted with vanilla buttercream." },
+  { name: "Life by Chocolate", image: "/product-life-by-chocolate.jpg", description: "Rich chocolate cake with chocolate fudge filling and ganache topping." },
+  { name: "Carrot Cake", image: "/product-carrot-cake.jpg", description: "Spiced carrot cake with toasted walnuts and cream cheese frosting." },
+];
+
+export type SignatureCopy = {
+  heroHeading: string;
+  heroSub: string;
+  callHeading: string;
+  callLeadtime: string;
+  callDelivery: string;
+  planOccasion: string;
+  planWedding: string;
+  planEvent: string;
+};
+
+const SIGNATURE_COPY_FALLBACK: SignatureCopy = {
+  heroHeading: "Signature Cakes",
+  heroSub: "Our most loved cakes, baked fresh for you.",
+  callHeading: "Call to Order Your Cake",
+  callLeadtime:
+    "Please allow 48 hours for Signature Cake orders, or call to check availability in our store.",
+  callDelivery: "We also deliver.",
+  planOccasion: "Planning for a Special Occasion?",
+  planWedding: "Planning a Wedding?",
+  planEvent: "Planning an Event?",
+};
+
+function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: () => void }) {
+  useEffect(() => {
+    function handleKey(e: KeyboardEvent) { if (e.key === "Escape") onClose(); }
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKey);
+    return () => { document.removeEventListener("keydown", handleKey); document.body.style.overflow = ""; };
+  }, [onClose]);
+
+  return (
+    <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" onClick={onClose}>
+      <div className="bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-hidden relative" onClick={(e) => e.stopPropagation()}>
+        <button onClick={onClose} className="absolute top-4 right-4 z-10 bg-white/90 hover:bg-white border border-reba-border rounded-full w-10 h-10 flex items-center justify-center text-reba-ink hover:text-reba-pink transition-colors shadow-md" aria-label="Close">
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+        <Image src={src} alt={alt} width={1200} height={1500} sizes="(max-width: 640px) 100vw, 512px" className="w-full h-auto object-cover" />
+        <div className="p-4 text-center">
+          <h3 className="font-[family-name:var(--font-heading)] text-2xl text-reba-ink">{alt}</h3>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function SignatureCakesPageClient({
+  copy = SIGNATURE_COPY_FALLBACK,
+  contact = CONTACT_FALLBACK,
+}: {
+  copy?: SignatureCopy;
+  contact?: ContactInfo;
+}) {
+  const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
+  const [cakeEmail, setCakeEmail] = useState("");
+  const [cakePhone, setCakePhone] = useState("");
+  const [cakeSubmitted, setCakeSubmitted] = useState(false);
+  const [cakeLoading, setCakeLoading] = useState(false);
+  const [cakeError, setCakeError] = useState("");
+  const [callbackOpen, setCallbackOpen] = useState(false);
+  // 6" Round price comes from the Bearing catalog (section "cake-sizes"); "$40"
+  // is the first-paint default so there's no flash when the values match.
+  const [sixInchPrice, setSixInchPrice] = useState("$40");
+  useEffect(() => {
+    let active = true;
+    fetch("/api/cake-sizes")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        const six = Array.isArray(d?.sizes)
+          ? d.sizes.find((s: { name?: string }) => s.name?.includes('6"'))
+          : null;
+        if (active && six?.price) setSixInchPrice(six.price);
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  async function handleSignatureCallback(e: React.FormEvent) {
+    e.preventDefault();
+    if (!cakeEmail.trim() || !cakePhone.trim()) return;
+    setCakeLoading(true);
+    setCakeError("");
+    const result = await submitWaitlist({
+      email: cakeEmail.trim(),
+      phone: cakePhone.trim(),
+      notes: "Callback requested from Signature Cakes page.",
+      source_context: "cake-callback-signature",
+    });
+    setCakeLoading(false);
+    if (result.ok) {
+      setCakeSubmitted(true);
+    } else {
+      setCakeError(result.error);
+    }
+  }
+
+  return (
+    <div>
+      {/* Hero */}
+      <Hero src="/banner-signature-cakes.jpg" alt="Sweet Reba's signature cakes" height="md" />
+      <section className="py-10 text-center px-4">
+        <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-8xl lg:text-9xl text-reba-pink mb-6 sm:mb-4 leading-tight">
+          {copy.heroHeading}
+        </h1>
+        <p className="text-lg sm:text-3xl font-bold text-reba-pink mb-2 tracking-wide">
+          {copy.heroSub}
+        </p>
+      </section>
+
+      {/* Standard Cakes */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
+          {standardCakes.map((cake) => (
+            <div key={cake.name} className="bg-white border-2 border-reba-pink/30 rounded-xl overflow-hidden flex flex-col">
+              <div className="relative w-full h-[250px] cursor-zoom-in overflow-hidden" onClick={() => setZoomImage({ src: cake.image, alt: cake.name })}>
+                <Image
+                  src={cake.image}
+                  alt={cake.name}
+                  fill
+                  sizes="(max-width: 640px) 100vw, 33vw"
+                  className="object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="p-5 text-center flex-1 flex flex-col">
+                <h3 className="text-reba-ink font-semibold text-xl">{cake.name}</h3>
+                <p className="text-reba-muted text-base mt-2 mb-4 flex-1">{cake.description}</p>
+                <div className="border-t border-reba-border pt-3 space-y-1">
+                  <p className="text-reba-ink font-medium">6&quot; Round</p>
+                  <p className="text-reba-muted text-sm">10&ndash;12 servings</p>
+                  <p className="text-reba-pink font-bold text-lg">{sixInchPrice}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Call to Order */}
+      <section style={{ backgroundColor: "#fff5f5" }}>
+        <div className="max-w-3xl mx-auto px-4 py-16 text-center">
+          <div className="bg-white border-2 border-reba-pink/30 rounded-2xl p-10 max-w-md mx-auto">
+            <div className="text-5xl mb-4">{"\u{1F382}"}</div>
+            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-3">
+              {copy.callHeading}
+            </h3>
+            <p className="text-reba-pink text-lg sm:text-xl font-bold mb-2">
+              {copy.callLeadtime}
+            </p>
+            <p className="text-reba-pink text-lg sm:text-xl font-bold mb-8">
+              {copy.callDelivery}
+            </p>
+            <div className="space-y-4">
+              <div>
+                <p className="text-reba-muted text-sm mb-1">Old Town Salinas</p>
+                <a href="tel:8316760628" className="text-reba-pink font-bold text-2xl hover:text-reba-pink-hover transition-colors">
+                  {contact.salinasPhone}
+                </a>
+              </div>
+              <div>
+                <p className="text-reba-muted text-sm mb-1">Carmel Crossroads</p>
+                <a href="tel:8316014818" className="text-reba-pink font-bold text-2xl hover:text-reba-pink-hover transition-colors">
+                  {contact.carmelPhone}
+                </a>
+              </div>
+              <div className="pt-4 border-t border-reba-border mt-4">
+                {cakeSubmitted ? (
+                  <p className="text-reba-pink font-semibold text-base">We&apos;ll be in touch! Reba will call you soon — we reply during business hours (Tue–Fri 8–5, Sat 9–5).</p>
+                ) : !callbackOpen ? (
+                  <button
+                    onClick={() => setCallbackOpen(true)}
+                    className="bg-reba-pink hover:bg-reba-pink-hover text-white px-8 py-3 rounded-full text-base font-semibold transition-colors"
+                  >
+                    Request a Call Back
+                  </button>
+                ) : (
+                  <div className="bg-reba-card border border-reba-border rounded-xl p-5 relative">
+                    <button
+                      onClick={() => setCallbackOpen(false)}
+                      className="absolute top-2 right-2 text-reba-muted hover:text-reba-pink transition-colors text-xl leading-none"
+                      aria-label="Close"
+                    >
+                      &times;
+                    </button>
+                    <p className="text-reba-ink font-semibold text-sm mb-4">Leave your details and we&apos;ll call you back</p>
+                    <form onSubmit={handleSignatureCallback} className="space-y-3 max-w-sm mx-auto">
+                      <input
+                        type="email"
+                        value={cakeEmail}
+                        onChange={(e) => setCakeEmail(e.target.value)}
+                        placeholder="Your email address *"
+                        required
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <input
+                        type="tel"
+                        value={cakePhone}
+                        onChange={(e) => setCakePhone(e.target.value)}
+                        placeholder="Your phone number *"
+                        required
+                        className="w-full bg-white border border-reba-border rounded-full px-5 py-2.5 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink transition"
+                      />
+                      <button
+                        type="submit"
+                        disabled={cakeLoading}
+                        className="w-full bg-reba-pink hover:bg-reba-pink-hover text-white py-3 rounded-full text-sm font-semibold transition-colors disabled:opacity-60"
+                      >
+                        {cakeLoading ? "Sending..." : "Request a Call Back"}
+                      </button>
+                      {cakeError && (
+                        <p className="text-reba-pink text-xs text-center">{cakeError}</p>
+                      )}
+                    </form>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* Planning Buttons */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <a
+            href="/cakes"
+            className="flex-1 text-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-4 rounded-full text-xl font-semibold italic transition-colors shadow-md flex items-center justify-center"
+          >
+            {copy.planOccasion}
+          </a>
+          <a
+            href="/wedding-cakes"
+            className="flex-1 text-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-4 rounded-full text-xl font-semibold italic transition-colors shadow-md flex items-center justify-center"
+          >
+            {copy.planWedding}
+          </a>
+          <a
+            href="/catering"
+            className="flex-1 text-center bg-reba-pink hover:bg-reba-pink-hover text-white px-6 py-4 rounded-full text-xl font-semibold italic transition-colors shadow-md flex items-center justify-center"
+          >
+            {copy.planEvent}
+          </a>
+        </div>
+      </section>
+
+      {/* Image Zoom Modal */}
+      {zoomImage && <ZoomModal src={zoomImage.src} alt={zoomImage.alt} onClose={() => setZoomImage(null)} />}
+    </div>
+  );
+}

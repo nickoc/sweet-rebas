@@ -150,12 +150,24 @@ export default async function HomePage({
       </section>
 
       {/* Reopening Banner */}
-      <ReopeningBanner />
+      <ReopeningBanner
+        heading={sc.get("contact.reopening.heading", "Exciting News!")}
+        salinasLine={sc.get("contact.reopening.salinas_line", "Our Salinas store is now open!")}
+        carmelLine={sc.get("contact.reopening.carmel_line", "Our Carmel store is reopening in late June.")}
+        prompt={sc.get("contact.reopening.prompt", "Be the first to know when Carmel reopens:")}
+      />
 
 
       {/* Dynamic Counter */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-        <CountUpStats />
+        <CountUpStats
+          stats={[
+            { value: Number(sc.get("home.stats.s1_value", "10")), label: sc.get("home.stats.s1_label", "Years of Love") },
+            { value: Number(sc.get("home.stats.s2_value", "4.8")), label: sc.get("home.stats.s2_label", "Star Rating"), decimals: 1 },
+            { value: Number(sc.get("home.stats.s3_value", "10")), label: sc.get("home.stats.s3_label", "Nextdoor Neighborhoods") },
+            { value: Number(sc.get("home.stats.s4_value", "2")), label: sc.get("home.stats.s4_label", "Locations") },
+          ]}
+        />
       </section>
 
       {/* ReBA in the News */}
