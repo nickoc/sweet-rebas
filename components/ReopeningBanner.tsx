@@ -6,7 +6,17 @@ import { submitWaitlist } from "@/lib/waitlist";
 const SMS_CONSENT_TEXT =
   "I agree to receive text messages from Sweet Reba's Bakery about the Carmel reopening and occasional updates. Msg frequency varies. Msg & data rates may apply. Reply STOP to unsubscribe, HELP for help.";
 
-export default function ReopeningBanner() {
+export default function ReopeningBanner({
+  heading = "Exciting News!",
+  salinasLine = "Our Salinas store is now open!",
+  carmelLine = "Our Carmel store is reopening in late June.",
+  prompt = "Be the first to know when Carmel reopens:",
+}: {
+  heading?: string;
+  salinasLine?: string;
+  carmelLine?: string;
+  prompt?: string;
+}) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -53,13 +63,13 @@ export default function ReopeningBanner() {
           {/* Left: Text + form */}
           <div className="p-10 sm:p-12 flex flex-col justify-between h-full">
             <h2 className="font-[family-name:var(--font-heading)] text-4xl sm:text-5xl text-reba-pink mb-4">
-              Exciting News!
+              {heading}
             </h2>
             <p className="text-reba-muted text-xl leading-relaxed mb-3">
-              Our Salinas store is now open!
+              {salinasLine}
             </p>
             <p className="text-reba-muted text-xl leading-relaxed mb-4">
-              Our Carmel store is reopening in late June.
+              {carmelLine}
             </p>
 
             <div className="mt-auto pt-4">
@@ -70,7 +80,7 @@ export default function ReopeningBanner() {
               ) : (
                 <>
                   <p className="text-reba-muted text-xl mb-3">
-                    Be the first to know when Carmel reopens:
+                    {prompt}
                   </p>
                   <form onSubmit={handleSubmit} className="flex flex-col gap-3 max-w-md">
                     <input

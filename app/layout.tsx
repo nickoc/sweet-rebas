@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import ChatWidgetLazy from "@/components/ChatWidgetLazy";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
 import { CartProvider } from "@/lib/cart-context";
+import { getContactInfo } from "@/lib/contact-info";
 import "./globals.css";
 
 const dancingScript = Dancing_Script({
@@ -57,11 +58,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const contact = await getContactInfo();
+
   return (
     <html
       lang="en"
@@ -72,7 +75,7 @@ export default function RootLayout({
           <AnnouncementBar />
           <Header />
           <main className="flex-1">{children}</main>
-          <Footer />
+          <Footer contact={contact} />
           <ChatWidgetLazy />
         </CartProvider>
       </body>
