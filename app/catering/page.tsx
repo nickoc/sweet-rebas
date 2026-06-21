@@ -4,6 +4,7 @@
 
 import { getSiteContent } from "@/lib/site-content";
 import { getContactInfo } from "@/lib/contact-info";
+import { getGallery } from "@/lib/galleries";
 import CateringPageClient from "./catering-client";
 
 export default async function CateringPage({
@@ -15,9 +16,11 @@ export default async function CateringPage({
   const isPreview = preview === "1";
   const sc = await getSiteContent({ preview: isPreview });
   const contact = await getContactInfo({ preview: isPreview });
+  const gallery = await getGallery("catering.gallery", { preview: isPreview });
   return (
     <CateringPageClient
       contact={contact}
+      gallery={gallery}
       copy={{
         heading: sc.get("catering.main.heading", "Feeding a Crowd?"),
         callHeading: sc.get("catering.main.call_heading", "Call Us"),

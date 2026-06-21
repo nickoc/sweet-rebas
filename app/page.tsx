@@ -8,15 +8,15 @@ import NewsBanner from "@/components/NewsBanner";
 import SignatureProducts from "@/components/SignatureProducts";
 import HomeDailyPicks from "@/components/HomeDailyPicks";
 import { getSiteContent } from "@/lib/site-content";
+import { getCollection } from "@/lib/collections";
 
 const popularItems = menuItems.filter((item) => item.popular).slice(0, 4);
-const topReviews = reviews.filter((review) => review.rating === 5).slice(0, 3);
 
-const reviewImages = [
-  "/product-chocolate-chip.jpg",
-  "/product-breakfast-burrito.jpg",
-  "/product-dutch-apple-pie.jpg",
-];
+// Fallback testimonials (the current 5-star picks) when the owner hasn't added any.
+const fallbackTestimonials = reviews
+  .filter((review) => review.rating === 5)
+  .slice(0, 3)
+  .map((r) => ({ rating: r.rating, text: r.text, author: r.author, platform: r.platform }));
 
 function StarRating({ rating }: { rating: number }) {
   return (
@@ -41,7 +41,26 @@ export default async function HomePage({
   searchParams: Promise<{ preview?: string }>;
 }) {
   const { preview } = await searchParams;
-  const sc = await getSiteContent({ preview: preview === "1" });
+  const isPreview = preview === "1";
+  const sc = await getSiteContent({ preview: isPreview });
+
+  const reviewImages = [
+    sc.img("home.reviews.img1", "/product-chocolate-chip.jpg"),
+    sc.img("home.reviews.img2", "/product-breakfast-burrito.jpg"),
+    sc.img("home.reviews.img3", "/product-dutch-apple-pie.jpg"),
+  ];
+
+  const testimonialRows = await getCollection("home.testimonials", {
+    preview: isPreview,
+  });
+  const testimonials = testimonialRows.length
+    ? testimonialRows.slice(0, 3).map((r) => ({
+        rating: Number(r.fields.rating) || 5,
+        text: r.fields.text ?? "",
+        author: r.fields.author ?? "",
+        platform: r.fields.platform ?? "",
+      }))
+    : fallbackTestimonials;
   return (
     <div>
       {/* Hero Section */}
@@ -85,7 +104,7 @@ export default async function HomePage({
           <Link href="/chalkboard" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
             <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
               <Image
-                src="/slideshow-baked-goods.jpg"
+                src={sc.img("home.cards.baking_image", "/slideshow-baked-goods.jpg")}
                 alt="Fresh baked goods from Sweet Reba's"
                 fill
                 sizes="(max-width: 768px) 90vw, 33vw"
@@ -107,7 +126,7 @@ export default async function HomePage({
           <Link href="/cakes" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
             <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
               <Image
-                src="/slideshow-lemons.jpg"
+                src={sc.img("home.cards.preorders_image", "/slideshow-lemons.jpg")}
                 alt="Fresh lemons at Sweet Reba's"
                 fill
                 sizes="(max-width: 768px) 90vw, 33vw"
@@ -129,7 +148,7 @@ export default async function HomePage({
           <Link href="/about" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
             <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
               <Image
-                src="/slideshow-snickerdoodles.jpg"
+                src={sc.img("home.cards.story_image", "/slideshow-snickerdoodles.jpg")}
                 alt="Mike and Reba at Sweet Reba's"
                 fill
                 sizes="(max-width: 768px) 90vw, 33vw"
@@ -171,7 +190,7 @@ export default async function HomePage({
       </section>
 
       {/* ReBA in the News */}
-      <NewsBanner />
+      <NewsBanner preview={isPreview} />
 
       {/* Customer Reviews */}
       <section style={{ backgroundColor: "#fff5f5" }}>
@@ -180,9 +199,9 @@ export default async function HomePage({
             What Our Customers Say
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {topReviews.map((review, index) => (
+            {testimonials.map((review, index) => (
               <div
-                key={review.id}
+                key={`${review.author}-${index}`}
                 className="bg-white border border-reba-border rounded-2xl overflow-hidden"
               >
                 {reviewImages[index] ? (
