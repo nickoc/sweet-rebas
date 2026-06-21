@@ -13,8 +13,6 @@ export default function Footer({
 }) {
   const [email, setEmail] = useState("");
   const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [doorDashOpen, setDoorDashOpen] = useState(false);
-  const [doorDashEmail, setDoorDashEmail] = useState("");
   const pathname = usePathname();
   const isWeddingPage = pathname === "/wedding-cakes";
   const igHandle = isWeddingPage ? "weddingcakesbyReba" : contact.instagram;
@@ -38,19 +36,6 @@ export default function Footer({
     }
   }
 
-  async function handleDoorDashSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    const trimmed = doorDashEmail.trim();
-    if (!trimmed) return;
-    // Fire-and-forget the opt-in; don't block the DoorDash redirect.
-    void submitWaitlist({
-      email: trimmed,
-      source_context: "doordash-gate",
-    });
-    window.open(doorDashUrl, "_blank", "noopener,noreferrer");
-    setDoorDashEmail("");
-    setDoorDashOpen(false);
-  }
 
   return (
     <footer className="border-t border-reba-border" style={{ backgroundColor: "#ffffff" }}>
@@ -224,52 +209,19 @@ export default function Footer({
               We deliver across Monterey County.
             </p>
 
-            {/* DoorDash button — gated on email capture */}
+            {/* DoorDash — direct link, no email capture (per Reba) */}
             <div className="mt-4">
-              {!doorDashOpen ? (
-                <button
-                  onClick={() => setDoorDashOpen(true)}
-                  className="inline-flex items-center gap-2 bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M3 7h18l-2 13H5L3 7zm3-3h12l1 2H5l1-2z" />
-                  </svg>
-                  Order on DoorDash
-                </button>
-              ) : (
-                <form
-                  onSubmit={handleDoorDashSubmit}
-                  className="border border-reba-border rounded-lg p-3 bg-white"
-                >
-                  <p className="text-reba-ink text-xs mb-2 font-medium">
-                    Enter your email to continue to DoorDash
-                  </p>
-                  <div className="flex gap-2">
-                    <input
-                      type="email"
-                      value={doorDashEmail}
-                      onChange={(e) => setDoorDashEmail(e.target.value)}
-                      placeholder="Your email"
-                      required
-                      autoFocus
-                      className="flex-1 bg-white border border-reba-border rounded-lg px-3 py-2 text-sm text-reba-ink placeholder:text-reba-muted focus:outline-none focus:border-reba-pink"
-                    />
-                    <button
-                      type="submit"
-                      className="bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors whitespace-nowrap"
-                    >
-                      Go &rarr;
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => setDoorDashOpen(false)}
-                    className="text-reba-muted text-xs mt-2 hover:text-reba-pink transition-colors"
-                  >
-                    Cancel
-                  </button>
-                </form>
-              )}
+              <a
+                href={doorDashUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-reba-pink hover:bg-reba-pink-hover text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M3 7h18l-2 13H5L3 7zm3-3h12l1 2H5l1-2z" />
+                </svg>
+                Order on DoorDash
+              </a>
             </div>
           </div>
         </div>
