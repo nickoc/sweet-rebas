@@ -4,6 +4,7 @@
 
 import { getSiteContent } from "@/lib/site-content";
 import { getContactInfo } from "@/lib/contact-info";
+import { getGallery } from "@/lib/galleries";
 import WeddingCakesPageClient from "./wedding-client";
 
 export default async function WeddingCakesPage({
@@ -15,9 +16,11 @@ export default async function WeddingCakesPage({
   const isPreview = preview === "1";
   const sc = await getSiteContent({ preview: isPreview });
   const contact = await getContactInfo({ preview: isPreview });
+  const gallery = await getGallery("wedding.gallery", { preview: isPreview });
   return (
     <WeddingCakesPageClient
       contact={contact}
+      gallery={gallery}
       copy={{
         heroHeading: sc.get("wedding.hero.heading", "Wedding Cakes"),
         heroSub: sc.get("wedding.hero.sub", "Your love story, beautifully told in cake"),

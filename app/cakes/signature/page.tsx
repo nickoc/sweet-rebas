@@ -4,6 +4,7 @@
 
 import { getSiteContent } from "@/lib/site-content";
 import { getContactInfo } from "@/lib/contact-info";
+import { getGallery } from "@/lib/galleries";
 import SignatureCakesPageClient from "./signature-client";
 
 export default async function SignatureCakesPage({
@@ -15,9 +16,11 @@ export default async function SignatureCakesPage({
   const isPreview = preview === "1";
   const sc = await getSiteContent({ preview: isPreview });
   const contact = await getContactInfo({ preview: isPreview });
+  const gallery = await getGallery("signature.gallery", { preview: isPreview });
   return (
     <SignatureCakesPageClient
       contact={contact}
+      gallery={gallery}
       copy={{
         heroHeading: sc.get("signature.hero.heading", "Signature Cakes"),
         heroSub: sc.get("signature.hero.sub", "Our most loved cakes, baked fresh for you."),

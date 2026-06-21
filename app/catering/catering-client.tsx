@@ -4,6 +4,8 @@ import { useState, useRef } from "react";
 import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 import { CONTACT_FALLBACK, type ContactInfo } from "@/lib/contact-info";
+import OwnerGallery from "@/components/OwnerGallery";
+import type { GalleryImage } from "@/lib/galleries";
 
 export type CateringCopy = {
   heading: string;
@@ -23,9 +25,11 @@ const CATERING_COPY_FALLBACK: CateringCopy = {
 export default function CateringPageClient({
   copy = CATERING_COPY_FALLBACK,
   contact = CONTACT_FALLBACK,
+  gallery = [],
 }: {
   copy?: CateringCopy;
   contact?: ContactInfo;
+  gallery?: GalleryImage[];
 }) {
   const [cateringName, setCateringName] = useState("");
   const [cateringPhone, setCateringPhone] = useState("");
@@ -79,6 +83,7 @@ export default function CateringPageClient({
     <div>
       {/* Hero */}
       <Hero src="/slideshow-snickerdoodles.jpg" alt="Fresh-baked snickerdoodle cookies" height="md" />
+      <OwnerGallery photos={gallery} heading="Catering Gallery" />
 
       {/* Coming Soon + Call Us */}
       <section style={{ backgroundColor: "#fff5f5" }}>

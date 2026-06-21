@@ -5,6 +5,8 @@ import Image from "next/image";
 import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 import { CONTACT_FALLBACK, type ContactInfo } from "@/lib/contact-info";
+import OwnerGallery from "@/components/OwnerGallery";
+import type { GalleryImage } from "@/lib/galleries";
 
 const standardCakes = [
   { name: "Classic Vanilla Cake", image: "/product-carrot-cake.jpg", description: "Classic vanilla cake filled and frosted with vanilla buttercream." },
@@ -61,9 +63,11 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
 export default function SignatureCakesPageClient({
   copy = SIGNATURE_COPY_FALLBACK,
   contact = CONTACT_FALLBACK,
+  gallery = [],
 }: {
   copy?: SignatureCopy;
   contact?: ContactInfo;
+  gallery?: GalleryImage[];
 }) {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
   const [cakeEmail, setCakeEmail] = useState("");
@@ -114,6 +118,7 @@ export default function SignatureCakesPageClient({
     <div>
       {/* Hero */}
       <Hero src="/banner-signature-cakes.jpg" alt="Sweet Reba's signature cakes" height="md" />
+      <OwnerGallery photos={gallery} heading="Signature Cake Gallery" />
       <section className="py-10 text-center px-4">
         <h1 className="font-[family-name:var(--font-heading)] text-4xl sm:text-8xl lg:text-9xl text-reba-pink mb-6 sm:mb-4 leading-tight">
           {copy.heroHeading}

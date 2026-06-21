@@ -6,6 +6,7 @@ import { CakeCarousel } from "@/components/CakeGallery";
 import { Hero } from "@/components/Hero";
 import { submitWaitlist } from "@/lib/waitlist";
 import { CONTACT_FALLBACK, type ContactInfo } from "@/lib/contact-info";
+import type { GalleryImage } from "@/lib/galleries";
 
 const whiteWeddingImages = [
   { src: "/cake-dreamy-3.jpg", alt: "White two-tier cake with ranunculus and eucalyptus" },
@@ -48,9 +49,11 @@ const WEDDING_COPY_FALLBACK: WeddingCopy = {
 export default function WeddingCakesPageClient({
   copy = WEDDING_COPY_FALLBACK,
   contact = CONTACT_FALLBACK,
+  gallery = [],
 }: {
   copy?: WeddingCopy;
   contact?: ContactInfo;
+  gallery?: GalleryImage[];
 }) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -136,7 +139,7 @@ export default function WeddingCakesPageClient({
             {copy.galleryHeading}
           </h2>
           <p className="text-reba-muted text-center text-xl mb-10">{copy.gallerySub}</p>
-          <CakeCarousel images={whiteWeddingImages} />
+          <CakeCarousel images={gallery.length ? gallery : whiteWeddingImages} />
         </div>
       </section>
 
