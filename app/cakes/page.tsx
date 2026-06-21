@@ -4,6 +4,7 @@
 
 import { getSiteContent } from "@/lib/site-content";
 import { getContactInfo } from "@/lib/contact-info";
+import { getGallery } from "@/lib/galleries";
 import CakesPageClient from "./cakes-client";
 
 export default async function CakesPage({
@@ -15,9 +16,13 @@ export default async function CakesPage({
   const isPreview = preview === "1";
   const sc = await getSiteContent({ preview: isPreview });
   const contact = await getContactInfo({ preview: isPreview });
+  const favoriteGallery = await getGallery("cakes.favorites", {
+    preview: isPreview,
+  });
   return (
     <CakesPageClient
       contact={contact}
+      favoriteGallery={favoriteGallery}
       copy={{
         heroHeading: sc.get("cakes.hero.heading", "Custom Cakes"),
         heroSub1: sc.get("cakes.hero.sub1", "As seen on Food Network's Cake Wars."),
