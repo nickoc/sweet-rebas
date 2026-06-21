@@ -115,9 +115,12 @@ function ZoomModal({ src, alt, onClose }: { src: string; alt: string; onClose: (
 export default function CakesPageClient({
   copy = CAKES_COPY_FALLBACK,
   contact = CONTACT_FALLBACK,
+  favoriteGallery = [],
 }: {
   copy?: CakesCopy;
   contact?: ContactInfo;
+  // Owner-managed photo gallery; falls back to the built-in favorites when empty.
+  favoriteGallery?: { src: string; alt: string }[];
 }) {
   const [zoomImage, setZoomImage] = useState<{ src: string; alt: string } | null>(null);
   const [cakeEmail, setCakeEmail] = useState("");
@@ -174,7 +177,9 @@ export default function CakesPageClient({
             {copy.favoriteHeading}
           </h2>
           <p className="text-reba-muted text-center text-xl mb-8">{copy.favoriteSub}</p>
-          <CakeCarousel images={favoriteImages} />
+          <CakeCarousel
+            images={favoriteGallery.length ? favoriteGallery : favoriteImages}
+          />
         </div>
       </section>
 
