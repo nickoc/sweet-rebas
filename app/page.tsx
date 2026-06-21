@@ -73,7 +73,7 @@ export default async function HomePage({
 
       {/* Title + Locations */}
       <section className="py-10 sm:py-14 text-center">
-        <p className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-4 tracking-wide">
+        <p data-edit="home.hero.tagline" className="text-3xl sm:text-4xl font-extrabold text-reba-pink mb-4 tracking-wide">
           {sc.get("home.hero.tagline", "Small-Batch Bakery. Made with Love.")}
         </p>
         <p className="text-xl sm:text-2xl text-reba-pink/90 font-bold">
@@ -102,7 +102,7 @@ export default async function HomePage({
         <div className="flex md:grid md:grid-cols-3 gap-4 md:gap-8 overflow-x-auto md:overflow-visible snap-x snap-mandatory -mx-4 md:mx-0 px-[5vw] md:px-0 pb-2 md:pb-0 scrollbar-hide">
           {/* What's Baking Today */}
           <Link href="/chalkboard" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+            <div data-edit="home.cards.baking_image" className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
               <Image
                 src={sc.img("home.cards.baking_image", "/slideshow-baked-goods.jpg")}
                 alt="Fresh baked goods from Sweet Reba's"
@@ -111,7 +111,7 @@ export default async function HomePage({
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 data-edit="home.cards.baking_title" className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               {sc.get("home.cards.baking_title", "What's Baking Today?")}
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -124,7 +124,7 @@ export default async function HomePage({
 
           {/* Bakery Pre-Orders */}
           <Link href="/cakes" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+            <div data-edit="home.cards.preorders_image" className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
               <Image
                 src={sc.img("home.cards.preorders_image", "/slideshow-lemons.jpg")}
                 alt="Fresh lemons at Sweet Reba's"
@@ -133,7 +133,7 @@ export default async function HomePage({
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 data-edit="home.cards.preorders_title" className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               {sc.get("home.cards.preorders_title", "Bakery Pre-Orders")}
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
@@ -146,7 +146,7 @@ export default async function HomePage({
 
           {/* Our Story */}
           <Link href="/about" className="group block shrink-0 snap-center w-[90vw] sm:w-[65vw] md:w-auto">
-            <div className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
+            <div data-edit="home.cards.story_image" className="relative rounded-2xl overflow-hidden mb-5 aspect-square">
               <Image
                 src={sc.img("home.cards.story_image", "/slideshow-snickerdoodles.jpg")}
                 alt="Mike and Reba at Sweet Reba's"
@@ -155,7 +155,7 @@ export default async function HomePage({
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <h3 className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
+            <h3 data-edit="home.cards.story_title" className="font-[family-name:var(--font-heading)] text-3xl sm:text-4xl text-reba-ink mb-2 group-hover:text-reba-pink transition-colors">
               {sc.get("home.cards.story_title", "Our Story")}
             </h3>
             <p className="text-reba-muted text-xl leading-relaxed">
