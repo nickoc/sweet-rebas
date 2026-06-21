@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ChatWidgetLazy from "@/components/ChatWidgetLazy";
 import { AnnouncementBar } from "@/components/AnnouncementBar";
+import PreviewBridge from "@/components/PreviewBridge";
 import { CartProvider } from "@/lib/cart-context";
 import { getContactInfo } from "@/lib/contact-info";
 import "./globals.css";
@@ -72,6 +73,7 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-reba-bg text-reba-ink font-body">
         <CartProvider>
+          <PreviewBridge />
           <AnnouncementBar />
           <Header />
           <main className="flex-1">{children}</main>
